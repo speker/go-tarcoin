@@ -170,11 +170,11 @@ func ethFilter(args []string) (nodeFilter, error) {
 	}
 
 	f := func(n nodeJSON) bool {
-		var trcn struct {
+		var eth struct {
 			ForkID forkid.ID
 			_      []rlp.RawValue `rlp:"tail"`
 		}
-		if n.N.Load(enr.WithEntry("trcn", &trcn)) != nil {
+		if n.N.Load(enr.WithEntry("trcn", &eth)) != nil {
 			return false
 		}
 		return filter(trcn.ForkID) == nil

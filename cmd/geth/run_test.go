@@ -46,7 +46,7 @@ type testgeth struct {
 }
 
 func init() {
-	// Run the app if we've been exec'd as "geth-test" in runGtrcn.
+	// Run the app if we've been exec'd as "geth-test" in rungeth.
 	reexec.Register("geth-test", func() {
 		if err := app.Run(os.Args); err != nil {
 			fmt.Fprintln(os.Stderr, err)

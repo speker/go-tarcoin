@@ -146,7 +146,7 @@ func New(ctx *node.ServiceContext, config *Config) (*Ethereum, error) {
 	}
 	log.Info("Initialised chain configuration", "config", chainConfig)
 
-	trcn := &Ethereum{
+	eth := &Ethereum{
 		config:            config,
 		chainDb:           chainDb,
 		eventMux:          ctx.EventMux,
@@ -216,10 +216,10 @@ func New(ctx *node.ServiceContext, config *Config) (*Ethereum, error) {
 	if trcn.protocolManager, err = NewProtocolManager(chainConfig, checkpoint, config.SyncMode, config.NetworkId, trcn.eventMux, trcn.txPool, trcn.engine, trcn.blockchain, chainDb, cacheLimit, config.Whitelist); err != nil {
 		return nil, err
 	}
-	trcn.miner = miner.New(trcn, &config.Miner, chainConfig, trcn.EventMux(), trcn.engine, trcn.isLocalBlock)
+	trcn.miner = miner.New(eth, &config.Miner, chainConfig, trcn.EventMux(), trcn.engine, trcn.isLocalBlock)
 	trcn.miner.SetExtra(makeExtraData(config.Miner.ExtraData))
 
-	trcn.APIBackend = &EthAPIBackend{ctx.ExtRPCEnabled(), trcn, nil}
+	trcn.APIBackend = &EthAPIBackend{ctx.ExtRPCEnabled(), eth, nil}
 	gpoParams := config.GPO
 	if gpoParams.Default == nil {
 		gpoParams.Default = config.Miner.GasPrice
@@ -231,7 +231,7 @@ func New(ctx *node.ServiceContext, config *Config) (*Ethereum, error) {
 		return nil, err
 	}
 
-	return trcn, nil
+	return eth, nil
 }
 
 func makeExtraData(extra []byte) []byte {

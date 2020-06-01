@@ -294,7 +294,7 @@ For more details on writing automatic rules, please see the [rules spec](https:/
 
 Of course, as awesome as Clef is, it's not feasible to interact with it via JSON RPC by hand. Long term, we're hoping to convince the general Ethereum community to support Clef as a general signer (it's only 3-5 methods), thus allowing your favorite DApp, Metamask, MyCrypto, etc to request signatures directly.
 
-Until then however, we're trying to pave the way via Gtrcn. Geth v1.9.0 has built in support via `--signer <API endpoint>` for using a local or remote Clef instance as an account backend!
+Until then however, we're trying to pave the way via geth. Geth v1.9.0 has built in support via `--signer <API endpoint>` for using a local or remote Clef instance as an account backend!
 
 We can try this by running Clef with our previous rules on Rinkeby (for now it's a good idea to allow auto-listing accounts, since Geth likes to retrieve them once in a while).
 
@@ -350,4 +350,4 @@ Approve? [y/N]:
 
 :boom:
 
-*Note, if you enable the external signer backend in Geth, all other account management is disabled. This is because long term we want to remove account management from Gtrcn.*
+*Note, if you enable the external signer backend in Geth, all other account management is disabled. This is because long term we want to remove account management from geth.*

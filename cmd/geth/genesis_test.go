@@ -88,7 +88,7 @@ func TestCustomGenesis(t *testing.T) {
 			"--datadir", datadir, "--maxpeers", "0", "--port", "0",
 			"--nodiscover", "--nat", "none", "--ipcdisable",
 			"--exec", tt.query, "console")
-		gtrcn.ExpectRegexp(tt.result)
-		gtrcn.ExpectExit()
+		geth.ExpectRegexp(tt.result)
+		geth.ExpectExit()
 	}
 }

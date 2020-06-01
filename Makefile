@@ -15,7 +15,7 @@ GORUN = env GO111MODULE=on go run
 geth:
 	$(GORUN) build/ci.go install ./cmd/geth
 	@echo "Done building."
-	@echo "Run \"$(GOBIN)/geth\" to launch gtrcn."
+	@echo "Run \"$(GOBIN)/geth\" to launch trcn."
 
 all:
 	$(GORUN) build/ci.go install
@@ -23,12 +23,12 @@ all:
 android:
 	$(GORUN) build/ci.go aar --local
 	@echo "Done building."
-	@echo "Import \"$(GOBIN)/gtrcn.aar\" to use the library."
+	@echo "Import \"$(GOBIN)/geth.aar\" to use the library."
 
 ios:
 	$(GORUN) build/ci.go xcode --local
 	@echo "Done building."
-	@echo "Import \"$(GOBIN)/Gtrcn.framework\" to use the library."
+	@echo "Import \"$(GOBIN)/geth.framework\" to use the library."
 
 test: all
 	$(GORUN) build/ci.go test

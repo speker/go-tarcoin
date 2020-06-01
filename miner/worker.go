@@ -126,7 +126,7 @@ type worker struct {
 	config      *Config
 	chainConfig *params.ChainConfig
 	engine      consensus.Engine
-	trcn         Backend
+	eth         Backend
 	chain       *core.BlockChain
 
 	// Feeds
@@ -192,7 +192,7 @@ func newWorker(config *Config, chainConfig *params.ChainConfig, engine consensus
 		config:             config,
 		chainConfig:        chainConfig,
 		engine:             engine,
-		trcn:                trcn,
+		eth:                trcn,
 		mux:                mux,
 		chain:              trcn.BlockChain(),
 		isLocalBlock:       isLocalBlock,

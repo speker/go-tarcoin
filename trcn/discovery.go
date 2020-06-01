@@ -40,7 +40,7 @@ func (e ethEntry) ENRKey() string {
 }
 
 // startEthEntryUpdate starts the ENR updater loop.
-func (trcn *Ethereum) startEthEntryUpdate(ln *enode.LocalNode) {
+func (eth *Ethereum) startEthEntryUpdate(ln *enode.LocalNode) {
 	var newHead = make(chan core.ChainHeadEvent, 10)
 	sub := trcn.blockchain.SubscribeChainHeadEvent(newHead)
 
@@ -59,12 +59,12 @@ func (trcn *Ethereum) startEthEntryUpdate(ln *enode.LocalNode) {
 	}()
 }
 
-func (trcn *Ethereum) currentEthEntry() *ethEntry {
+func (eth *Ethereum) currentEthEntry() *ethEntry {
 	return &ethEntry{ForkID: forkid.NewID(trcn.blockchain)}
 }
 
 // setupDiscovery creates the node discovery source for the trcn protocol.
-func (trcn *Ethereum) setupDiscovery(cfg *p2p.Config) (enode.Iterator, error) {
+func (eth *Ethereum) setupDiscovery(cfg *p2p.Config) (enode.Iterator, error) {
 	if cfg.NoDiscovery || len(trcn.config.DiscoveryURLs) == 0 {
 		return nil, nil
 	}

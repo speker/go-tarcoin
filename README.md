@@ -10,7 +10,7 @@ https://camo.githubusercontent.com/915b7be44ada53c290eb157634330494ebe3e30a/6874
 [![Discord](https://img.shields.io/badge/discord-join%20chat-blue.svg)](https://discord.gg/nthXNEv)
 
 Automated builds are available for stable releases and the unstable master branch. Binary
-archives are published at https://gtrcn.ethereum.org/downloads/.
+archives are published at https://geth.ethereum.org/downloads/.
 
 ## Building the source
 
@@ -97,7 +97,7 @@ Specifying the `--goerli` flag, however, will reconfigure your `geth` instance a
    Linux). Note, on OSX and Linux this also means that attaching to a running testnet node
    requires the use of a custom endpoint since `geth attach` will try to attach to a
    production node endpoint by default, e.g.,
-   `geth attach <datadir>/goerli/gtrcn.ipc`. Windows users are not affected by
+   `geth attach <datadir>/goerli/geth.ipc`. Windows users are not affected by
    this.
 
 *Note: Although there are some internal protective measures to prevent transactions from
@@ -185,15 +185,15 @@ HTTP based JSON-RPC API options:
   * `--rpc` Enable the HTTP-RPC server
   * `--rpcaddr` HTTP-RPC server listening interface (default: `localhost`)
   * `--rpcport` HTTP-RPC server listening port (default: `8545`)
-  * `--rpcapi` API's offered over the HTTP-RPC interface (default: `trcn,net,web3`)
+  * `--rpcapi` API's offered over the HTTP-RPC interface (default: `eth,net,web3`)
   * `--rpccorsdomain` Comma separated list of domains from which to accept cross origin requests (browser enforced)
   * `--ws` Enable the WS-RPC server
   * `--wsaddr` WS-RPC server listening interface (default: `localhost`)
   * `--wsport` WS-RPC server listening port (default: `8546`)
-  * `--wsapi` API's offered over the WS-RPC interface (default: `trcn,net,web3`)
+  * `--wsapi` API's offered over the WS-RPC interface (default: `eth,net,web3`)
   * `--wsorigins` Origins from which to accept websockets requests
   * `--ipcdisable` Disable the IPC-RPC server
-  * `--ipcapi` API's offered over the IPC-RPC interface (default: `admin,debug,trcn,miner,net,personal,shh,txpool,web3`)
+  * `--ipcapi` API's offered over the IPC-RPC interface (default: `admin,debug,eth,miner,net,personal,shh,txpool,web3`)
   * `--ipcpath` Filename for IPC socket/pipe within the datadir (explicit paths escape it)
 
 You'll need to use your own programming environments' capabilities (libraries, tools, etc) to
@@ -342,7 +342,7 @@ Please make sure your contributions adhere to our coding guidelines:
    guidelines.
  * Pull requests need to be based on and opened against the `master` branch.
  * Commit messages should be prefixed with the package(s) they modify.
-   * E.g. "trcn, rpc: make trace configs optional"
+   * E.g. "eth, rpc: make trace configs optional"
 
 Please see the [Developers' Guide](https://github.com/speker/go-tarcoin/wiki/Developers'-Guide)
 for more details on configuring your environment, managing project dependencies, and

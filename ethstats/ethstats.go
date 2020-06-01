@@ -70,7 +70,7 @@ type blockChain interface {
 // chain statistics up to a monitoring server.
 type Service struct {
 	server *p2p.Server        // Peer-to-peer server to retrieve networking infos
-	trcn    *trcn.Ethereum     // Full Ethereum service if monitoring a full node
+	eth    *trcn.Ethereum     // Full Ethereum service if monitoring a full node
 	les    *les.LightEthereum // Light Ethereum service if monitoring a light node
 	engine consensus.Engine   // Consensus engine to retrieve variadic block fields
 
@@ -98,7 +98,7 @@ func New(url string, ethServ *trcn.Ethereum, lesServ *les.LightEthereum) (*Servi
 		engine = lesServ.Engine()
 	}
 	return &Service{
-		trcn:    ethServ,
+		eth:    ethServ,
 		les:    lesServ,
 		engine: engine,
 		node:   parts[1],
