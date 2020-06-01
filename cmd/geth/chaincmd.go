@@ -33,7 +33,7 @@ import (
 	"github.com/speker/go-tarcoin/core/rawdb"
 	"github.com/speker/go-tarcoin/core/state"
 	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/eth/downloader"
+	"github.com/speker/go-tarcoin/trcn/downloader"
 	"github.com/speker/go-tarcoin/event"
 	"github.com/speker/go-tarcoin/log"
 	"github.com/speker/go-tarcoin/metrics"
@@ -496,7 +496,7 @@ func removeDB(ctx *cli.Context) error {
 		log.Info("Full node state database missing", "path", path)
 	}
 	// Remove the full node ancient database
-	path = config.Eth.DatabaseFreezer
+	path = config.trcn.DatabaseFreezer
 	switch {
 	case path == "":
 		path = filepath.Join(stack.ResolvePath("chaindata"), "ancient")

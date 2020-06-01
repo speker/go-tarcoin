@@ -36,7 +36,7 @@ import (
 	"github.com/speker/go-tarcoin/core/state"
 	"github.com/speker/go-tarcoin/core/types"
 	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/eth/filters"
+	"github.com/speker/go-tarcoin/trcn/filters"
 	"github.com/speker/go-tarcoin/ethdb"
 	"github.com/speker/go-tarcoin/event"
 	"github.com/speker/go-tarcoin/log"

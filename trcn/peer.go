@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-package eth
+package trcn
 
 import (
 	"errors"
@@ -332,8 +332,8 @@ func (p *peer) MarkTransaction(hash common.Hash) {
 // SendTransactions64 sends transactions to the peer and includes the hashes
 // in its transaction hash set for future reference.
 //
-// This method is legacy support for initial transaction exchange in eth/64 and
-// prior. For eth/65 and higher use SendPooledTransactionHashes.
+// This method is legacy support for initial transaction exchange in trcn/64 and
+// prior. For trcn/65 and higher use SendPooledTransactionHashes.
 func (p *peer) SendTransactions64(txs types.Transactions) error {
 	return p.sendTransactions(txs)
 }
@@ -558,7 +558,7 @@ func (p *peer) RequestTxs(hashes []common.Hash) error {
 	return p2p.Send(p.rw, GetPooledTransactionsMsg, hashes)
 }
 
-// Handshake executes the eth protocol handshake, negotiating version number,
+// Handshake executes the trcn protocol handshake, negotiating version number,
 // network IDs, difficulties, head and genesis blocks.
 func (p *peer) Handshake(network uint64, td *big.Int, head common.Hash, genesis common.Hash, forkID forkid.ID, forkFilter forkid.Filter) error {
 	// Send out own handshake in a new thread
@@ -588,7 +588,7 @@ func (p *peer) Handshake(network uint64, td *big.Int, head common.Hash, genesis 
 				ForkID:          forkID,
 			})
 		default:
-			panic(fmt.Sprintf("unsupported eth protocol version: %d", p.version))
+			panic(fmt.Sprintf("unsupported trcn protocol version: %d", p.version))
 		}
 	}()
 	go func() {
@@ -598,7 +598,7 @@ func (p *peer) Handshake(network uint64, td *big.Int, head common.Hash, genesis 
 		case p.version >= eth64:
 			errc <- p.readStatus(network, &status, genesis, forkFilter)
 		default:
-			panic(fmt.Sprintf("unsupported eth protocol version: %d", p.version))
+			panic(fmt.Sprintf("unsupported trcn protocol version: %d", p.version))
 		}
 	}()
 	timeout := time.NewTimer(handshakeTimeout)
@@ -619,7 +619,7 @@ func (p *peer) Handshake(network uint64, td *big.Int, head common.Hash, genesis 
 	case p.version >= eth64:
 		p.td, p.head = status.TD, status.Head
 	default:
-		panic(fmt.Sprintf("unsupported eth protocol version: %d", p.version))
+		panic(fmt.Sprintf("unsupported trcn protocol version: %d", p.version))
 	}
 	return nil
 }
@@ -684,7 +684,7 @@ func (p *peer) readStatus(network uint64, status *statusData, genesis common.Has
 // String implements fmt.Stringer.
 func (p *peer) String() string {
 	return fmt.Sprintf("Peer %s [%s]", p.id,
-		fmt.Sprintf("eth/%2d", p.version),
+		fmt.Sprintf("trcn/%2d", p.version),
 	)
 }
 

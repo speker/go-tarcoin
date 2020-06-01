@@ -25,8 +25,8 @@ import (
 	"path/filepath"
 
 	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/eth"
-	"github.com/speker/go-tarcoin/eth/downloader"
+	"github.com/speker/go-tarcoin/trcn"
+	"github.com/speker/go-tarcoin/trcn/downloader"
 	"github.com/speker/go-tarcoin/ethclient"
 	"github.com/speker/go-tarcoin/ethstats"
 	"github.com/speker/go-tarcoin/internal/debug"
@@ -170,7 +170,7 @@ func NewNode(datadir string, config *NodeConfig) (stack *Node, _ error) {
 	}
 	// Register the Ethereum protocol if requested
 	if config.EthereumEnabled {
-		ethConf := eth.DefaultConfig
+		ethConf := trcn.DefaultConfig
 		ethConf.Genesis = genesis
 		ethConf.SyncMode = downloader.LightSync
 		ethConf.NetworkId = uint64(config.EthereumNetworkID)

@@ -32,7 +32,7 @@ import (
 	"github.com/speker/go-tarcoin/core/rawdb"
 	"github.com/speker/go-tarcoin/core/types"
 	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/eth"
+	"github.com/speker/go-tarcoin/trcn"
 	"github.com/speker/go-tarcoin/node"
 	"github.com/speker/go-tarcoin/params"
 )
@@ -173,12 +173,12 @@ func newTestBackend(t *testing.T) (*node.Node, []*types.Block) {
 	genesis, blocks := generateTestChain()
 
 	// Start Ethereum service.
-	var ethservice *eth.Ethereum
+	var ethservice *trcn.Ethereum
 	n, err := node.New(&node.Config{})
 	n.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-		config := &eth.Config{Genesis: genesis}
+		config := &trcn.Config{Genesis: genesis}
 		config.Ethash.PowMode = ethash.ModeFake
-		ethservice, err = eth.New(ctx, config)
+		ethservice, err = trcn.New(ctx, config)
 		return ethservice, err
 	})
 

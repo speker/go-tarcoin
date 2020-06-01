@@ -24,7 +24,7 @@ import (
 	"time"
 
 	"github.com/speker/go-tarcoin/common/mclock"
-	"github.com/speker/go-tarcoin/eth"
+	"github.com/speker/go-tarcoin/trcn"
 	"github.com/speker/go-tarcoin/ethdb"
 	"github.com/speker/go-tarcoin/les/flowcontrol"
 	"github.com/speker/go-tarcoin/log"
@@ -137,7 +137,7 @@ type costTracker struct {
 
 // newCostTracker creates a cost tracker and loads the cost factor statistics from the database.
 // It also returns the minimum capacity that can be assigned to any peer.
-func newCostTracker(db ethdb.Database, config *eth.Config) (*costTracker, uint64) {
+func newCostTracker(db ethdb.Database, config *trcn.Config) (*costTracker, uint64) {
 	utilTarget := float64(config.LightServ) * flowcontrol.FixedPointMultiplier / 100
 	ct := &costTracker{
 		db:         db,

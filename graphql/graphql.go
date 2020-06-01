@@ -29,7 +29,7 @@ import (
 	"github.com/speker/go-tarcoin/core/state"
 	"github.com/speker/go-tarcoin/core/types"
 	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/eth/filters"
+	"github.com/speker/go-tarcoin/trcn/filters"
 	"github.com/speker/go-tarcoin/internal/ethapi"
 	"github.com/speker/go-tarcoin/rlp"
 	"github.com/speker/go-tarcoin/rpc"

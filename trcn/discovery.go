@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-package eth
+package trcn
 
 import (
 	"github.com/speker/go-tarcoin/core"
@@ -25,7 +25,7 @@ import (
 	"github.com/speker/go-tarcoin/rlp"
 )
 
-// ethEntry is the "eth" ENR entry which advertises eth protocol
+// ethEntry is the "trcn" ENR entry which advertises trcn protocol
 // on the discovery network.
 type ethEntry struct {
 	ForkID forkid.ID // Fork identifier per EIP-2124
@@ -36,22 +36,22 @@ type ethEntry struct {
 
 // ENRKey implements enr.Entry.
 func (e ethEntry) ENRKey() string {
-	return "eth"
+	return "trcn"
 }
 
 // startEthEntryUpdate starts the ENR updater loop.
-func (eth *Ethereum) startEthEntryUpdate(ln *enode.LocalNode) {
+func (trcn *Ethereum) startEthEntryUpdate(ln *enode.LocalNode) {
 	var newHead = make(chan core.ChainHeadEvent, 10)
-	sub := eth.blockchain.SubscribeChainHeadEvent(newHead)
+	sub := trcn.blockchain.SubscribeChainHeadEvent(newHead)
 
 	go func() {
 		defer sub.Unsubscribe()
 		for {
 			select {
 			case <-newHead:
-				ln.Set(eth.currentEthEntry())
+				ln.Set(trcn.currentEthEntry())
 			case <-sub.Err():
-				// Would be nice to sync with eth.Stop, but there is no
+				// Would be nice to sync with trcn.Stop, but there is no
 				// good way to do that.
 				return
 			}
@@ -59,15 +59,15 @@ func (eth *Ethereum) startEthEntryUpdate(ln *enode.LocalNode) {
 	}()
 }
 
-func (eth *Ethereum) currentEthEntry() *ethEntry {
-	return &ethEntry{ForkID: forkid.NewID(eth.blockchain)}
+func (trcn *Ethereum) currentEthEntry() *ethEntry {
+	return &ethEntry{ForkID: forkid.NewID(trcn.blockchain)}
 }
 
-// setupDiscovery creates the node discovery source for the eth protocol.
-func (eth *Ethereum) setupDiscovery(cfg *p2p.Config) (enode.Iterator, error) {
-	if cfg.NoDiscovery || len(eth.config.DiscoveryURLs) == 0 {
+// setupDiscovery creates the node discovery source for the trcn protocol.
+func (trcn *Ethereum) setupDiscovery(cfg *p2p.Config) (enode.Iterator, error) {
+	if cfg.NoDiscovery || len(trcn.config.DiscoveryURLs) == 0 {
 		return nil, nil
 	}
 	client := dnsdisc.NewClient(dnsdisc.Config{})
-	return client.NewIterator(eth.config.DiscoveryURLs...)
+	return client.NewIterator(trcn.config.DiscoveryURLs...)
 }

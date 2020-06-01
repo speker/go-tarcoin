@@ -23,7 +23,7 @@ import (
 	"github.com/speker/go-tarcoin/accounts/abi/bind"
 	"github.com/speker/go-tarcoin/common/mclock"
 	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/eth"
+	"github.com/speker/go-tarcoin/trcn"
 	"github.com/speker/go-tarcoin/les/checkpointoracle"
 	"github.com/speker/go-tarcoin/les/flowcontrol"
 	"github.com/speker/go-tarcoin/light"
@@ -57,7 +57,7 @@ type LesServer struct {
 	threadsBusy                            int // Request serving threads count when system is busy(block insertion).
 }
 
-func NewLesServer(e *eth.Ethereum, config *eth.Config) (*LesServer, error) {
+func NewLesServer(e *trcn.Ethereum, config *trcn.Config) (*LesServer, error) {
 	// Collect les protocol version information supported by local node.
 	lesTopics := make([]discv5.Topic, len(AdvertiseProtocolVersions))
 	for i, pv := range AdvertiseProtocolVersions {

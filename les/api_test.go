@@ -31,8 +31,8 @@ import (
 	"github.com/speker/go-tarcoin/common"
 	"github.com/speker/go-tarcoin/common/hexutil"
 	"github.com/speker/go-tarcoin/consensus/ethash"
-	"github.com/speker/go-tarcoin/eth"
-	"github.com/speker/go-tarcoin/eth/downloader"
+	"github.com/speker/go-tarcoin/trcn"
+	"github.com/speker/go-tarcoin/trcn/downloader"
 	"github.com/speker/go-tarcoin/les/flowcontrol"
 	"github.com/speker/go-tarcoin/log"
 	"github.com/speker/go-tarcoin/node"
@@ -493,18 +493,18 @@ func testSim(t *testing.T, serverCount, clientCount int, serverDir, clientDir []
 }
 
 func newLesClientService(ctx *adapters.ServiceContext) (node.Service, error) {
-	config := eth.DefaultConfig
+	config := trcn.DefaultConfig
 	config.SyncMode = downloader.LightSync
 	config.Ethash.PowMode = ethash.ModeFake
 	return New(ctx.NodeContext, &config)
 }
 
 func newLesServerService(ctx *adapters.ServiceContext) (node.Service, error) {
-	config := eth.DefaultConfig
+	config := trcn.DefaultConfig
 	config.SyncMode = downloader.FullSync
 	config.LightServ = testServerCapacity
 	config.LightPeers = testMaxClients
-	ethereum, err := eth.New(ctx.NodeContext, &config)
+	ethereum, err := trcn.New(ctx.NodeContext, &config)
 	if err != nil {
 		return nil, err
 	}

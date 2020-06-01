@@ -46,8 +46,8 @@ import (
 	"github.com/speker/go-tarcoin/common"
 	"github.com/speker/go-tarcoin/core"
 	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/eth"
-	"github.com/speker/go-tarcoin/eth/downloader"
+	"github.com/speker/go-tarcoin/trcn"
+	"github.com/speker/go-tarcoin/trcn/downloader"
 	"github.com/speker/go-tarcoin/ethclient"
 	"github.com/speker/go-tarcoin/ethstats"
 	"github.com/speker/go-tarcoin/les"
@@ -237,7 +237,7 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 	}
 	// Assemble the Ethereum light client protocol
 	if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-		cfg := eth.DefaultConfig
+		cfg := trcn.DefaultConfig
 		cfg.SyncMode = downloader.LightSync
 		cfg.NetworkId = network
 		cfg.Genesis = genesis

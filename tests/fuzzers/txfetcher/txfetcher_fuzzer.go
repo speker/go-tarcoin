@@ -26,7 +26,7 @@ import (
 	"github.com/speker/go-tarcoin/common"
 	"github.com/speker/go-tarcoin/common/mclock"
 	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/eth/fetcher"
+	"github.com/speker/go-tarcoin/trcn/fetcher"
 )
 
 var (

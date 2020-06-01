@@ -38,7 +38,7 @@ import (
 	"github.com/speker/go-tarcoin/core/rawdb"
 	"github.com/speker/go-tarcoin/core/types"
 	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/eth"
+	"github.com/speker/go-tarcoin/trcn"
 	"github.com/speker/go-tarcoin/ethdb"
 	"github.com/speker/go-tarcoin/event"
 	"github.com/speker/go-tarcoin/les/checkpointoracle"
@@ -161,7 +161,7 @@ func prepare(n int, backend *backends.SimulatedBackend) {
 func testIndexers(db ethdb.Database, odr light.OdrBackend, config *light.IndexerConfig) []*core.ChainIndexer {
 	var indexers [3]*core.ChainIndexer
 	indexers[0] = light.NewChtIndexer(db, odr, config.ChtSize, config.ChtConfirms)
-	indexers[1] = eth.NewBloomIndexer(db, config.BloomSize, config.BloomConfirms)
+	indexers[1] = trcn.NewBloomIndexer(db, config.BloomSize, config.BloomConfirms)
 	indexers[2] = light.NewBloomTrieIndexer(db, odr, config.BloomSize, config.BloomTrieSize)
 	// make bloomTrieIndexer as a child indexer of bloom indexer.
 	indexers[1].AddChildIndexer(indexers[2])
@@ -202,7 +202,7 @@ func newTestClientHandler(backend *backends.SimulatedBackend, odr *LesOdr, index
 	client := &LightEthereum{
 		lesCommons: lesCommons{
 			genesis:     genesis.Hash(),
-			config:      &eth.Config{LightPeers: 100, NetworkId: NetworkId},
+			config:      &trcn.Config{LightPeers: 100, NetworkId: NetworkId},
 			chainConfig: params.AllEthashProtocolChanges,
 			iConfig:     light.TestClientIndexerConfig,
 			chainDb:     db,
@@ -265,7 +265,7 @@ func newTestServerHandler(blocks int, indexers []*core.ChainIndexer, db ethdb.Da
 	server := &LesServer{
 		lesCommons: lesCommons{
 			genesis:     genesis.Hash(),
-			config:      &eth.Config{LightPeers: 100, NetworkId: NetworkId},
+			config:      &trcn.Config{LightPeers: 100, NetworkId: NetworkId},
 			chainConfig: params.AllEthashProtocolChanges,
 			iConfig:     light.TestServerIndexerConfig,
 			chainDb:     db,

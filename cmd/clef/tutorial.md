@@ -294,7 +294,7 @@ For more details on writing automatic rules, please see the [rules spec](https:/
 
 Of course, as awesome as Clef is, it's not feasible to interact with it via JSON RPC by hand. Long term, we're hoping to convince the general Ethereum community to support Clef as a general signer (it's only 3-5 methods), thus allowing your favorite DApp, Metamask, MyCrypto, etc to request signatures directly.
 
-Until then however, we're trying to pave the way via Geth. Geth v1.9.0 has built in support via `--signer <API endpoint>` for using a local or remote Clef instance as an account backend!
+Until then however, we're trying to pave the way via Gtrcn. Geth v1.9.0 has built in support via `--signer <API endpoint>` for using a local or remote Clef instance as an account backend!
 
 We can try this by running Clef with our previous rules on Rinkeby (for now it's a good idea to allow auto-listing accounts, since Geth likes to retrieve them once in a while).
 
@@ -307,7 +307,7 @@ In a different window we can start Geth, list our accounts, even list our wallet
 ```text
 $ geth --rinkeby --signer=~/.clef/clef.ipc console
 
-> eth.accounts
+> trcn.accounts
 ["0xd9c9cd5f6779558b6e0ed4e6acf6b1947e7fa1f3", "0x086278a6c067775f71d6b2bb1856db6e28c30418"]
 
 > personal.listWallets
@@ -323,7 +323,7 @@ $ geth --rinkeby --signer=~/.clef/clef.ipc console
     url: "extapi://$HOME/.clef/clef.ipc"
 }]
 
-> eth.sendTransaction({from: eth.accounts[0], to: eth.accounts[0]})
+> trcn.sendTransaction({from: trcn.accounts[0], to: trcn.accounts[0]})
 ```
 
 Lastly, when we requested a transaction to be sent, Clef prompted us in the original window to approve it:
@@ -350,4 +350,4 @@ Approve? [y/N]:
 
 :boom:
 
-*Note, if you enable the external signer backend in Geth, all other account management is disabled. This is because long term we want to remove account management from Geth.*
+*Note, if you enable the external signer backend in Geth, all other account management is disabled. This is because long term we want to remove account management from Gtrcn.*

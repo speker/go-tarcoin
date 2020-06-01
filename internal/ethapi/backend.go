@@ -28,7 +28,7 @@ import (
 	"github.com/speker/go-tarcoin/core/state"
 	"github.com/speker/go-tarcoin/core/types"
 	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/eth/downloader"
+	"github.com/speker/go-tarcoin/trcn/downloader"
 	"github.com/speker/go-tarcoin/ethdb"
 	"github.com/speker/go-tarcoin/event"
 	"github.com/speker/go-tarcoin/params"
@@ -90,17 +90,17 @@ func GetAPIs(apiBackend Backend) []rpc.API {
 	nonceLock := new(AddrLocker)
 	return []rpc.API{
 		{
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.2",
 			Service:   NewPublicEthereumAPI(apiBackend),
 			Public:    true,
 		}, {
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.2",
 			Service:   NewPublicBlockChainAPI(apiBackend),
 			Public:    true,
 		}, {
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.2",
 			Service:   NewPublicTransactionPoolAPI(apiBackend, nonceLock),
 			Public:    true,
@@ -119,7 +119,7 @@ func GetAPIs(apiBackend Backend) []rpc.API {
 			Version:   "1.2",
 			Service:   NewPrivateDebugAPI(apiBackend),
 		}, {
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.2",
 			Service:   NewPublicAccountAPI(apiBackend.AccountManager()),
 			Public:    true,

@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-package eth
+package trcn
 
 import (
 	"encoding/json"
@@ -31,8 +31,8 @@ import (
 	"github.com/speker/go-tarcoin/core"
 	"github.com/speker/go-tarcoin/core/forkid"
 	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/eth/downloader"
-	"github.com/speker/go-tarcoin/eth/fetcher"
+	"github.com/speker/go-tarcoin/trcn/downloader"
+	"github.com/speker/go-tarcoin/trcn/fetcher"
 	"github.com/speker/go-tarcoin/ethdb"
 	"github.com/speker/go-tarcoin/event"
 	"github.com/speker/go-tarcoin/log"
@@ -267,7 +267,7 @@ func (pm *ProtocolManager) Start(maxPeers int) {
 	// start sync handlers
 	pm.wg.Add(2)
 	go pm.chainSync.loop()
-	go pm.txsyncLoop64() // TODO(karalabe): Legacy initial tx echange, drop with eth/64.
+	go pm.txsyncLoop64() // TODO(karalabe): Legacy initial tx echange, drop with trcn/64.
 }
 
 func (pm *ProtocolManager) Stop() {
@@ -302,7 +302,7 @@ func (pm *ProtocolManager) runPeer(p *peer) error {
 	return pm.handle(p)
 }
 
-// handle is the callback invoked to manage the life cycle of an eth peer. When
+// handle is the callback invoked to manage the life cycle of an trcn peer. When
 // this function terminates, the peer is disconnected.
 func (pm *ProtocolManager) handle(p *peer) error {
 	// Ignore maxPeers if this is a trusted peer

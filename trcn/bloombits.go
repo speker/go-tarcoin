@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-package eth
+package trcn
 
 import (
 	"context"
@@ -49,20 +49,20 @@ const (
 
 // startBloomHandlers starts a batch of goroutines to accept bloom bit database
 // retrievals from possibly a range of filters and serving the data to satisfy.
-func (eth *Ethereum) startBloomHandlers(sectionSize uint64) {
+func (trcn *Ethereum) startBloomHandlers(sectionSize uint64) {
 	for i := 0; i < bloomServiceThreads; i++ {
 		go func() {
 			for {
 				select {
-				case <-eth.closeBloomHandler:
+				case <-trcn.closeBloomHandler:
 					return
 
-				case request := <-eth.bloomRequests:
+				case request := <-trcn.bloomRequests:
 					task := <-request
 					task.Bitsets = make([][]byte, len(task.Sections))
 					for i, section := range task.Sections {
-						head := rawdb.ReadCanonicalHash(eth.chainDb, (section+1)*sectionSize-1)
-						if compVector, err := rawdb.ReadBloomBits(eth.chainDb, task.Bit, section, head); err == nil {
+						head := rawdb.ReadCanonicalHash(trcn.chainDb, (section+1)*sectionSize-1)
+						if compVector, err := rawdb.ReadBloomBits(trcn.chainDb, task.Bit, section, head); err == nil {
 							if blob, err := bitutil.DecompressBytes(compVector, int(sectionSize/8)); err == nil {
 								task.Bitsets[i] = blob
 							} else {

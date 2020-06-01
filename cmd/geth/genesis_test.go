@@ -42,7 +42,7 @@ var customGenesisTests = []struct {
 			"timestamp"  : "0x00",
 			"config"     : {}
 		}`,
-		query:  "eth.getBlock(0).nonce",
+		query:  "trcn.getBlock(0).nonce",
 		result: "0x0000000000001338",
 	},
 	// Genesis file with specific chain configurations
@@ -63,7 +63,7 @@ var customGenesisTests = []struct {
 				"daoForkSupport" : true
 			}
 		}`,
-		query:  "eth.getBlock(0).nonce",
+		query:  "trcn.getBlock(0).nonce",
 		result: "0x0000000000001339",
 	},
 }
@@ -88,7 +88,7 @@ func TestCustomGenesis(t *testing.T) {
 			"--datadir", datadir, "--maxpeers", "0", "--port", "0",
 			"--nodiscover", "--nat", "none", "--ipcdisable",
 			"--exec", tt.query, "console")
-		geth.ExpectRegexp(tt.result)
-		geth.ExpectExit()
+		gtrcn.ExpectRegexp(tt.result)
+		gtrcn.ExpectExit()
 	}
 }

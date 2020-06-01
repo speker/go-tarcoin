@@ -40,14 +40,14 @@ import android.test.MoreAsserts;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-import org.ethereum.geth.*;
+import org.ethereum.gtrcn.*;
 
 public class AndroidTest extends InstrumentationTestCase {
 	public AndroidTest() {}
 
 	public void testAccountManagement() {
 		// Create an encrypted keystore with light crypto parameters.
-		KeyStore ks = new KeyStore(getInstrumentation().getContext().getFilesDir() + "/keystore", Geth.LightScryptN, Geth.LightScryptP);
+		KeyStore ks = new KeyStore(getInstrumentation().getContext().getFilesDir() + "/keystore", Gtrcn.LightScryptN, Gtrcn.LightScryptP);
 
 		try {
 			// Create a new account with the specified encryption passphrase.
@@ -212,7 +212,7 @@ func TestAndroid(t *testing.T) {
 		t.Logf("%s", output)
 		t.Fatalf("failed to run gomobile bind: %v", err)
 	}
-	cp.CopyFile(filepath.Join("libs", "geth.aar"), "geth.aar")
+	cp.CopyFile(filepath.Join("libs", "gtrcn.aar"), "gtrcn.aar")
 
 	if err = ioutil.WriteFile(filepath.Join("src", "androidTest", "java", "org", "ethereum", "gethtest", "AndroidTest.java"), []byte(androidTestClass), os.ModePerm); err != nil {
 		t.Fatalf("failed to write Android test class: %v", err)

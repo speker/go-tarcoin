@@ -17,7 +17,7 @@
 // This file contains some shares testing functionality, common to  multiple
 // different files and modules being tested.
 
-package eth
+package trcn
 
 import (
 	"crypto/ecdsa"
@@ -36,7 +36,7 @@ import (
 	"github.com/speker/go-tarcoin/core/types"
 	"github.com/speker/go-tarcoin/core/vm"
 	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/eth/downloader"
+	"github.com/speker/go-tarcoin/trcn/downloader"
 	"github.com/speker/go-tarcoin/ethdb"
 	"github.com/speker/go-tarcoin/event"
 	"github.com/speker/go-tarcoin/p2p"
@@ -213,7 +213,7 @@ func (p *testPeer) handshake(t *testing.T, td *big.Int, head common.Hash, genesi
 			ForkID:          forkID,
 		}
 	default:
-		panic(fmt.Sprintf("unsupported eth protocol version: %d", p.version))
+		panic(fmt.Sprintf("unsupported trcn protocol version: %d", p.version))
 	}
 	if err := p2p.ExpectMsg(p.app, StatusMsg, msg); err != nil {
 		t.Fatalf("status recv: %v", err)

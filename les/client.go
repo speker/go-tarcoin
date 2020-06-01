@@ -31,10 +31,10 @@ import (
 	"github.com/speker/go-tarcoin/core/bloombits"
 	"github.com/speker/go-tarcoin/core/rawdb"
 	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/eth"
-	"github.com/speker/go-tarcoin/eth/downloader"
-	"github.com/speker/go-tarcoin/eth/filters"
-	"github.com/speker/go-tarcoin/eth/gasprice"
+	"github.com/speker/go-tarcoin/trcn"
+	"github.com/speker/go-tarcoin/trcn/downloader"
+	"github.com/speker/go-tarcoin/trcn/filters"
+	"github.com/speker/go-tarcoin/trcn/gasprice"
 	"github.com/speker/go-tarcoin/event"
 	"github.com/speker/go-tarcoin/internal/ethapi"
 	"github.com/speker/go-tarcoin/les/checkpointoracle"
@@ -72,12 +72,12 @@ type LightEthereum struct {
 	netRPCService  *ethapi.PublicNetAPI
 }
 
-func New(ctx *node.ServiceContext, config *eth.Config) (*LightEthereum, error) {
-	chainDb, err := ctx.OpenDatabase("lightchaindata", config.DatabaseCache, config.DatabaseHandles, "eth/db/chaindata/")
+func New(ctx *node.ServiceContext, config *trcn.Config) (*LightEthereum, error) {
+	chainDb, err := ctx.OpenDatabase("lightchaindata", config.DatabaseCache, config.DatabaseHandles, "trcn/db/chaindata/")
 	if err != nil {
 		return nil, err
 	}
-	lespayDb, err := ctx.OpenDatabase("lespay", 0, 0, "eth/db/lespay")
+	lespayDb, err := ctx.OpenDatabase("lespay", 0, 0, "trcn/db/lespay")
 	if err != nil {
 		return nil, err
 	}
@@ -101,20 +101,20 @@ func New(ctx *node.ServiceContext, config *eth.Config) (*LightEthereum, error) {
 		eventMux:       ctx.EventMux,
 		reqDist:        newRequestDistributor(peers, &mclock.System{}),
 		accountManager: ctx.AccountManager,
-		engine:         eth.CreateConsensusEngine(ctx, chainConfig, &config.Ethash, nil, false, chainDb),
+		engine:         trcn.CreateConsensusEngine(ctx, chainConfig, &config.Ethash, nil, false, chainDb),
 		bloomRequests:  make(chan chan *bloombits.Retrieval),
-		bloomIndexer:   eth.NewBloomIndexer(chainDb, params.BloomBitsBlocksClient, params.HelperTrieConfirmations),
+		bloomIndexer:   trcn.NewBloomIndexer(chainDb, params.BloomBitsBlocksClient, params.HelperTrieConfirmations),
 		serverPool:     newServerPool(chainDb, config.UltraLightServers),
 		valueTracker:   lpc.NewValueTracker(lespayDb, &mclock.System{}, requestList, time.Minute, 1/float64(time.Hour), 1/float64(time.Hour*100), 1/float64(time.Hour*1000)),
 	}
-	peers.subscribe((*vtSubscription)(leth.valueTracker))
-	leth.retriever = newRetrieveManager(peers, leth.reqDist, leth.serverPool)
-	leth.relay = newLesTxRelay(peers, leth.retriever)
+	peers.subscribe((*vtSubscription)(ltrcn.valueTracker))
+	ltrcn.retriever = newRetrieveManager(peers, ltrcn.reqDist, ltrcn.serverPool)
+	ltrcn.relay = newLesTxRelay(peers, ltrcn.retriever)
 
-	leth.odr = NewLesOdr(chainDb, light.DefaultClientIndexerConfig, leth.retriever)
-	leth.chtIndexer = light.NewChtIndexer(chainDb, leth.odr, params.CHTFrequency, params.HelperTrieConfirmations)
-	leth.bloomTrieIndexer = light.NewBloomTrieIndexer(chainDb, leth.odr, params.BloomBitsBlocksClient, params.BloomTrieFrequency)
-	leth.odr.SetIndexers(leth.chtIndexer, leth.bloomTrieIndexer, leth.bloomIndexer)
+	ltrcn.odr = NewLesOdr(chainDb, light.DefaultClientIndexerConfig, ltrcn.retriever)
+	ltrcn.chtIndexer = light.NewChtIndexer(chainDb, ltrcn.odr, params.CHTFrequency, params.HelperTrieConfirmations)
+	ltrcn.bloomTrieIndexer = light.NewBloomTrieIndexer(chainDb, ltrcn.odr, params.BloomBitsBlocksClient, params.BloomTrieFrequency)
+	ltrcn.odr.SetIndexers(ltrcn.chtIndexer, ltrcn.bloomTrieIndexer, ltrcn.bloomIndexer)
 
 	checkpoint := config.Checkpoint
 	if checkpoint == nil {
@@ -122,42 +122,42 @@ func New(ctx *node.ServiceContext, config *eth.Config) (*LightEthereum, error) {
 	}
 	// Note: NewLightChain adds the trusted checkpoint so it needs an ODR with
 	// indexers already set but not started yet
-	if leth.blockchain, err = light.NewLightChain(leth.odr, leth.chainConfig, leth.engine, checkpoint); err != nil {
+	if ltrcn.blockchain, err = light.NewLightChain(ltrcn.odr, ltrcn.chainConfig, ltrcn.engine, checkpoint); err != nil {
 		return nil, err
 	}
-	leth.chainReader = leth.blockchain
-	leth.txPool = light.NewTxPool(leth.chainConfig, leth.blockchain, leth.relay)
+	ltrcn.chainReader = ltrcn.blockchain
+	ltrcn.txPool = light.NewTxPool(ltrcn.chainConfig, ltrcn.blockchain, ltrcn.relay)
 
 	// Set up checkpoint oracle.
 	oracle := config.CheckpointOracle
 	if oracle == nil {
 		oracle = params.CheckpointOracles[genesisHash]
 	}
-	leth.oracle = checkpointoracle.New(oracle, leth.localCheckpoint)
+	ltrcn.oracle = checkpointoracle.New(oracle, ltrcn.localCheckpoint)
 
 	// Note: AddChildIndexer starts the update process for the child
-	leth.bloomIndexer.AddChildIndexer(leth.bloomTrieIndexer)
-	leth.chtIndexer.Start(leth.blockchain)
-	leth.bloomIndexer.Start(leth.blockchain)
+	ltrcn.bloomIndexer.AddChildIndexer(ltrcn.bloomTrieIndexer)
+	ltrcn.chtIndexer.Start(ltrcn.blockchain)
+	ltrcn.bloomIndexer.Start(ltrcn.blockchain)
 
-	leth.handler = newClientHandler(config.UltraLightServers, config.UltraLightFraction, checkpoint, leth)
-	if leth.handler.ulc != nil {
-		log.Warn("Ultra light client is enabled", "trustedNodes", len(leth.handler.ulc.keys), "minTrustedFraction", leth.handler.ulc.fraction)
-		leth.blockchain.DisableCheckFreq()
+	ltrcn.handler = newClientHandler(config.UltraLightServers, config.UltraLightFraction, checkpoint, leth)
+	if ltrcn.handler.ulc != nil {
+		log.Warn("Ultra light client is enabled", "trustedNodes", len(ltrcn.handler.ulc.keys), "minTrustedFraction", ltrcn.handler.ulc.fraction)
+		ltrcn.blockchain.DisableCheckFreq()
 	}
 	// Rewind the chain in case of an incompatible config upgrade.
 	if compat, ok := genesisErr.(*params.ConfigCompatError); ok {
 		log.Warn("Rewinding chain to upgrade configuration", "err", compat)
-		leth.blockchain.SetHead(compat.RewindTo)
+		ltrcn.blockchain.SetHead(compat.RewindTo)
 		rawdb.WriteChainConfig(chainDb, genesisHash, chainConfig)
 	}
 
-	leth.ApiBackend = &LesApiBackend{ctx.ExtRPCEnabled(), leth, nil}
+	ltrcn.ApiBackend = &LesApiBackend{ctx.ExtRPCEnabled(), leth, nil}
 	gpoParams := config.GPO
 	if gpoParams.Default == nil {
 		gpoParams.Default = config.Miner.GasPrice
 	}
-	leth.ApiBackend.gpo = gasprice.NewOracle(leth.ApiBackend, gpoParams)
+	ltrcn.ApiBackend.gpo = gasprice.NewOracle(ltrcn.ApiBackend, gpoParams)
 
 	return leth, nil
 }
@@ -208,17 +208,17 @@ func (s *LightEthereum) APIs() []rpc.API {
 	apis = append(apis, s.engine.APIs(s.BlockChain().HeaderChain())...)
 	return append(apis, []rpc.API{
 		{
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.2",
 			Service:   &LightDummyAPI{},
 			Public:    true,
 		}, {
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.2",
 			Service:   downloader.NewPublicDownloaderAPI(s.handler.downloader, s.eventMux),
 			Public:    true,
 		}, {
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.2",
 			Service:   filters.NewPublicFilterAPI(s.ApiBackend, true),
 			Public:    true,

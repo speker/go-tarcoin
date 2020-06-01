@@ -69,7 +69,7 @@ The security model of Clef is as follows:
 The general flow for signing a transaction using e.g. Geth is as follows:
 ![image](sign_flow.png)
 
-In this case, `geth` would be started with `--signer http://localhost:8550` and would relay requests to `eth.sendTransaction`.
+In this case, `geth` would be started with `--signer http://localhost:8550` and would relay requests to `trcn.sendTransaction`.
 
 ## TODOs
 
@@ -112,7 +112,7 @@ Some snags and todos
 
 ### External API
 
-Clef listens to HTTP requests on `rpcaddr`:`rpcport` (or to IPC on `ipcpath`), with the same JSON-RPC standard as Geth. The messages are expected to be [JSON-RPC 2.0 standard](https://www.jsonrpc.org/specification).
+Clef listens to HTTP requests on `rpcaddr`:`rpcport` (or to IPC on `ipcpath`), with the same JSON-RPC standard as Gtrcn. The messages are expected to be [JSON-RPC 2.0 standard](https://www.jsonrpc.org/specification).
 
 Some of these call can require user interaction. Clients must be aware that responses may be delayed significantly or may never be received if a users decides to ignore the confirmation request.
 

@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-package eth
+package trcn
 
 import (
 	"math/big"
@@ -27,8 +27,8 @@ import (
 	"github.com/speker/go-tarcoin/common"
 	"github.com/speker/go-tarcoin/consensus/ethash"
 	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/eth/downloader"
-	"github.com/speker/go-tarcoin/eth/gasprice"
+	"github.com/speker/go-tarcoin/trcn/downloader"
+	"github.com/speker/go-tarcoin/trcn/gasprice"
 	"github.com/speker/go-tarcoin/miner"
 	"github.com/speker/go-tarcoin/params"
 )
@@ -156,7 +156,7 @@ type Config struct {
 	// Type of the EVM interpreter ("" for default)
 	EVMInterpreter string
 
-	// RPCGasCap is the global gas cap for eth-call variants.
+	// RPCGasCap is the global gas cap for trcn-call variants.
 	RPCGasCap *big.Int `toml:",omitempty"`
 
 	// Checkpoint is a hardcoded checkpoint which can be nil.

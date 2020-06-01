@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-package eth
+package trcn
 
 import (
 	"fmt"
@@ -32,7 +32,7 @@ import (
 	"github.com/speker/go-tarcoin/core/types"
 	"github.com/speker/go-tarcoin/core/vm"
 	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/eth/downloader"
+	"github.com/speker/go-tarcoin/trcn/downloader"
 	"github.com/speker/go-tarcoin/event"
 	"github.com/speker/go-tarcoin/p2p"
 	"github.com/speker/go-tarcoin/p2p/enode"

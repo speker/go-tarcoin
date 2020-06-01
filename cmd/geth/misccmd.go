@@ -25,7 +25,7 @@ import (
 
 	"github.com/speker/go-tarcoin/cmd/utils"
 	"github.com/speker/go-tarcoin/consensus/ethash"
-	"github.com/speker/go-tarcoin/eth"
+	"github.com/speker/go-tarcoin/trcn"
 	"github.com/speker/go-tarcoin/params"
 	"gopkg.in/urfave/cli.v1"
 )
@@ -116,7 +116,7 @@ func version(ctx *cli.Context) error {
 		fmt.Println("Git Commit Date:", gitDate)
 	}
 	fmt.Println("Architecture:", runtime.GOARCH)
-	fmt.Println("Protocol Versions:", eth.ProtocolVersions)
+	fmt.Println("Protocol Versions:", trcn.ProtocolVersions)
 	fmt.Println("Go Version:", runtime.Version())
 	fmt.Println("Operating System:", runtime.GOOS)
 	fmt.Printf("GOPATH=%s\n", os.Getenv("GOPATH"))
@@ -136,6 +136,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with geth. If not, see <http://www.gnu.org/licenses/>.`)
+along with gtrcn. If not, see <http://www.gnu.org/licenses/>.`)
 	return nil
 }

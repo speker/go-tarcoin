@@ -14,8 +14,8 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-// Package eth implements the Ethereum protocol.
-package eth
+// Package trcn implements the Ethereum protocol.
+package trcn
 
 import (
 	"errors"
@@ -37,9 +37,9 @@ import (
 	"github.com/speker/go-tarcoin/core/rawdb"
 	"github.com/speker/go-tarcoin/core/types"
 	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/eth/downloader"
-	"github.com/speker/go-tarcoin/eth/filters"
-	"github.com/speker/go-tarcoin/eth/gasprice"
+	"github.com/speker/go-tarcoin/trcn/downloader"
+	"github.com/speker/go-tarcoin/trcn/filters"
+	"github.com/speker/go-tarcoin/trcn/gasprice"
 	"github.com/speker/go-tarcoin/ethdb"
 	"github.com/speker/go-tarcoin/event"
 	"github.com/speker/go-tarcoin/internal/ethapi"
@@ -115,7 +115,7 @@ func (s *Ethereum) SetContractBackend(backend bind.ContractBackend) {
 func New(ctx *node.ServiceContext, config *Config) (*Ethereum, error) {
 	// Ensure configuration values are compatible and sane
 	if config.SyncMode == downloader.LightSync {
-		return nil, errors.New("can't run eth.Ethereum in light sync mode, use les.LightEthereum")
+		return nil, errors.New("can't run trcn.Ethereum in light sync mode, use les.LightEthereum")
 	}
 	if !config.SyncMode.IsValid() {
 		return nil, fmt.Errorf("invalid sync mode %d", config.SyncMode)
@@ -136,7 +136,7 @@ func New(ctx *node.ServiceContext, config *Config) (*Ethereum, error) {
 	log.Info("Allocated trie memory caches", "clean", common.StorageSize(config.TrieCleanCache)*1024*1024, "dirty", common.StorageSize(config.TrieDirtyCache)*1024*1024)
 
 	// Assemble the Ethereum object
-	chainDb, err := ctx.OpenDatabaseWithFreezer("chaindata", config.DatabaseCache, config.DatabaseHandles, config.DatabaseFreezer, "eth/db/chaindata/")
+	chainDb, err := ctx.OpenDatabaseWithFreezer("chaindata", config.DatabaseCache, config.DatabaseHandles, config.DatabaseFreezer, "trcn/db/chaindata/")
 	if err != nil {
 		return nil, err
 	}
@@ -146,7 +146,7 @@ func New(ctx *node.ServiceContext, config *Config) (*Ethereum, error) {
 	}
 	log.Info("Initialised chain configuration", "config", chainConfig)
 
-	eth := &Ethereum{
+	trcn := &Ethereum{
 		config:            config,
 		chainDb:           chainDb,
 		eventMux:          ctx.EventMux,
@@ -190,22 +190,22 @@ func New(ctx *node.ServiceContext, config *Config) (*Ethereum, error) {
 			SnapshotLimit:       config.SnapshotCache,
 		}
 	)
-	eth.blockchain, err = core.NewBlockChain(chainDb, cacheConfig, chainConfig, eth.engine, vmConfig, eth.shouldPreserve, &config.TxLookupLimit)
+	trcn.blockchain, err = core.NewBlockChain(chainDb, cacheConfig, chainConfig, trcn.engine, vmConfig, trcn.shouldPreserve, &config.TxLookupLimit)
 	if err != nil {
 		return nil, err
 	}
 	// Rewind the chain in case of an incompatible config upgrade.
 	if compat, ok := genesisErr.(*params.ConfigCompatError); ok {
 		log.Warn("Rewinding chain to upgrade configuration", "err", compat)
-		eth.blockchain.SetHead(compat.RewindTo)
+		trcn.blockchain.SetHead(compat.RewindTo)
 		rawdb.WriteChainConfig(chainDb, genesisHash, chainConfig)
 	}
-	eth.bloomIndexer.Start(eth.blockchain)
+	trcn.bloomIndexer.Start(trcn.blockchain)
 
 	if config.TxPool.Journal != "" {
 		config.TxPool.Journal = ctx.ResolvePath(config.TxPool.Journal)
 	}
-	eth.txPool = core.NewTxPool(config.TxPool, chainConfig, eth.blockchain)
+	trcn.txPool = core.NewTxPool(config.TxPool, chainConfig, trcn.blockchain)
 
 	// Permit the downloader to use the trie cache allowance during fast sync
 	cacheLimit := cacheConfig.TrieCleanLimit + cacheConfig.TrieDirtyLimit + cacheConfig.SnapshotLimit
@@ -213,25 +213,25 @@ func New(ctx *node.ServiceContext, config *Config) (*Ethereum, error) {
 	if checkpoint == nil {
 		checkpoint = params.TrustedCheckpoints[genesisHash]
 	}
-	if eth.protocolManager, err = NewProtocolManager(chainConfig, checkpoint, config.SyncMode, config.NetworkId, eth.eventMux, eth.txPool, eth.engine, eth.blockchain, chainDb, cacheLimit, config.Whitelist); err != nil {
+	if trcn.protocolManager, err = NewProtocolManager(chainConfig, checkpoint, config.SyncMode, config.NetworkId, trcn.eventMux, trcn.txPool, trcn.engine, trcn.blockchain, chainDb, cacheLimit, config.Whitelist); err != nil {
 		return nil, err
 	}
-	eth.miner = miner.New(eth, &config.Miner, chainConfig, eth.EventMux(), eth.engine, eth.isLocalBlock)
-	eth.miner.SetExtra(makeExtraData(config.Miner.ExtraData))
+	trcn.miner = miner.New(trcn, &config.Miner, chainConfig, trcn.EventMux(), trcn.engine, trcn.isLocalBlock)
+	trcn.miner.SetExtra(makeExtraData(config.Miner.ExtraData))
 
-	eth.APIBackend = &EthAPIBackend{ctx.ExtRPCEnabled(), eth, nil}
+	trcn.APIBackend = &EthAPIBackend{ctx.ExtRPCEnabled(), trcn, nil}
 	gpoParams := config.GPO
 	if gpoParams.Default == nil {
 		gpoParams.Default = config.Miner.GasPrice
 	}
-	eth.APIBackend.gpo = gasprice.NewOracle(eth.APIBackend, gpoParams)
+	trcn.APIBackend.gpo = gasprice.NewOracle(trcn.APIBackend, gpoParams)
 
-	eth.dialCandiates, err = eth.setupDiscovery(&ctx.Config.P2P)
+	trcn.dialCandiates, err = trcn.setupDiscovery(&ctx.Config.P2P)
 	if err != nil {
 		return nil, err
 	}
 
-	return eth, nil
+	return trcn, nil
 }
 
 func makeExtraData(extra []byte) []byte {
@@ -304,17 +304,17 @@ func (s *Ethereum) APIs() []rpc.API {
 	// Append all the local APIs and return
 	return append(apis, []rpc.API{
 		{
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.2",
 			Service:   NewPublicEthereumAPI(s),
 			Public:    true,
 		}, {
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.2",
 			Service:   NewPublicMinerAPI(s),
 			Public:    true,
 		}, {
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.2",
 			Service:   downloader.NewPublicDownloaderAPI(s.protocolManager.downloader, s.eventMux),
 			Public:    true,
@@ -324,7 +324,7 @@ func (s *Ethereum) APIs() []rpc.API {
 			Service:   NewPrivateMinerAPI(s),
 			Public:    false,
 		}, {
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.2",
 			Service:   filters.NewPublicFilterAPI(s.APIBackend, false),
 			Public:    true,

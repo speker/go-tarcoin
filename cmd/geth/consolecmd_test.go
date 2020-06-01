@@ -31,8 +31,8 @@ import (
 )
 
 const (
-	ipcAPIs  = "admin:1.0 debug:1.0 eth:1.0 ethash:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 shh:1.0 txpool:1.0 web3:1.0"
-	httpAPIs = "eth:1.0 net:1.0 rpc:1.0 web3:1.0"
+	ipcAPIs  = "admin:1.0 debug:1.0 trcn:1.0 ethash:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 shh:1.0 txpool:1.0 web3:1.0"
+	httpAPIs = "trcn:1.0 net:1.0 rpc:1.0 web3:1.0"
 )
 
 // Tests that a node embedded within a console can be started up properly and
@@ -47,17 +47,17 @@ func TestConsoleWelcome(t *testing.T) {
 		"console")
 
 	// Gather all the infos the welcome message needs to contain
-	geth.SetTemplateFunc("goos", func() string { return runtime.GOOS })
-	geth.SetTemplateFunc("goarch", func() string { return runtime.GOARCH })
-	geth.SetTemplateFunc("gover", runtime.Version)
-	geth.SetTemplateFunc("gethver", func() string { return params.VersionWithCommit("", "") })
-	geth.SetTemplateFunc("niltime", func() string {
+	gtrcn.SetTemplateFunc("goos", func() string { return runtime.GOOS })
+	gtrcn.SetTemplateFunc("goarch", func() string { return runtime.GOARCH })
+	gtrcn.SetTemplateFunc("gover", runtime.Version)
+	gtrcn.SetTemplateFunc("gethver", func() string { return params.VersionWithCommit("", "") })
+	gtrcn.SetTemplateFunc("niltime", func() string {
 		return time.Unix(0, 0).Format("Mon Jan 02 2006 15:04:05 GMT-0700 (MST)")
 	})
-	geth.SetTemplateFunc("apis", func() string { return ipcAPIs })
+	gtrcn.SetTemplateFunc("apis", func() string { return ipcAPIs })
 
 	// Verify the actual welcome message to the required template
-	geth.Expect(`
+	gtrcn.Expect(`
 Welcome to the Geth JavaScript console!
 
 instance: Geth/v{{gethver}}/{{goos}}-{{goarch}}/{{gover}}
@@ -68,7 +68,7 @@ at block: 0 ({{niltime}})
 
 > {{.InputLine "exit"}}
 `)
-	geth.ExpectExit()
+	gtrcn.ExpectExit()
 }
 
 // Tests that a console can be attached to a running node via various means.
@@ -77,11 +77,11 @@ func TestIPCAttachWelcome(t *testing.T) {
 	coinbase := "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
 	var ipc string
 	if runtime.GOOS == "windows" {
-		ipc = `\\.\pipe\geth` + strconv.Itoa(trulyRandInt(100000, 999999))
+		ipc = `\\.\pipe\gtrcn` + strconv.Itoa(trulyRandInt(100000, 999999))
 	} else {
 		ws := tmpdir(t)
 		defer os.RemoveAll(ws)
-		ipc = filepath.Join(ws, "geth.ipc")
+		ipc = filepath.Join(ws, "gtrcn.ipc")
 	}
 	// Note: we need --shh because testAttachWelcome checks for default
 	// list of ipc modules and shh is included there.
@@ -90,8 +90,8 @@ func TestIPCAttachWelcome(t *testing.T) {
 		"--etherbase", coinbase, "--shh", "--ipcpath", ipc)
 
 	defer func() {
-		geth.Interrupt()
-		geth.ExpectExit()
+		gtrcn.Interrupt()
+		gtrcn.ExpectExit()
 	}()
 
 	waitForEndpoint(t, ipc, 3*time.Second)
@@ -106,8 +106,8 @@ func TestHTTPAttachWelcome(t *testing.T) {
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--etherbase", coinbase, "--rpc", "--rpcport", port)
 	defer func() {
-		geth.Interrupt()
-		geth.ExpectExit()
+		gtrcn.Interrupt()
+		gtrcn.ExpectExit()
 	}()
 
 	endpoint := "http://127.0.0.1:" + port
@@ -123,8 +123,8 @@ func TestWSAttachWelcome(t *testing.T) {
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--etherbase", coinbase, "--ws", "--wsport", port)
 	defer func() {
-		geth.Interrupt()
-		geth.ExpectExit()
+		gtrcn.Interrupt()
+		gtrcn.ExpectExit()
 	}()
 
 	endpoint := "ws://127.0.0.1:" + port
@@ -143,12 +143,12 @@ func testAttachWelcome(t *testing.T, geth *testgeth, endpoint, apis string) {
 	attach.SetTemplateFunc("goarch", func() string { return runtime.GOARCH })
 	attach.SetTemplateFunc("gover", runtime.Version)
 	attach.SetTemplateFunc("gethver", func() string { return params.VersionWithCommit("", "") })
-	attach.SetTemplateFunc("etherbase", func() string { return geth.Etherbase })
+	attach.SetTemplateFunc("etherbase", func() string { return gtrcn.Etherbase })
 	attach.SetTemplateFunc("niltime", func() string {
 		return time.Unix(0, 0).Format("Mon Jan 02 2006 15:04:05 GMT-0700 (MST)")
 	})
 	attach.SetTemplateFunc("ipc", func() bool { return strings.HasPrefix(endpoint, "ipc") })
-	attach.SetTemplateFunc("datadir", func() string { return geth.Datadir })
+	attach.SetTemplateFunc("datadir", func() string { return gtrcn.Datadir })
 	attach.SetTemplateFunc("apis", func() string { return apis })
 
 	// Verify the actual welcome message to the required template

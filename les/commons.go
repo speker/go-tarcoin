@@ -25,7 +25,7 @@ import (
 	"github.com/speker/go-tarcoin/core"
 	"github.com/speker/go-tarcoin/core/rawdb"
 	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/eth"
+	"github.com/speker/go-tarcoin/trcn"
 	"github.com/speker/go-tarcoin/ethdb"
 	"github.com/speker/go-tarcoin/les/checkpointoracle"
 	"github.com/speker/go-tarcoin/light"
@@ -57,7 +57,7 @@ type chainReader interface {
 // lesCommons contains fields needed by both server and client.
 type lesCommons struct {
 	genesis                      common.Hash
-	config                       *eth.Config
+	config                       *trcn.Config
 	chainConfig                  *params.ChainConfig
 	iConfig                      *light.IndexerConfig
 	chainDb                      ethdb.Database

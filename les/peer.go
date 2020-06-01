@@ -30,7 +30,7 @@ import (
 	"github.com/speker/go-tarcoin/common/mclock"
 	"github.com/speker/go-tarcoin/core"
 	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/eth"
+	"github.com/speker/go-tarcoin/trcn"
 	"github.com/speker/go-tarcoin/les/flowcontrol"
 	lpc "github.com/speker/go-tarcoin/les/lespay/client"
 	"github.com/speker/go-tarcoin/les/utils"
@@ -167,8 +167,8 @@ func (p *peerCommons) String() string {
 }
 
 // Info gathers and returns a collection of metadata known about a peer.
-func (p *peerCommons) Info() *eth.PeerInfo {
-	return &eth.PeerInfo{
+func (p *peerCommons) Info() *trcn.PeerInfo {
+	return &trcn.PeerInfo{
 		Version:    p.version,
 		Difficulty: p.Td(),
 		Head:       fmt.Sprintf("%x", p.Head()),

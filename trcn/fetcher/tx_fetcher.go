@@ -39,7 +39,7 @@ const (
 
 	// maxTxRetrievals is the maximum transaction number can be fetched in one
 	// request. The rationale to pick 256 is:
-	//   - In eth protocol, the softResponseLimit is 2MB. Nowadays according to
+	//   - In trcn protocol, the softResponseLimit is 2MB. Nowadays according to
 	//     Etherscan the average transaction size is around 200B, so in theory
 	//     we can include lots of transaction in a single protocol packet.
 	//   - However the maximum size of a single transaction is raised to 128KB,
@@ -68,32 +68,32 @@ var (
 )
 
 var (
-	txAnnounceInMeter          = metrics.NewRegisteredMeter("eth/fetcher/transaction/announces/in", nil)
-	txAnnounceKnownMeter       = metrics.NewRegisteredMeter("eth/fetcher/transaction/announces/known", nil)
-	txAnnounceUnderpricedMeter = metrics.NewRegisteredMeter("eth/fetcher/transaction/announces/underpriced", nil)
-	txAnnounceDOSMeter         = metrics.NewRegisteredMeter("eth/fetcher/transaction/announces/dos", nil)
+	txAnnounceInMeter          = metrics.NewRegisteredMeter("trcn/fetcher/transaction/announces/in", nil)
+	txAnnounceKnownMeter       = metrics.NewRegisteredMeter("trcn/fetcher/transaction/announces/known", nil)
+	txAnnounceUnderpricedMeter = metrics.NewRegisteredMeter("trcn/fetcher/transaction/announces/underpriced", nil)
+	txAnnounceDOSMeter         = metrics.NewRegisteredMeter("trcn/fetcher/transaction/announces/dos", nil)
 
-	txBroadcastInMeter          = metrics.NewRegisteredMeter("eth/fetcher/transaction/broadcasts/in", nil)
-	txBroadcastKnownMeter       = metrics.NewRegisteredMeter("eth/fetcher/transaction/broadcasts/known", nil)
-	txBroadcastUnderpricedMeter = metrics.NewRegisteredMeter("eth/fetcher/transaction/broadcasts/underpriced", nil)
-	txBroadcastOtherRejectMeter = metrics.NewRegisteredMeter("eth/fetcher/transaction/broadcasts/otherreject", nil)
+	txBroadcastInMeter          = metrics.NewRegisteredMeter("trcn/fetcher/transaction/broadcasts/in", nil)
+	txBroadcastKnownMeter       = metrics.NewRegisteredMeter("trcn/fetcher/transaction/broadcasts/known", nil)
+	txBroadcastUnderpricedMeter = metrics.NewRegisteredMeter("trcn/fetcher/transaction/broadcasts/underpriced", nil)
+	txBroadcastOtherRejectMeter = metrics.NewRegisteredMeter("trcn/fetcher/transaction/broadcasts/otherreject", nil)
 
-	txRequestOutMeter     = metrics.NewRegisteredMeter("eth/fetcher/transaction/request/out", nil)
-	txRequestFailMeter    = metrics.NewRegisteredMeter("eth/fetcher/transaction/request/fail", nil)
-	txRequestDoneMeter    = metrics.NewRegisteredMeter("eth/fetcher/transaction/request/done", nil)
-	txRequestTimeoutMeter = metrics.NewRegisteredMeter("eth/fetcher/transaction/request/timeout", nil)
+	txRequestOutMeter     = metrics.NewRegisteredMeter("trcn/fetcher/transaction/request/out", nil)
+	txRequestFailMeter    = metrics.NewRegisteredMeter("trcn/fetcher/transaction/request/fail", nil)
+	txRequestDoneMeter    = metrics.NewRegisteredMeter("trcn/fetcher/transaction/request/done", nil)
+	txRequestTimeoutMeter = metrics.NewRegisteredMeter("trcn/fetcher/transaction/request/timeout", nil)
 
-	txReplyInMeter          = metrics.NewRegisteredMeter("eth/fetcher/transaction/replies/in", nil)
-	txReplyKnownMeter       = metrics.NewRegisteredMeter("eth/fetcher/transaction/replies/known", nil)
-	txReplyUnderpricedMeter = metrics.NewRegisteredMeter("eth/fetcher/transaction/replies/underpriced", nil)
-	txReplyOtherRejectMeter = metrics.NewRegisteredMeter("eth/fetcher/transaction/replies/otherreject", nil)
+	txReplyInMeter          = metrics.NewRegisteredMeter("trcn/fetcher/transaction/replies/in", nil)
+	txReplyKnownMeter       = metrics.NewRegisteredMeter("trcn/fetcher/transaction/replies/known", nil)
+	txReplyUnderpricedMeter = metrics.NewRegisteredMeter("trcn/fetcher/transaction/replies/underpriced", nil)
+	txReplyOtherRejectMeter = metrics.NewRegisteredMeter("trcn/fetcher/transaction/replies/otherreject", nil)
 
-	txFetcherWaitingPeers   = metrics.NewRegisteredGauge("eth/fetcher/transaction/waiting/peers", nil)
-	txFetcherWaitingHashes  = metrics.NewRegisteredGauge("eth/fetcher/transaction/waiting/hashes", nil)
-	txFetcherQueueingPeers  = metrics.NewRegisteredGauge("eth/fetcher/transaction/queueing/peers", nil)
-	txFetcherQueueingHashes = metrics.NewRegisteredGauge("eth/fetcher/transaction/queueing/hashes", nil)
-	txFetcherFetchingPeers  = metrics.NewRegisteredGauge("eth/fetcher/transaction/fetching/peers", nil)
-	txFetcherFetchingHashes = metrics.NewRegisteredGauge("eth/fetcher/transaction/fetching/hashes", nil)
+	txFetcherWaitingPeers   = metrics.NewRegisteredGauge("trcn/fetcher/transaction/waiting/peers", nil)
+	txFetcherWaitingHashes  = metrics.NewRegisteredGauge("trcn/fetcher/transaction/waiting/hashes", nil)
+	txFetcherQueueingPeers  = metrics.NewRegisteredGauge("trcn/fetcher/transaction/queueing/peers", nil)
+	txFetcherQueueingHashes = metrics.NewRegisteredGauge("trcn/fetcher/transaction/queueing/hashes", nil)
+	txFetcherFetchingPeers  = metrics.NewRegisteredGauge("trcn/fetcher/transaction/fetching/peers", nil)
+	txFetcherFetchingHashes = metrics.NewRegisteredGauge("trcn/fetcher/transaction/fetching/hashes", nil)
 )
 
 // txAnnounce is the notification of the availability of a batch

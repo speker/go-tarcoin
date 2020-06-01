@@ -34,8 +34,8 @@ import (
 	"github.com/speker/go-tarcoin/core"
 	"github.com/speker/go-tarcoin/core/types"
 	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/eth"
-	"github.com/speker/go-tarcoin/eth/downloader"
+	"github.com/speker/go-tarcoin/trcn"
+	"github.com/speker/go-tarcoin/trcn/downloader"
 	"github.com/speker/go-tarcoin/log"
 	"github.com/speker/go-tarcoin/miner"
 	"github.com/speker/go-tarcoin/node"
@@ -97,7 +97,7 @@ func main() {
 	time.Sleep(3 * time.Second)
 
 	for _, node := range nodes {
-		var ethereum *eth.Ethereum
+		var ethereum *trcn.Ethereum
 		if err := node.Service(&ethereum); err != nil {
 			panic(err)
 		}
@@ -113,7 +113,7 @@ func main() {
 		index := rand.Intn(len(faucets))
 
 		// Fetch the accessor for the relevant signer
-		var ethereum *eth.Ethereum
+		var ethereum *trcn.Ethereum
 		if err := nodes[index%len(nodes)].Service(&ethereum); err != nil {
 			panic(err)
 		}
@@ -192,14 +192,14 @@ func makeSealer(genesis *core.Genesis) (*node.Node, error) {
 		return nil, err
 	}
 	if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-		return eth.New(ctx, &eth.Config{
+		return trcn.New(ctx, &trcn.Config{
 			Genesis:         genesis,
 			NetworkId:       genesis.Config.ChainID.Uint64(),
 			SyncMode:        downloader.FullSync,
 			DatabaseCache:   256,
 			DatabaseHandles: 256,
 			TxPool:          core.DefaultTxPoolConfig,
-			GPO:             eth.DefaultConfig.GPO,
+			GPO:             trcn.DefaultConfig.GPO,
 			Miner: miner.Config{
 				GasFloor: genesis.GasLimit * 9 / 10,
 				GasCeil:  genesis.GasLimit * 11 / 10,

@@ -27,7 +27,7 @@ import (
 	cli "gopkg.in/urfave/cli.v1"
 
 	"github.com/speker/go-tarcoin/cmd/utils"
-	"github.com/speker/go-tarcoin/eth"
+	"github.com/speker/go-tarcoin/trcn"
 	"github.com/speker/go-tarcoin/node"
 	"github.com/speker/go-tarcoin/params"
 	whisper "github.com/speker/go-tarcoin/whisper/whisperv6"
@@ -73,7 +73,7 @@ type ethstatsConfig struct {
 }
 
 type gethConfig struct {
-	Eth      eth.Config
+	Eth      trcn.Config
 	Shh      whisper.Config
 	Node     node.Config
 	Ethstats ethstatsConfig
@@ -98,16 +98,16 @@ func defaultNodeConfig() node.Config {
 	cfg := node.DefaultConfig
 	cfg.Name = clientIdentifier
 	cfg.Version = params.VersionWithCommit(gitCommit, gitDate)
-	cfg.HTTPModules = append(cfg.HTTPModules, "eth")
-	cfg.WSModules = append(cfg.WSModules, "eth")
-	cfg.IPCPath = "geth.ipc"
+	cfg.HTTPModules = append(cfg.HTTPModules, "trcn")
+	cfg.WSModules = append(cfg.WSModules, "trcn")
+	cfg.IPCPath = "gtrcn.ipc"
 	return cfg
 }
 
 func makeConfigNode(ctx *cli.Context) (*node.Node, gethConfig) {
 	// Load defaults.
 	cfg := gethConfig{
-		Eth:  eth.DefaultConfig,
+		Eth:  trcn.DefaultConfig,
 		Shh:  whisper.DefaultConfig,
 		Node: defaultNodeConfig(),
 	}
@@ -125,7 +125,7 @@ func makeConfigNode(ctx *cli.Context) (*node.Node, gethConfig) {
 	if err != nil {
 		utils.Fatalf("Failed to create the protocol stack: %v", err)
 	}
-	utils.SetEthConfig(ctx, stack, &cfg.Eth)
+	utils.SetEthConfig(ctx, stack, &cfg.trcn)
 	if ctx.GlobalIsSet(utils.EthStatsURLFlag.Name) {
 		cfg.Ethstats.URL = ctx.GlobalString(utils.EthStatsURLFlag.Name)
 	}
@@ -146,7 +146,7 @@ func enableWhisper(ctx *cli.Context) bool {
 
 func makeFullNode(ctx *cli.Context) *node.Node {
 	stack, cfg := makeConfigNode(ctx)
-	utils.RegisterEthService(stack, &cfg.Eth)
+	utils.RegisterEthService(stack, &cfg.trcn)
 
 	// Whisper must be explicitly enabled by specifying at least 1 whisper flag or in dev mode
 	shhEnabled := enableWhisper(ctx)
@@ -179,8 +179,8 @@ func dumpConfig(ctx *cli.Context) error {
 	_, cfg := makeConfigNode(ctx)
 	comment := ""
 
-	if cfg.Eth.Genesis != nil {
-		cfg.Eth.Genesis = nil
+	if cfg.trcn.Genesis != nil {
+		cfg.trcn.Genesis = nil
 		comment += "# Note: this config doesn't contain the genesis block.\n\n"
 	}
 
