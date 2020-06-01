@@ -255,7 +255,7 @@ func checkNode(client *sshClient, network string, boot bool) (*nodeInfos, error)
 	stats := &nodeInfos{
 		genesis:    genesis,
 		datadir:    infos.volumes["/root/.ethereum"],
-		ethashdir:  infos.volumes["/root/.ethash"],
+		ethashdir:  infos.volumes["/root/.trcnhash"],
 		port:       port,
 		peersTotal: totalPeers,
 		peersLight: lightPeers,

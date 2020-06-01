@@ -83,7 +83,7 @@ func init() {
 			DefaultConfig.Ethash.DatasetDir = filepath.Join(home, "AppData", "Local", "Ethash")
 		}
 	} else {
-		DefaultConfig.Ethash.DatasetDir = filepath.Join(home, ".ethash")
+		DefaultConfig.Ethash.DatasetDir = filepath.Join(home, ".trcnhash")
 	}
 }
 
