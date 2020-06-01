@@ -19,7 +19,7 @@ package event_test
 import (
 	"fmt"
 
-	"github.com/ethereum/go-tarcoin/event"
+	"github.com/spker/go-tarcoin/event"
 )
 
 func ExampleNewSubscription() {

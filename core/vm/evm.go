@@ -22,9 +22,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/crypto"
-	"github.com/ethereum/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/params"
 )
 
 // emptyCodeHash is used by create to ensure deployment is disallowed to already

@@ -30,17 +30,17 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/common/mclock"
-	"github.com/ethereum/go-tarcoin/consensus"
-	"github.com/ethereum/go-tarcoin/core"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/eth"
-	"github.com/ethereum/go-tarcoin/event"
-	"github.com/ethereum/go-tarcoin/les"
-	"github.com/ethereum/go-tarcoin/log"
-	"github.com/ethereum/go-tarcoin/p2p"
-	"github.com/ethereum/go-tarcoin/rpc"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/common/mclock"
+	"github.com/spker/go-tarcoin/consensus"
+	"github.com/spker/go-tarcoin/core"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/trcn"
+	"github.com/spker/go-tarcoin/event"
+	"github.com/spker/go-tarcoin/les"
+	"github.com/spker/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/p2p"
+	"github.com/spker/go-tarcoin/rpc"
 	"github.com/gorilla/websocket"
 )
 
@@ -70,7 +70,7 @@ type blockChain interface {
 // chain statistics up to a monitoring server.
 type Service struct {
 	server *p2p.Server        // Peer-to-peer server to retrieve networking infos
-	eth    *eth.Ethereum      // Full Ethereum service if monitoring a full node
+	eth    *trcn.Ethereum     // Full Ethereum service if monitoring a full node
 	les    *les.LightEthereum // Light Ethereum service if monitoring a light node
 	engine consensus.Engine   // Consensus engine to retrieve variadic block fields
 
@@ -83,7 +83,7 @@ type Service struct {
 }
 
 // New returns a monitoring service ready for stats reporting.
-func New(url string, ethServ *eth.Ethereum, lesServ *les.LightEthereum) (*Service, error) {
+func New(url string, ethServ *trcn.Ethereum, lesServ *les.LightEthereum) (*Service, error) {
 	// Parse the netstats connection url
 	re := regexp.MustCompile("([^:@]*)(:([^@]*))?@(.+)")
 	parts := re.FindStringSubmatch(url)
@@ -377,9 +377,9 @@ func (s *Service) login(conn *websocket.Conn) error {
 	infos := s.server.NodeInfo()
 
 	var network, protocol string
-	if info := infos.Protocols["eth"]; info != nil {
-		network = fmt.Sprintf("%d", info.(*eth.NodeInfo).Network)
-		protocol = fmt.Sprintf("eth/%d", eth.ProtocolVersions[0])
+	if info := infos.Protocols["trcn"]; info != nil {
+		network = fmt.Sprintf("%d", info.(*trcn.NodeInfo).Network)
+		protocol = fmt.Sprintf("trcn/%d", trcn.ProtocolVersions[0])
 	} else {
 		network = fmt.Sprintf("%d", infos.Protocols["les"].(*les.NodeInfo).Network)
 		protocol = fmt.Sprintf("les/%d", les.ClientProtocolVersions[0])

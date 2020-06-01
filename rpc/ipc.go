@@ -20,8 +20,8 @@ import (
 	"context"
 	"net"
 
-	"github.com/ethereum/go-tarcoin/log"
-	"github.com/ethereum/go-tarcoin/p2p/netutil"
+	"github.com/spker/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/p2p/netutil"
 )
 
 // ServeListener accepts connections on l, serving JSON-RPC on them.

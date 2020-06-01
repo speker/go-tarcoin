@@ -16,7 +16,7 @@
 
 package bind
 
-import "github.com/ethereum/go-tarcoin/accounts/abi"
+import "github.com/spker/go-tarcoin/accounts/abi"
 
 // tmplData is the data structure required to fill the binding template.
 type tmplData struct {
@@ -90,12 +90,12 @@ import (
 	"math/big"
 	"strings"
 
-	ethereum "github.com/ethereum/go-tarcoin"
-	"github.com/ethereum/go-tarcoin/accounts/abi"
-	"github.com/ethereum/go-tarcoin/accounts/abi/bind"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/event"
+	ethereum "github.com/spker/go-tarcoin"
+	"github.com/spker/go-tarcoin/accounts/abi"
+	"github.com/spker/go-tarcoin/accounts/abi/bind"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/event"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

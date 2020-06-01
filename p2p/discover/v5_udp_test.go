@@ -27,11 +27,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/internal/testlog"
-	"github.com/ethereum/go-tarcoin/log"
-	"github.com/ethereum/go-tarcoin/p2p/enode"
-	"github.com/ethereum/go-tarcoin/p2p/enr"
-	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin/internal/testlog"
+	"github.com/spker/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/p2p/enode"
+	"github.com/spker/go-tarcoin/p2p/enr"
+	"github.com/spker/go-tarcoin/rlp"
 )
 
 // Real sockets, real crypto: this test checks end-to-end connectivity for UDPv5.

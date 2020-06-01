@@ -24,9 +24,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/crypto"
-	"github.com/ethereum/go-tarcoin/ethdb/memorydb"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/ethdb/memorydb"
 )
 
 func init() {

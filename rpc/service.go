@@ -26,7 +26,7 @@ import (
 	"sync"
 	"unicode"
 
-	"github.com/ethereum/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/log"
 )
 
 var (

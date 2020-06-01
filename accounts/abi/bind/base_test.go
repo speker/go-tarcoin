@@ -23,14 +23,14 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ethereum/go-tarcoin"
-	"github.com/ethereum/go-tarcoin/accounts/abi"
-	"github.com/ethereum/go-tarcoin/accounts/abi/bind"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/common/hexutil"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/crypto"
-	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin"
+	"github.com/spker/go-tarcoin/accounts/abi"
+	"github.com/spker/go-tarcoin/accounts/abi/bind"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/common/hexutil"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/rlp"
 )
 
 type mockCaller struct {

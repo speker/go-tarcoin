@@ -20,9 +20,9 @@ import (
 	"math"
 	"math/big"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core/vm"
-	"github.com/ethereum/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core/vm"
+	"github.com/spker/go-tarcoin/params"
 )
 
 /*

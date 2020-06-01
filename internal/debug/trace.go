@@ -23,7 +23,7 @@ import (
 	"os"
 	"runtime/trace"
 
-	"github.com/ethereum/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/log"
 )
 
 // StartGoTrace turns on tracing, writing to the given file.

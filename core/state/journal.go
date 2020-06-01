@@ -19,7 +19,7 @@ package state
 import (
 	"math/big"
 
-	"github.com/ethereum/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/common"
 )
 
 // journalEntry is a modification entry in the state change journal that can be

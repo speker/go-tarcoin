@@ -14,19 +14,19 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-package eth
+package trcn
 
 import (
 	"fmt"
 	"io"
 	"math/big"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core"
-	"github.com/ethereum/go-tarcoin/core/forkid"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/event"
-	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core"
+	"github.com/spker/go-tarcoin/core/forkid"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/event"
+	"github.com/spker/go-tarcoin/rlp"
 )
 
 // Constants to match up protocol versions and messages
@@ -37,9 +37,9 @@ const (
 )
 
 // protocolName is the official short name of the protocol used during capability negotiation.
-const protocolName = "eth"
+const protocolName = "trcn"
 
-// ProtocolVersions are the supported versions of the eth protocol (first is primary).
+// ProtocolVersions are the supported versions of the trcn protocol (first is primary).
 var ProtocolVersions = []uint{eth65, eth64, eth63}
 
 // protocolLengths are the number of implemented message corresponding to different protocol versions.
@@ -47,7 +47,7 @@ var protocolLengths = map[uint]uint64{eth65: 17, eth64: 17, eth63: 17}
 
 const protocolMaxMsgSize = 10 * 1024 * 1024 // Maximum cap on the size of a protocol message
 
-// eth protocol message codes
+// trcn protocol message codes
 const (
 	StatusMsg          = 0x00
 	NewBlockHashesMsg  = 0x01
@@ -65,7 +65,7 @@ const (
 	// New protocol message codes introduced in eth65
 	//
 	// Previously these message ids were used by some legacy and unsupported
-	// eth protocols, reown them here.
+	// trcn protocols, reown them here.
 	NewPooledTransactionHashesMsg = 0x08
 	GetPooledTransactionsMsg      = 0x09
 	PooledTransactionsMsg         = 0x0a
@@ -123,7 +123,7 @@ type txPool interface {
 	SubscribeNewTxsEvent(chan<- core.NewTxsEvent) event.Subscription
 }
 
-// statusData63 is the network packet for the status message for eth/63.
+// statusData63 is the network packet for the status message for trcn/63.
 type statusData63 struct {
 	ProtocolVersion uint32
 	NetworkId       uint64
@@ -132,7 +132,7 @@ type statusData63 struct {
 	GenesisBlock    common.Hash
 }
 
-// statusData is the network packet for the status message for eth/64 and later.
+// statusData is the network packet for the status message for trcn/64 and later.
 type statusData struct {
 	ProtocolVersion uint32
 	NetworkID       uint64

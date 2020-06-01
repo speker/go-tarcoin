@@ -26,26 +26,26 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/cmd/utils"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/common/hexutil"
-	"github.com/ethereum/go-tarcoin/common/math"
-	"github.com/ethereum/go-tarcoin/consensus"
-	"github.com/ethereum/go-tarcoin/consensus/ethash"
-	"github.com/ethereum/go-tarcoin/consensus/misc"
-	"github.com/ethereum/go-tarcoin/core"
-	"github.com/ethereum/go-tarcoin/core/rawdb"
-	"github.com/ethereum/go-tarcoin/core/state"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/core/vm"
-	"github.com/ethereum/go-tarcoin/crypto"
-	"github.com/ethereum/go-tarcoin/ethdb"
-	"github.com/ethereum/go-tarcoin/log"
-	"github.com/ethereum/go-tarcoin/node"
-	"github.com/ethereum/go-tarcoin/params"
-	"github.com/ethereum/go-tarcoin/rlp"
-	"github.com/ethereum/go-tarcoin/rpc"
-	"github.com/ethereum/go-tarcoin/trie"
+	"github.com/spker/go-tarcoin/cmd/utils"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/common/hexutil"
+	"github.com/spker/go-tarcoin/common/math"
+	"github.com/spker/go-tarcoin/consensus"
+	"github.com/spker/go-tarcoin/consensus/ethash"
+	"github.com/spker/go-tarcoin/consensus/misc"
+	"github.com/spker/go-tarcoin/core"
+	"github.com/spker/go-tarcoin/core/rawdb"
+	"github.com/spker/go-tarcoin/core/state"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/core/vm"
+	"github.com/spker/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/node"
+	"github.com/spker/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin/rpc"
+	"github.com/spker/go-tarcoin/trie"
 
 	cli "gopkg.in/urfave/cli.v1"
 )
@@ -869,7 +869,7 @@ func retesteth(ctx *cli.Context) error {
 			Version:   "1.0",
 		},
 		{
-			Namespace: "eth",
+			Namespace: "trcn",
 			Public:    true,
 			Service:   ethApi,
 			Version:   "1.0",
@@ -892,7 +892,7 @@ func retesteth(ctx *cli.Context) error {
 
 	// register apis and create handler stack
 	srv := rpc.NewServer()
-	err := node.RegisterApisFromWhitelist(rpcAPI, []string{"test", "eth", "debug", "web3"}, srv, false)
+	err := node.RegisterApisFromWhitelist(rpcAPI, []string{"test", "trcn", "debug", "web3"}, srv, false)
 	if err != nil {
 		utils.Fatalf("Could not register RPC apis: %w", err)
 	}

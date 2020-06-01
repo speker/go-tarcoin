@@ -23,12 +23,12 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/common/mclock"
-	"github.com/ethereum/go-tarcoin/eth"
-	"github.com/ethereum/go-tarcoin/ethdb"
-	"github.com/ethereum/go-tarcoin/les/flowcontrol"
-	"github.com/ethereum/go-tarcoin/log"
-	"github.com/ethereum/go-tarcoin/metrics"
+	"github.com/spker/go-tarcoin/common/mclock"
+	"github.com/spker/go-tarcoin/trcn"
+	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/les/flowcontrol"
+	"github.com/spker/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/metrics"
 )
 
 const makeCostStats = false // make request cost statistics during operation
@@ -137,7 +137,7 @@ type costTracker struct {
 
 // newCostTracker creates a cost tracker and loads the cost factor statistics from the database.
 // It also returns the minimum capacity that can be assigned to any peer.
-func newCostTracker(db ethdb.Database, config *eth.Config) (*costTracker, uint64) {
+func newCostTracker(db ethdb.Database, config *trcn.Config) (*costTracker, uint64) {
 	utilTarget := float64(config.LightServ) * flowcontrol.FixedPointMultiplier / 100
 	ct := &costTracker{
 		db:         db,

@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-package eth
+package trcn
 
 import (
 	"math/big"
@@ -22,12 +22,12 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core/rawdb"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/eth/downloader"
-	"github.com/ethereum/go-tarcoin/log"
-	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core/rawdb"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/trcn/downloader"
+	"github.com/spker/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/p2p/enode"
 )
 
 const (
@@ -60,7 +60,7 @@ func (pm *ProtocolManager) syncTransactions(p *peer) {
 	if len(txs) == 0 {
 		return
 	}
-	// The eth/65 protocol introduces proper transaction announcements, so instead
+	// The trcn/65 protocol introduces proper transaction announcements, so instead
 	// of dripping transactions across multiple peers, just send the entire list as
 	// an announcement and let the remote side decide what they need (likely nothing).
 	if p.version >= eth65 {
@@ -95,7 +95,7 @@ func (pm *ProtocolManager) txsyncLoop64() {
 	// send starts a sending a pack of transactions from the sync.
 	send := func(s *txsync) {
 		if s.p.version >= eth65 {
-			panic("initial transaction syncer running on eth/65+")
+			panic("initial transaction syncer running on trcn/65+")
 		}
 		// Fill pack with transactions up to the target size.
 		size := common.StorageSize(0)

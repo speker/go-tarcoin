@@ -23,12 +23,12 @@ import (
 	"encoding/binary"
 	"sync/atomic"
 
-	"github.com/ethereum/go-tarcoin/accounts/abi/bind"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/contracts/checkpointoracle"
-	"github.com/ethereum/go-tarcoin/crypto"
-	"github.com/ethereum/go-tarcoin/log"
-	"github.com/ethereum/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/accounts/abi/bind"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/contracts/checkpointoracle"
+	"github.com/spker/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/params"
 )
 
 // CheckpointOracle is responsible for offering the latest stable checkpoint

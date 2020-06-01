@@ -21,9 +21,9 @@ import (
 	"errors"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/log"
 )
 
 // WaitMined waits for tx to be mined on the blockchain.

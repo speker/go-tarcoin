@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/crypto"
-	"github.com/ethereum/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/log"
 )
 
 // Filter represents a Whisper message filter

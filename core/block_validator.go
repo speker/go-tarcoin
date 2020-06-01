@@ -19,10 +19,10 @@ package core
 import (
 	"fmt"
 
-	"github.com/ethereum/go-tarcoin/consensus"
-	"github.com/ethereum/go-tarcoin/core/state"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/consensus"
+	"github.com/spker/go-tarcoin/core/state"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/params"
 )
 
 // BlockValidator is responsible for validating block headers, uncles and

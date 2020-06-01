@@ -21,9 +21,9 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/ethereum/go-tarcoin"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core/types"
 )
 
 var (

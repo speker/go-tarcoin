@@ -23,9 +23,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/accounts"
-	"github.com/ethereum/go-tarcoin/event"
-	"github.com/ethereum/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/accounts"
+	"github.com/spker/go-tarcoin/event"
+	"github.com/spker/go-tarcoin/log"
 	"github.com/karalabe/usb"
 )
 

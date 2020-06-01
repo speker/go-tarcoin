@@ -25,12 +25,12 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ethereum/go-tarcoin/accounts/keystore"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/common/hexutil"
-	"github.com/ethereum/go-tarcoin/common/math"
-	"github.com/ethereum/go-tarcoin/crypto"
-	"github.com/ethereum/go-tarcoin/signer/core"
+	"github.com/spker/go-tarcoin/accounts/keystore"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/common/hexutil"
+	"github.com/spker/go-tarcoin/common/math"
+	"github.com/spker/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/signer/core"
 )
 
 var typesStandard = core.Types{

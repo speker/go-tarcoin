@@ -41,23 +41,23 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/accounts"
-	"github.com/ethereum/go-tarcoin/accounts/keystore"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/eth"
-	"github.com/ethereum/go-tarcoin/eth/downloader"
-	"github.com/ethereum/go-tarcoin/ethclient"
-	"github.com/ethereum/go-tarcoin/ethstats"
-	"github.com/ethereum/go-tarcoin/les"
-	"github.com/ethereum/go-tarcoin/log"
-	"github.com/ethereum/go-tarcoin/node"
-	"github.com/ethereum/go-tarcoin/p2p"
-	"github.com/ethereum/go-tarcoin/p2p/discv5"
-	"github.com/ethereum/go-tarcoin/p2p/enode"
-	"github.com/ethereum/go-tarcoin/p2p/nat"
-	"github.com/ethereum/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/accounts"
+	"github.com/spker/go-tarcoin/accounts/keystore"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/trcn"
+	"github.com/spker/go-tarcoin/trcn/downloader"
+	"github.com/spker/go-tarcoin/ethclient"
+	"github.com/spker/go-tarcoin/ethstats"
+	"github.com/spker/go-tarcoin/les"
+	"github.com/spker/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/node"
+	"github.com/spker/go-tarcoin/p2p"
+	"github.com/spker/go-tarcoin/p2p/discv5"
+	"github.com/spker/go-tarcoin/p2p/enode"
+	"github.com/spker/go-tarcoin/p2p/nat"
+	"github.com/spker/go-tarcoin/params"
 	"github.com/gorilla/websocket"
 )
 
@@ -237,7 +237,7 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 	}
 	// Assemble the Ethereum light client protocol
 	if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-		cfg := eth.DefaultConfig
+		cfg := trcn.DefaultConfig
 		cfg.SyncMode = downloader.LightSync
 		cfg.NetworkId = network
 		cfg.Genesis = genesis
@@ -470,7 +470,7 @@ func (f *faucet) apiHandler(w http.ResponseWriter, r *http.Request) {
 			username, avatar, address, err = authNoAuth(msg.URL)
 		default:
 			//lint:ignore ST1005 This error is to be displayed in the browser
-			err = errors.New("Something funky happened, please open an issue at https://github.com/ethereum/go-tarcoin/issues")
+			err = errors.New("Something funky happened, please open an issue at https://github.com/spker/go-tarcoin/issues")
 		}
 		if err != nil {
 			if err = sendError(conn, err); err != nil {

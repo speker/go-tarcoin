@@ -27,7 +27,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ethereum/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/common"
 )
 
 // TestPack tests the general pack/unpack tests in packing_test.go

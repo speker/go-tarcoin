@@ -22,8 +22,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/common/mclock"
-	"github.com/ethereum/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/common/mclock"
+	"github.com/spker/go-tarcoin/log"
 )
 
 const (

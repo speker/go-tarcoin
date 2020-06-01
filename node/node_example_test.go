@@ -20,9 +20,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/ethereum/go-tarcoin/node"
-	"github.com/ethereum/go-tarcoin/p2p"
-	"github.com/ethereum/go-tarcoin/rpc"
+	"github.com/spker/go-tarcoin/node"
+	"github.com/spker/go-tarcoin/p2p"
+	"github.com/spker/go-tarcoin/rpc"
 )
 
 // SampleService is a trivial network service that can be attached to a node for

@@ -21,8 +21,8 @@ package geth
 import (
 	"errors"
 
-	ethereum "github.com/ethereum/go-tarcoin"
-	"github.com/ethereum/go-tarcoin/common"
+	ethereum "github.com/spker/go-tarcoin"
+	"github.com/spker/go-tarcoin/common"
 )
 
 // Subscription represents an event subscription where events are

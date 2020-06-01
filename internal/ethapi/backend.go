@@ -21,18 +21,18 @@ import (
 	"context"
 	"math/big"
 
-	"github.com/ethereum/go-tarcoin/accounts"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core"
-	"github.com/ethereum/go-tarcoin/core/bloombits"
-	"github.com/ethereum/go-tarcoin/core/state"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/core/vm"
-	"github.com/ethereum/go-tarcoin/eth/downloader"
-	"github.com/ethereum/go-tarcoin/ethdb"
-	"github.com/ethereum/go-tarcoin/event"
-	"github.com/ethereum/go-tarcoin/params"
-	"github.com/ethereum/go-tarcoin/rpc"
+	"github.com/spker/go-tarcoin/accounts"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core"
+	"github.com/spker/go-tarcoin/core/bloombits"
+	"github.com/spker/go-tarcoin/core/state"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/core/vm"
+	"github.com/spker/go-tarcoin/trcn/downloader"
+	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/event"
+	"github.com/spker/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/rpc"
 )
 
 // Backend interface provides the common API services (that are provided by
@@ -45,7 +45,7 @@ type Backend interface {
 	ChainDb() ethdb.Database
 	AccountManager() *accounts.Manager
 	ExtRPCEnabled() bool
-	RPCGasCap() *big.Int // global gas cap for eth_call over rpc: DoS protection
+	RPCGasCap() *big.Int // global gas cap for trcn_call over rpc: DoS protection
 
 	// Blockchain API
 	SetHead(number uint64)
@@ -90,17 +90,17 @@ func GetAPIs(apiBackend Backend) []rpc.API {
 	nonceLock := new(AddrLocker)
 	return []rpc.API{
 		{
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.0",
 			Service:   NewPublicEthereumAPI(apiBackend),
 			Public:    true,
 		}, {
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.0",
 			Service:   NewPublicBlockChainAPI(apiBackend),
 			Public:    true,
 		}, {
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.0",
 			Service:   NewPublicTransactionPoolAPI(apiBackend, nonceLock),
 			Public:    true,
@@ -119,7 +119,7 @@ func GetAPIs(apiBackend Backend) []rpc.API {
 			Version:   "1.0",
 			Service:   NewPrivateDebugAPI(apiBackend),
 		}, {
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.0",
 			Service:   NewPublicAccountAPI(apiBackend.AccountManager()),
 			Public:    true,

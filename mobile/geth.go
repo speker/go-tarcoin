@@ -24,18 +24,18 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/ethereum/go-tarcoin/core"
-	"github.com/ethereum/go-tarcoin/eth"
-	"github.com/ethereum/go-tarcoin/eth/downloader"
-	"github.com/ethereum/go-tarcoin/ethclient"
-	"github.com/ethereum/go-tarcoin/ethstats"
-	"github.com/ethereum/go-tarcoin/internal/debug"
-	"github.com/ethereum/go-tarcoin/les"
-	"github.com/ethereum/go-tarcoin/node"
-	"github.com/ethereum/go-tarcoin/p2p"
-	"github.com/ethereum/go-tarcoin/p2p/nat"
-	"github.com/ethereum/go-tarcoin/params"
-	whisper "github.com/ethereum/go-tarcoin/whisper/whisperv6"
+	"github.com/spker/go-tarcoin/core"
+	"github.com/spker/go-tarcoin/trcn"
+	"github.com/spker/go-tarcoin/trcn/downloader"
+	"github.com/spker/go-tarcoin/ethclient"
+	"github.com/spker/go-tarcoin/ethstats"
+	"github.com/spker/go-tarcoin/internal/debug"
+	"github.com/spker/go-tarcoin/les"
+	"github.com/spker/go-tarcoin/node"
+	"github.com/spker/go-tarcoin/p2p"
+	"github.com/spker/go-tarcoin/p2p/nat"
+	"github.com/spker/go-tarcoin/params"
+	whisper "github.com/spker/go-tarcoin/whisper/whisperv6"
 )
 
 // NodeConfig represents the collection of configuration values to fine tune the Geth
@@ -170,7 +170,7 @@ func NewNode(datadir string, config *NodeConfig) (stack *Node, _ error) {
 	}
 	// Register the Ethereum protocol if requested
 	if config.EthereumEnabled {
-		ethConf := eth.DefaultConfig
+		ethConf := trcn.DefaultConfig
 		ethConf.Genesis = genesis
 		ethConf.SyncMode = downloader.LightSync
 		ethConf.NetworkId = uint64(config.EthereumNetworkID)

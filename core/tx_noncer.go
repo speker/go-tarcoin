@@ -19,8 +19,8 @@ package core
 import (
 	"sync"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core/state"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core/state"
 )
 
 // txNoncer is a tiny virtual state database to manage the executable nonces of

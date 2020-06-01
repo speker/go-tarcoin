@@ -22,7 +22,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/ethereum/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/common"
 )
 
 func TestInterfaceGetSet(t *testing.T) {

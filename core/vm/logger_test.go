@@ -20,9 +20,9 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core/state"
-	"github.com/ethereum/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core/state"
+	"github.com/spker/go-tarcoin/params"
 )
 
 type dummyContractRef struct {

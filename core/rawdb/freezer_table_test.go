@@ -25,7 +25,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/metrics"
+	"github.com/spker/go-tarcoin/metrics"
 )
 
 func init() {

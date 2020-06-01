@@ -20,7 +20,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/ethereum/go-tarcoin/core/asm"
+	"github.com/spker/go-tarcoin/core/asm"
 )
 
 func Compile(fn string, src []byte, debug bool) (string, error) {

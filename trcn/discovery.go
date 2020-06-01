@@ -14,18 +14,18 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-package eth
+package trcn
 
 import (
-	"github.com/ethereum/go-tarcoin/core"
-	"github.com/ethereum/go-tarcoin/core/forkid"
-	"github.com/ethereum/go-tarcoin/p2p"
-	"github.com/ethereum/go-tarcoin/p2p/dnsdisc"
-	"github.com/ethereum/go-tarcoin/p2p/enode"
-	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin/core"
+	"github.com/spker/go-tarcoin/core/forkid"
+	"github.com/spker/go-tarcoin/p2p"
+	"github.com/spker/go-tarcoin/p2p/dnsdisc"
+	"github.com/spker/go-tarcoin/p2p/enode"
+	"github.com/spker/go-tarcoin/rlp"
 )
 
-// ethEntry is the "eth" ENR entry which advertises eth protocol
+// ethEntry is the "trcn" ENR entry which advertises trcn protocol
 // on the discovery network.
 type ethEntry struct {
 	ForkID forkid.ID // Fork identifier per EIP-2124
@@ -36,7 +36,7 @@ type ethEntry struct {
 
 // ENRKey implements enr.Entry.
 func (e ethEntry) ENRKey() string {
-	return "eth"
+	return "trcn"
 }
 
 // startEthEntryUpdate starts the ENR updater loop.
@@ -51,7 +51,7 @@ func (eth *Ethereum) startEthEntryUpdate(ln *enode.LocalNode) {
 			case <-newHead:
 				ln.Set(eth.currentEthEntry())
 			case <-sub.Err():
-				// Would be nice to sync with eth.Stop, but there is no
+				// Would be nice to sync with trcn.Stop, but there is no
 				// good way to do that.
 				return
 			}
@@ -63,7 +63,7 @@ func (eth *Ethereum) currentEthEntry() *ethEntry {
 	return &ethEntry{ForkID: forkid.NewID(eth.blockchain)}
 }
 
-// setupDiscovery creates the node discovery source for the eth protocol.
+// setupDiscovery creates the node discovery source for the trcn protocol.
 func (eth *Ethereum) setupDiscovery(cfg *p2p.Config) (enode.Iterator, error) {
 	if cfg.NoDiscovery || len(eth.config.DiscoveryURLs) == 0 {
 		return nil, nil

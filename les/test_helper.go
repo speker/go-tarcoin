@@ -28,25 +28,25 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/accounts/abi/bind"
-	"github.com/ethereum/go-tarcoin/accounts/abi/bind/backends"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/common/mclock"
-	"github.com/ethereum/go-tarcoin/consensus/ethash"
-	"github.com/ethereum/go-tarcoin/contracts/checkpointoracle/contract"
-	"github.com/ethereum/go-tarcoin/core"
-	"github.com/ethereum/go-tarcoin/core/rawdb"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/crypto"
-	"github.com/ethereum/go-tarcoin/eth"
-	"github.com/ethereum/go-tarcoin/ethdb"
-	"github.com/ethereum/go-tarcoin/event"
-	"github.com/ethereum/go-tarcoin/les/checkpointoracle"
-	"github.com/ethereum/go-tarcoin/les/flowcontrol"
-	"github.com/ethereum/go-tarcoin/light"
-	"github.com/ethereum/go-tarcoin/p2p"
-	"github.com/ethereum/go-tarcoin/p2p/enode"
-	"github.com/ethereum/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/accounts/abi/bind"
+	"github.com/spker/go-tarcoin/accounts/abi/bind/backends"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/common/mclock"
+	"github.com/spker/go-tarcoin/consensus/ethash"
+	"github.com/spker/go-tarcoin/contracts/checkpointoracle/contract"
+	"github.com/spker/go-tarcoin/core"
+	"github.com/spker/go-tarcoin/core/rawdb"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/trcn"
+	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/event"
+	"github.com/spker/go-tarcoin/les/checkpointoracle"
+	"github.com/spker/go-tarcoin/les/flowcontrol"
+	"github.com/spker/go-tarcoin/light"
+	"github.com/spker/go-tarcoin/p2p"
+	"github.com/spker/go-tarcoin/p2p/enode"
+	"github.com/spker/go-tarcoin/params"
 )
 
 var (
@@ -161,7 +161,7 @@ func prepare(n int, backend *backends.SimulatedBackend) {
 func testIndexers(db ethdb.Database, odr light.OdrBackend, config *light.IndexerConfig) []*core.ChainIndexer {
 	var indexers [3]*core.ChainIndexer
 	indexers[0] = light.NewChtIndexer(db, odr, config.ChtSize, config.ChtConfirms)
-	indexers[1] = eth.NewBloomIndexer(db, config.BloomSize, config.BloomConfirms)
+	indexers[1] = trcn.NewBloomIndexer(db, config.BloomSize, config.BloomConfirms)
 	indexers[2] = light.NewBloomTrieIndexer(db, odr, config.BloomSize, config.BloomTrieSize)
 	// make bloomTrieIndexer as a child indexer of bloom indexer.
 	indexers[1].AddChildIndexer(indexers[2])
@@ -202,7 +202,7 @@ func newTestClientHandler(backend *backends.SimulatedBackend, odr *LesOdr, index
 	client := &LightEthereum{
 		lesCommons: lesCommons{
 			genesis:     genesis.Hash(),
-			config:      &eth.Config{LightPeers: 100, NetworkId: NetworkId},
+			config:      &trcn.Config{LightPeers: 100, NetworkId: NetworkId},
 			chainConfig: params.AllEthashProtocolChanges,
 			iConfig:     light.TestClientIndexerConfig,
 			chainDb:     db,
@@ -265,7 +265,7 @@ func newTestServerHandler(blocks int, indexers []*core.ChainIndexer, db ethdb.Da
 	server := &LesServer{
 		lesCommons: lesCommons{
 			genesis:     genesis.Hash(),
-			config:      &eth.Config{LightPeers: 100, NetworkId: NetworkId},
+			config:      &trcn.Config{LightPeers: 100, NetworkId: NetworkId},
 			chainConfig: params.AllEthashProtocolChanges,
 			iConfig:     light.TestServerIndexerConfig,
 			chainDb:     db,

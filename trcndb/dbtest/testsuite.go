@@ -22,7 +22,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/ethdb"
 )
 
 // TestDatabaseSuite runs a suite of tests against a KeyValueStore database

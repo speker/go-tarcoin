@@ -25,16 +25,16 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ethereum/go-tarcoin"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core/rawdb"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/ethdb"
-	"github.com/ethereum/go-tarcoin/event"
-	"github.com/ethereum/go-tarcoin/log"
-	"github.com/ethereum/go-tarcoin/metrics"
-	"github.com/ethereum/go-tarcoin/params"
-	"github.com/ethereum/go-tarcoin/trie"
+	"github.com/spker/go-tarcoin"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core/rawdb"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/event"
+	"github.com/spker/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/metrics"
+	"github.com/spker/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/trie"
 )
 
 var (
@@ -56,7 +56,7 @@ var (
 	qosConfidenceCap = 10   // Number of peers above which not to modify RTT confidence
 	qosTuningImpact  = 0.25 // Impact that a new tuning target has on the previous value
 
-	maxQueuedHeaders         = 32 * 1024                    // [eth/62] Maximum number of headers to queue for import (DOS protection)
+	maxQueuedHeaders         = 32 * 1024                    // [trcn/62] Maximum number of headers to queue for import (DOS protection)
 	maxHeadersProcess        = 2048                         // Number of header download results to import at once into the chain
 	maxResultsProcess        = 2048                         // Number of content download results to import at once into the chain
 	maxForkAncestry   uint64 = params.ImmutabilityThreshold // Maximum chain reorganisation (locally redeclared so tests can reduce it)
@@ -131,17 +131,17 @@ type Downloader struct {
 	ancientLimit    uint64 // The maximum block number which can be regarded as ancient data.
 
 	// Channels
-	headerCh      chan dataPack        // [eth/62] Channel receiving inbound block headers
-	bodyCh        chan dataPack        // [eth/62] Channel receiving inbound block bodies
-	receiptCh     chan dataPack        // [eth/63] Channel receiving inbound receipts
-	bodyWakeCh    chan bool            // [eth/62] Channel to signal the block body fetcher of new tasks
-	receiptWakeCh chan bool            // [eth/63] Channel to signal the receipt fetcher of new tasks
-	headerProcCh  chan []*types.Header // [eth/62] Channel to feed the header processor new tasks
+	headerCh      chan dataPack        // [trcn/62] Channel receiving inbound block headers
+	bodyCh        chan dataPack        // [trcn/62] Channel receiving inbound block bodies
+	receiptCh     chan dataPack        // [trcn/63] Channel receiving inbound receipts
+	bodyWakeCh    chan bool            // [trcn/62] Channel to signal the block body fetcher of new tasks
+	receiptWakeCh chan bool            // [trcn/63] Channel to signal the receipt fetcher of new tasks
+	headerProcCh  chan []*types.Header // [trcn/62] Channel to feed the header processor new tasks
 
 	// for stateFetcher
 	stateSyncStart chan *stateSync
 	trackStateReq  chan *stateReq
-	stateCh        chan dataPack // [eth/63] Channel receiving inbound node state data
+	stateCh        chan dataPack // [trcn/63] Channel receiving inbound node state data
 
 	// Cancellation and termination
 	cancelPeer string         // Identifier of the peer currently being used as the master (cancel on drop)
@@ -428,7 +428,7 @@ func (d *Downloader) syncWithPeer(p *peerConnection, hash common.Hash, td *big.I
 		return errTooOld
 	}
 
-	log.Debug("Synchronising with the network", "peer", p.id, "eth", p.version, "head", hash, "td", td, "mode", d.mode)
+	log.Debug("Synchronising with the network", "peer", p.id, "trcn", p.version, "head", hash, "td", td, "mode", d.mode)
 	defer func(start time.Time) {
 		log.Debug("Synchronisation terminated", "elapsed", common.PrettyDuration(time.Since(start)))
 	}(time.Now())

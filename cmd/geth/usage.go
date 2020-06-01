@@ -22,8 +22,8 @@ import (
 	"io"
 	"sort"
 
-	"github.com/ethereum/go-tarcoin/cmd/utils"
-	"github.com/ethereum/go-tarcoin/internal/debug"
+	"github.com/spker/go-tarcoin/cmd/utils"
+	"github.com/spker/go-tarcoin/internal/debug"
 	cli "gopkg.in/urfave/cli.v1"
 )
 

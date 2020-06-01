@@ -20,8 +20,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/ethereum/go-tarcoin/accounts/keystore"
-	"github.com/ethereum/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/accounts/keystore"
+	"github.com/spker/go-tarcoin/log"
 )
 
 // deployFaucet queries the user for various input on deploying a faucet, after

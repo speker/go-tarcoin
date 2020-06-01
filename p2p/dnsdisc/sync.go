@@ -21,8 +21,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/common/mclock"
-	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/spker/go-tarcoin/common/mclock"
+	"github.com/spker/go-tarcoin/p2p/enode"
 )
 
 const (

@@ -28,21 +28,21 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/accounts/keystore"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/common/fdlimit"
-	"github.com/ethereum/go-tarcoin/consensus/ethash"
-	"github.com/ethereum/go-tarcoin/core"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/crypto"
-	"github.com/ethereum/go-tarcoin/eth"
-	"github.com/ethereum/go-tarcoin/eth/downloader"
-	"github.com/ethereum/go-tarcoin/log"
-	"github.com/ethereum/go-tarcoin/miner"
-	"github.com/ethereum/go-tarcoin/node"
-	"github.com/ethereum/go-tarcoin/p2p"
-	"github.com/ethereum/go-tarcoin/p2p/enode"
-	"github.com/ethereum/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/accounts/keystore"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/common/fdlimit"
+	"github.com/spker/go-tarcoin/consensus/ethash"
+	"github.com/spker/go-tarcoin/core"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/trcn"
+	"github.com/spker/go-tarcoin/trcn/downloader"
+	"github.com/spker/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/miner"
+	"github.com/spker/go-tarcoin/node"
+	"github.com/spker/go-tarcoin/p2p"
+	"github.com/spker/go-tarcoin/p2p/enode"
+	"github.com/spker/go-tarcoin/params"
 )
 
 func main() {
@@ -93,7 +93,7 @@ func main() {
 	time.Sleep(3 * time.Second)
 
 	for _, node := range nodes {
-		var ethereum *eth.Ethereum
+		var ethereum *trcn.Ethereum
 		if err := node.Service(&ethereum); err != nil {
 			panic(err)
 		}
@@ -109,7 +109,7 @@ func main() {
 		index := rand.Intn(len(faucets))
 
 		// Fetch the accessor for the relevant signer
-		var ethereum *eth.Ethereum
+		var ethereum *trcn.Ethereum
 		if err := nodes[index%len(nodes)].Service(&ethereum); err != nil {
 			panic(err)
 		}
@@ -171,15 +171,15 @@ func makeMiner(genesis *core.Genesis) (*node.Node, error) {
 		return nil, err
 	}
 	if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-		return eth.New(ctx, &eth.Config{
+		return trcn.New(ctx, &trcn.Config{
 			Genesis:         genesis,
 			NetworkId:       genesis.Config.ChainID.Uint64(),
 			SyncMode:        downloader.FullSync,
 			DatabaseCache:   256,
 			DatabaseHandles: 256,
 			TxPool:          core.DefaultTxPoolConfig,
-			GPO:             eth.DefaultConfig.GPO,
-			Ethash:          eth.DefaultConfig.Ethash,
+			GPO:             trcn.DefaultConfig.GPO,
+			Ethash:          trcn.DefaultConfig.Ethash,
 			Miner: miner.Config{
 				GasFloor: genesis.GasLimit * 9 / 10,
 				GasCeil:  genesis.GasLimit * 11 / 10,

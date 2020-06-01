@@ -23,8 +23,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ethereum/go-tarcoin/signer/core"
-	"github.com/ethereum/go-tarcoin/signer/fourbyte"
+	"github.com/spker/go-tarcoin/signer/core"
+	"github.com/spker/go-tarcoin/signer/fourbyte"
 )
 
 func init() {

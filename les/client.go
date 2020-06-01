@@ -21,31 +21,31 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/accounts"
-	"github.com/ethereum/go-tarcoin/accounts/abi/bind"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/common/hexutil"
-	"github.com/ethereum/go-tarcoin/common/mclock"
-	"github.com/ethereum/go-tarcoin/consensus"
-	"github.com/ethereum/go-tarcoin/core"
-	"github.com/ethereum/go-tarcoin/core/bloombits"
-	"github.com/ethereum/go-tarcoin/core/rawdb"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/eth"
-	"github.com/ethereum/go-tarcoin/eth/downloader"
-	"github.com/ethereum/go-tarcoin/eth/filters"
-	"github.com/ethereum/go-tarcoin/eth/gasprice"
-	"github.com/ethereum/go-tarcoin/event"
-	"github.com/ethereum/go-tarcoin/internal/ethapi"
-	"github.com/ethereum/go-tarcoin/les/checkpointoracle"
-	lpc "github.com/ethereum/go-tarcoin/les/lespay/client"
-	"github.com/ethereum/go-tarcoin/light"
-	"github.com/ethereum/go-tarcoin/log"
-	"github.com/ethereum/go-tarcoin/node"
-	"github.com/ethereum/go-tarcoin/p2p"
-	"github.com/ethereum/go-tarcoin/p2p/enode"
-	"github.com/ethereum/go-tarcoin/params"
-	"github.com/ethereum/go-tarcoin/rpc"
+	"github.com/spker/go-tarcoin/accounts"
+	"github.com/spker/go-tarcoin/accounts/abi/bind"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/common/hexutil"
+	"github.com/spker/go-tarcoin/common/mclock"
+	"github.com/spker/go-tarcoin/consensus"
+	"github.com/spker/go-tarcoin/core"
+	"github.com/spker/go-tarcoin/core/bloombits"
+	"github.com/spker/go-tarcoin/core/rawdb"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/trcn"
+	"github.com/spker/go-tarcoin/trcn/downloader"
+	"github.com/spker/go-tarcoin/trcn/filters"
+	"github.com/spker/go-tarcoin/trcn/gasprice"
+	"github.com/spker/go-tarcoin/event"
+	"github.com/spker/go-tarcoin/internal/ethapi"
+	"github.com/spker/go-tarcoin/les/checkpointoracle"
+	lpc "github.com/spker/go-tarcoin/les/lespay/client"
+	"github.com/spker/go-tarcoin/light"
+	"github.com/spker/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/node"
+	"github.com/spker/go-tarcoin/p2p"
+	"github.com/spker/go-tarcoin/p2p/enode"
+	"github.com/spker/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/rpc"
 )
 
 type LightEthereum struct {
@@ -72,12 +72,12 @@ type LightEthereum struct {
 	netRPCService  *ethapi.PublicNetAPI
 }
 
-func New(ctx *node.ServiceContext, config *eth.Config) (*LightEthereum, error) {
-	chainDb, err := ctx.OpenDatabase("lightchaindata", config.DatabaseCache, config.DatabaseHandles, "eth/db/chaindata/")
+func New(ctx *node.ServiceContext, config *trcn.Config) (*LightEthereum, error) {
+	chainDb, err := ctx.OpenDatabase("lightchaindata", config.DatabaseCache, config.DatabaseHandles, "trcn/db/chaindata/")
 	if err != nil {
 		return nil, err
 	}
-	lespayDb, err := ctx.OpenDatabase("lespay", 0, 0, "eth/db/lespay")
+	lespayDb, err := ctx.OpenDatabase("lespay", 0, 0, "trcn/db/lespay")
 	if err != nil {
 		return nil, err
 	}
@@ -101,9 +101,9 @@ func New(ctx *node.ServiceContext, config *eth.Config) (*LightEthereum, error) {
 		eventMux:       ctx.EventMux,
 		reqDist:        newRequestDistributor(peers, &mclock.System{}),
 		accountManager: ctx.AccountManager,
-		engine:         eth.CreateConsensusEngine(ctx, chainConfig, &config.Ethash, nil, false, chainDb),
+		engine:         trcn.CreateConsensusEngine(ctx, chainConfig, &config.Ethash, nil, false, chainDb),
 		bloomRequests:  make(chan chan *bloombits.Retrieval),
-		bloomIndexer:   eth.NewBloomIndexer(chainDb, params.BloomBitsBlocksClient, params.HelperTrieConfirmations),
+		bloomIndexer:   trcn.NewBloomIndexer(chainDb, params.BloomBitsBlocksClient, params.HelperTrieConfirmations),
 		serverPool:     newServerPool(chainDb, config.UltraLightServers),
 		valueTracker:   lpc.NewValueTracker(lespayDb, &mclock.System{}, requestList, time.Minute, 1/float64(time.Hour), 1/float64(time.Hour*100), 1/float64(time.Hour*1000)),
 	}
@@ -208,17 +208,17 @@ func (s *LightEthereum) APIs() []rpc.API {
 	apis = append(apis, s.engine.APIs(s.BlockChain().HeaderChain())...)
 	return append(apis, []rpc.API{
 		{
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.0",
 			Service:   &LightDummyAPI{},
 			Public:    true,
 		}, {
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.0",
 			Service:   downloader.NewPublicDownloaderAPI(s.handler.downloader, s.eventMux),
 			Public:    true,
 		}, {
-			Namespace: "eth",
+			Namespace: "trcn",
 			Version:   "1.0",
 			Service:   filters.NewPublicFilterAPI(s.ApiBackend, true),
 			Public:    true,

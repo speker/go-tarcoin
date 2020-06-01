@@ -25,11 +25,11 @@ import (
 	"time"
 
 	"github.com/dop251/goja"
-	"github.com/ethereum/go-tarcoin/accounts/scwallet"
-	"github.com/ethereum/go-tarcoin/accounts/usbwallet"
-	"github.com/ethereum/go-tarcoin/common/hexutil"
-	"github.com/ethereum/go-tarcoin/internal/jsre"
-	"github.com/ethereum/go-tarcoin/rpc"
+	"github.com/spker/go-tarcoin/accounts/scwallet"
+	"github.com/spker/go-tarcoin/accounts/usbwallet"
+	"github.com/spker/go-tarcoin/common/hexutil"
+	"github.com/spker/go-tarcoin/internal/jsre"
+	"github.com/spker/go-tarcoin/rpc"
 )
 
 // bridge is a collection of JavaScript utility methods to bride the .js runtime
@@ -356,7 +356,7 @@ func (b *bridge) SleepBlocks(call jsre.Call) (goja.Value, error) {
 	)
 	for time.Now().Before(deadline) {
 		var number hexutil.Uint64
-		err := b.client.Call(&number, "eth_blockNumber")
+		err := b.client.Call(&number, "trcn_blockNumber")
 		if err != nil {
 			return nil, err
 		}

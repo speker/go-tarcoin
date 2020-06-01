@@ -16,7 +16,7 @@
 
 package discv5
 
-import "github.com/ethereum/go-tarcoin/metrics"
+import "github.com/spker/go-tarcoin/metrics"
 
 var (
 	ingressTrafficMeter = metrics.NewRegisteredMeter("discv5/InboundTraffic", nil)

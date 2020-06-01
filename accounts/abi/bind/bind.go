@@ -17,7 +17,7 @@
 // Package bind generates Ethereum contract Go bindings.
 //
 // Detailed usage document and tutorial available on the go-ethereum Wiki page:
-// https://github.com/ethereum/go-tarcoin/wiki/Native-DApps:-Go-bindings-to-Ethereum-contracts
+// https://github.com/spker/go-tarcoin/wiki/Native-DApps:-Go-bindings-to-Ethereum-contracts
 package bind
 
 import (
@@ -30,8 +30,8 @@ import (
 	"text/template"
 	"unicode"
 
-	"github.com/ethereum/go-tarcoin/accounts/abi"
-	"github.com/ethereum/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/accounts/abi"
+	"github.com/spker/go-tarcoin/log"
 )
 
 // Lang is a target programming language selector to generate bindings for.

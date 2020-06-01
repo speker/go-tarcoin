@@ -33,12 +33,12 @@ import (
 	"sync"
 	"time"
 
-	ethereum "github.com/ethereum/go-tarcoin"
-	"github.com/ethereum/go-tarcoin/accounts"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/crypto"
-	"github.com/ethereum/go-tarcoin/log"
+	ethereum "github.com/spker/go-tarcoin"
+	"github.com/spker/go-tarcoin/accounts"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/log"
 	pcsc "github.com/gballet/go-libpcsclite"
 	"github.com/status-im/keycard-go/derivationpath"
 )

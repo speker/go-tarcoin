@@ -20,8 +20,8 @@ package rawdb
 import (
 	"encoding/binary"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/metrics"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/metrics"
 )
 
 // The fields below define the low level database schema prefixing.

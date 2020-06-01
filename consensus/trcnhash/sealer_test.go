@@ -25,10 +25,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/internal/testlog"
-	"github.com/ethereum/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/internal/testlog"
+	"github.com/spker/go-tarcoin/log"
 )
 
 // Tests whether remote HTTP servers are correctly notified of new work.

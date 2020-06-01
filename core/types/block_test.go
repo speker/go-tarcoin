@@ -22,8 +22,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/rlp"
 )
 
 // from bcValidBlockTest.json, "SimpleTx"

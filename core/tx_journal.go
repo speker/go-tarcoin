@@ -21,10 +21,10 @@ import (
 	"io"
 	"os"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/log"
-	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/rlp"
 )
 
 // errNoActiveJournal is returned if a transaction is attempted to be inserted

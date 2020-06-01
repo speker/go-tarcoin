@@ -20,7 +20,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/spker/go-tarcoin/p2p/enode"
 )
 
 // lookup performs a network search for nodes close to the given target. It approaches the

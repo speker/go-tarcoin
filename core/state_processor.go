@@ -17,14 +17,14 @@
 package core
 
 import (
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/consensus"
-	"github.com/ethereum/go-tarcoin/consensus/misc"
-	"github.com/ethereum/go-tarcoin/core/state"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/core/vm"
-	"github.com/ethereum/go-tarcoin/crypto"
-	"github.com/ethereum/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/consensus"
+	"github.com/spker/go-tarcoin/consensus/misc"
+	"github.com/spker/go-tarcoin/core/state"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/core/vm"
+	"github.com/spker/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/params"
 )
 
 // StateProcessor is a basic Processor, which takes care of transitioning

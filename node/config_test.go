@@ -24,8 +24,8 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/ethereum/go-tarcoin/crypto"
-	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/spker/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/p2p"
 )
 
 // Tests that datadirs can be successfully created, be them manually configured

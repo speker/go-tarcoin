@@ -20,7 +20,7 @@ import (
 	"hash"
 	"sync"
 
-	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin/rlp"
 	"golang.org/x/crypto/sha3"
 )
 

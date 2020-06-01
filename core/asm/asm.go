@@ -21,7 +21,7 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/ethereum/go-tarcoin/core/vm"
+	"github.com/spker/go-tarcoin/core/vm"
 )
 
 // Iterator for disassembled EVM instructions

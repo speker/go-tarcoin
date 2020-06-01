@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-package eth
+package trcn
 
 import (
 	"compress/gzip"
@@ -28,16 +28,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/common/hexutil"
-	"github.com/ethereum/go-tarcoin/core"
-	"github.com/ethereum/go-tarcoin/core/rawdb"
-	"github.com/ethereum/go-tarcoin/core/state"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/internal/ethapi"
-	"github.com/ethereum/go-tarcoin/rlp"
-	"github.com/ethereum/go-tarcoin/rpc"
-	"github.com/ethereum/go-tarcoin/trie"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/common/hexutil"
+	"github.com/spker/go-tarcoin/core"
+	"github.com/spker/go-tarcoin/core/rawdb"
+	"github.com/spker/go-tarcoin/core/state"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/internal/ethapi"
+	"github.com/spker/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin/rpc"
+	"github.com/spker/go-tarcoin/trie"
 )
 
 // PublicEthereumAPI provides an API to access Ethereum full node-related

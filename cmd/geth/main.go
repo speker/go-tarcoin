@@ -29,19 +29,19 @@ import (
 	"time"
 
 	"github.com/elastic/gosigar"
-	"github.com/ethereum/go-tarcoin/accounts"
-	"github.com/ethereum/go-tarcoin/accounts/keystore"
-	"github.com/ethereum/go-tarcoin/cmd/utils"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/console"
-	"github.com/ethereum/go-tarcoin/eth"
-	"github.com/ethereum/go-tarcoin/eth/downloader"
-	"github.com/ethereum/go-tarcoin/ethclient"
-	"github.com/ethereum/go-tarcoin/internal/debug"
-	"github.com/ethereum/go-tarcoin/les"
-	"github.com/ethereum/go-tarcoin/log"
-	"github.com/ethereum/go-tarcoin/metrics"
-	"github.com/ethereum/go-tarcoin/node"
+	"github.com/spker/go-tarcoin/accounts"
+	"github.com/spker/go-tarcoin/accounts/keystore"
+	"github.com/spker/go-tarcoin/cmd/utils"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/console"
+	"github.com/spker/go-tarcoin/trcn"
+	"github.com/spker/go-tarcoin/trcn/downloader"
+	"github.com/spker/go-tarcoin/ethclient"
+	"github.com/spker/go-tarcoin/internal/debug"
+	"github.com/spker/go-tarcoin/les"
+	"github.com/spker/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/metrics"
+	"github.com/spker/go-tarcoin/node"
 	cli "gopkg.in/urfave/cli.v1"
 )
 
@@ -381,7 +381,7 @@ func startNode(ctx *cli.Context, stack *node.Node) {
 	// Set contract backend for ethereum service if local node
 	// is serving LES requests.
 	if ctx.GlobalInt(utils.LegacyLightServFlag.Name) > 0 || ctx.GlobalInt(utils.LightServeFlag.Name) > 0 {
-		var ethService *eth.Ethereum
+		var ethService *trcn.Ethereum
 		if err := stack.Service(&ethService); err != nil {
 			utils.Fatalf("Failed to retrieve ethereum service: %v", err)
 		}
@@ -460,7 +460,7 @@ func startNode(ctx *cli.Context, stack *node.Node) {
 		if ctx.GlobalString(utils.SyncModeFlag.Name) == "light" {
 			utils.Fatalf("Light clients do not support mining")
 		}
-		var ethereum *eth.Ethereum
+		var ethereum *trcn.Ethereum
 		if err := stack.Service(&ethereum); err != nil {
 			utils.Fatalf("Ethereum service not running: %v", err)
 		}

@@ -20,9 +20,9 @@ import (
 	"context"
 	"sync"
 
-	ethereum "github.com/ethereum/go-tarcoin"
-	"github.com/ethereum/go-tarcoin/event"
-	"github.com/ethereum/go-tarcoin/rpc"
+	ethereum "github.com/spker/go-tarcoin"
+	"github.com/spker/go-tarcoin/event"
+	"github.com/spker/go-tarcoin/rpc"
 )
 
 // PublicDownloaderAPI provides an API which gives information about the current synchronisation status.

@@ -32,14 +32,14 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/ethereum/go-tarcoin/log"
-	"github.com/ethereum/go-tarcoin/node"
-	"github.com/ethereum/go-tarcoin/p2p"
-	"github.com/ethereum/go-tarcoin/p2p/enode"
-	"github.com/ethereum/go-tarcoin/p2p/simulations"
-	"github.com/ethereum/go-tarcoin/p2p/simulations/adapters"
-	"github.com/ethereum/go-tarcoin/rlp"
-	"github.com/ethereum/go-tarcoin/rpc"
+	"github.com/spker/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/node"
+	"github.com/spker/go-tarcoin/p2p"
+	"github.com/spker/go-tarcoin/p2p/enode"
+	"github.com/spker/go-tarcoin/p2p/simulations"
+	"github.com/spker/go-tarcoin/p2p/simulations/adapters"
+	"github.com/spker/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin/rpc"
 )
 
 // ProtocolTester is the tester environment used for unit testing protocol

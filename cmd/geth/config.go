@@ -26,11 +26,11 @@ import (
 
 	cli "gopkg.in/urfave/cli.v1"
 
-	"github.com/ethereum/go-tarcoin/cmd/utils"
-	"github.com/ethereum/go-tarcoin/eth"
-	"github.com/ethereum/go-tarcoin/node"
-	"github.com/ethereum/go-tarcoin/params"
-	whisper "github.com/ethereum/go-tarcoin/whisper/whisperv6"
+	"github.com/spker/go-tarcoin/cmd/utils"
+	"github.com/spker/go-tarcoin/trcn"
+	"github.com/spker/go-tarcoin/node"
+	"github.com/spker/go-tarcoin/params"
+	whisper "github.com/spker/go-tarcoin/whisper/whisperv6"
 	"github.com/naoina/toml"
 )
 
@@ -73,7 +73,7 @@ type ethstatsConfig struct {
 }
 
 type gethConfig struct {
-	Eth      eth.Config
+	Eth      trcn.Config
 	Shh      whisper.Config
 	Node     node.Config
 	Ethstats ethstatsConfig
@@ -98,8 +98,8 @@ func defaultNodeConfig() node.Config {
 	cfg := node.DefaultConfig
 	cfg.Name = clientIdentifier
 	cfg.Version = params.VersionWithCommit(gitCommit, gitDate)
-	cfg.HTTPModules = append(cfg.HTTPModules, "eth")
-	cfg.WSModules = append(cfg.WSModules, "eth")
+	cfg.HTTPModules = append(cfg.HTTPModules, "trcn")
+	cfg.WSModules = append(cfg.WSModules, "trcn")
 	cfg.IPCPath = "geth.ipc"
 	return cfg
 }
@@ -107,7 +107,7 @@ func defaultNodeConfig() node.Config {
 func makeConfigNode(ctx *cli.Context) (*node.Node, gethConfig) {
 	// Load defaults.
 	cfg := gethConfig{
-		Eth:  eth.DefaultConfig,
+		Eth:  trcn.DefaultConfig,
 		Shh:  whisper.DefaultConfig,
 		Node: defaultNodeConfig(),
 	}

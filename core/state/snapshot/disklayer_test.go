@@ -23,11 +23,11 @@ import (
 	"testing"
 
 	"github.com/VictoriaMetrics/fastcache"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core/rawdb"
-	"github.com/ethereum/go-tarcoin/ethdb"
-	"github.com/ethereum/go-tarcoin/ethdb/leveldb"
-	"github.com/ethereum/go-tarcoin/ethdb/memorydb"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core/rawdb"
+	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/ethdb/leveldb"
+	"github.com/spker/go-tarcoin/ethdb/memorydb"
 )
 
 // reverse reverses the contents of a byte slice. It's used to update random accs

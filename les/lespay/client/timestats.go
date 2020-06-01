@@ -21,8 +21,8 @@ import (
 	"math"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/les/utils"
-	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin/les/utils"
+	"github.com/spker/go-tarcoin/rlp"
 )
 
 const (

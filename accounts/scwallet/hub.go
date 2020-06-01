@@ -41,10 +41,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-tarcoin/accounts"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/event"
-	"github.com/ethereum/go-tarcoin/log"
+	"github.com/spker/go-tarcoin/accounts"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/event"
+	"github.com/spker/go-tarcoin/log"
 	pcsc "github.com/gballet/go-libpcsclite"
 )
 

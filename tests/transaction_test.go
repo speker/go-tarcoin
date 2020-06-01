@@ -19,7 +19,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/ethereum/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/params"
 )
 
 func TestTransaction(t *testing.T) {

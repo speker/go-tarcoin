@@ -22,7 +22,7 @@ import (
 	"math/big"
 	"os"
 
-	"github.com/ethereum/go-tarcoin/cmd/utils"
+	"github.com/spker/go-tarcoin/cmd/utils"
 	"gopkg.in/urfave/cli.v1"
 )
 

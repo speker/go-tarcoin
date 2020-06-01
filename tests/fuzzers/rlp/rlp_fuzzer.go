@@ -20,8 +20,8 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/rlp"
 )
 
 func decodeEncode(input []byte, val interface{}, i int) {

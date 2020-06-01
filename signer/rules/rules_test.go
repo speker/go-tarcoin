@@ -22,13 +22,13 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ethereum/go-tarcoin/accounts"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/common/hexutil"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/internal/ethapi"
-	"github.com/ethereum/go-tarcoin/signer/core"
-	"github.com/ethereum/go-tarcoin/signer/storage"
+	"github.com/spker/go-tarcoin/accounts"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/common/hexutil"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/internal/ethapi"
+	"github.com/spker/go-tarcoin/signer/core"
+	"github.com/spker/go-tarcoin/signer/storage"
 )
 
 const JS = `

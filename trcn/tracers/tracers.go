@@ -21,7 +21,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/ethereum/go-tarcoin/eth/tracers/internal/tracers"
+	"github.com/spker/go-tarcoin/trcn/tracers/internal/tracers"
 )
 
 // all contains all the built in JavaScript tracers by name.

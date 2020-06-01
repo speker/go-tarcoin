@@ -29,11 +29,11 @@ import (
 	"testing/quick"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/crypto"
-	"github.com/ethereum/go-tarcoin/ethdb/leveldb"
-	"github.com/ethereum/go-tarcoin/ethdb/memorydb"
-	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/ethdb/leveldb"
+	"github.com/spker/go-tarcoin/ethdb/memorydb"
+	"github.com/spker/go-tarcoin/rlp"
 )
 
 func init() {

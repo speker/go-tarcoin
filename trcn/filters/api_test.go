@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/rpc"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/rpc"
 )
 
 func TestUnmarshalJSONNewFilterArgs(t *testing.T) {

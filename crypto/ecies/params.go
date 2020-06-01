@@ -42,7 +42,7 @@ import (
 	"fmt"
 	"hash"
 
-	ethcrypto "github.com/ethereum/go-tarcoin/crypto"
+	ethcrypto "github.com/spker/go-tarcoin/crypto"
 )
 
 var (

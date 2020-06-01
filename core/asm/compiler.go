@@ -22,8 +22,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ethereum/go-tarcoin/common/math"
-	"github.com/ethereum/go-tarcoin/core/vm"
+	"github.com/spker/go-tarcoin/common/math"
+	"github.com/spker/go-tarcoin/core/vm"
 )
 
 // Compiler contains information about the parsed source

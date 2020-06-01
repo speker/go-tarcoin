@@ -17,8 +17,8 @@
 package core
 
 import (
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/core/types"
 )
 
 // NewTxsEvent is posted when a batch of transactions enter the transaction pool.

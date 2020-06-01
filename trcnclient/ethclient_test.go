@@ -25,16 +25,16 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-tarcoin"
-	"github.com/ethereum/go-tarcoin/common"
-	"github.com/ethereum/go-tarcoin/consensus/ethash"
-	"github.com/ethereum/go-tarcoin/core"
-	"github.com/ethereum/go-tarcoin/core/rawdb"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/crypto"
-	"github.com/ethereum/go-tarcoin/eth"
-	"github.com/ethereum/go-tarcoin/node"
-	"github.com/ethereum/go-tarcoin/params"
+	"github.com/spker/go-tarcoin"
+	"github.com/spker/go-tarcoin/common"
+	"github.com/spker/go-tarcoin/consensus/ethash"
+	"github.com/spker/go-tarcoin/core"
+	"github.com/spker/go-tarcoin/core/rawdb"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/trcn"
+	"github.com/spker/go-tarcoin/node"
+	"github.com/spker/go-tarcoin/params"
 )
 
 // Verify that Client implements the ethereum interfaces.
@@ -173,12 +173,12 @@ func newTestBackend(t *testing.T) (*node.Node, []*types.Block) {
 	genesis, blocks := generateTestChain()
 
 	// Start Ethereum service.
-	var ethservice *eth.Ethereum
+	var ethservice *trcn.Ethereum
 	n, err := node.New(&node.Config{})
 	n.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-		config := &eth.Config{Genesis: genesis}
+		config := &trcn.Config{Genesis: genesis}
 		config.Ethash.PowMode = ethash.ModeFake
-		ethservice, err = eth.New(ctx, config)
+		ethservice, err = trcn.New(ctx, config)
 		return ethservice, err
 	})
 

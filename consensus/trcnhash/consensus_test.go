@@ -23,9 +23,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/ethereum/go-tarcoin/common/math"
-	"github.com/ethereum/go-tarcoin/core/types"
-	"github.com/ethereum/go-tarcoin/params"
+	"github.com/spker/go-tarcoin/common/math"
+	"github.com/spker/go-tarcoin/core/types"
+	"github.com/spker/go-tarcoin/params"
 )
 
 type diffTest struct {

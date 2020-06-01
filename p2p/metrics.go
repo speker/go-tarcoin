@@ -21,7 +21,7 @@ package p2p
 import (
 	"net"
 
-	"github.com/ethereum/go-tarcoin/metrics"
+	"github.com/spker/go-tarcoin/metrics"
 )
 
 const (

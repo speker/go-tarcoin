@@ -21,7 +21,7 @@ import (
 	"io"
 	"net"
 
-	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin/rlp"
 )
 
 // Entry is implemented by known node record entry types.

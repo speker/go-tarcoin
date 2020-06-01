@@ -35,7 +35,7 @@ package whisperv6
 import (
 	"time"
 
-	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/spker/go-tarcoin/crypto"
 )
 
 // Whisper protocol parameters
