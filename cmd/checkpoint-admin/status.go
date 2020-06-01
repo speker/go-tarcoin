@@ -19,8 +19,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/speker/go-tarcoin/cmd/utils"
-	"github.com/speker/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/cmd/utils"
+	"github.com/ethereum/go-tarcoin/common"
 	"gopkg.in/urfave/cli.v1"
 )
 

@@ -21,12 +21,12 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/ethdb/memorydb"
-	"github.com/speker/go-tarcoin/trie"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/ethdb/memorydb"
+	"github.com/ethereum/go-tarcoin/trie"
 )
 
 // testAccount is the data associated with an account used by the state tests.

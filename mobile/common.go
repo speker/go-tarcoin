@@ -24,8 +24,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
 )
 
 // Hash represents the 32 byte Keccak256 hash of arbitrary data.

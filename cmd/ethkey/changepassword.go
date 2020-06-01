@@ -21,8 +21,8 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/speker/go-tarcoin/accounts/keystore"
-	"github.com/speker/go-tarcoin/cmd/utils"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/cmd/utils"
 	"gopkg.in/urfave/cli.v1"
 )
 

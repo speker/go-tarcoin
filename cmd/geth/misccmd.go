@@ -23,10 +23,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/speker/go-tarcoin/cmd/utils"
-	"github.com/speker/go-tarcoin/consensus/ethash"
-	"github.com/speker/go-tarcoin/trcn"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/cmd/utils"
+	"github.com/ethereum/go-tarcoin/consensus/ethash"
+	"github.com/ethereum/go-tarcoin/eth"
+	"github.com/ethereum/go-tarcoin/params"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -116,7 +116,7 @@ func version(ctx *cli.Context) error {
 		fmt.Println("Git Commit Date:", gitDate)
 	}
 	fmt.Println("Architecture:", runtime.GOARCH)
-	fmt.Println("Protocol Versions:", trcn.ProtocolVersions)
+	fmt.Println("Protocol Versions:", eth.ProtocolVersions)
 	fmt.Println("Go Version:", runtime.Version())
 	fmt.Println("Operating System:", runtime.GOOS)
 	fmt.Printf("GOPATH=%s\n", os.Getenv("GOPATH"))

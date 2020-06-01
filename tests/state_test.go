@@ -23,7 +23,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/speker/go-tarcoin/core/vm"
+	"github.com/ethereum/go-tarcoin/core/vm"
 )
 
 func TestState(t *testing.T) {

@@ -23,11 +23,11 @@ import (
 	"io"
 	"math/big"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/crypto"
-	lpc "github.com/speker/go-tarcoin/les/lespay/client"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/crypto"
+	lpc "github.com/ethereum/go-tarcoin/les/lespay/client"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 // Constants to match up protocol versions and messages

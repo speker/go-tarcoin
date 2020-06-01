@@ -26,9 +26,9 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/metrics"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/metrics"
 	"github.com/golang/snappy"
 )
 

@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // Enabled is checked by the constructor functions for all of the

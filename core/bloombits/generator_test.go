@@ -21,7 +21,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/speker/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/core/types"
 )
 
 // Tests that batched bloom bits are correctly rotated from the input bloom

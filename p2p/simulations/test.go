@@ -19,10 +19,10 @@ package simulations
 import (
 	"testing"
 
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/p2p/enr"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/enr"
+	"github.com/ethereum/go-tarcoin/rpc"
 )
 
 // NoopService is the service that does not do anything

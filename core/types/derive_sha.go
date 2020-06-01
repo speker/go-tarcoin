@@ -19,9 +19,9 @@ package types
 import (
 	"bytes"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/rlp"
-	"github.com/speker/go-tarcoin/trie"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/trie"
 )
 
 type DerivableList interface {

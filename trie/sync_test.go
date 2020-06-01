@@ -20,8 +20,8 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/ethdb/memorydb"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/ethdb/memorydb"
 )
 
 // makeTestTrie create a sample test trie to test node-wise reconstruction.

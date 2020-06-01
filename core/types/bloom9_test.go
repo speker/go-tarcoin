@@ -54,7 +54,7 @@ func TestBloom(t *testing.T) {
 import (
 	"testing"
 
-	"github.com/speker/go-tarcoin/core/state"
+	"github.com/ethereum/go-tarcoin/core/state"
 )
 
 func TestBloom9(t *testing.T) {

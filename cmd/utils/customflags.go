@@ -26,7 +26,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/speker/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/common/math"
 	"gopkg.in/urfave/cli.v1"
 )
 

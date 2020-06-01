@@ -21,11 +21,11 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/ethdb/memorydb"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/ethdb/memorydb"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 // Prove constructs a merkle proof for key. The result contains all encoded nodes

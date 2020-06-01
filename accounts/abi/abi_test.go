@@ -26,9 +26,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/math"
-	"github.com/speker/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/crypto"
 )
 
 const jsondata = `

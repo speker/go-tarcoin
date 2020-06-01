@@ -19,9 +19,9 @@ package state
 import (
 	"fmt"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/trie"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/trie"
 	lru "github.com/hashicorp/golang-lru"
 )
 

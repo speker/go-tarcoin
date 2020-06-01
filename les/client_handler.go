@@ -22,14 +22,14 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/mclock"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/trcn/downloader"
-	"github.com/speker/go-tarcoin/light"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/mclock"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/eth/downloader"
+	"github.com/ethereum/go-tarcoin/light"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 // clientHandler is responsible for receiving and processing all incoming server

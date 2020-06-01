@@ -23,8 +23,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/speker/go-tarcoin/accounts/abi"
-	"github.com/speker/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/accounts/abi"
+	"github.com/ethereum/go-tarcoin/common"
 )
 
 // decodedCallData is an internal type to represent a method call parsed according

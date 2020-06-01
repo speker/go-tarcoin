@@ -29,10 +29,10 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 // makeGenesis creates a new genesis struct based on some user input.
@@ -141,7 +141,7 @@ func (w *wizard) makeGenesis() {
 	w.conf.flush()
 }
 
-// importGenesis imports a Geth genesis spec into pupptrcn.
+// importGenesis imports a Geth genesis spec into puppeth.
 func (w *wizard) importGenesis() {
 	// Request the genesis JSON spec URL from the user
 	fmt.Println()
@@ -244,7 +244,7 @@ func (w *wizard) manageGenesis() {
 		// Save whatever genesis configuration we currently have
 		fmt.Println()
 		fmt.Printf("Which folder to save the genesis specs into? (default = current)\n")
-		fmt.Printf("  Will create %s.json, %s-altrcn.json, %s-harmony.json, %s-parity.json\n", w.network, w.network, w.network, w.network)
+		fmt.Printf("  Will create %s.json, %s-aleth.json, %s-harmony.json, %s-parity.json\n", w.network, w.network, w.network, w.network)
 
 		folder := w.readDefaultString(".")
 		if err := os.MkdirAll(folder, 0755); err != nil {

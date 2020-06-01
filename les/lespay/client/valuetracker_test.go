@@ -23,11 +23,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/common/mclock"
-	"github.com/speker/go-tarcoin/ethdb/memorydb"
-	"github.com/speker/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/common/mclock"
+	"github.com/ethereum/go-tarcoin/ethdb/memorydb"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
 
-	"github.com/speker/go-tarcoin/les/utils"
+	"github.com/ethereum/go-tarcoin/les/utils"
 )
 
 const (

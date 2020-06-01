@@ -19,10 +19,10 @@ package core
 import (
 	"math/big"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/consensus"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/core/vm"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/consensus"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/core/vm"
 )
 
 // ChainContext supports retrieving headers and consensus parameters from the

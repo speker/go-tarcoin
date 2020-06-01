@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/speker/go-tarcoin/accounts/keystore"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // deployNode creates a new node configuration based on some user input.

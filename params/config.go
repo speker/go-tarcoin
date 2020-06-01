@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/crypto"
 )
 
 // Genesis hashes to enforce below configs on.
@@ -283,7 +283,7 @@ type ChainConfig struct {
 	DAOForkBlock   *big.Int `json:"daoForkBlock,omitempty"`   // TheDAO hard-fork switch block (nil = no fork)
 	DAOForkSupport bool     `json:"daoForkSupport,omitempty"` // Whether the nodes supports or opposes the DAO hard-fork
 
-	// EIP150 implements the Gas price changes (https://github.com/speker/EIPs/issues/150)
+	// EIP150 implements the Gas price changes (https://github.com/ethereum/EIPs/issues/150)
 	EIP150Block *big.Int    `json:"eip150Block,omitempty"` // EIP150 HF block (nil = no fork)
 	EIP150Hash  common.Hash `json:"eip150Hash,omitempty"`  // EIP150 HF hash (needed for header only clients as only gas pricing changed)
 

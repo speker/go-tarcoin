@@ -24,14 +24,14 @@ import (
 	"sort"
 	"time"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/state/snapshot"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/metrics"
-	"github.com/speker/go-tarcoin/rlp"
-	"github.com/speker/go-tarcoin/trie"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/state/snapshot"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/metrics"
+	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/trie"
 )
 
 type revision struct {
@@ -651,7 +651,7 @@ func (s *StateDB) Copy() *StateDB {
 	}
 	// Copy the dirty states, logs, and preimages
 	for addr := range s.journal.dirties {
-		// As documented [here](https://github.com/speker/go-tarcoin/pull/16485#issuecomment-380438527),
+		// As documented [here](https://github.com/ethereum/go-tarcoin/pull/16485#issuecomment-380438527),
 		// and in the Finalise-method, there is a case where an object is in the journal but not
 		// in the stateObjects: OOG after touch on ripeMD prior to Byzantium. Thus, we need to check for
 		// nil

@@ -25,7 +25,7 @@ import (
 	"time"
 
 	mapset "github.com/deckarep/golang-set"
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // fileCache is a cache of files seen during scan of keystore.

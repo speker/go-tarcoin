@@ -19,7 +19,7 @@ package vm
 import (
 	"math/big"
 
-	"github.com/speker/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common"
 )
 
 // ContractRef is a reference to the contract's backing object

@@ -24,19 +24,19 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/math"
-	"github.com/speker/go-tarcoin/consensus/ethash"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/core/state"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/params"
-	"github.com/speker/go-tarcoin/rlp"
-	"github.com/speker/go-tarcoin/trie"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/consensus/ethash"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/core/state"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/core/vm"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/trie"
 )
 
 var (
@@ -211,11 +211,11 @@ func testChainGen(i int, block *core.BlockGen) {
 	signer := types.HomesteadSigner{}
 	switch i {
 	case 0:
-		// In block 1, the test bank sends account #1 some ditap.
+		// In block 1, the test bank sends account #1 some ether.
 		tx, _ := types.SignTx(types.NewTransaction(block.TxNonce(testBankAddress), acc1Addr, big.NewInt(10000), params.TxGas, nil, nil), signer, testBankKey)
 		block.AddTx(tx)
 	case 1:
-		// In block 2, the test bank sends some more ditap to account #1.
+		// In block 2, the test bank sends some more ether to account #1.
 		// acc1Addr passes it on to account #2.
 		// acc1Addr creates a test contract.
 		tx1, _ := types.SignTx(types.NewTransaction(block.TxNonce(testBankAddress), acc1Addr, big.NewInt(1000), params.TxGas, nil, nil), signer, testBankKey)

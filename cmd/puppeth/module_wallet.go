@@ -25,7 +25,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // walletDockerfile is the Dockerfile required to run a web wallet.
@@ -190,7 +190,7 @@ func checkWallet(client *sshClient, network string) (*walletInfos, error) {
 	}
 	// Assemble and return the useful infos
 	stats := &walletInfos{
-		datadir:  infos.volumes["/root/.TarCoin"],
+		datadir:  infos.volumes["/root/.ethereum"],
 		nodePort: nodePort,
 		rpcPort:  rpcPort,
 		webHost:  host,

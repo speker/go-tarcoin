@@ -22,11 +22,11 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/speker/go-tarcoin/accounts/abi"
-	"github.com/speker/go-tarcoin/accounts/abi/bind"
-	"github.com/speker/go-tarcoin/accounts/keystore"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/accounts/abi"
+	"github.com/ethereum/go-tarcoin/accounts/abi/bind"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/types"
 )
 
 // Signer is an interface defining the callback when a contract requires a

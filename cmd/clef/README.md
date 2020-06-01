@@ -69,7 +69,7 @@ The security model of Clef is as follows:
 The general flow for signing a transaction using e.g. Geth is as follows:
 ![image](sign_flow.png)
 
-In this case, `geth` would be started with `--signer http://localhost:8550` and would relay requests to `trcn.sendTransaction`.
+In this case, `geth` would be started with `--signer http://localhost:8550` and would relay requests to `eth.sendTransaction`.
 
 ## TODOs
 
@@ -112,7 +112,7 @@ Some snags and todos
 
 ### External API
 
-Clef listens to HTTP requests on `rpcaddr`:`rpcport` (or to IPC on `ipcpath`), with the same JSON-RPC standard as geth. The messages are expected to be [JSON-RPC 2.0 standard](https://www.jsonrpc.org/specification).
+Clef listens to HTTP requests on `rpcaddr`:`rpcport` (or to IPC on `ipcpath`), with the same JSON-RPC standard as Geth. The messages are expected to be [JSON-RPC 2.0 standard](https://www.jsonrpc.org/specification).
 
 Some of these call can require user interaction. Clients must be aware that responses may be delayed significantly or may never be received if a users decides to ignore the confirmation request.
 
@@ -151,7 +151,7 @@ All hex encoded values must be prefixed with `0x`.
 
 #### Create new password protected account
 
-The signer will generate a new private key, encrypts it according to [web3 keystore spec](https://github.com/speker/wiki/wiki/Web3-Secret-Storage-Definition) and stores it in the keystore directory.
+The signer will generate a new private key, encrypts it according to [web3 keystore spec](https://github.com/ethereum/wiki/wiki/Web3-Secret-Storage-Definition) and stores it in the keystore directory.
 The client is responsible for creating a backup of the keystore. If the keystore is lost there is no method of retrieving lost accounts.
 
 #### Arguments
@@ -339,7 +339,7 @@ Bash example:
 #### Arguments
   - content type [string]: type of signed data
      - `text/validator`: hex data with custom validator defined in a contract
-     - `application/clique`: [clique](https://github.com/speker/EIPs/issues/225) headers
+     - `application/clique`: [clique](https://github.com/ethereum/EIPs/issues/225) headers
      - `text/plain`: simple hex data validated by `account_ecRecover`
   - account [address]: account to sign with
   - data [object]: data to sign
@@ -373,7 +373,7 @@ Response
 ### account_signTypedData
 
 #### Sign data
-   Signs a chunk of structured data conformant to [EIP712]([EIP-712](https://github.com/speker/EIPs/blob/master/EIPS/eip-712.md)) and returns the calculated signature.
+   Signs a chunk of structured data conformant to [EIP712]([EIP-712](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-712.md)) and returns the calculated signature.
 
 #### Arguments
   - account [address]: account to sign with
@@ -510,7 +510,7 @@ Response
    format.
 
 #### Arguments
-  - account [object]: key in [web3 keystore format](https://github.com/speker/wiki/wiki/Web3-Secret-Storage-Definition) (retrieved with account_export)
+  - account [object]: key in [web3 keystore format](https://github.com/ethereum/wiki/wiki/Web3-Secret-Storage-Definition) (retrieved with account_export)
 
 #### Result
   - imported key [object]:
@@ -573,7 +573,7 @@ Response
   - account [address]: export private key that is associated with this account
 
 #### Result
-  - exported key, see [web3 keystore format](https://github.com/speker/wiki/wiki/Web3-Secret-Storage-Definition) for
+  - exported key, see [web3 keystore format](https://github.com/ethereum/wiki/wiki/Web3-Secret-Storage-Definition) for
   more information
 
 #### Sample call

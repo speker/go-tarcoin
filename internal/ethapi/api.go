@@ -26,25 +26,25 @@ import (
 	"time"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/accounts/abi"
-	"github.com/speker/go-tarcoin/accounts/keystore"
-	"github.com/speker/go-tarcoin/accounts/scwallet"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/common/math"
-	"github.com/speker/go-tarcoin/consensus/clique"
-	"github.com/speker/go-tarcoin/consensus/ethash"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/params"
-	"github.com/speker/go-tarcoin/rlp"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/accounts/abi"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/accounts/scwallet"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/consensus/clique"
+	"github.com/ethereum/go-tarcoin/consensus/ethash"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/core/vm"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/rpc"
 	"github.com/tyler-smith/go-bip39"
 )
 
@@ -409,7 +409,7 @@ func (s *PrivateAccountAPI) SignTransaction(ctx context.Context, args SendTxArgs
 //
 // The key used to calculate the signature is decrypted with the given password.
 //
-// https://github.com/speker/go-tarcoin/wiki/Management-APIs#personal_sign
+// https://github.com/ethereum/go-tarcoin/wiki/Management-APIs#personal_sign
 func (s *PrivateAccountAPI) Sign(ctx context.Context, data hexutil.Bytes, addr common.Address, passwd string) (hexutil.Bytes, error) {
 	// Look up the wallet containing the requested signer
 	account := accounts.Account{Address: addr}
@@ -437,7 +437,7 @@ func (s *PrivateAccountAPI) Sign(ctx context.Context, data hexutil.Bytes, addr c
 // Note, the signature must conform to the secp256k1 curve R, S and V values, where
 // the V value must be 27 or 28 for legacy reasons.
 //
-// https://github.com/speker/go-tarcoin/wiki/Management-APIs#personal_ecRecover
+// https://github.com/ethereum/go-tarcoin/wiki/Management-APIs#personal_ecRecover
 func (s *PrivateAccountAPI) EcRecover(ctx context.Context, data, sig hexutil.Bytes) (common.Address, error) {
 	if len(sig) != crypto.SignatureLength {
 		return common.Address{}, fmt.Errorf("signature must be %d bytes long", crypto.SignatureLength)
@@ -1596,7 +1596,7 @@ func (s *PublicTransactionPoolAPI) SendRawTransaction(ctx context.Context, encod
 //
 // The account associated with addr must be unlocked.
 //
-// https://github.com/speker/wiki/wiki/JSON-RPC#eth_sign
+// https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign
 func (s *PublicTransactionPoolAPI) Sign(addr common.Address, data hexutil.Bytes) (hexutil.Bytes, error) {
 	// Look up the wallet containing the requested signer
 	account := accounts.Account{Address: addr}

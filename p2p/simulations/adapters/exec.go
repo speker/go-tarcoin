@@ -35,11 +35,11 @@ import (
 	"time"
 
 	"github.com/docker/docker/pkg/reexec"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/node"
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/node"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/rpc"
 	"github.com/gorilla/websocket"
 )
 
@@ -499,7 +499,7 @@ type snapshotService struct {
 func (s *snapshotService) APIs() []rpc.API {
 	return []rpc.API{{
 		Namespace: "simulation",
-		Version:   "1.2",
+		Version:   "1.0",
 		Service:   SnapshotAPI{s.services},
 	}}
 }

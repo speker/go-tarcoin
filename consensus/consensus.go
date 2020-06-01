@@ -20,11 +20,11 @@ package consensus
 import (
 	"math/big"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/state"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/params"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/state"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/rpc"
 )
 
 // ChainReader defines a small collection of methods needed to access the local

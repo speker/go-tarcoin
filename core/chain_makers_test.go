@@ -20,12 +20,12 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/speker/go-tarcoin/consensus/ethash"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/consensus/ethash"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/core/vm"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 func ExampleGenerateChain() {
@@ -53,11 +53,11 @@ func ExampleGenerateChain() {
 	chain, _ := GenerateChain(gspec.Config, genesis, ethash.NewFaker(), db, 5, func(i int, gen *BlockGen) {
 		switch i {
 		case 0:
-			// In block 1, addr1 sends addr2 some ditap.
+			// In block 1, addr1 sends addr2 some ether.
 			tx, _ := types.SignTx(types.NewTransaction(gen.TxNonce(addr1), addr2, big.NewInt(10000), params.TxGas, nil, nil), signer, key1)
 			gen.AddTx(tx)
 		case 1:
-			// In block 2, addr1 sends some more ditap to addr2.
+			// In block 2, addr1 sends some more ether to addr2.
 			// addr2 passes it on to addr3.
 			tx1, _ := types.SignTx(types.NewTransaction(gen.TxNonce(addr1), addr2, big.NewInt(1000), params.TxGas, nil, nil), signer, key1)
 			tx2, _ := types.SignTx(types.NewTransaction(gen.TxNonce(addr2), addr3, big.NewInt(1000), params.TxGas, nil, nil), signer, key2)

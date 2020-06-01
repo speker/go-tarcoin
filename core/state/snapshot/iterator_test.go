@@ -24,8 +24,8 @@ import (
 	"testing"
 
 	"github.com/VictoriaMetrics/fastcache"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
 )
 
 // TestAccountIteratorBasics tests some simple single-layer(diff and disk) iteration

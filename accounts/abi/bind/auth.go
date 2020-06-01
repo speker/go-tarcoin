@@ -22,12 +22,12 @@ import (
 	"io"
 	"io/ioutil"
 
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/accounts/external"
-	"github.com/speker/go-tarcoin/accounts/keystore"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/accounts/external"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/crypto"
 )
 
 // NewTransactor is a utility method to easily create a transaction signer from

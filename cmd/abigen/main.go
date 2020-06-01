@@ -25,12 +25,12 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/speker/go-tarcoin/accounts/abi"
-	"github.com/speker/go-tarcoin/accounts/abi/bind"
-	"github.com/speker/go-tarcoin/cmd/utils"
-	"github.com/speker/go-tarcoin/common/compiler"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/accounts/abi"
+	"github.com/ethereum/go-tarcoin/accounts/abi/bind"
+	"github.com/ethereum/go-tarcoin/cmd/utils"
+	"github.com/ethereum/go-tarcoin/common/compiler"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/log"
 	"gopkg.in/urfave/cli.v1"
 )
 

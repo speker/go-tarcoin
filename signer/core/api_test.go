@@ -27,16 +27,16 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/accounts/keystore"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/internal/ethapi"
-	"github.com/speker/go-tarcoin/rlp"
-	"github.com/speker/go-tarcoin/signer/core"
-	"github.com/speker/go-tarcoin/signer/fourbyte"
-	"github.com/speker/go-tarcoin/signer/storage"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/internal/ethapi"
+	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/signer/core"
+	"github.com/ethereum/go-tarcoin/signer/fourbyte"
+	"github.com/ethereum/go-tarcoin/signer/storage"
 )
 
 //Used for testing
@@ -108,7 +108,7 @@ func (ui *headlessUi) ShowInfo(message string) {
 }
 
 func tmpDirName(t *testing.T) string {
-	d, err := ioutil.TempDir("", "trcn-keystore-test")
+	d, err := ioutil.TempDir("", "eth-keystore-test")
 	if err != nil {
 		t.Fatal(err)
 	}

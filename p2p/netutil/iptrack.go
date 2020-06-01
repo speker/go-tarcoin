@@ -19,7 +19,7 @@ package netutil
 import (
 	"time"
 
-	"github.com/speker/go-tarcoin/common/mclock"
+	"github.com/ethereum/go-tarcoin/common/mclock"
 )
 
 // IPTracker predicts the external endpoint, i.e. IP address and port, of the local host

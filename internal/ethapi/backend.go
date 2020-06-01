@@ -21,18 +21,18 @@ import (
 	"context"
 	"math/big"
 
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/bloombits"
-	"github.com/speker/go-tarcoin/core/state"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/trcn/downloader"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/event"
-	"github.com/speker/go-tarcoin/params"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/bloombits"
+	"github.com/ethereum/go-tarcoin/core/state"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/core/vm"
+	"github.com/ethereum/go-tarcoin/eth/downloader"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/event"
+	"github.com/ethereum/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/rpc"
 )
 
 // Backend interface provides the common API services (that are provided by
@@ -90,42 +90,42 @@ func GetAPIs(apiBackend Backend) []rpc.API {
 	nonceLock := new(AddrLocker)
 	return []rpc.API{
 		{
-			Namespace: "trcn",
-			Version:   "1.2",
+			Namespace: "eth",
+			Version:   "1.0",
 			Service:   NewPublicEthereumAPI(apiBackend),
 			Public:    true,
 		}, {
-			Namespace: "trcn",
-			Version:   "1.2",
+			Namespace: "eth",
+			Version:   "1.0",
 			Service:   NewPublicBlockChainAPI(apiBackend),
 			Public:    true,
 		}, {
-			Namespace: "trcn",
-			Version:   "1.2",
+			Namespace: "eth",
+			Version:   "1.0",
 			Service:   NewPublicTransactionPoolAPI(apiBackend, nonceLock),
 			Public:    true,
 		}, {
 			Namespace: "txpool",
-			Version:   "1.2",
+			Version:   "1.0",
 			Service:   NewPublicTxPoolAPI(apiBackend),
 			Public:    true,
 		}, {
 			Namespace: "debug",
-			Version:   "1.2",
+			Version:   "1.0",
 			Service:   NewPublicDebugAPI(apiBackend),
 			Public:    true,
 		}, {
 			Namespace: "debug",
-			Version:   "1.2",
+			Version:   "1.0",
 			Service:   NewPrivateDebugAPI(apiBackend),
 		}, {
-			Namespace: "trcn",
-			Version:   "1.2",
+			Namespace: "eth",
+			Version:   "1.0",
 			Service:   NewPublicAccountAPI(apiBackend.AccountManager()),
 			Public:    true,
 		}, {
 			Namespace: "personal",
-			Version:   "1.2",
+			Version:   "1.0",
 			Service:   NewPrivateAccountAPI(apiBackend, nonceLock),
 			Public:    false,
 		},

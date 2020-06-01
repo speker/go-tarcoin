@@ -25,7 +25,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 type storedCredential struct {

@@ -20,7 +20,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/speker/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common"
 )
 
 func BenchmarkCutOriginal(b *testing.B) {

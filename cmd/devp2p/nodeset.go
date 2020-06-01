@@ -25,8 +25,8 @@ import (
 	"sort"
 	"time"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
 )
 
 const jsonIndent = "    "

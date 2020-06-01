@@ -22,7 +22,7 @@ import (
 	mrand "math/rand"
 	"testing"
 
-	"github.com/speker/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/crypto"
 )
 
 func TestPoWCalculationsWithNoLeadingZeros(t *testing.T) {

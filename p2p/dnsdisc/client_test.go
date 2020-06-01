@@ -26,12 +26,12 @@ import (
 	"time"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/speker/go-tarcoin/common/mclock"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/internal/testlog"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/p2p/enr"
+	"github.com/ethereum/go-tarcoin/common/mclock"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/internal/testlog"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/enr"
 )
 
 const (

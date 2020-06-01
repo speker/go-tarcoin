@@ -16,7 +16,7 @@
 
 package params
 
-import "github.com/speker/go-tarcoin/common"
+import "github.com/ethereum/go-tarcoin/common"
 
 // MainnetBootnodes are the enode URLs of the P2P bootstrap nodes running on
 // the main Ethereum network.
@@ -66,7 +66,7 @@ var GoerliBootnodes = []string{
 const dnsPrefix = "enrtree://AKA3AM6LPBYEUDMVNU3BSVQJ5AD45Y7YPOHJLEF6W26QOE4VTUDPE@"
 
 // These DNS names provide bootstrap connectivity for public testnets and the mainnet.
-// See https://github.com/speker/discv4-dns-lists for more information.
+// See https://github.com/ethereum/discv4-dns-lists for more information.
 var KnownDNSNetworks = map[common.Hash]string{
 	MainnetGenesisHash: dnsPrefix + "all.mainnet.ethdisco.net",
 	RopstenGenesisHash: dnsPrefix + "all.ropsten.ethdisco.net",

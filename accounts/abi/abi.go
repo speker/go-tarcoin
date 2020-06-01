@@ -23,8 +23,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/crypto"
 )
 
 // The ABI holds information about a contract's context and available

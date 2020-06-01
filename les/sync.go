@@ -21,11 +21,11 @@ import (
 	"errors"
 	"time"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/trcn/downloader"
-	"github.com/speker/go-tarcoin/light"
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/eth/downloader"
+	"github.com/ethereum/go-tarcoin/light"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 var errInvalidCheckpoint = errors.New("invalid advertised checkpoint")

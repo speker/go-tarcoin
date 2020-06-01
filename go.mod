@@ -1,4 +1,4 @@
-module github.com/speker/go-tarcoin
+module github.com/ethereum/go-tarcoin
 
 go 1.13
 

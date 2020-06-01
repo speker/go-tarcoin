@@ -25,14 +25,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin"
-	"github.com/speker/go-tarcoin/accounts/abi"
-	"github.com/speker/go-tarcoin/accounts/abi/bind"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin"
+	"github.com/ethereum/go-tarcoin/accounts/abi"
+	"github.com/ethereum/go-tarcoin/accounts/abi/bind"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 func TestSimulatedBackend(t *testing.T) {

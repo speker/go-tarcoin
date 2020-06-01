@@ -136,7 +136,7 @@ func TestClientWebsocketPing(t *testing.T) {
 	}
 
 	// Wait for the context's deadline to be reached before proceeding.
-	// This is important for reproducing https://github.com/speker/go-tarcoin/issues/19798
+	// This is important for reproducing https://github.com/ethereum/go-tarcoin/issues/19798
 	<-ctx.Done()
 	close(sendPing)
 

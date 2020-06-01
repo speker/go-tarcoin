@@ -20,9 +20,9 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/rlp"
-	"github.com/speker/go-tarcoin/trie"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/trie"
 )
 
 // NodeIterator is an iterator to traverse the entire state trie post-order,

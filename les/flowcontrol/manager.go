@@ -22,8 +22,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/speker/go-tarcoin/common/mclock"
-	"github.com/speker/go-tarcoin/common/prque"
+	"github.com/ethereum/go-tarcoin/common/mclock"
+	"github.com/ethereum/go-tarcoin/common/prque"
 )
 
 // cmNodeFields are ClientNode fields used by the client manager

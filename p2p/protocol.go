@@ -19,8 +19,8 @@ package p2p
 import (
 	"fmt"
 
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/p2p/enr"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/enr"
 )
 
 // Protocol represents a P2P subprotocol implementation.

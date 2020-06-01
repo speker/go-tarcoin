@@ -26,13 +26,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/core/state"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/event"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/core/state"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/event"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 // testTxPoolConfig is a transaction pool configuration without stateful disk

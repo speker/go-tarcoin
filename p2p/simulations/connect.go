@@ -20,7 +20,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/speker/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
 )
 
 var (

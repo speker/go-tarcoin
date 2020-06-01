@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/rpc"
 )
 
 // In this example, our client wishes to track the latest 'block number'

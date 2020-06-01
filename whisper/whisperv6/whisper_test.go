@@ -24,7 +24,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common"
 	"golang.org/x/crypto/pbkdf2"
 )
 

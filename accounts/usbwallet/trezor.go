@@ -27,12 +27,12 @@ import (
 	"io"
 	"math/big"
 
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/accounts/usbwallet/trezor"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/accounts/usbwallet/trezor"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/log"
 	"github.com/golang/protobuf/proto"
 )
 

@@ -24,11 +24,11 @@ import (
 	"math/big"
 	"unsafe"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/params"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 //go:generate gencodec -type Receipt -field-override receiptMarshaling -out gen_receipt_json.go

@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/ethdb"
 )
 
 // Iterator is a iterator to step over all the accounts or the specific

@@ -19,8 +19,8 @@ package les
 import (
 	"time"
 
-	"github.com/speker/go-tarcoin/common/bitutil"
-	"github.com/speker/go-tarcoin/light"
+	"github.com/ethereum/go-tarcoin/common/bitutil"
+	"github.com/ethereum/go-tarcoin/light"
 )
 
 const (
@@ -46,16 +46,16 @@ const (
 func (eth *LightEthereum) startBloomHandlers(sectionSize uint64) {
 	for i := 0; i < bloomServiceThreads; i++ {
 		go func() {
-			defer trcn.wg.Done()
+			defer eth.wg.Done()
 			for {
 				select {
-				case <-trcn.closeCh:
+				case <-eth.closeCh:
 					return
 
-				case request := <-trcn.bloomRequests:
+				case request := <-eth.bloomRequests:
 					task := <-request
 					task.Bitsets = make([][]byte, len(task.Sections))
-					compVectors, err := light.GetBloomBits(task.Context, trcn.odr, task.Bit, task.Sections)
+					compVectors, err := light.GetBloomBits(task.Context, eth.odr, task.Bit, task.Sections)
 					if err == nil {
 						for i := range task.Sections {
 							if blob, err := bitutil.DecompressBytes(compVectors[i], int(sectionSize/8)); err == nil {

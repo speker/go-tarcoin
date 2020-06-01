@@ -27,16 +27,16 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/internal/debug"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/node"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/internal/debug"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/node"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 const (

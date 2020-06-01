@@ -20,9 +20,9 @@ import (
 	"hash"
 	"sync/atomic"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/math"
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // Config are the configuration options for the Interpreter

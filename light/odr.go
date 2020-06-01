@@ -21,11 +21,11 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/ethdb"
 )
 
 // NoOdr is the default context passed to an ODR capable function when the ODR

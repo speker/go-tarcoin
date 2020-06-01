@@ -22,8 +22,8 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/types"
 )
 
 // NotFound is returned by API methods if the requested item does not exist.

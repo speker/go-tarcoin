@@ -35,24 +35,24 @@ import (
 	"strings"
 	"time"
 
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/accounts/keystore"
-	"github.com/speker/go-tarcoin/cmd/utils"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/console"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/internal/ethapi"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/node"
-	"github.com/speker/go-tarcoin/params"
-	"github.com/speker/go-tarcoin/rlp"
-	"github.com/speker/go-tarcoin/rpc"
-	"github.com/speker/go-tarcoin/signer/core"
-	"github.com/speker/go-tarcoin/signer/fourbyte"
-	"github.com/speker/go-tarcoin/signer/rules"
-	"github.com/speker/go-tarcoin/signer/storage"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/cmd/utils"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/console"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/internal/ethapi"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/node"
+	"github.com/ethereum/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/signer/core"
+	"github.com/ethereum/go-tarcoin/signer/fourbyte"
+	"github.com/ethereum/go-tarcoin/signer/rules"
+	"github.com/ethereum/go-tarcoin/signer/storage"
 	colorable "github.com/mattn/go-colorable"
 	"github.com/mattn/go-isatty"
 	"gopkg.in/urfave/cli.v1"
@@ -577,7 +577,7 @@ func signer(c *cli.Context) error {
 			Namespace: "account",
 			Public:    true,
 			Service:   api,
-			Version:   "1.2"},
+			Version:   "1.0"},
 	}
 	if c.GlobalBool(utils.HTTPEnabledFlag.Name) {
 		vhosts := splitAndTrim(c.GlobalString(utils.HTTPVirtualHostsFlag.Name))

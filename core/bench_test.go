@@ -23,15 +23,15 @@ import (
 	"os"
 	"testing"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/math"
-	"github.com/speker/go-tarcoin/consensus/ethash"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/consensus/ethash"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/core/vm"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 func BenchmarkInsertChain_empty_memdb(b *testing.B) {
@@ -105,7 +105,7 @@ func init() {
 	}
 }
 
-// genTxRing returns a block generator that sends ditap in a ring
+// genTxRing returns a block generator that sends ether in a ring
 // among n accounts. This is creates n entries in the state database
 // and fills the blocks with many small transactions.
 func genTxRing(naccounts int) func(int, *BlockGen) {
@@ -152,7 +152,7 @@ func benchInsertChain(b *testing.B, disk bool, gen func(int, *BlockGen)) {
 	if !disk {
 		db = rawdb.NewMemoryDatabase()
 	} else {
-		dir, err := ioutil.TempDir("", "trcn-core-bench")
+		dir, err := ioutil.TempDir("", "eth-core-bench")
 		if err != nil {
 			b.Fatalf("cannot create temporary directory: %v", err)
 		}
@@ -251,7 +251,7 @@ func makeChainForBench(db ethdb.Database, full bool, count uint64) {
 
 func benchWriteChain(b *testing.B, full bool, count uint64) {
 	for i := 0; i < b.N; i++ {
-		dir, err := ioutil.TempDir("", "trcn-chain-bench")
+		dir, err := ioutil.TempDir("", "eth-chain-bench")
 		if err != nil {
 			b.Fatalf("cannot create temporary directory: %v", err)
 		}
@@ -266,7 +266,7 @@ func benchWriteChain(b *testing.B, full bool, count uint64) {
 }
 
 func benchReadChain(b *testing.B, full bool, count uint64) {
-	dir, err := ioutil.TempDir("", "trcn-chain-bench")
+	dir, err := ioutil.TempDir("", "eth-chain-bench")
 	if err != nil {
 		b.Fatalf("cannot create temporary directory: %v", err)
 	}

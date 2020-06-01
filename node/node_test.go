@@ -25,9 +25,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/rpc"
 
 	"github.com/stretchr/testify/assert"
 )

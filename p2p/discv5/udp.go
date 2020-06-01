@@ -24,11 +24,11 @@ import (
 	"net"
 	"time"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/p2p/netutil"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/p2p/netutil"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 const Version = 4

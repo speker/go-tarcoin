@@ -29,9 +29,9 @@ import (
 	"math/big"
 	"os"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/math"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/rlp"
 	"golang.org/x/crypto/sha3"
 )
 

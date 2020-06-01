@@ -23,10 +23,10 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/mclock"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/trcn/fetcher"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/mclock"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/eth/fetcher"
 )
 
 var (

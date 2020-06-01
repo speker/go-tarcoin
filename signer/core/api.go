@@ -25,16 +25,16 @@ import (
 	"os"
 	"reflect"
 
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/accounts/keystore"
-	"github.com/speker/go-tarcoin/accounts/scwallet"
-	"github.com/speker/go-tarcoin/accounts/usbwallet"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/internal/ethapi"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/rlp"
-	"github.com/speker/go-tarcoin/signer/storage"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/accounts/scwallet"
+	"github.com/ethereum/go-tarcoin/accounts/usbwallet"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/internal/ethapi"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/signer/storage"
 )
 
 const (

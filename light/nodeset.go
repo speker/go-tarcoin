@@ -20,10 +20,10 @@ import (
 	"errors"
 	"sync"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 // NodeSet stores a set of trie nodes. It implements trie.Database and can also

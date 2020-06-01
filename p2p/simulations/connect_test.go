@@ -19,9 +19,9 @@ package simulations
 import (
 	"testing"
 
-	"github.com/speker/go-tarcoin/node"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/p2p/simulations/adapters"
+	"github.com/ethereum/go-tarcoin/node"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/simulations/adapters"
 )
 
 func newTestNetwork(t *testing.T, nodeCount int) (*Network, []enode.ID) {

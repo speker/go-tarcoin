@@ -26,19 +26,19 @@ import (
 	"sync"
 	"time"
 
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/consensus"
-	"github.com/speker/go-tarcoin/consensus/misc"
-	"github.com/speker/go-tarcoin/core/state"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/params"
-	"github.com/speker/go-tarcoin/rlp"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/consensus"
+	"github.com/ethereum/go-tarcoin/consensus/misc"
+	"github.com/ethereum/go-tarcoin/core/state"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/rpc"
 	lru "github.com/hashicorp/golang-lru"
 	"golang.org/x/crypto/sha3"
 )
@@ -687,7 +687,7 @@ func (c *Clique) Close() error {
 func (c *Clique) APIs(chain consensus.ChainReader) []rpc.API {
 	return []rpc.API{{
 		Namespace: "clique",
-		Version:   "1.2",
+		Version:   "1.0",
 		Service:   &API{chain: chain, clique: c},
 		Public:    false,
 	}}

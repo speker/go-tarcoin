@@ -29,19 +29,19 @@ import (
 	"time"
 
 	"github.com/elastic/gosigar"
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/accounts/keystore"
-	"github.com/speker/go-tarcoin/cmd/utils"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/console"
-	"github.com/speker/go-tarcoin/trcn"
-	"github.com/speker/go-tarcoin/trcn/downloader"
-	"github.com/speker/go-tarcoin/ethclient"
-	"github.com/speker/go-tarcoin/internal/debug"
-	"github.com/speker/go-tarcoin/les"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/metrics"
-	"github.com/speker/go-tarcoin/node"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/cmd/utils"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/console"
+	"github.com/ethereum/go-tarcoin/eth"
+	"github.com/ethereum/go-tarcoin/eth/downloader"
+	"github.com/ethereum/go-tarcoin/ethclient"
+	"github.com/ethereum/go-tarcoin/internal/debug"
+	"github.com/ethereum/go-tarcoin/les"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/metrics"
+	"github.com/ethereum/go-tarcoin/node"
 	cli "gopkg.in/urfave/cli.v1"
 )
 
@@ -238,7 +238,7 @@ func init() {
 		licenseCommand,
 		// See config.go
 		dumpConfigCommand,
-		// See retesttrcn.go
+		// See retesteth.go
 		retestethCommand,
 		// See cmd/utils/flags_legacy.go
 		utils.ShowDeprecated,
@@ -293,7 +293,7 @@ func prepare(ctx *cli.Context) {
 		log.Info("Starting Geth in ephemeral dev mode...")
 
 	case !ctx.GlobalIsSet(utils.NetworkIdFlag.Name):
-		log.Info("Starting Geth on TarCoin mainnet...")
+		log.Info("Starting Geth on Ethereum mainnet...")
 	}
 	// If we're a full node on mainnet without --cache specified, bump default cache allowance
 	if ctx.GlobalString(utils.SyncModeFlag.Name) != "light" && !ctx.GlobalIsSet(utils.CacheFlag.Name) && !ctx.GlobalIsSet(utils.NetworkIdFlag.Name) {
@@ -381,7 +381,7 @@ func startNode(ctx *cli.Context, stack *node.Node) {
 	// Set contract backend for ethereum service if local node
 	// is serving LES requests.
 	if ctx.GlobalInt(utils.LegacyLightServFlag.Name) > 0 || ctx.GlobalInt(utils.LightServeFlag.Name) > 0 {
-		var ethService *trcn.Ethereum
+		var ethService *eth.Ethereum
 		if err := stack.Service(&ethService); err != nil {
 			utils.Fatalf("Failed to retrieve ethereum service: %v", err)
 		}
@@ -460,7 +460,7 @@ func startNode(ctx *cli.Context, stack *node.Node) {
 		if ctx.GlobalString(utils.SyncModeFlag.Name) == "light" {
 			utils.Fatalf("Light clients do not support mining")
 		}
-		var ethereum *trcn.Ethereum
+		var ethereum *eth.Ethereum
 		if err := stack.Service(&ethereum); err != nil {
 			utils.Fatalf("Ethereum service not running: %v", err)
 		}

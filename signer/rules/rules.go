@@ -23,11 +23,11 @@ import (
 	"strings"
 
 	"github.com/dop251/goja"
-	"github.com/speker/go-tarcoin/internal/ethapi"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/signer/core"
-	"github.com/speker/go-tarcoin/signer/rules/deps"
-	"github.com/speker/go-tarcoin/signer/storage"
+	"github.com/ethereum/go-tarcoin/internal/ethapi"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/signer/core"
+	"github.com/ethereum/go-tarcoin/signer/rules/deps"
+	"github.com/ethereum/go-tarcoin/signer/storage"
 )
 
 var (

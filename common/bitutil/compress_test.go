@@ -21,7 +21,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/speker/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
 )
 
 // Tests that data bitset encoding and decoding works and is bijective.

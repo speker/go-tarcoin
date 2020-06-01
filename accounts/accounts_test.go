@@ -20,7 +20,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/speker/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
 )
 
 func TestTextHash(t *testing.T) {

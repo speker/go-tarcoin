@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/speker/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/common/math"
 )
 
 // Memory implements a simple memory model for the ethereum virtual machine.

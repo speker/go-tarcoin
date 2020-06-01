@@ -22,12 +22,12 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/speker/go-tarcoin"
-	"github.com/speker/go-tarcoin/accounts/abi"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/event"
+	"github.com/ethereum/go-tarcoin"
+	"github.com/ethereum/go-tarcoin/accounts/abi"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/event"
 )
 
 // SignerFn is a signer function callback when a contract requires a method to

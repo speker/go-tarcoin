@@ -22,9 +22,9 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/ethdb/memorydb"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/ethdb/memorydb"
 )
 
 func newEmptySecure() *SecureTrie {
@@ -67,11 +67,11 @@ func TestSecureDelete(t *testing.T) {
 	trie := newEmptySecure()
 	vals := []struct{ k, v string }{
 		{"do", "verb"},
-		{"ditap", "wookiedoo"},
+		{"ether", "wookiedoo"},
 		{"horse", "stallion"},
 		{"shaman", "horse"},
 		{"doge", "coin"},
-		{"ditap", ""},
+		{"ether", ""},
 		{"dog", "puppy"},
 		{"shaman", ""},
 	}

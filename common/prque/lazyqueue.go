@@ -20,7 +20,7 @@ import (
 	"container/heap"
 	"time"
 
-	"github.com/speker/go-tarcoin/common/mclock"
+	"github.com/ethereum/go-tarcoin/common/mclock"
 )
 
 // LazyQueue is a priority queue data structure where priorities can change over

@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/speker/go-tarcoin/event"
+	"github.com/ethereum/go-tarcoin/event"
 )
 
 // This example demonstrates how SubscriptionScope can be used to control the lifetime of

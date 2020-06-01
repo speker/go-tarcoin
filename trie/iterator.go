@@ -21,8 +21,8 @@ import (
 	"container/heap"
 	"errors"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 // Iterator is a key-value trie iterator that traverses a Trie.

@@ -3,9 +3,9 @@ InstallDir "$InstDir"
 OutFile "${OUTPUTFILE}" # set through command line arguments
 
 # Links for "Add/Remove Programs"
-!define HELPURL "https://github.com/speker/go-tarcoin/issues"
-!define UPDATEURL "https://github.com/speker/go-tarcoin/releases"
-!define ABOUTURL "https://github.com/speker/go-tarcoin#ethereum-go"
+!define HELPURL "https://github.com/ethereum/go-tarcoin/issues"
+!define UPDATEURL "https://github.com/ethereum/go-tarcoin/releases"
+!define ABOUTURL "https://github.com/ethereum/go-tarcoin#ethereum-go"
 !define /date NOW "%Y%m%d"
 
 PageEx license
@@ -33,7 +33,7 @@ Section "Geth" GETH_IDX
   SimpleFC::AdvAddRule "Geth outgoing peers (TCP:30303)" ""  6 2 1 2147483647 1 "$INSTDIR\geth.exe" "" "" "Ethereum" "" 30303 "" ""
   SimpleFC::AdvAddRule "Geth UDP discovery (UDP:30303)" "" 17 2 1 2147483647 1 "$INSTDIR\geth.exe" "" "" "Ethereum" "" 30303 "" ""
 
-  # Set default IPC endpoint (https://github.com/speker/EIPs/issues/147)
+  # Set default IPC endpoint (https://github.com/ethereum/EIPs/issues/147)
   ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\geth.ipc"
   ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "A" "HKLM" "\\.\pipe\geth.ipc"
 

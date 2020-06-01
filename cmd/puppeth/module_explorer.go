@@ -25,7 +25,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // explorerDockerfile is the Dockerfile required to run a block explorer.
@@ -35,8 +35,8 @@ FROM puppeth/blockscout:latest
 ADD genesis.json /genesis.json
 RUN \
   echo 'geth --cache 512 init /genesis.json' > explorer.sh && \
-  echo $'geth --networkid {{.NetworkID}} --syncmode "full" --gcmode "archive" --port {{.EthPort}} --bootnodes {{.Bootnodes}} --ethstats \'{{.Ethstats}}\' --cache=512 --rpc --rpcapi "net,web3,trcn,shh,debug" --rpccorsdomain "*" --rpcvhosts "*" --ws --wsorigins "*" --exitwhensynced' >> explorer.sh && \
-  echo $'exec geth --networkid {{.NetworkID}} --syncmode "full" --gcmode "archive" --port {{.EthPort}} --bootnodes {{.Bootnodes}} --ethstats \'{{.Ethstats}}\' --cache=512 --rpc --rpcapi "net,web3,trcn,shh,debug" --rpccorsdomain "*" --rpcvhosts "*" --ws --wsorigins "*" &' >> explorer.sh && \
+  echo $'geth --networkid {{.NetworkID}} --syncmode "full" --gcmode "archive" --port {{.EthPort}} --bootnodes {{.Bootnodes}} --ethstats \'{{.Ethstats}}\' --cache=512 --rpc --rpcapi "net,web3,eth,shh,debug" --rpccorsdomain "*" --rpcvhosts "*" --ws --wsorigins "*" --exitwhensynced' >> explorer.sh && \
+  echo $'exec geth --networkid {{.NetworkID}} --syncmode "full" --gcmode "archive" --port {{.EthPort}} --bootnodes {{.Bootnodes}} --ethstats \'{{.Ethstats}}\' --cache=512 --rpc --rpcapi "net,web3,eth,shh,debug" --rpccorsdomain "*" --rpcvhosts "*" --ws --wsorigins "*" &' >> explorer.sh && \
   echo '/usr/local/bin/docker-entrypoint.sh postgres &' >> explorer.sh && \
   echo 'sleep 5' >> explorer.sh && \
   echo 'mix do ecto.drop --force, ecto.create, ecto.migrate' >> explorer.sh && \
@@ -182,7 +182,7 @@ func checkExplorer(client *sshClient, network string) (*explorerInfos, error) {
 	// Assemble and return the useful infos
 	stats := &explorerInfos{
 		node: &nodeInfos{
-			datadir:  infos.volumes["/opt/app/.TarCoin"],
+			datadir:  infos.volumes["/opt/app/.ethereum"],
 			port:     infos.portmap[infos.envvars["ETH_PORT"]+"/tcp"],
 			ethstats: infos.envvars["ETH_NAME"],
 		},

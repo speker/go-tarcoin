@@ -23,9 +23,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
 )
 
 func TestULCAnnounceThresholdLes2(t *testing.T) { testULCAnnounceThreshold(t, 2) }

@@ -22,8 +22,8 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/signer/core"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/signer/core"
 )
 
 // ValidateTransaction does a number of checks on the supplied transaction, and
@@ -49,9 +49,9 @@ func (db *Database) ValidateTransaction(selector *string, tx *core.SendTxArgs) (
 	if tx.To == nil {
 		// Contract creation should contain sufficient data to deploy a contract. A
 		// typical error is omitting sender due to some quirk in the javascript call
-		// e.g. https://github.com/speker/go-tarcoin/issues/16106.
+		// e.g. https://github.com/ethereum/go-tarcoin/issues/16106.
 		if len(data) == 0 {
-			// Prevent sending ditap into black hole (show stopper)
+			// Prevent sending ether into black hole (show stopper)
 			if tx.Value.ToInt().Cmp(big.NewInt(0)) > 0 {
 				return nil, errors.New("transaction will create a contract with value but empty code")
 			}

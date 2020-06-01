@@ -22,9 +22,9 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/speker/go-tarcoin/cmd/utils"
-	"github.com/speker/go-tarcoin/console"
-	"github.com/speker/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/cmd/utils"
+	"github.com/ethereum/go-tarcoin/console"
+	"github.com/ethereum/go-tarcoin/crypto"
 	"gopkg.in/urfave/cli.v1"
 )
 

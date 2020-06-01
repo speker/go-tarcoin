@@ -24,25 +24,25 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/speker/go-tarcoin/core/state/snapshot"
+	"github.com/ethereum/go-tarcoin/core/state/snapshot"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/common/math"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/core/state"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/params"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/core/state"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/core/vm"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/rlp"
 	"golang.org/x/crypto/sha3"
 )
 
 // StateTest checks transaction processing without block context.
-// See https://github.com/speker/EIPs/issues/176 for the test format specification.
+// See https://github.com/ethereum/EIPs/issues/176 for the test format specification.
 type StateTest struct {
 	json stJSON
 }
@@ -272,7 +272,7 @@ func (tx *stTransaction) toMessage(ps stPostState) (core.Message, error) {
 	dataHex := tx.Data[ps.Indexes.Data]
 	valueHex := tx.Value[ps.Indexes.Value]
 	gasLimit := tx.GasLimit[ps.Indexes.Gas]
-	// Value, Data hex encoding is messy: https://github.com/speker/tests/issues/203
+	// Value, Data hex encoding is messy: https://github.com/ethereum/tests/issues/203
 	value := new(big.Int)
 	if valueHex != "0x" {
 		v, ok := math.ParseBig256(valueHex)

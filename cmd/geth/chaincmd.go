@@ -26,18 +26,18 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/speker/go-tarcoin/cmd/utils"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/console"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/core/state"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/trcn/downloader"
-	"github.com/speker/go-tarcoin/event"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/metrics"
-	"github.com/speker/go-tarcoin/trie"
+	"github.com/ethereum/go-tarcoin/cmd/utils"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/console"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/core/state"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/eth/downloader"
+	"github.com/ethereum/go-tarcoin/event"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/metrics"
+	"github.com/ethereum/go-tarcoin/trie"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -496,7 +496,7 @@ func removeDB(ctx *cli.Context) error {
 		log.Info("Full node state database missing", "path", path)
 	}
 	// Remove the full node ancient database
-	path = config.trcn.DatabaseFreezer
+	path = config.Eth.DatabaseFreezer
 	switch {
 	case path == "":
 		path = filepath.Join(stack.ResolvePath("chaindata"), "ancient")

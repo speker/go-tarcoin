@@ -23,10 +23,10 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/speker/go-tarcoin/core/state"
-	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/tests"
+	"github.com/ethereum/go-tarcoin/core/state"
+	"github.com/ethereum/go-tarcoin/core/vm"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/tests"
 
 	cli "gopkg.in/urfave/cli.v1"
 )

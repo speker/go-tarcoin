@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
 )
 
 var _ = (*logMarshaling)(nil)

@@ -19,9 +19,9 @@ package vm
 import (
 	"errors"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/math"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 // memoryGasCost calculates the quadratic gas for memory expansion. It does so

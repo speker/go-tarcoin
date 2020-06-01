@@ -28,18 +28,18 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/consensus/ethash"
-	"github.com/speker/go-tarcoin/trcn"
-	"github.com/speker/go-tarcoin/trcn/downloader"
-	"github.com/speker/go-tarcoin/les/flowcontrol"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/node"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/p2p/simulations"
-	"github.com/speker/go-tarcoin/p2p/simulations/adapters"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/consensus/ethash"
+	"github.com/ethereum/go-tarcoin/eth"
+	"github.com/ethereum/go-tarcoin/eth/downloader"
+	"github.com/ethereum/go-tarcoin/les/flowcontrol"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/node"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/simulations"
+	"github.com/ethereum/go-tarcoin/p2p/simulations/adapters"
+	"github.com/ethereum/go-tarcoin/rpc"
 	"github.com/mattn/go-colorable"
 )
 
@@ -493,18 +493,18 @@ func testSim(t *testing.T, serverCount, clientCount int, serverDir, clientDir []
 }
 
 func newLesClientService(ctx *adapters.ServiceContext) (node.Service, error) {
-	config := trcn.DefaultConfig
+	config := eth.DefaultConfig
 	config.SyncMode = downloader.LightSync
 	config.Ethash.PowMode = ethash.ModeFake
 	return New(ctx.NodeContext, &config)
 }
 
 func newLesServerService(ctx *adapters.ServiceContext) (node.Service, error) {
-	config := trcn.DefaultConfig
+	config := eth.DefaultConfig
 	config.SyncMode = downloader.FullSync
 	config.LightServ = testServerCapacity
 	config.LightPeers = testMaxClients
-	ethereum, err := trcn.New(ctx.NodeContext, &config)
+	ethereum, err := eth.New(ctx.NodeContext, &config)
 	if err != nil {
 		return nil, err
 	}

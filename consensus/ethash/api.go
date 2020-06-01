@@ -19,9 +19,9 @@ package ethash
 import (
 	"errors"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/core/types"
 )
 
 var errEthashStopped = errors.New("ethash stopped")

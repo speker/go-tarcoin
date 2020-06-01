@@ -26,8 +26,8 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // nodeDockerfile is the Dockerfile required to run an Ethereum node.
@@ -254,7 +254,7 @@ func checkNode(client *sshClient, network string, boot bool) (*nodeInfos, error)
 	// Assemble and return the useful infos
 	stats := &nodeInfos{
 		genesis:    genesis,
-		datadir:    infos.volumes["/root/.TarCoin"],
+		datadir:    infos.volumes["/root/.ethereum"],
 		ethashdir:  infos.volumes["/root/.ethash"],
 		port:       port,
 		peersTotal: totalPeers,

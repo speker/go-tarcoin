@@ -26,7 +26,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // makeWizard creates and returns a new puppeth wizard.

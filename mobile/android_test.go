@@ -47,7 +47,7 @@ public class AndroidTest extends InstrumentationTestCase {
 
 	public void testAccountManagement() {
 		// Create an encrypted keystore with light crypto parameters.
-		KeyStore ks = new KeyStore(getInstrumentation().getContext().getFilesDir() + "/keystore", geth.LightScryptN, geth.LightScryptP);
+		KeyStore ks = new KeyStore(getInstrumentation().getContext().getFilesDir() + "/keystore", Geth.LightScryptN, Geth.LightScryptP);
 
 		try {
 			// Create a new account with the specified encryption passphrase.
@@ -96,7 +96,7 @@ public class AndroidTest extends InstrumentationTestCase {
 
 		try {
 			// Start up a new inprocess node
-			Node node = new Node(getInstrumentation().getContext().getFilesDir() + "/.TarCoin", new NodeConfig());
+			Node node = new Node(getInstrumentation().getContext().getFilesDir() + "/.ethereum", new NodeConfig());
 			node.start();
 
 			// Retrieve some data via function calls (we don't really care about the results)
@@ -207,7 +207,7 @@ func TestAndroid(t *testing.T) {
 		}
 	}
 	// Generate the mobile bindings for Geth and add the tester class
-	gobind := exec.Command("gomobile", "bind", "-javapkg", "org.TarCoin", "github.com/speker/go-tarcoin/mobile")
+	gobind := exec.Command("gomobile", "bind", "-javapkg", "org.ethereum", "github.com/ethereum/go-tarcoin/mobile")
 	if output, err := gobind.CombinedOutput(); err != nil {
 		t.Logf("%s", output)
 		t.Fatalf("failed to run gomobile bind: %v", err)

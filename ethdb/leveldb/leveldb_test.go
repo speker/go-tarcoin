@@ -19,8 +19,8 @@ package leveldb
 import (
 	"testing"
 
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/ethdb/dbtest"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/ethdb/dbtest"
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/storage"
 )

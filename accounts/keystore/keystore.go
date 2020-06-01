@@ -17,7 +17,7 @@
 // Package keystore implements encrypted storage of secp256k1 private keys.
 //
 // Keys are stored as encrypted JSON files according to the Web3 Secret Storage specification.
-// See https://github.com/speker/wiki/wiki/Web3-Secret-Storage-Definition for more information.
+// See https://github.com/ethereum/wiki/wiki/Web3-Secret-Storage-Definition for more information.
 package keystore
 
 import (
@@ -32,11 +32,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/event"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/event"
 )
 
 var (

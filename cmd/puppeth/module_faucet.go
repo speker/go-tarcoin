@@ -26,8 +26,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // faucetDockerfile is the Dockerfile required to build a faucet container to

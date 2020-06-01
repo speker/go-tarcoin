@@ -22,7 +22,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/speker/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common"
 )
 
 type keyStorePlain struct {

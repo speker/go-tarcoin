@@ -25,7 +25,7 @@ import (
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/speker/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core"
 )
 
 // Tests the go-ethereum to Aleth chainspec conversion for the Stureby testnet.
@@ -43,7 +43,7 @@ func TestAlethSturebyConverter(t *testing.T) {
 		t.Fatalf("failed creating chainspec: %v", err)
 	}
 
-	expBlob, err := ioutil.ReadFile("testdata/stureby_altrcn.json")
+	expBlob, err := ioutil.ReadFile("testdata/stureby_aleth.json")
 	if err != nil {
 		t.Fatalf("could not read file: %v", err)
 	}

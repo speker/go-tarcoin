@@ -39,7 +39,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/speker/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/crypto"
 )
 
 func TestKDF(t *testing.T) {

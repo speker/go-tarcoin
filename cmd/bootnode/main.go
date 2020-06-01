@@ -24,14 +24,14 @@ import (
 	"net"
 	"os"
 
-	"github.com/speker/go-tarcoin/cmd/utils"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/p2p/discover"
-	"github.com/speker/go-tarcoin/p2p/discv5"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/p2p/nat"
-	"github.com/speker/go-tarcoin/p2p/netutil"
+	"github.com/ethereum/go-tarcoin/cmd/utils"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/p2p/discover"
+	"github.com/ethereum/go-tarcoin/p2p/discv5"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/nat"
+	"github.com/ethereum/go-tarcoin/p2p/netutil"
 )
 
 func main() {

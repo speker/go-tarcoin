@@ -23,9 +23,9 @@ import (
 	mrand "math/rand"
 	"testing"
 
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 func generateMessageParams() (*MessageParams, error) {

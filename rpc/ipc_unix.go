@@ -25,7 +25,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // ipcListen will create a Unix socket on the given endpoint.

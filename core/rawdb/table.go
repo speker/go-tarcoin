@@ -17,7 +17,7 @@
 package rawdb
 
 import (
-	"github.com/speker/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/ethdb"
 )
 
 // table is a wrapper around a database that prefixes each key access with a pre-

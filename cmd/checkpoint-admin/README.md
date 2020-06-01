@@ -10,7 +10,7 @@ In the LES protocol, there is an important concept called checkpoint. In simple 
 * Canonical hash trie root at checkpoint
 * Bloom trie root at checkpoint
 
-*For a more detailed introduction to checkpoint, please see the LES [spec](https://github.com/speker/devp2p/blob/master/caps/les.md).*
+*For a more detailed introduction to checkpoint, please see the LES [spec](https://github.com/ethereum/devp2p/blob/master/caps/les.md).*
 
 Using this information, light clients can skip all historical block headers when synchronizing data and start synchronization from this checkpoint. Therefore, as long as the light client can obtain some latest and correct checkpoints, the amount of data and time for synchronization will be greatly reduced.
 
@@ -18,7 +18,7 @@ However, from a security perspective, the most critical step in a synchronizatio
 
 #### Hardcoded checkpoint
 
-There are several hardcoded checkpoints in the [source code](https://github.com/speker/go-tarcoin/blob/master/params/config.go#L38) of the go-ethereum project. These checkpoints are updated by go-ethereum developers when new versions of software are released. Because light client users trust Geth developers to some extent, hardcoded checkpoints in the code can also be considered correct.
+There are several hardcoded checkpoints in the [source code](https://github.com/ethereum/go-tarcoin/blob/master/params/config.go#L38) of the go-ethereum project. These checkpoints are updated by go-ethereum developers when new versions of software are released. Because light client users trust Geth developers to some extent, hardcoded checkpoints in the code can also be considered correct.
 
 #### Checkpoint oracle
 
@@ -35,7 +35,7 @@ Checkpoint-admin is a command line tool designed for checkpoint oracle. Users ca
 #### Install
 
 ```shell
-go get github.com/speker/go-tarcoin/cmd/checkpoint-admin
+go get github.com/ethereum/go-tarcoin/cmd/checkpoint-admin
 ```
 
 #### Deploy
@@ -66,7 +66,7 @@ checkpoint-admin sign --clef <CLEF_ENDPOINT> --signer <SIGNER_TO_SIGN_CHECKPOINT
 checkpoint-admin sign --clef <CLEF_ENDPOINT> --signer <SIGNER_TO_SIGN_CHECKPOINT> --index <CHECKPOINT_INDEX> --hash <CHECKPOINT_HASH> --oracle <CHECKPOINT_ORACLE_ADDRESS>
 ```
 
-*CHECKPOINT_HASH is obtained based on this [calculation method](https://github.com/speker/go-tarcoin/blob/master/params/config.go#L251).*
+*CHECKPOINT_HASH is obtained based on this [calculation method](https://github.com/ethereum/go-tarcoin/blob/master/params/config.go#L251).*
 
 #### Publish
 

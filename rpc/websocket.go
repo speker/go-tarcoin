@@ -27,7 +27,7 @@ import (
 	"sync"
 
 	mapset "github.com/deckarep/golang-set"
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 	"github.com/gorilla/websocket"
 )
 

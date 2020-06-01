@@ -22,9 +22,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 // emptyCodeHash is used by create to ensure deployment is disallowed to already
@@ -75,9 +75,9 @@ func run(evm *EVM, contract *Contract, input []byte, readOnly bool) ([]byte, err
 // it shouldn't be modified.
 type Context struct {
 	// CanTransfer returns whether the account contains
-	// sufficient ditap to transfer the value
+	// sufficient ether to transfer the value
 	CanTransfer CanTransferFunc
-	// Transfer transfers ditap from one account to the other
+	// Transfer transfers ether from one account to the other
 	Transfer TransferFunc
 	// GetHash returns the hash corresponding to n
 	GetHash GetHashFunc
@@ -268,7 +268,7 @@ func (evm *EVM) CallCode(caller ContractRef, addr common.Address, input []byte, 
 		return nil, gas, ErrDepth
 	}
 	// Fail if we're trying to transfer more than the available balance
-	// Note although it's noop to transfer X ditap to caller itself. But
+	// Note although it's noop to transfer X ether to caller itself. But
 	// if caller doesn't have enough balance, it would be an error to allow
 	// over-charging itself. So the check here is necessary.
 	if !evm.Context.CanTransfer(evm.StateDB, caller.Address(), value) {

@@ -21,7 +21,7 @@ package geth
 import (
 	"errors"
 
-	"github.com/speker/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/p2p"
 )
 
 // NodeInfo represents pi short summary of the information known about the host.

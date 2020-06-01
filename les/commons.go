@@ -21,18 +21,18 @@ import (
 	"math/big"
 	"sync"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/trcn"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/les/checkpointoracle"
-	"github.com/speker/go-tarcoin/light"
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/p2p/discv5"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/eth"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/les/checkpointoracle"
+	"github.com/ethereum/go-tarcoin/light"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/p2p/discv5"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 func errResp(code errCode, format string, v ...interface{}) error {
@@ -57,7 +57,7 @@ type chainReader interface {
 // lesCommons contains fields needed by both server and client.
 type lesCommons struct {
 	genesis                      common.Hash
-	config                       *trcn.Config
+	config                       *eth.Config
 	chainConfig                  *params.ChainConfig
 	iConfig                      *light.IndexerConfig
 	chainDb                      ethdb.Database

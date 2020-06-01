@@ -29,11 +29,11 @@ import (
 	"testing/quick"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/ethdb/leveldb"
-	"github.com/speker/go-tarcoin/ethdb/memorydb"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/ethdb/leveldb"
+	"github.com/ethereum/go-tarcoin/ethdb/memorydb"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 func init() {
@@ -205,11 +205,11 @@ func TestDelete(t *testing.T) {
 	trie := newEmpty()
 	vals := []struct{ k, v string }{
 		{"do", "verb"},
-		{"ditap", "wookiedoo"},
+		{"ether", "wookiedoo"},
 		{"horse", "stallion"},
 		{"shaman", "horse"},
 		{"doge", "coin"},
-		{"ditap", ""},
+		{"ether", ""},
 		{"dog", "puppy"},
 		{"shaman", ""},
 	}
@@ -233,11 +233,11 @@ func TestEmptyValues(t *testing.T) {
 
 	vals := []struct{ k, v string }{
 		{"do", "verb"},
-		{"ditap", "wookiedoo"},
+		{"ether", "wookiedoo"},
 		{"horse", "stallion"},
 		{"shaman", "horse"},
 		{"doge", "coin"},
-		{"ditap", ""},
+		{"ether", ""},
 		{"dog", "puppy"},
 		{"shaman", ""},
 	}
@@ -256,7 +256,7 @@ func TestReplication(t *testing.T) {
 	trie := newEmpty()
 	vals := []struct{ k, v string }{
 		{"do", "verb"},
-		{"ditap", "wookiedoo"},
+		{"ether", "wookiedoo"},
 		{"horse", "stallion"},
 		{"shaman", "horse"},
 		{"doge", "coin"},
@@ -292,11 +292,11 @@ func TestReplication(t *testing.T) {
 	// perform some insertions on the new trie.
 	vals2 := []struct{ k, v string }{
 		{"do", "verb"},
-		{"ditap", "wookiedoo"},
+		{"ether", "wookiedoo"},
 		{"horse", "stallion"},
 		// {"shaman", "horse"},
 		// {"doge", "coin"},
-		// {"ditap", ""},
+		// {"ether", ""},
 		// {"dog", "puppy"},
 		// {"somethingveryoddindeedthis is", "myothernodedata"},
 		// {"shaman", ""},

@@ -19,7 +19,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // deployDashboard queries the user for various input on deploying a web-service

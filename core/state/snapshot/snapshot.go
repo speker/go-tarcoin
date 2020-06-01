@@ -24,12 +24,12 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/metrics"
-	"github.com/speker/go-tarcoin/trie"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/metrics"
+	"github.com/ethereum/go-tarcoin/trie"
 )
 
 var (

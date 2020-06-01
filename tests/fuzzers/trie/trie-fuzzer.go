@@ -21,9 +21,9 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/ethdb/memorydb"
-	"github.com/speker/go-tarcoin/trie"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/ethdb/memorydb"
+	"github.com/ethereum/go-tarcoin/trie"
 )
 
 // randTest performs random trie operations.

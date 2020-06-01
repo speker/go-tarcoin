@@ -20,20 +20,20 @@ import (
 	"crypto/ecdsa"
 	"time"
 
-	"github.com/speker/go-tarcoin/accounts/abi/bind"
-	"github.com/speker/go-tarcoin/common/mclock"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/trcn"
-	"github.com/speker/go-tarcoin/les/checkpointoracle"
-	"github.com/speker/go-tarcoin/les/flowcontrol"
-	"github.com/speker/go-tarcoin/light"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/p2p/discv5"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/p2p/enr"
-	"github.com/speker/go-tarcoin/params"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/accounts/abi/bind"
+	"github.com/ethereum/go-tarcoin/common/mclock"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/eth"
+	"github.com/ethereum/go-tarcoin/les/checkpointoracle"
+	"github.com/ethereum/go-tarcoin/les/flowcontrol"
+	"github.com/ethereum/go-tarcoin/light"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/p2p/discv5"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/enr"
+	"github.com/ethereum/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/rpc"
 )
 
 type LesServer struct {
@@ -57,7 +57,7 @@ type LesServer struct {
 	threadsBusy                            int // Request serving threads count when system is busy(block insertion).
 }
 
-func NewLesServer(e *trcn.Ethereum, config *trcn.Config) (*LesServer, error) {
+func NewLesServer(e *eth.Ethereum, config *eth.Config) (*LesServer, error) {
 	// Collect les protocol version information supported by local node.
 	lesTopics := make([]discv5.Topic, len(AdvertiseProtocolVersions))
 	for i, pv := range AdvertiseProtocolVersions {
@@ -132,19 +132,19 @@ func (s *LesServer) APIs() []rpc.API {
 	return []rpc.API{
 		{
 			Namespace: "les",
-			Version:   "1.2",
+			Version:   "1.0",
 			Service:   NewPrivateLightAPI(&s.lesCommons),
 			Public:    false,
 		},
 		{
 			Namespace: "les",
-			Version:   "1.2",
+			Version:   "1.0",
 			Service:   NewPrivateLightServerAPI(s),
 			Public:    false,
 		},
 		{
 			Namespace: "debug",
-			Version:   "1.2",
+			Version:   "1.0",
 			Service:   NewPrivateDebugAPI(s),
 			Public:    false,
 		},

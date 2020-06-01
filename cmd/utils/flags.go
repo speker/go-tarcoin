@@ -32,36 +32,36 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/accounts/keystore"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/fdlimit"
-	"github.com/speker/go-tarcoin/consensus"
-	"github.com/speker/go-tarcoin/consensus/clique"
-	"github.com/speker/go-tarcoin/consensus/ethash"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/trcn"
-	"github.com/speker/go-tarcoin/trcn/downloader"
-	"github.com/speker/go-tarcoin/trcn/gasprice"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/ethstats"
-	"github.com/speker/go-tarcoin/graphql"
-	"github.com/speker/go-tarcoin/les"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/metrics"
-	"github.com/speker/go-tarcoin/metrics/influxdb"
-	"github.com/speker/go-tarcoin/miner"
-	"github.com/speker/go-tarcoin/node"
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/p2p/discv5"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/p2p/nat"
-	"github.com/speker/go-tarcoin/p2p/netutil"
-	"github.com/speker/go-tarcoin/params"
-	"github.com/speker/go-tarcoin/rpc"
-	whisper "github.com/speker/go-tarcoin/whisper/whisperv6"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/fdlimit"
+	"github.com/ethereum/go-tarcoin/consensus"
+	"github.com/ethereum/go-tarcoin/consensus/clique"
+	"github.com/ethereum/go-tarcoin/consensus/ethash"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/vm"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/eth"
+	"github.com/ethereum/go-tarcoin/eth/downloader"
+	"github.com/ethereum/go-tarcoin/eth/gasprice"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/ethstats"
+	"github.com/ethereum/go-tarcoin/graphql"
+	"github.com/ethereum/go-tarcoin/les"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/metrics"
+	"github.com/ethereum/go-tarcoin/metrics/influxdb"
+	"github.com/ethereum/go-tarcoin/miner"
+	"github.com/ethereum/go-tarcoin/node"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/p2p/discv5"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/nat"
+	"github.com/ethereum/go-tarcoin/p2p/netutil"
+	"github.com/ethereum/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/rpc"
+	whisper "github.com/ethereum/go-tarcoin/whisper/whisperv6"
 	pcsclite "github.com/gballet/go-libpcsclite"
 	cli "gopkg.in/urfave/cli.v1"
 )
@@ -163,7 +163,7 @@ var (
 	NetworkIdFlag = cli.Uint64Flag{
 		Name:  "networkid",
 		Usage: "Network identifier (integer, 1=Frontier, 3=Ropsten, 4=Rinkeby, 5=Görli)",
-		Value: trcn.DefaultConfig.NetworkId,
+		Value: eth.DefaultConfig.NetworkId,
 	}
 	GoerliFlag = cli.BoolFlag{
 		Name:  "goerli",
@@ -214,7 +214,7 @@ var (
 		Name:  "nocode",
 		Usage: "Exclude contract code (save db lookups)",
 	}
-	defaultSyncMode = trcn.DefaultConfig.SyncMode
+	defaultSyncMode = eth.DefaultConfig.SyncMode
 	SyncModeFlag    = TextMarshalerFlag{
 		Name:  "syncmode",
 		Usage: `Blockchain sync mode ("fast", "full", or "light")`,
@@ -246,32 +246,32 @@ var (
 	LightServeFlag = cli.IntFlag{
 		Name:  "light.serve",
 		Usage: "Maximum percentage of time allowed for serving LES requests (multi-threaded processing allows values over 100)",
-		Value: trcn.DefaultConfig.LightServ,
+		Value: eth.DefaultConfig.LightServ,
 	}
 	LightIngressFlag = cli.IntFlag{
 		Name:  "light.ingress",
 		Usage: "Incoming bandwidth limit for serving light clients (kilobytes/sec, 0 = unlimited)",
-		Value: trcn.DefaultConfig.LightIngress,
+		Value: eth.DefaultConfig.LightIngress,
 	}
 	LightEgressFlag = cli.IntFlag{
 		Name:  "light.egress",
 		Usage: "Outgoing bandwidth limit for serving light clients (kilobytes/sec, 0 = unlimited)",
-		Value: trcn.DefaultConfig.LightEgress,
+		Value: eth.DefaultConfig.LightEgress,
 	}
 	LightMaxPeersFlag = cli.IntFlag{
 		Name:  "light.maxpeers",
 		Usage: "Maximum number of light clients to serve, or light servers to attach to",
-		Value: trcn.DefaultConfig.LightPeers,
+		Value: eth.DefaultConfig.LightPeers,
 	}
 	UltraLightServersFlag = cli.StringFlag{
 		Name:  "ulc.servers",
 		Usage: "List of trusted ultra-light servers",
-		Value: strings.Join(trcn.DefaultConfig.UltraLightServers, ","),
+		Value: strings.Join(eth.DefaultConfig.UltraLightServers, ","),
 	}
 	UltraLightFractionFlag = cli.IntFlag{
 		Name:  "ulc.fraction",
 		Usage: "Minimum % of trusted ultra-light servers required to announce a new head",
-		Value: trcn.DefaultConfig.UltraLightFraction,
+		Value: eth.DefaultConfig.UltraLightFraction,
 	}
 	UltraLightOnlyAnnounceFlag = cli.BoolFlag{
 		Name:  "ulc.onlyannounce",
@@ -285,12 +285,12 @@ var (
 	EthashCachesInMemoryFlag = cli.IntFlag{
 		Name:  "ethash.cachesinmem",
 		Usage: "Number of recent ethash caches to keep in memory (16MB each)",
-		Value: trcn.DefaultConfig.Ethash.CachesInMem,
+		Value: eth.DefaultConfig.Ethash.CachesInMem,
 	}
 	EthashCachesOnDiskFlag = cli.IntFlag{
 		Name:  "ethash.cachesondisk",
 		Usage: "Number of recent ethash caches to keep on disk (16MB each)",
-		Value: trcn.DefaultConfig.Ethash.CachesOnDisk,
+		Value: eth.DefaultConfig.Ethash.CachesOnDisk,
 	}
 	EthashCachesLockMmapFlag = cli.BoolFlag{
 		Name:  "ethash.cacheslockmmap",
@@ -299,17 +299,17 @@ var (
 	EthashDatasetDirFlag = DirectoryFlag{
 		Name:  "ethash.dagdir",
 		Usage: "Directory to store the ethash mining DAGs",
-		Value: DirectoryString(trcn.DefaultConfig.Ethash.DatasetDir),
+		Value: DirectoryString(eth.DefaultConfig.Ethash.DatasetDir),
 	}
 	EthashDatasetsInMemoryFlag = cli.IntFlag{
 		Name:  "ethash.dagsinmem",
 		Usage: "Number of recent ethash mining DAGs to keep in memory (1+GB each)",
-		Value: trcn.DefaultConfig.Ethash.DatasetsInMem,
+		Value: eth.DefaultConfig.Ethash.DatasetsInMem,
 	}
 	EthashDatasetsOnDiskFlag = cli.IntFlag{
 		Name:  "ethash.dagsondisk",
 		Usage: "Number of recent ethash mining DAGs to keep on disk (1+GB each)",
-		Value: trcn.DefaultConfig.Ethash.DatasetsOnDisk,
+		Value: eth.DefaultConfig.Ethash.DatasetsOnDisk,
 	}
 	EthashDatasetsLockMmapFlag = cli.BoolFlag{
 		Name:  "ethash.dagslockmmap",
@@ -337,37 +337,37 @@ var (
 	TxPoolPriceLimitFlag = cli.Uint64Flag{
 		Name:  "txpool.pricelimit",
 		Usage: "Minimum gas price limit to enforce for acceptance into the pool",
-		Value: trcn.DefaultConfig.TxPool.PriceLimit,
+		Value: eth.DefaultConfig.TxPool.PriceLimit,
 	}
 	TxPoolPriceBumpFlag = cli.Uint64Flag{
 		Name:  "txpool.pricebump",
 		Usage: "Price bump percentage to replace an already existing transaction",
-		Value: trcn.DefaultConfig.TxPool.PriceBump,
+		Value: eth.DefaultConfig.TxPool.PriceBump,
 	}
 	TxPoolAccountSlotsFlag = cli.Uint64Flag{
 		Name:  "txpool.accountslots",
 		Usage: "Minimum number of executable transaction slots guaranteed per account",
-		Value: trcn.DefaultConfig.TxPool.AccountSlots,
+		Value: eth.DefaultConfig.TxPool.AccountSlots,
 	}
 	TxPoolGlobalSlotsFlag = cli.Uint64Flag{
 		Name:  "txpool.globalslots",
 		Usage: "Maximum number of executable transaction slots for all accounts",
-		Value: trcn.DefaultConfig.TxPool.GlobalSlots,
+		Value: eth.DefaultConfig.TxPool.GlobalSlots,
 	}
 	TxPoolAccountQueueFlag = cli.Uint64Flag{
 		Name:  "txpool.accountqueue",
 		Usage: "Maximum number of non-executable transaction slots permitted per account",
-		Value: trcn.DefaultConfig.TxPool.AccountQueue,
+		Value: eth.DefaultConfig.TxPool.AccountQueue,
 	}
 	TxPoolGlobalQueueFlag = cli.Uint64Flag{
 		Name:  "txpool.globalqueue",
 		Usage: "Maximum number of non-executable transaction slots for all accounts",
-		Value: trcn.DefaultConfig.TxPool.GlobalQueue,
+		Value: eth.DefaultConfig.TxPool.GlobalQueue,
 	}
 	TxPoolLifetimeFlag = cli.DurationFlag{
 		Name:  "txpool.lifetime",
 		Usage: "Maximum amount of time non-executable transaction are queued",
-		Value: trcn.DefaultConfig.TxPool.Lifetime,
+		Value: eth.DefaultConfig.TxPool.Lifetime,
 	}
 	// Performance tuning settings
 	CacheFlag = cli.IntFlag{
@@ -416,17 +416,17 @@ var (
 	MinerGasTargetFlag = cli.Uint64Flag{
 		Name:  "miner.gastarget",
 		Usage: "Target gas floor for mined blocks",
-		Value: trcn.DefaultConfig.Miner.GasFloor,
+		Value: eth.DefaultConfig.Miner.GasFloor,
 	}
 	MinerGasLimitFlag = cli.Uint64Flag{
 		Name:  "miner.gaslimit",
 		Usage: "Target gas ceiling for mined blocks",
-		Value: trcn.DefaultConfig.Miner.GasCeil,
+		Value: eth.DefaultConfig.Miner.GasCeil,
 	}
 	MinerGasPriceFlag = BigFlag{
 		Name:  "miner.gasprice",
 		Usage: "Minimum gas price for mining a transaction",
-		Value: trcn.DefaultConfig.Miner.GasPrice,
+		Value: eth.DefaultConfig.Miner.GasPrice,
 	}
 	MinerEtherbaseFlag = cli.StringFlag{
 		Name:  "miner.etherbase",
@@ -440,7 +440,7 @@ var (
 	MinerRecommitIntervalFlag = cli.DurationFlag{
 		Name:  "miner.recommit",
 		Usage: "Time interval to recreate the block being mined",
-		Value: trcn.DefaultConfig.Miner.Recommit,
+		Value: eth.DefaultConfig.Miner.Recommit,
 	}
 	MinerNoVerfiyFlag = cli.BoolFlag{
 		Name:  "miner.noverify",
@@ -644,12 +644,12 @@ var (
 	GpoBlocksFlag = cli.IntFlag{
 		Name:  "gpo.blocks",
 		Usage: "Number of recent blocks to check for gas prices",
-		Value: trcn.DefaultConfig.GPO.Blocks,
+		Value: eth.DefaultConfig.GPO.Blocks,
 	}
 	GpoPercentileFlag = cli.IntFlag{
 		Name:  "gpo.percentile",
 		Usage: "Suggested gas price is the given percentile of a set of recent transaction gas prices",
-		Value: trcn.DefaultConfig.GPO.Percentile,
+		Value: eth.DefaultConfig.GPO.Percentile,
 	}
 	WhisperEnabledFlag = cli.BoolFlag{
 		Name:  "shh",
@@ -1000,7 +1000,7 @@ func setIPC(ctx *cli.Context, cfg *node.Config) {
 }
 
 // setLes configures the les server and ultra light client settings from the command line flags.
-func setLes(ctx *cli.Context, cfg *trcn.Config) {
+func setLes(ctx *cli.Context, cfg *eth.Config) {
 	if ctx.GlobalIsSet(LegacyLightServFlag.Name) {
 		cfg.LightServ = ctx.GlobalInt(LegacyLightServFlag.Name)
 		log.Warn("The flag --lightserv is deprecated and will be removed in the future, please use --light.serve")
@@ -1028,8 +1028,8 @@ func setLes(ctx *cli.Context, cfg *trcn.Config) {
 		cfg.UltraLightFraction = ctx.GlobalInt(UltraLightFractionFlag.Name)
 	}
 	if cfg.UltraLightFraction <= 0 && cfg.UltraLightFraction > 100 {
-		log.Error("Ultra light fraction is invalid", "had", cfg.UltraLightFraction, "updated", trcn.DefaultConfig.UltraLightFraction)
-		cfg.UltraLightFraction = trcn.DefaultConfig.UltraLightFraction
+		log.Error("Ultra light fraction is invalid", "had", cfg.UltraLightFraction, "updated", eth.DefaultConfig.UltraLightFraction)
+		cfg.UltraLightFraction = eth.DefaultConfig.UltraLightFraction
 	}
 	if ctx.GlobalIsSet(UltraLightOnlyAnnounceFlag.Name) {
 		cfg.UltraLightOnlyAnnounce = ctx.GlobalBool(UltraLightOnlyAnnounceFlag.Name)
@@ -1077,7 +1077,7 @@ func MakeAddress(ks *keystore.KeyStore, account string) (accounts.Account, error
 
 // setEtherbase retrieves the etherbase either from the directly specified
 // command line flags or from the keystore if CLI indexed.
-func setEtherbase(ctx *cli.Context, ks *keystore.KeyStore, cfg *trcn.Config) {
+func setEtherbase(ctx *cli.Context, ks *keystore.KeyStore, cfg *eth.Config) {
 	// Extract the current etherbase, new flag overriding legacy one
 	var etherbase string
 	if ctx.GlobalIsSet(LegacyMinerEtherbaseFlag.Name) {
@@ -1328,7 +1328,7 @@ func setTxPool(ctx *cli.Context, cfg *core.TxPoolConfig) {
 	}
 }
 
-func setEthash(ctx *cli.Context, cfg *trcn.Config) {
+func setEthash(ctx *cli.Context, cfg *eth.Config) {
 	if ctx.GlobalIsSet(EthashCacheDirFlag.Name) {
 		cfg.Ethash.CacheDir = ctx.GlobalString(EthashCacheDirFlag.Name)
 	}
@@ -1391,7 +1391,7 @@ func setMiner(ctx *cli.Context, cfg *miner.Config) {
 	}
 }
 
-func setWhitelist(ctx *cli.Context, cfg *trcn.Config) {
+func setWhitelist(ctx *cli.Context, cfg *eth.Config) {
 	whitelist := ctx.GlobalString(WhitelistFlag.Name)
 	if whitelist == "" {
 		return
@@ -1468,8 +1468,8 @@ func SetShhConfig(ctx *cli.Context, stack *node.Node, cfg *whisper.Config) {
 	}
 }
 
-// SetEthConfig applies trcn-related command line flags to the config.
-func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *trcn.Config) {
+// SetEthConfig applies eth-related command line flags to the config.
+func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *eth.Config) {
 	// Avoid conflicting network flags
 	CheckExclusive(ctx, DeveloperFlag, LegacyTestnetFlag, RopstenFlag, RinkebyFlag, GoerliFlag)
 	CheckExclusive(ctx, LegacyLightServFlag, LightServeFlag, SyncModeFlag, "light")
@@ -1611,7 +1611,7 @@ func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *trcn.Config) {
 
 // setDNSDiscoveryDefaults configures DNS discovery with the given URL if
 // no URLs are set.
-func setDNSDiscoveryDefaults(cfg *trcn.Config, url string) {
+func setDNSDiscoveryDefaults(cfg *eth.Config, url string) {
 	if cfg.DiscoveryURLs != nil {
 		return
 	}
@@ -1619,7 +1619,7 @@ func setDNSDiscoveryDefaults(cfg *trcn.Config, url string) {
 }
 
 // RegisterEthService adds an Ethereum client to the stack.
-func RegisterEthService(stack *node.Node, cfg *trcn.Config) {
+func RegisterEthService(stack *node.Node, cfg *eth.Config) {
 	var err error
 	if cfg.SyncMode == downloader.LightSync {
 		err = stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
@@ -1627,7 +1627,7 @@ func RegisterEthService(stack *node.Node, cfg *trcn.Config) {
 		})
 	} else {
 		err = stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-			fullNode, err := trcn.New(ctx, cfg)
+			fullNode, err := eth.New(ctx, cfg)
 			if fullNode != nil && cfg.LightServ > 0 {
 				ls, _ := les.NewLesServer(fullNode, cfg)
 				fullNode.AddLesServer(ls)
@@ -1653,8 +1653,8 @@ func RegisterShhService(stack *node.Node, cfg *whisper.Config) {
 // the given node.
 func RegisterEthStatsService(stack *node.Node, url string) {
 	if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-		// Retrieve both trcn and les services
-		var ethServ *trcn.Ethereum
+		// Retrieve both eth and les services
+		var ethServ *eth.Ethereum
 		ctx.Service(&ethServ)
 
 		var lesServ *les.LightEthereum
@@ -1671,7 +1671,7 @@ func RegisterEthStatsService(stack *node.Node, url string) {
 func RegisterGraphQLService(stack *node.Node, endpoint string, cors, vhosts []string, timeouts rpc.HTTPTimeouts) {
 	if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
 		// Try to construct the GraphQL service backed by a full node
-		var ethServ *trcn.Ethereum
+		var ethServ *eth.Ethereum
 		if err := ctx.Service(&ethServ); err == nil {
 			return graphql.New(ethServ.APIBackend, endpoint, cors, vhosts, timeouts)
 		}
@@ -1772,14 +1772,14 @@ func MakeChain(ctx *cli.Context, stack *node.Node, readOnly bool) (chain *core.B
 		engine = ethash.NewFaker()
 		if !ctx.GlobalBool(FakePoWFlag.Name) {
 			engine = ethash.New(ethash.Config{
-				CacheDir:         stack.ResolvePath(trcn.DefaultConfig.Ethash.CacheDir),
-				CachesInMem:      trcn.DefaultConfig.Ethash.CachesInMem,
-				CachesOnDisk:     trcn.DefaultConfig.Ethash.CachesOnDisk,
-				CachesLockMmap:   trcn.DefaultConfig.Ethash.CachesLockMmap,
-				DatasetDir:       stack.ResolvePath(trcn.DefaultConfig.Ethash.DatasetDir),
-				DatasetsInMem:    trcn.DefaultConfig.Ethash.DatasetsInMem,
-				DatasetsOnDisk:   trcn.DefaultConfig.Ethash.DatasetsOnDisk,
-				DatasetsLockMmap: trcn.DefaultConfig.Ethash.DatasetsLockMmap,
+				CacheDir:         stack.ResolvePath(eth.DefaultConfig.Ethash.CacheDir),
+				CachesInMem:      eth.DefaultConfig.Ethash.CachesInMem,
+				CachesOnDisk:     eth.DefaultConfig.Ethash.CachesOnDisk,
+				CachesLockMmap:   eth.DefaultConfig.Ethash.CachesLockMmap,
+				DatasetDir:       stack.ResolvePath(eth.DefaultConfig.Ethash.DatasetDir),
+				DatasetsInMem:    eth.DefaultConfig.Ethash.DatasetsInMem,
+				DatasetsOnDisk:   eth.DefaultConfig.Ethash.DatasetsOnDisk,
+				DatasetsLockMmap: eth.DefaultConfig.Ethash.DatasetsLockMmap,
 			}, nil, false)
 		}
 	}
@@ -1787,12 +1787,12 @@ func MakeChain(ctx *cli.Context, stack *node.Node, readOnly bool) (chain *core.B
 		Fatalf("--%s must be either 'full' or 'archive'", GCModeFlag.Name)
 	}
 	cache := &core.CacheConfig{
-		TrieCleanLimit:      trcn.DefaultConfig.TrieCleanCache,
+		TrieCleanLimit:      eth.DefaultConfig.TrieCleanCache,
 		TrieCleanNoPrefetch: ctx.GlobalBool(CacheNoPrefetchFlag.Name),
-		TrieDirtyLimit:      trcn.DefaultConfig.TrieDirtyCache,
+		TrieDirtyLimit:      eth.DefaultConfig.TrieDirtyCache,
 		TrieDirtyDisabled:   ctx.GlobalString(GCModeFlag.Name) == "archive",
-		TrieTimeLimit:       trcn.DefaultConfig.TrieTimeout,
-		SnapshotLimit:       trcn.DefaultConfig.SnapshotCache,
+		TrieTimeLimit:       eth.DefaultConfig.TrieTimeout,
+		SnapshotLimit:       eth.DefaultConfig.SnapshotCache,
 	}
 	if !ctx.GlobalIsSet(SnapshotFlag.Name) {
 		cache.SnapshotLimit = 0 // Disabled

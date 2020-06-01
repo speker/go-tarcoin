@@ -19,8 +19,8 @@ package runtime_test
 import (
 	"fmt"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/vm/runtime"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/vm/runtime"
 )
 
 func ExampleExecute() {

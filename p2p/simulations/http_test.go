@@ -29,13 +29,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/event"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/node"
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/p2p/simulations/adapters"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/event"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/node"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/simulations/adapters"
+	"github.com/ethereum/go-tarcoin/rpc"
 	"github.com/mattn/go-colorable"
 )
 
@@ -118,7 +118,7 @@ func (t *testService) Protocols() []p2p.Protocol {
 func (t *testService) APIs() []rpc.API {
 	return []rpc.API{{
 		Namespace: "test",
-		Version:   "1.2",
+		Version:   "1.0",
 		Service: &TestAPI{
 			state:     &t.state,
 			peerCount: &t.peerCount,

@@ -22,13 +22,13 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	math2 "github.com/speker/go-tarcoin/common/math"
-	"github.com/speker/go-tarcoin/consensus/ethash"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	math2 "github.com/ethereum/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/consensus/ethash"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 // alethGenesisSpec represents the genesis specification format used by the
@@ -386,11 +386,11 @@ func newParityChainSpec(network string, genesis *core.Genesis, bootnodes []strin
 	spec.Engine.Ethash.Params.HomesteadTransition = hexutil.Uint64(genesis.Config.HomesteadBlock.Uint64())
 
 	// Tangerine Whistle : 150
-	// https://github.com/speker/EIPs/blob/master/EIPS/eip-608.md
+	// https://github.com/ethereum/EIPs/blob/master/EIPS/eip-608.md
 	spec.Params.EIP150Transition = hexutil.Uint64(genesis.Config.EIP150Block.Uint64())
 
 	// Spurious Dragon: 155, 160, 161, 170
-	// https://github.com/speker/EIPs/blob/master/EIPS/eip-607.md
+	// https://github.com/ethereum/EIPs/blob/master/EIPS/eip-607.md
 	spec.Params.EIP155Transition = hexutil.Uint64(genesis.Config.EIP155Block.Uint64())
 	spec.Params.EIP160Transition = hexutil.Uint64(genesis.Config.EIP155Block.Uint64())
 	spec.Params.EIP161abcTransition = hexutil.Uint64(genesis.Config.EIP158Block.Uint64())

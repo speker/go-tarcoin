@@ -41,23 +41,23 @@ import (
 	"sync"
 	"time"
 
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/accounts/keystore"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/trcn"
-	"github.com/speker/go-tarcoin/trcn/downloader"
-	"github.com/speker/go-tarcoin/ethclient"
-	"github.com/speker/go-tarcoin/ethstats"
-	"github.com/speker/go-tarcoin/les"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/node"
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/p2p/discv5"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/p2p/nat"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/eth"
+	"github.com/ethereum/go-tarcoin/eth/downloader"
+	"github.com/ethereum/go-tarcoin/ethclient"
+	"github.com/ethereum/go-tarcoin/ethstats"
+	"github.com/ethereum/go-tarcoin/les"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/node"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/p2p/discv5"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/nat"
+	"github.com/ethereum/go-tarcoin/params"
 	"github.com/gorilla/websocket"
 )
 
@@ -85,7 +85,7 @@ var (
 )
 
 var (
-	ditap = new(big.Int).Exp(big.NewInt(10), big.NewInt(18), nil)
+	ether = new(big.Int).Exp(big.NewInt(10), big.NewInt(18), nil)
 )
 
 var (
@@ -237,7 +237,7 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 	}
 	// Assemble the Ethereum light client protocol
 	if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-		cfg := trcn.DefaultConfig
+		cfg := eth.DefaultConfig
 		cfg.SyncMode = downloader.LightSync
 		cfg.NetworkId = network
 		cfg.Genesis = genesis
@@ -364,7 +364,7 @@ func (f *faucet) apiHandler(w http.ResponseWriter, r *http.Request) {
 	reqs := f.reqs
 	f.lock.RUnlock()
 	if err = send(conn, map[string]interface{}{
-		"funds":    new(big.Int).Div(balance, ditap),
+		"funds":    new(big.Int).Div(balance, ether),
 		"funded":   nonce,
 		"peers":    f.stack.Server().PeerCount(),
 		"requests": reqs,
@@ -470,7 +470,7 @@ func (f *faucet) apiHandler(w http.ResponseWriter, r *http.Request) {
 			username, avatar, address, err = authNoAuth(msg.URL)
 		default:
 			//lint:ignore ST1005 This error is to be displayed in the browser
-			err = errors.New("Something funky happened, please open an issue at https://github.com/speker/go-tarcoin/issues")
+			err = errors.New("Something funky happened, please open an issue at https://github.com/ethereum/go-tarcoin/issues")
 		}
 		if err != nil {
 			if err = sendError(conn, err); err != nil {
@@ -489,7 +489,7 @@ func (f *faucet) apiHandler(w http.ResponseWriter, r *http.Request) {
 		)
 		if timeout = f.timeouts[username]; time.Now().After(timeout) {
 			// User wasn't funded recently, create the funding transaction
-			amount := new(big.Int).Mul(big.NewInt(int64(*payoutFlag)), ditap)
+			amount := new(big.Int).Mul(big.NewInt(int64(*payoutFlag)), ether)
 			amount = new(big.Int).Mul(amount, new(big.Int).Exp(big.NewInt(5), big.NewInt(int64(msg.Tier)), nil))
 			amount = new(big.Int).Div(amount, new(big.Int).Exp(big.NewInt(2), big.NewInt(int64(msg.Tier)), nil))
 
@@ -616,7 +616,7 @@ func (f *faucet) loop() {
 			f.lock.RLock()
 			log.Info("Updated faucet state", "number", head.Number, "hash", head.Hash(), "age", common.PrettyAge(timestamp), "balance", f.balance, "nonce", f.nonce, "price", f.price)
 
-			balance := new(big.Int).Div(f.balance, ditap)
+			balance := new(big.Int).Div(f.balance, ether)
 			peers := f.stack.Server().PeerCount()
 
 			for _, conn := range f.conns {

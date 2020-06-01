@@ -22,9 +22,9 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/p2p/nat"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/p2p/nat"
+	"github.com/ethereum/go-tarcoin/rpc"
 )
 
 const (
@@ -74,7 +74,7 @@ func DefaultDataDir() string {
 			}
 			return filepath.Join(appdata, "Ethereum")
 		default:
-			return filepath.Join(home, ".TarCoin")
+			return filepath.Join(home, ".ethereum")
 		}
 	}
 	// As we cannot guess a stable location, return empty and handle later

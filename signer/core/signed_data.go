@@ -30,14 +30,14 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/common/math"
-	"github.com/speker/go-tarcoin/consensus/clique"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/consensus/clique"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 type SigFormat struct {
@@ -611,7 +611,7 @@ func (api *SignerAPI) EcRecover(ctx context.Context, data hexutil.Bytes, sig hex
 	// Note, the signature must conform to the secp256k1 curve R, S and V values, where
 	// the V value must be be 27 or 28 for legacy reasons.
 	//
-	// https://github.com/speker/go-tarcoin/wiki/Management-APIs#personal_ecRecover
+	// https://github.com/ethereum/go-tarcoin/wiki/Management-APIs#personal_ecRecover
 	if len(sig) != 65 {
 		return common.Address{}, fmt.Errorf("signature must be 65 bytes long")
 	}

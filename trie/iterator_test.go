@@ -22,15 +22,15 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/ethdb/memorydb"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/ethdb/memorydb"
 )
 
 func TestIterator(t *testing.T) {
 	trie := newEmpty()
 	vals := []struct{ k, v string }{
 		{"do", "verb"},
-		{"ditap", "wookiedoo"},
+		{"ether", "wookiedoo"},
 		{"horse", "stallion"},
 		{"shaman", "horse"},
 		{"doge", "coin"},

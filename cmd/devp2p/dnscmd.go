@@ -25,11 +25,11 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/speker/go-tarcoin/accounts/keystore"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/console"
-	"github.com/speker/go-tarcoin/p2p/dnsdisc"
-	"github.com/speker/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/console"
+	"github.com/ethereum/go-tarcoin/p2p/dnsdisc"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
 	cli "gopkg.in/urfave/cli.v1"
 )
 

@@ -26,8 +26,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/speker/go-tarcoin/common/bitutil"
-	"github.com/speker/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/common/bitutil"
+	"github.com/ethereum/go-tarcoin/crypto"
 )
 
 // bloomIndexes represents the bit indexes inside the bloom filter that belong

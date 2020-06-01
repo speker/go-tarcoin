@@ -19,8 +19,8 @@ package main
 import (
 	"time"
 
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
 )
 
 type crawler struct {

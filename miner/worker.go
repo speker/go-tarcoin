@@ -19,22 +19,21 @@ package miner
 import (
 	"bytes"
 	"errors"
-	"github.com/speker/go-tarcoin/trcn"
 	"math/big"
 	"sync"
 	"sync/atomic"
 	"time"
 
 	mapset "github.com/deckarep/golang-set"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/consensus"
-	"github.com/speker/go-tarcoin/consensus/misc"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/state"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/event"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/consensus"
+	"github.com/ethereum/go-tarcoin/consensus/misc"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/state"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/event"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 const (
@@ -187,18 +186,18 @@ type worker struct {
 	resubmitHook func(time.Duration, time.Duration) // Method to call upon updating resubmitting interval.
 }
 
-func newWorker(config *Config, chainConfig *params.ChainConfig, engine consensus.Engine, trcn Backend, mux *event.TypeMux, isLocalBlock func(*types.Block) bool, init bool) *worker {
+func newWorker(config *Config, chainConfig *params.ChainConfig, engine consensus.Engine, eth Backend, mux *event.TypeMux, isLocalBlock func(*types.Block) bool, init bool) *worker {
 	worker := &worker{
 		config:             config,
 		chainConfig:        chainConfig,
 		engine:             engine,
-		eth:                trcn,
+		eth:                eth,
 		mux:                mux,
-		chain:              trcn.BlockChain(),
+		chain:              eth.BlockChain(),
 		isLocalBlock:       isLocalBlock,
 		localUncles:        make(map[common.Hash]*types.Block),
 		remoteUncles:       make(map[common.Hash]*types.Block),
-		unconfirmed:        newUnconfirmedBlocks(trcn.BlockChain(), miningLogAtDepth),
+		unconfirmed:        newUnconfirmedBlocks(eth.BlockChain(), miningLogAtDepth),
 		pendingTasks:       make(map[common.Hash]*task),
 		txsCh:              make(chan core.NewTxsEvent, txChanSize),
 		chainHeadCh:        make(chan core.ChainHeadEvent, chainHeadChanSize),
@@ -212,10 +211,10 @@ func newWorker(config *Config, chainConfig *params.ChainConfig, engine consensus
 		resubmitAdjustCh:   make(chan *intervalAdjust, resubmitAdjustChanSize),
 	}
 	// Subscribe NewTxsEvent for tx pool
-	worker.txsSub = trcn.TxPool().SubscribeNewTxsEvent(worker.txsCh)
+	worker.txsSub = eth.TxPool().SubscribeNewTxsEvent(worker.txsCh)
 	// Subscribe events for blockchain
-	worker.chainHeadSub = trcn.BlockChain().SubscribeChainHeadEvent(worker.chainHeadCh)
-	worker.chainSideSub = trcn.BlockChain().SubscribeChainSideEvent(worker.chainSideCh)
+	worker.chainHeadSub = eth.BlockChain().SubscribeChainHeadEvent(worker.chainHeadCh)
+	worker.chainSideSub = eth.BlockChain().SubscribeChainSideEvent(worker.chainSideCh)
 
 	// Sanitize recommit interval if the user-specified one is too short.
 	recommit := worker.config.Recommit
@@ -936,7 +935,7 @@ func (w *worker) commitNewWork(interrupt *int32, noempty bool, timestamp int64) 
 	}
 
 	// Fill the block with all available pending transactions.
-	pending, err := w.trcn.TxPool().Pending()
+	pending, err := w.eth.TxPool().Pending()
 	if err != nil {
 		log.Error("Failed to fetch pending transactions", "err", err)
 		return
@@ -950,7 +949,7 @@ func (w *worker) commitNewWork(interrupt *int32, noempty bool, timestamp int64) 
 	}
 	// Split the pending transactions into locals and remotes
 	localTxs, remoteTxs := make(map[common.Address]types.Transactions), pending
-	for _, account := range w.trcn.TxPool().Locals() {
+	for _, account := range w.eth.TxPool().Locals() {
 		if txs := remoteTxs[account]; len(txs) > 0 {
 			delete(remoteTxs, account)
 			localTxs[account] = txs

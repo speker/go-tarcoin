@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/speker/go-tarcoin/accounts/keystore"
-	"github.com/speker/go-tarcoin/cmd/utils"
-	"github.com/speker/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/cmd/utils"
+	"github.com/ethereum/go-tarcoin/crypto"
 	"gopkg.in/urfave/cli.v1"
 )
 

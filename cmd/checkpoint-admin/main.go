@@ -22,9 +22,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/speker/go-tarcoin/cmd/utils"
-	"github.com/speker/go-tarcoin/common/fdlimit"
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/cmd/utils"
+	"github.com/ethereum/go-tarcoin/common/fdlimit"
+	"github.com/ethereum/go-tarcoin/log"
 	"gopkg.in/urfave/cli.v1"
 )
 

@@ -25,8 +25,8 @@ import (
 	"time"
 
 	"github.com/docker/docker/pkg/reexec"
-	"github.com/speker/go-tarcoin/internal/cmdtest"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/internal/cmdtest"
+	"github.com/ethereum/go-tarcoin/rpc"
 )
 
 func tmpdir(t *testing.T) string {
@@ -46,7 +46,7 @@ type testgeth struct {
 }
 
 func init() {
-	// Run the app if we've been exec'd as "geth-test" in rungeth.
+	// Run the app if we've been exec'd as "geth-test" in runGeth.
 	reexec.Register("geth-test", func() {
 		if err := app.Run(os.Args); err != nil {
 			fmt.Fprintln(os.Stderr, err)

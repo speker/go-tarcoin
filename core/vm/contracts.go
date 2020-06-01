@@ -22,12 +22,12 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/math"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/crypto/blake2b"
-	"github.com/speker/go-tarcoin/crypto/bn256"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/crypto/blake2b"
+	"github.com/ethereum/go-tarcoin/crypto/bn256"
+	"github.com/ethereum/go-tarcoin/params"
 
 	//lint:ignore SA1019 Needed for precompile
 	"golang.org/x/crypto/ripemd160"

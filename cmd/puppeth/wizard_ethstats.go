@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // deployEthstats queries the user for various input on deploying an ethstats

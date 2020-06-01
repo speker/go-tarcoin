@@ -21,9 +21,9 @@ package geth
 import (
 	"encoding/json"
 
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/p2p/discv5"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/p2p/discv5"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 // MainnetGenesis returns the JSON spec to use for the main Ethereum network. It

@@ -25,9 +25,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/speker/go-tarcoin/event"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/event"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 // Msg defines the structure of a p2p message.

@@ -22,11 +22,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/accounts/abi/bind"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/light"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/accounts/abi/bind"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/light"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 // Test light syncing which will download all headers from genesis.
@@ -182,7 +182,7 @@ func testMissOracleBackend(t *testing.T, hasCheckpoint bool) {
 	// that user wants to unlock something which blocks the oracle backend
 	// initialisation. But at the same time syncing starts.
 	//
-	// See https://github.com/speker/go-tarcoin/issues/20097 for more detail.
+	// See https://github.com/ethereum/go-tarcoin/issues/20097 for more detail.
 	//
 	// In this case, client should run light sync or legacy checkpoint sync
 	// if hardcoded checkpoint is configured.

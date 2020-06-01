@@ -23,12 +23,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/speker/go-tarcoin/common/mclock"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/les/utils"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common/mclock"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/les/utils"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 const (

@@ -20,8 +20,8 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/ethdb"
 )
 
 // Tests that the node iterator indeed walks over the entire database contents.

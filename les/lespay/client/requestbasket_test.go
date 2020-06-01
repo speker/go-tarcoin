@@ -20,7 +20,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/speker/go-tarcoin/les/utils"
+	"github.com/ethereum/go-tarcoin/les/utils"
 )
 
 func checkU64(t *testing.T, name string, value, exp uint64) {

@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 // Forks table defines supported forks and their chain config.

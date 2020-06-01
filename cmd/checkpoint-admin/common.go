@@ -19,15 +19,15 @@ package main
 import (
 	"strconv"
 
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/accounts/abi/bind"
-	"github.com/speker/go-tarcoin/accounts/external"
-	"github.com/speker/go-tarcoin/cmd/utils"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/contracts/checkpointoracle"
-	"github.com/speker/go-tarcoin/ethclient"
-	"github.com/speker/go-tarcoin/params"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/accounts/abi/bind"
+	"github.com/ethereum/go-tarcoin/accounts/external"
+	"github.com/ethereum/go-tarcoin/cmd/utils"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/contracts/checkpointoracle"
+	"github.com/ethereum/go-tarcoin/ethclient"
+	"github.com/ethereum/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/rpc"
 	"gopkg.in/urfave/cli.v1"
 )
 

@@ -28,14 +28,14 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/event"
-	"github.com/speker/go-tarcoin/internal/debug"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/event"
+	"github.com/ethereum/go-tarcoin/internal/debug"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/rpc"
 	"github.com/prometheus/tsdb/fileutil"
 )
 
@@ -674,20 +674,20 @@ func (n *Node) apis() []rpc.API {
 	return []rpc.API{
 		{
 			Namespace: "admin",
-			Version:   "1.2",
+			Version:   "1.0",
 			Service:   NewPrivateAdminAPI(n),
 		}, {
 			Namespace: "admin",
-			Version:   "1.2",
+			Version:   "1.0",
 			Service:   NewPublicAdminAPI(n),
 			Public:    true,
 		}, {
 			Namespace: "debug",
-			Version:   "1.2",
+			Version:   "1.0",
 			Service:   debug.Handler,
 		}, {
 			Namespace: "web3",
-			Version:   "1.2",
+			Version:   "1.0",
 			Service:   NewPublicWeb3API(n),
 			Public:    true,
 		},

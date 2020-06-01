@@ -25,8 +25,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/crypto"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

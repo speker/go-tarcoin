@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/crypto"
 )
 
 type bytesBacked interface {

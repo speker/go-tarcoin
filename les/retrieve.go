@@ -24,8 +24,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/speker/go-tarcoin/common/mclock"
-	"github.com/speker/go-tarcoin/light"
+	"github.com/ethereum/go-tarcoin/common/mclock"
+	"github.com/ethereum/go-tarcoin/light"
 )
 
 var (

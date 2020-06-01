@@ -24,19 +24,19 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/common/math"
-	"github.com/speker/go-tarcoin/consensus"
-	"github.com/speker/go-tarcoin/consensus/ethash"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/core/state"
-	"github.com/speker/go-tarcoin/core/state/snapshot"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/params"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/consensus"
+	"github.com/ethereum/go-tarcoin/consensus/ethash"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/core/state"
+	"github.com/ethereum/go-tarcoin/core/state/snapshot"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/core/vm"
+	"github.com/ethereum/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 // A BlockTest checks handling of entire blocks.
@@ -170,7 +170,7 @@ func (t *BlockTest) genesis(config *params.ChainConfig) *core.Genesis {
 	}
 }
 
-/* See https://github.com/speker/tests/wiki/Blockchain-Tests-II
+/* See https://github.com/ethereum/tests/wiki/Blockchain-Tests-II
 
    Whether a block is valid or not is a bit subtle, it's defined by presence of
    blockHeader, transactions and uncleHeaders fields. If they are missing, the block is

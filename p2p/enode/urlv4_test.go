@@ -24,8 +24,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/p2p/enr"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/p2p/enr"
 )
 
 func init() {

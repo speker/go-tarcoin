@@ -27,9 +27,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/p2p/enr"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/enr"
+	"github.com/ethereum/go-tarcoin/rlp"
 	"gopkg.in/urfave/cli.v1"
 )
 

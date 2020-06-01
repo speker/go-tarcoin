@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/speker/go-tarcoin/trcn"
-	"github.com/speker/go-tarcoin/node"
+	"github.com/ethereum/go-tarcoin/eth"
+	"github.com/ethereum/go-tarcoin/node"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -55,12 +55,12 @@ var (
 	LegacyMinerGasTargetFlag = cli.Uint64Flag{
 		Name:  "targetgaslimit",
 		Usage: "Target gas floor for mined blocks (deprecated, use --miner.gastarget)",
-		Value: trcn.DefaultConfig.Miner.GasFloor,
+		Value: eth.DefaultConfig.Miner.GasFloor,
 	}
 	LegacyMinerGasPriceFlag = BigFlag{
 		Name:  "gasprice",
 		Usage: "Minimum gas price for mining a transaction (deprecated, use --miner.gasprice)",
-		Value: trcn.DefaultConfig.Miner.GasPrice,
+		Value: eth.DefaultConfig.Miner.GasPrice,
 	}
 	LegacyMinerEtherbaseFlag = cli.StringFlag{
 		Name:  "etherbase",
@@ -76,12 +76,12 @@ var (
 	LegacyLightServFlag = cli.IntFlag{
 		Name:  "lightserv",
 		Usage: "Maximum percentage of time allowed for serving LES requests (deprecated, use --light.serve)",
-		Value: trcn.DefaultConfig.LightServ,
+		Value: eth.DefaultConfig.LightServ,
 	}
 	LegacyLightPeersFlag = cli.IntFlag{
 		Name:  "lightpeers",
 		Usage: "Maximum number of light clients to serve, or light servers to attach to  (deprecated, use --light.maxpeers)",
-		Value: trcn.DefaultConfig.LightPeers,
+		Value: eth.DefaultConfig.LightPeers,
 	}
 
 	// (Deprecated April 2020)
@@ -141,12 +141,12 @@ var (
 	LegacyGpoBlocksFlag = cli.IntFlag{
 		Name:  "gpoblocks",
 		Usage: "Number of recent blocks to check for gas prices (deprecated, use --gpo.blocks)",
-		Value: trcn.DefaultConfig.GPO.Blocks,
+		Value: eth.DefaultConfig.GPO.Blocks,
 	}
 	LegacyGpoPercentileFlag = cli.IntFlag{
 		Name:  "gpopercentile",
 		Usage: "Suggested gas price is the given percentile of a set of recent transaction gas prices (deprecated, use --gpo.percentile)",
-		Value: trcn.DefaultConfig.GPO.Percentile,
+		Value: eth.DefaultConfig.GPO.Percentile,
 	}
 	LegacyBootnodesV4Flag = cli.StringFlag{
 		Name:  "bootnodesv4",

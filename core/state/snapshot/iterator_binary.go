@@ -19,7 +19,7 @@ package snapshot
 import (
 	"bytes"
 
-	"github.com/speker/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common"
 )
 
 // binaryIterator is a simplistic iterator to step over the accounts or storage

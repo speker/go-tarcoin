@@ -22,8 +22,8 @@ package node
 import (
 	"reflect"
 
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/rpc"
 )
 
 // NoopService is a trivial implementation of the Service interface.

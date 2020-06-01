@@ -19,9 +19,9 @@ package types
 import (
 	"io"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 //go:generate gencodec -type Log -field-override logMarshaling -out gen_log_json.go

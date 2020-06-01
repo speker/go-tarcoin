@@ -5,7 +5,7 @@ package whisperv6
 import (
 	"encoding/json"
 
-	"github.com/speker/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
 )
 
 var _ = (*messageOverride)(nil)

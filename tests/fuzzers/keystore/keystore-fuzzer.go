@@ -19,7 +19,7 @@ package keystore
 import (
 	"os"
 
-	"github.com/speker/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
 )
 
 func Fuzz(input []byte) int {

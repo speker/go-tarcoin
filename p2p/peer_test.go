@@ -28,9 +28,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/p2p/enr"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/enr"
 )
 
 var discard = Protocol{

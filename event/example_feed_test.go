@@ -19,7 +19,7 @@ package event_test
 import (
 	"fmt"
 
-	"github.com/speker/go-tarcoin/event"
+	"github.com/ethereum/go-tarcoin/event"
 )
 
 func ExampleFeed_acknowledgedEvents() {

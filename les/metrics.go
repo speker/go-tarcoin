@@ -17,8 +17,8 @@
 package les
 
 import (
-	"github.com/speker/go-tarcoin/metrics"
-	"github.com/speker/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/metrics"
+	"github.com/ethereum/go-tarcoin/p2p"
 )
 
 var (

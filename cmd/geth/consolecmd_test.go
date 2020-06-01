@@ -27,12 +27,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 const (
-	ipcAPIs  = "admin:1.0 debug:1.0 trcn:1.0 ethash:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 shh:1.0 txpool:1.0 web3:1.0"
-	httpAPIs = "trcn:1.0 net:1.0 rpc:1.0 web3:1.0"
+	ipcAPIs  = "admin:1.0 debug:1.0 eth:1.0 ethash:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 shh:1.0 txpool:1.0 web3:1.0"
+	httpAPIs = "eth:1.0 net:1.0 rpc:1.0 web3:1.0"
 )
 
 // Tests that a node embedded within a console can be started up properly and

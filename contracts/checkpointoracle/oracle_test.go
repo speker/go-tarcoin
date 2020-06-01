@@ -27,13 +27,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/accounts/abi/bind"
-	"github.com/speker/go-tarcoin/accounts/abi/bind/backends"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/contracts/checkpointoracle/contract"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/accounts/abi/bind"
+	"github.com/ethereum/go-tarcoin/accounts/abi/bind/backends"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/contracts/checkpointoracle/contract"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 var (

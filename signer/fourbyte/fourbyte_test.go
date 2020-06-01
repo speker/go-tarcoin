@@ -22,8 +22,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/speker/go-tarcoin/accounts/abi"
-	"github.com/speker/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/accounts/abi"
+	"github.com/ethereum/go-tarcoin/common"
 )
 
 // Tests that all the selectors contained in the 4byte database are valid.

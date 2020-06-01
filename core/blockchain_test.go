@@ -26,16 +26,16 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/consensus"
-	"github.com/speker/go-tarcoin/consensus/ethash"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/core/state"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/consensus"
+	"github.com/ethereum/go-tarcoin/consensus/ethash"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/core/state"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/core/vm"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 // So we can deterministically seed different blockchains
@@ -1423,7 +1423,7 @@ func TestEIP161AccountRemoval(t *testing.T) {
 // tests that under weird reorg conditions the blockchain and its internal header-
 // chain return the same latest block/header.
 //
-// https://github.com/speker/go-tarcoin/pull/15941
+// https://github.com/ethereum/go-tarcoin/pull/15941
 func TestBlockchainHeaderchainReorgConsistency(t *testing.T) {
 	// Generate a canonical chain to act as the main dataset
 	engine := ethash.NewFaker()
@@ -1684,8 +1684,8 @@ func TestIncompleteAncientReceiptChainInsertion(t *testing.T) {
 // overtake the 'canon' chain until after it's passed canon by about 200 blocks.
 //
 // Details at:
-//  - https://github.com/speker/go-tarcoin/issues/18977
-//  - https://github.com/speker/go-tarcoin/pull/18988
+//  - https://github.com/ethereum/go-tarcoin/issues/18977
+//  - https://github.com/ethereum/go-tarcoin/pull/18988
 func TestLowDiffLongChain(t *testing.T) {
 	// Generate a canonical chain to act as the main dataset
 	engine := ethash.NewFaker()
@@ -2909,7 +2909,7 @@ func TestDeleteRecreateSlotsAcrossManyBlocks(t *testing.T) {
 // TestInitThenFailCreateContract tests a pretty notorious case that happened
 // on mainnet over blocks 7338108, 7338110 and 7338115.
 // - Block 7338108: address e771789f5cccac282f23bb7add5690e1f6ca467c is initiated
-//   with 0.001 ditap (thus created but no code)
+//   with 0.001 ether (thus created but no code)
 // - Block 7338110: a CREATE2 is attempted. The CREATE2 would deploy code on
 //   the same address e771789f5cccac282f23bb7add5690e1f6ca467c. However, the
 //   deployment fails due to OOG during initcode execution

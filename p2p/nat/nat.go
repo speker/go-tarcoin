@@ -25,7 +25,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 	natpmp "github.com/jackpal/go-nat-pmp"
 )
 

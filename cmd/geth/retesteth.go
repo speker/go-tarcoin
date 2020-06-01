@@ -26,26 +26,26 @@ import (
 	"strings"
 	"time"
 
-	"github.com/speker/go-tarcoin/cmd/utils"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/common/math"
-	"github.com/speker/go-tarcoin/consensus"
-	"github.com/speker/go-tarcoin/consensus/ethash"
-	"github.com/speker/go-tarcoin/consensus/misc"
-	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/core/rawdb"
-	"github.com/speker/go-tarcoin/core/state"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/ethdb"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/node"
-	"github.com/speker/go-tarcoin/params"
-	"github.com/speker/go-tarcoin/rlp"
-	"github.com/speker/go-tarcoin/rpc"
-	"github.com/speker/go-tarcoin/trie"
+	"github.com/ethereum/go-tarcoin/cmd/utils"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/consensus"
+	"github.com/ethereum/go-tarcoin/consensus/ethash"
+	"github.com/ethereum/go-tarcoin/consensus/misc"
+	"github.com/ethereum/go-tarcoin/core"
+	"github.com/ethereum/go-tarcoin/core/rawdb"
+	"github.com/ethereum/go-tarcoin/core/state"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/core/vm"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/ethdb"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/node"
+	"github.com/ethereum/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/trie"
 
 	cli "gopkg.in/urfave/cli.v1"
 )
@@ -866,25 +866,25 @@ func retesteth(ctx *cli.Context) error {
 			Namespace: "test",
 			Public:    true,
 			Service:   testApi,
-			Version:   "1.2",
+			Version:   "1.0",
 		},
 		{
-			Namespace: "trcn",
+			Namespace: "eth",
 			Public:    true,
 			Service:   ethApi,
-			Version:   "1.2",
+			Version:   "1.0",
 		},
 		{
 			Namespace: "debug",
 			Public:    true,
 			Service:   debugApi,
-			Version:   "1.2",
+			Version:   "1.0",
 		},
 		{
 			Namespace: "web3",
 			Public:    true,
 			Service:   web3Api,
-			Version:   "1.2",
+			Version:   "1.0",
 		},
 	}
 	vhosts := splitAndTrim(ctx.GlobalString(utils.HTTPVirtualHostsFlag.Name))
@@ -892,7 +892,7 @@ func retesteth(ctx *cli.Context) error {
 
 	// register apis and create handler stack
 	srv := rpc.NewServer()
-	err := node.RegisterApisFromWhitelist(rpcAPI, []string{"test", "trcn", "debug", "web3"}, srv, false)
+	err := node.RegisterApisFromWhitelist(rpcAPI, []string{"test", "eth", "debug", "web3"}, srv, false)
 	if err != nil {
 		utils.Fatalf("Could not register RPC apis: %w", err)
 	}

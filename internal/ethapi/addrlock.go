@@ -19,7 +19,7 @@ package ethapi
 import (
 	"sync"
 
-	"github.com/speker/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common"
 )
 
 type AddrLocker struct {

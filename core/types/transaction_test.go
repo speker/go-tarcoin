@@ -23,13 +23,13 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 // The values in those tests are from the Transaction Tests
-// at github.com/speker/tests.
+// at github.com/ethereum/tests.
 var (
 	emptyTx = NewTransaction(
 		0,

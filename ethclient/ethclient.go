@@ -24,12 +24,12 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/speker/go-tarcoin"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/hexutil"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/rlp"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/rpc"
 )
 
 // Client defines typed wrappers for the Ethereum RPC API.

@@ -20,7 +20,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 func newTestFullNode(v []byte) []interface{} {

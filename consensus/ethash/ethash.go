@@ -34,10 +34,10 @@ import (
 	"unsafe"
 
 	mmap "github.com/edsrzf/mmap-go"
-	"github.com/speker/go-tarcoin/consensus"
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/metrics"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/consensus"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/metrics"
+	"github.com/ethereum/go-tarcoin/rpc"
 	"github.com/hashicorp/golang-lru/simplelru"
 )
 
@@ -658,17 +658,17 @@ func (ethash *Ethash) Hashrate() float64 {
 // APIs implements consensus.Engine, returning the user facing RPC APIs.
 func (ethash *Ethash) APIs(chain consensus.ChainReader) []rpc.API {
 	// In order to ensure backward compatibility, we exposes ethash RPC APIs
-	// to both trcn and ethash namespaces.
+	// to both eth and ethash namespaces.
 	return []rpc.API{
 		{
-			Namespace: "trcn",
-			Version:   "1.2",
+			Namespace: "eth",
+			Version:   "1.0",
 			Service:   &API{ethash},
 			Public:    true,
 		},
 		{
 			Namespace: "ethash",
-			Version:   "1.2",
+			Version:   "1.0",
 			Service:   &API{ethash},
 			Public:    true,
 		},

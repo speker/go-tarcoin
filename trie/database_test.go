@@ -19,8 +19,8 @@ package trie
 import (
 	"testing"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/ethdb/memorydb"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/ethdb/memorydb"
 )
 
 // Tests that the trie database returns a missing trie node error if attempting

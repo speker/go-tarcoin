@@ -1768,27 +1768,27 @@ var ETH_UNITS = [
     'Gwei',
     'szabo',
     'finney',
-    'femtoditap',
-    'picoditap',
-    'nanoditap',
-    'microditap',
-    'milliditap',
+    'femtoether',
+    'picoether',
+    'nanoether',
+    'microether',
+    'milliether',
     'nano',
     'micro',
     'milli',
-    'ditap',
+    'ether',
     'grand',
-    'Mditap',
-    'Gditap',
-    'Tditap',
-    'Pditap',
-    'Editap',
-    'Zditap',
-    'Yditap',
-    'Nditap',
-    'Dditap',
-    'Vditap',
-    'Uditap'
+    'Mether',
+    'Gether',
+    'Tether',
+    'Pether',
+    'Eether',
+    'Zether',
+    'Yether',
+    'Nether',
+    'Dether',
+    'Vether',
+    'Uether'
 ];
 
 module.exports = {
@@ -1884,34 +1884,35 @@ var sha3 = require('./sha3.js');
 var utf8 = require('utf8');
 
 var unitMap = {
-    'noditap':      '0',
+    'noether':      '0',
     'wei':          '1',
     'kwei':         '1000',
     'Kwei':         '1000',
     'babbage':      '1000',
-    'femtoditap':   '1000',
+    'femtoether':   '1000',
     'mwei':         '1000000',
     'Mwei':         '1000000',
     'lovelace':     '1000000',
-    'picoditap':    '1000000',
+    'picoether':    '1000000',
     'gwei':         '1000000000',
     'Gwei':         '1000000000',
     'shannon':      '1000000000',
-    'nanoditap':    '1000000000',
+    'nanoether':    '1000000000',
     'nano':         '1000000000',
     'szabo':        '1000000000000',
-    'microditap':   '1000000000000',
+    'microether':   '1000000000000',
     'micro':        '1000000000000',
     'finney':       '1000000000000000',
-    'milliditap':   '1000000000000000',
-    'milli':        '1000000000000000',
-    'ditap':        '1000000000000000000',
-    'kditap':       '1000000000000000000000',
+    'milliether':    '1000000000000000',
+    'milli':         '1000000000000000',
+    'ether':        '1000000000000000000',
+    'kether':       '1000000000000000000000',
     'grand':        '1000000000000000000000',
-    'mditap':       '1000000000000000000000000',
-    'gditap':       '1000000000000000000000000000',
-    'tditap':       '1000000000000000000000000000000'
+    'mether':       '1000000000000000000000000',
+    'gether':       '1000000000000000000000000000',
+    'tether':       '1000000000000000000000000000000'
 };
+
 /**
  * Should be called to pad string to expected length
  *
@@ -2123,12 +2124,12 @@ var toHex = function (val) {
  * Returns value of unit in Wei
  *
  * @method getValueOfUnit
- * @param {String} unit the unit to convert to, default ditap
+ * @param {String} unit the unit to convert to, default ether
  * @returns {BigNumber} value of the unit (in Wei)
  * @throws error if the unit is not correct:w
  */
 var getValueOfUnit = function (unit) {
-    unit = unit ? unit.toLowerCase() : 'ditap';
+    unit = unit ? unit.toLowerCase() : 'ether';
     var unitValue = unitMap[unit];
     if (unitValue === undefined) {
         throw new Error('This unit doesn\'t exists, please use the one of the following units' + JSON.stringify(unitMap, null, 2));
@@ -2137,7 +2138,7 @@ var getValueOfUnit = function (unit) {
 };
 
 /**
- * Takes a number of wei and converts it to any other ditap unit.
+ * Takes a number of wei and converts it to any other ether unit.
  *
  * Possible units are:
  *   SI Short   SI Full        Effigy       Other
@@ -2146,7 +2147,7 @@ var getValueOfUnit = function (unit) {
  * - gwei       nanoether      shannon      nano
  * - --         microether     szabo        micro
  * - --         milliether     finney       milli
- * - ditap      --             --
+ * - ether      --             --
  * - kether                    --           grand
  * - mether
  * - gether
@@ -2154,7 +2155,7 @@ var getValueOfUnit = function (unit) {
  *
  * @method fromWei
  * @param {Number|String} number can be a number, number string or a HEX of a decimal
- * @param {String} unit the unit to convert to, default ditap
+ * @param {String} unit the unit to convert to, default ether
  * @return {String|Object} When given a BigNumber object it returns one as well, otherwise a number
 */
 var fromWei = function(number, unit) {
@@ -2174,7 +2175,7 @@ var fromWei = function(number, unit) {
  * - --         microether     szabo        micro
  * - --         microether     szabo        micro
  * - --         milliether     finney       milli
- * - ditap      --             --
+ * - ether      --             --
  * - kether                    --           grand
  * - mether
  * - gether
@@ -2182,7 +2183,7 @@ var fromWei = function(number, unit) {
  *
  * @method toWei
  * @param {Number|String|BigNumber} number can be a number, number string or a HEX of a decimal
- * @param {String} unit the unit to convert from, default ditap
+ * @param {String} unit the unit to convert from, default ether
  * @return {String|Object} When given a BigNumber object it returns one as well, otherwise a number
 */
 var toWei = function(number, unit) {
@@ -2507,7 +2508,7 @@ module.exports={
 
 var RequestManager = require('./web3/requestmanager');
 var Iban = require('./web3/iban');
-var Eth = require('./web3/methods/trcn');
+var Eth = require('./web3/methods/eth');
 var DB = require('./web3/methods/db');
 var Shh = require('./web3/methods/shh');
 var Net = require('./web3/methods/net');
@@ -2529,7 +2530,7 @@ var BigNumber = require('bignumber.js');
 function Web3 (provider) {
     this._requestManager = new RequestManager(provider);
     this.currentProvider = provider;
-    this.trcn = new Eth(this);
+    this.eth = new Eth(this);
     this.db = new DB(this);
     this.shh = new Shh(this);
     this.net = new Net(this);
@@ -2710,7 +2711,7 @@ AllSolidityEvents.prototype.execute = function (options, callback) {
 
     var o = this.encode(options);
     var formatter = this.decode.bind(this);
-    return new Filter(o, 'eth', this._requestManager, watches.trcn(), formatter, callback);
+    return new Filter(o, 'eth', this._requestManager, watches.eth(), formatter, callback);
 };
 
 AllSolidityEvents.prototype.attachToContract = function (contract) {
@@ -2866,11 +2867,11 @@ var addEventsToContract = function (contract) {
         return json.type === 'event';
     });
 
-    var All = new AllEvents(contract._trcn._requestManager, events, contract.address);
+    var All = new AllEvents(contract._eth._requestManager, events, contract.address);
     All.attachToContract(contract);
 
     events.map(function (json) {
-        return new SolidityEvent(contract._trcn._requestManager, json, contract.address);
+        return new SolidityEvent(contract._eth._requestManager, json, contract.address);
     }).forEach(function (e) {
         e.attachToContract(contract);
     });
@@ -2890,7 +2891,7 @@ var checkForContractAddress = function(contract, callback){
         callbackFired = false;
 
     // wait for receipt
-    var filter = contract._trcn.filter('latest', function(e){
+    var filter = contract._eth.filter('latest', function(e){
         if (!e && !callbackFired) {
             count++;
 
@@ -2908,10 +2909,10 @@ var checkForContractAddress = function(contract, callback){
 
             } else {
 
-                contract._trcn.getTransactionReceipt(contract.transactionHash, function(e, receipt){
+                contract._eth.getTransactionReceipt(contract.transactionHash, function(e, receipt){
                     if(receipt && !callbackFired) {
 
-                        contract._trcn.getCode(receipt.contractAddress, function(e, code){
+                        contract._eth.getCode(receipt.contractAddress, function(e, code){
                             /*jshint maxcomplexity: 6 */
 
                             if(callbackFired || !code)
@@ -2955,7 +2956,7 @@ var checkForContractAddress = function(contract, callback){
  * @param {Array} abi
  */
 var ContractFactory = function (eth, abi) {
-    this.trcn = eth;
+    this.eth = eth;
     this.abi = abi;
 
     /**
@@ -2971,7 +2972,7 @@ var ContractFactory = function (eth, abi) {
     this.new = function () {
         /*jshint maxcomplexity: 7 */
         
-        var contract = new Contract(this.trcn, this.abi);
+        var contract = new Contract(this.eth, this.abi);
 
         // parse arguments
         var options = {}; // required!
@@ -3003,7 +3004,7 @@ var ContractFactory = function (eth, abi) {
         if (callback) {
 
             // wait for the contract address and check if the code was deployed
-            this.trcn.sendTransaction(options, function (err, hash) {
+            this.eth.sendTransaction(options, function (err, hash) {
                 if (err) {
                     callback(err);
                 } else {
@@ -3017,7 +3018,7 @@ var ContractFactory = function (eth, abi) {
                 }
             });
         } else {
-            var hash = this.trcn.sendTransaction(options);
+            var hash = this.eth.sendTransaction(options);
             // add the transaction hash
             contract.transactionHash = hash;
             checkForContractAddress(contract);
@@ -3052,7 +3053,7 @@ var ContractFactory = function (eth, abi) {
  * otherwise calls callback function (err, contract)
  */
 ContractFactory.prototype.at = function (address, callback) {
-    var contract = new Contract(this.trcn, this.abi, address);
+    var contract = new Contract(this.eth, this.abi, address);
 
     // this functions are not part of prototype,
     // because we dont want to spoil the interface
@@ -3335,7 +3336,7 @@ SolidityEvent.prototype.execute = function (indexed, options, callback) {
 
     var o = this.encode(indexed, options);
     var formatter = this.decode.bind(this);
-    return new Filter(o, 'eth', this._requestManager, watches.trcn(), formatter, callback);
+    return new Filter(o, 'eth', this._requestManager, watches.eth(), formatter, callback);
 };
 
 /**
@@ -4098,12 +4099,12 @@ SolidityFunction.prototype.call = function () {
 
 
     if (!callback) {
-        var output = this._trcn.call(payload, defaultBlock);
+        var output = this._eth.call(payload, defaultBlock);
         return this.unpackOutput(output);
     }
 
     var self = this;
-    this._trcn.call(payload, defaultBlock, function (error, output) {
+    this._eth.call(payload, defaultBlock, function (error, output) {
         if (error) return callback(error, null);
 
         var unpacked = null;
@@ -4133,10 +4134,10 @@ SolidityFunction.prototype.sendTransaction = function () {
     }
 
     if (!callback) {
-        return this._trcn.sendTransaction(payload);
+        return this._eth.sendTransaction(payload);
     }
 
-    this._trcn.sendTransaction(payload, callback);
+    this._eth.sendTransaction(payload, callback);
 };
 
 /**
@@ -4150,10 +4151,10 @@ SolidityFunction.prototype.estimateGas = function () {
     var payload = this.toPayload(args);
 
     if (!callback) {
-        return this._trcn.estimateGas(payload);
+        return this._eth.estimateGas(payload);
     }
 
-    this._trcn.estimateGas(payload, callback);
+    this._eth.estimateGas(payload, callback);
 };
 
 /**
@@ -5184,7 +5185,7 @@ module.exports = DB;
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
- * @file trcn.js
+ * @file eth.js
  * @author Marek Kotewicz <marek@ethdev.com>
  * @author Fabian Vogelsteller <fabian@ethdev.com>
  * @date 2015
@@ -5505,7 +5506,7 @@ Eth.prototype.contract = function (abi) {
 };
 
 Eth.prototype.filter = function (options, callback, filterCreationErrorCallback) {
-    return new Filter(options, 'eth', this._requestManager, watches.trcn(), formatters.outputLogFormatter, callback, filterCreationErrorCallback);
+    return new Filter(options, 'eth', this._requestManager, watches.eth(), formatters.outputLogFormatter, callback, filterCreationErrorCallback);
 };
 
 Eth.prototype.namereg = function () {
@@ -5539,7 +5540,7 @@ module.exports = Eth;
     You should have received a copy of the GNU Lesser General Public License
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
-/** @file trcn.js
+/** @file eth.js
  * @authors:
  *   Marek Kotewicz <marek@ethdev.com>
  * @date 2015
@@ -5559,7 +5560,7 @@ var Net = function (web3) {
     });
 };
 
-/// @returns an array of objects describing web3.trcn api properties
+/// @returns an array of objects describing web3.eth api properties
 var properties = function () {
     return [
         new Property({
@@ -5594,7 +5595,7 @@ module.exports = Net;
     along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
- * @file trcn.js
+ * @file eth.js
  * @author Marek Kotewicz <marek@ethdev.com>
  * @author Fabian Vogelsteller <fabian@ethdev.com>
  * @date 2015
@@ -5861,7 +5862,7 @@ module.exports = Shh;
  * @author Alex Beregszaszi <alex@rtfs.hu>
  * @date 2016
  *
- * Reference: https://github.com/speker/go-tarcoin/blob/swarm/internal/web3ext/web3ext.go#L33
+ * Reference: https://github.com/ethereum/go-tarcoin/blob/swarm/internal/web3ext/web3ext.go#L33
  */
 
 "use strict";
@@ -6011,7 +6012,7 @@ module.exports = Swarm;
 
 var Method = require('../method');
 
-/// @returns an array of objects describing web3.trcn.filter api methods
+/// @returns an array of objects describing web3.eth.filter api methods
 var eth = function () {
     var newFilterCall = function (args) {
         var type = args[0];
@@ -6701,11 +6702,11 @@ var transfer = function (eth, from, to, value, callback) {
     }
     
     if (!callback) {
-        var address = trcn.icapNamereg().addr(iban.institution());
+        var address = eth.icapNamereg().addr(iban.institution());
         return deposit(eth, from, address, value, iban.client());
     }
 
-    trcn.icapNamereg().addr(iban.institution(), function (err, address) {
+    eth.icapNamereg().addr(iban.institution(), function (err, address) {
         return deposit(eth, from, address, value, iban.client(), callback);
     });
     
@@ -6721,7 +6722,7 @@ var transfer = function (eth, from, to, value, callback) {
  * @param {Function} callback, callback
  */
 var transferToAddress = function (eth, from, to, value, callback) {
-    return trcn.sendTransaction({
+    return eth.sendTransaction({
         address: to,
         from: from,
         value: value
@@ -6740,7 +6741,7 @@ var transferToAddress = function (eth, from, to, value, callback) {
  */
 var deposit = function (eth, from, to, value, client, callback) {
     var abi = exchangeAbi;
-    return trcn.contract(abi).at(to).deposit(client, {
+    return eth.contract(abi).at(to).deposit(client, {
         from: from,
         value: value
     }, callback);

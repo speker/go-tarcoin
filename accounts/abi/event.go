@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/crypto"
 )
 
 // Event is an event potentially triggered by the EVM's LOG mechanism. The Event

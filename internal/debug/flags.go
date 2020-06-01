@@ -24,9 +24,9 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/metrics"
-	"github.com/speker/go-tarcoin/metrics/exp"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/metrics"
+	"github.com/ethereum/go-tarcoin/metrics/exp"
 	"github.com/fjl/memsize/memsizeui"
 	colorable "github.com/mattn/go-colorable"
 	"github.com/mattn/go-isatty"
@@ -43,7 +43,7 @@ var (
 	}
 	vmoduleFlag = cli.StringFlag{
 		Name:  "vmodule",
-		Usage: "Per-module verbosity: comma-separated list of <pattern>=<level> (e.g. trcn/*=5,p2p=4)",
+		Usage: "Per-module verbosity: comma-separated list of <pattern>=<level> (e.g. eth/*=5,p2p=4)",
 		Value: "",
 	}
 	backtraceAtFlag = cli.StringFlag{

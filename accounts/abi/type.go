@@ -24,7 +24,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/speker/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common"
 )
 
 // Type enumerator

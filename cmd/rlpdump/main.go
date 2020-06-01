@@ -26,7 +26,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/rlp"
 )
 
 var (

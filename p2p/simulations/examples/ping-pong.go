@@ -25,13 +25,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/node"
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/p2p/simulations"
-	"github.com/speker/go-tarcoin/p2p/simulations/adapters"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/node"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/simulations"
+	"github.com/ethereum/go-tarcoin/p2p/simulations/adapters"
+	"github.com/ethereum/go-tarcoin/rpc"
 )
 
 var adapterType = flag.String("adapter", "sim", `node adapter to use (one of "sim", "exec" or "docker")`)

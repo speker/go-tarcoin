@@ -17,7 +17,7 @@
 package vm
 
 import (
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 type (

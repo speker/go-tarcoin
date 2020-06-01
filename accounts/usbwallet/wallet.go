@@ -25,12 +25,12 @@ import (
 	"sync"
 	"time"
 
-	ethereum "github.com/speker/go-tarcoin"
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/log"
+	ethereum "github.com/ethereum/go-tarcoin"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/log"
 	"github.com/karalabe/usb"
 )
 

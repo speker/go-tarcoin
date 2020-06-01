@@ -19,7 +19,7 @@ package rlp
 import (
 	"testing"
 
-	"github.com/speker/go-tarcoin/common/hexutil"
+	"github.com/ethereum/go-tarcoin/common/hexutil"
 )
 
 // TestIterator tests some basic things about the ListIterator. A more

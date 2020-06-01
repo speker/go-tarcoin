@@ -20,9 +20,9 @@ import (
 	"container/ring"
 	"sync"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // chainRetriever is used by the unconfirmed block set to verify whether a previously

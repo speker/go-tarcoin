@@ -21,10 +21,10 @@ import (
 	"net"
 	"time"
 
-	"github.com/speker/go-tarcoin/core/forkid"
-	"github.com/speker/go-tarcoin/p2p/enr"
-	"github.com/speker/go-tarcoin/params"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/core/forkid"
+	"github.com/ethereum/go-tarcoin/p2p/enr"
+	"github.com/ethereum/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/rlp"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -93,7 +93,7 @@ type nodeFilterC struct {
 var filterFlags = map[string]nodeFilterC{
 	"-ip":          {1, ipFilter},
 	"-min-age":     {1, minAgeFilter},
-	"-trcn-network": {1, ethFilter},
+	"-eth-network": {1, ethFilter},
 	"-les-server":  {0, lesFilter},
 }
 
@@ -174,10 +174,10 @@ func ethFilter(args []string) (nodeFilter, error) {
 			ForkID forkid.ID
 			_      []rlp.RawValue `rlp:"tail"`
 		}
-		if n.N.Load(enr.WithEntry("trcn", &eth)) != nil {
+		if n.N.Load(enr.WithEntry("eth", &eth)) != nil {
 			return false
 		}
-		return filter(trcn.ForkID) == nil
+		return filter(eth.ForkID) == nil
 	}
 	return f, nil
 }

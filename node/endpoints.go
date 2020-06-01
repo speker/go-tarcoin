@@ -21,8 +21,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/speker/go-tarcoin/log"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/rpc"
 )
 
 // StartHTTPEndpoint starts the HTTP RPC endpoint.

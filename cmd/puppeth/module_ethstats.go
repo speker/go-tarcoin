@@ -25,7 +25,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // ethstatsDockerfile is the Dockerfile required to build an ethstats backend

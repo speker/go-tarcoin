@@ -23,7 +23,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/speker/go-tarcoin/p2p/enr"
+	"github.com/ethereum/go-tarcoin/p2p/enr"
 )
 
 func TestReadNodes(t *testing.T) {

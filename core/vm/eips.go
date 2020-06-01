@@ -19,7 +19,7 @@ package vm
 import (
 	"fmt"
 
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 // EnableEIP enables the given EIP on the config.

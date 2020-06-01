@@ -28,7 +28,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 var (
@@ -396,9 +396,9 @@ func (c *Client) Notify(ctx context.Context, method string, args ...interface{})
 	}
 }
 
-// EthSubscribe registers a subscripion under the "trcn" namespace.
+// EthSubscribe registers a subscripion under the "eth" namespace.
 func (c *Client) EthSubscribe(ctx context.Context, channel interface{}, args ...interface{}) (*ClientSubscription, error) {
-	return c.Subscribe(ctx, "trcn", channel, args...)
+	return c.Subscribe(ctx, "eth", channel, args...)
 }
 
 // ShhSubscribe registers a subscripion under the "shh" namespace.

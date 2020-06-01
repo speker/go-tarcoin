@@ -23,7 +23,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 	"gopkg.in/urfave/cli.v1"
 )
 

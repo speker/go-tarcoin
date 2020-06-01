@@ -7,12 +7,12 @@ import (
 	"math/big"
 	"strings"
 
-	ethereum "github.com/speker/go-tarcoin"
-	"github.com/speker/go-tarcoin/accounts/abi"
-	"github.com/speker/go-tarcoin/accounts/abi/bind"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/event"
+	ethereum "github.com/ethereum/go-tarcoin"
+	"github.com/ethereum/go-tarcoin/accounts/abi"
+	"github.com/ethereum/go-tarcoin/accounts/abi/bind"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/event"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

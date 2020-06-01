@@ -19,7 +19,7 @@ package rpc
 import (
 	"net"
 
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // StartIPCEndpoint starts an IPC endpoint.

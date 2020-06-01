@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/p2p/discover"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/p2p/discover"
 	"gopkg.in/urfave/cli.v1"
 )
 

@@ -22,9 +22,9 @@ import (
 	"path/filepath"
 	"sort"
 
-	"github.com/speker/go-tarcoin/internal/debug"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/internal/debug"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/params"
 	"gopkg.in/urfave/cli.v1"
 )
 

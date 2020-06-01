@@ -19,12 +19,12 @@ package core
 import (
 	"sync/atomic"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/consensus"
-	"github.com/speker/go-tarcoin/core/state"
-	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/core/vm"
-	"github.com/speker/go-tarcoin/params"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/consensus"
+	"github.com/ethereum/go-tarcoin/core/state"
+	"github.com/ethereum/go-tarcoin/core/types"
+	"github.com/ethereum/go-tarcoin/core/vm"
+	"github.com/ethereum/go-tarcoin/params"
 )
 
 // statePrefetcher is a basic Prefetcher, which blindly executes a block on top

@@ -28,9 +28,9 @@ import (
 	"time"
 
 	mapset "github.com/deckarep/golang-set"
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/log"
 )
 
 // Minimum amount of time between cache reloads. This limit applies if the platform does

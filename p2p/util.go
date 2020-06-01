@@ -19,7 +19,7 @@ package p2p
 import (
 	"container/heap"
 
-	"github.com/speker/go-tarcoin/common/mclock"
+	"github.com/ethereum/go-tarcoin/common/mclock"
 )
 
 // expHeap tracks strings and their expiry time.

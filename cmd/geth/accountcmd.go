@@ -20,12 +20,12 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/speker/go-tarcoin/accounts"
-	"github.com/speker/go-tarcoin/accounts/keystore"
-	"github.com/speker/go-tarcoin/cmd/utils"
-	"github.com/speker/go-tarcoin/console"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/log"
+	"github.com/ethereum/go-tarcoin/accounts"
+	"github.com/ethereum/go-tarcoin/accounts/keystore"
+	"github.com/ethereum/go-tarcoin/cmd/utils"
+	"github.com/ethereum/go-tarcoin/console"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/log"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -38,7 +38,7 @@ var (
 		Description: `
     geth wallet import /path/to/my/presale.wallet
 
-will prompt for your password and imports your ditap presale account.
+will prompt for your password and imports your ether presale account.
 It can be used non-interactively with the --password option taking a
 passwordfile as argument containing the wallet password in plaintext.`,
 		Subcommands: []cli.Command{
@@ -58,7 +58,7 @@ passwordfile as argument containing the wallet password in plaintext.`,
 				Description: `
 	geth wallet [options] /path/to/my/presale.wallet
 
-will prompt for your password and imports your ditap presale account.
+will prompt for your password and imports your ether presale account.
 It can be used non-interactively with the --password option taking a
 passwordfile as argument containing the wallet password in plaintext.`,
 			},

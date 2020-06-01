@@ -35,11 +35,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/speker/go-tarcoin/common/bitutil"
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/crypto/ecies"
-	"github.com/speker/go-tarcoin/metrics"
-	"github.com/speker/go-tarcoin/rlp"
+	"github.com/ethereum/go-tarcoin/common/bitutil"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/crypto/ecies"
+	"github.com/ethereum/go-tarcoin/metrics"
+	"github.com/ethereum/go-tarcoin/rlp"
 	"github.com/golang/snappy"
 	"golang.org/x/crypto/sha3"
 )

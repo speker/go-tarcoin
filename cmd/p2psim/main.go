@@ -45,12 +45,12 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"github.com/speker/go-tarcoin/crypto"
-	"github.com/speker/go-tarcoin/p2p"
-	"github.com/speker/go-tarcoin/p2p/enode"
-	"github.com/speker/go-tarcoin/p2p/simulations"
-	"github.com/speker/go-tarcoin/p2p/simulations/adapters"
-	"github.com/speker/go-tarcoin/rpc"
+	"github.com/ethereum/go-tarcoin/crypto"
+	"github.com/ethereum/go-tarcoin/p2p"
+	"github.com/ethereum/go-tarcoin/p2p/enode"
+	"github.com/ethereum/go-tarcoin/p2p/simulations"
+	"github.com/ethereum/go-tarcoin/p2p/simulations/adapters"
+	"github.com/ethereum/go-tarcoin/rpc"
 	"gopkg.in/urfave/cli.v1"
 )
 

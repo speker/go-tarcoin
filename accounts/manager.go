@@ -21,8 +21,8 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/event"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/event"
 )
 
 // Config contains the settings of the global account manager.

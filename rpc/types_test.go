@@ -20,8 +20,8 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/speker/go-tarcoin/common"
-	"github.com/speker/go-tarcoin/common/math"
+	"github.com/ethereum/go-tarcoin/common"
+	"github.com/ethereum/go-tarcoin/common/math"
 )
 
 func TestBlockNumberJSONUnmarshal(t *testing.T) {
