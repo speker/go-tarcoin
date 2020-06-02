@@ -1,18 +1,18 @@
-// Copyright 2017 The go-ethereum Authors
-// This file is part of go-ethereum.
+// Copyright 2017 The go-tarcoin Authors
+// This file is part of go-tarcoin.
 //
-// go-ethereum is free software: you can redistribute it and/or modify
+// go-tarcoin is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// go-ethereum is distributed in the hope that it will be useful,
+// go-tarcoin is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with go-ethereum. If not, see <http://www.gnu.org/licenses/>.
+// along with go-tarcoin. If not, see <http://www.gnu.org/licenses/>.
 
 package main
 
@@ -34,9 +34,9 @@ FROM puppeth/blockscout:latest
 
 ADD genesis.json /genesis.json
 RUN \
-  echo 'geth --cache 512 init /genesis.json' > explorer.sh && \
-  echo $'geth --networkid {{.NetworkID}} --syncmode "full" --gcmode "archive" --port {{.EthPort}} --bootnodes {{.Bootnodes}} --trcnstats \'{{.Ethstats}}\' --cache=512 --rpc --rpcapi "net,web3,trcn,shh,debug" --rpccorsdomain "*" --rpcvhosts "*" --ws --wsorigins "*" --exitwhensynced' >> explorer.sh && \
-  echo $'exec geth --networkid {{.NetworkID}} --syncmode "full" --gcmode "archive" --port {{.EthPort}} --bootnodes {{.Bootnodes}} --trcnstats \'{{.Ethstats}}\' --cache=512 --rpc --rpcapi "net,web3,trcn,shh,debug" --rpccorsdomain "*" --rpcvhosts "*" --ws --wsorigins "*" &' >> explorer.sh && \
+  echo 'gtrcn --cache 512 init /genesis.json' > explorer.sh && \
+  echo $'gtrcn --networkid {{.NetworkID}} --syncmode "full" --gcmode "archive" --port {{.EthPort}} --bootnodes {{.Bootnodes}} --trcnstats \'{{.Ethstats}}\' --cache=512 --rpc --rpcapi "net,web3,trcn,shh,debug" --rpccorsdomain "*" --rpcvhosts "*" --ws --wsorigins "*" --exitwhensynced' >> explorer.sh && \
+  echo $'exec gtrcn --networkid {{.NetworkID}} --syncmode "full" --gcmode "archive" --port {{.EthPort}} --bootnodes {{.Bootnodes}} --trcnstats \'{{.Ethstats}}\' --cache=512 --rpc --rpcapi "net,web3,trcn,shh,debug" --rpccorsdomain "*" --rpcvhosts "*" --ws --wsorigins "*" &' >> explorer.sh && \
   echo '/usr/local/bin/docker-entrypoint.sh postgres &' >> explorer.sh && \
   echo 'sleep 5' >> explorer.sh && \
   echo 'mix do ecto.drop --force, ecto.create, ecto.migrate' >> explorer.sh && \
@@ -65,7 +65,7 @@ services:
             - VIRTUAL_HOST={{.VHost}}
             - VIRTUAL_PORT=4000{{end}}
         volumes:
-            - {{.Datadir}}:/opt/app/.ethereum
+            - {{.Datadir}}:/opt/app/.tarcoin
             - {{.DBDir}}:/var/lib/postgresql/data
         logging:
           driver: "json-file"
@@ -139,7 +139,7 @@ func (info *explorerInfos) Report() map[string]string {
 	report := map[string]string{
 		"Website address ":        info.host,
 		"Website listener port ":  strconv.Itoa(info.port),
-		"Ethereum listener port ": strconv.Itoa(info.node.port),
+		"TarCoin listener port ": strconv.Itoa(info.node.port),
 		"Ethstats username":       info.node.ethstats,
 	}
 	return report
@@ -182,7 +182,7 @@ func checkExplorer(client *sshClient, network string) (*explorerInfos, error) {
 	// Assemble and return the useful infos
 	stats := &explorerInfos{
 		node: &nodeInfos{
-			datadir:  infos.volumes["/opt/app/.ethereum"],
+			datadir:  infos.volumes["/opt/app/.tarcoin"],
 			port:     infos.portmap[infos.envvars["ETH_PORT"]+"/tcp"],
 			ethstats: infos.envvars["ETH_NAME"],
 		},

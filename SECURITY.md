@@ -11,7 +11,7 @@ Audit reports are published in the `docs` folder: https://github.com/spker/go-ta
 
 | Scope | Date | Report Link |
 | ------- | ------- | ----------- |
-| `geth` | 20170425 | [pdf](https://github.com/spker/go-tarcoin/blob/master/docs/audits/2017-04-25_Geth-audit_Truesec.pdf) |
+| `gtrcn` | 20170425 | [pdf](https://github.com/spker/go-tarcoin/blob/master/docs/audits/2017-04-25_Geth-audit_Truesec.pdf) |
 | `clef` | 20180914 | [pdf](https://github.com/spker/go-tarcoin/blob/master/docs/audits/2018-09-14_Clef-audit_NCC.pdf) |
 
 
@@ -20,7 +20,7 @@ Audit reports are published in the `docs` folder: https://github.com/spker/go-ta
 
 **Please do not file a public ticket** mentioning the vulnerability.
 
-To find out how to disclose a vulnerability in Ethereum visit [https://bounty.ethereum.org](https://bounty.ethereum.org) or email bounty@ethereum.org.
+To find out how to disclose a vulnerability in TarCoin visit [https://bounty.tarcoin.org](https://bounty.tarcoin.org) or email bounty@tarcoin.org.
 
 The following key may be used to communicate sensitive information to developers.
 

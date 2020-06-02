@@ -1,20 +1,20 @@
-// Copyright 2019 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2019 The go-tarcoin Authors
+// This file is part of the go-tarcoin library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-tarcoin library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-tarcoin library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-tarcoin library. If not, see <http://www.gnu.org/licenses/>.
 
-// Package graphql provides a GraphQL interface to Ethereum node data.
+// Package graphql provides a GraphQL interface to TarCoin node data.
 package graphql
 
 import (
@@ -39,7 +39,7 @@ var (
 	errBlockInvariant = errors.New("block objects must be instantiated with at least one of num or hash")
 )
 
-// Account represents an Ethereum account at a particular block.
+// Account represents an TarCoin account at a particular block.
 type Account struct {
 	backend       ethapi.Backend
 	address       common.Address
@@ -119,7 +119,7 @@ func (l *Log) Data(ctx context.Context) hexutil.Bytes {
 	return hexutil.Bytes(l.log.Data)
 }
 
-// Transaction represents an Ethereum transaction.
+// Transaction represents an TarCoin transaction.
 // backend and hash are mandatory; all others will be fetched when required.
 type Transaction struct {
 	backend ethapi.Backend
@@ -343,7 +343,7 @@ func (t *Transaction) V(ctx context.Context) (hexutil.Big, error) {
 
 type BlockType int
 
-// Block represents an Ethereum block.
+// Block represents an TarCoin block.
 // backend, and numberOrHash are mandatory. All other fields are lazily fetched
 // when required.
 type Block struct {
@@ -767,8 +767,8 @@ func (b *Block) Account(ctx context.Context, args struct {
 // CallData encapsulates arguments to `call` or `estimateGas`.
 // All arguments are optional.
 type CallData struct {
-	From     *common.Address // The Ethereum address the call is from.
-	To       *common.Address // The Ethereum address the call is to.
+	From     *common.Address // The TarCoin address the call is from.
+	To       *common.Address // The TarCoin address the call is to.
 	Gas      *hexutil.Uint64 // The amount of gas provided for the call.
 	GasPrice *hexutil.Big    // The price of each unit of gas, in wei.
 	Value    *hexutil.Big    // The value sent along with the call.
@@ -1044,7 +1044,7 @@ func (r *Resolver) ProtocolVersion(ctx context.Context) (int32, error) {
 
 // SyncState represents the synchronisation status returned from the `syncing` accessor.
 type SyncState struct {
-	progress ethereum.SyncProgress
+	progress tarcoin.SyncProgress
 }
 
 func (s *SyncState) StartingBlock() hexutil.Uint64 {

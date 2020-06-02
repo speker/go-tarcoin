@@ -1,18 +1,18 @@
-// Copyright 2015 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2015 The go-tarcoin Authors
+// This file is part of the go-tarcoin library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-tarcoin library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-tarcoin library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-tarcoin library. If not, see <http://www.gnu.org/licenses/>.
 
 package trcn
 
@@ -289,12 +289,12 @@ func (pm *ProtocolManager) doSync(op *chainSyncOp) error {
 	if op.mode == downloader.FastSync {
 		// Before launch the fast sync, we have to ensure user uses the same
 		// txlookup limit.
-		// The main concern here is: during the fast sync Geth won't index the
+		// The main concern here is: during the fast sync Gtrcn won't index the
 		// block(generate tx indices) before the HEAD-limit. But if user changes
-		// the limit in the next fast sync(e.g. user kill Geth manually and
-		// restart) then it will be hard for Geth to figure out the oldest block
+		// the limit in the next fast sync(e.g. user kill Gtrcn manually and
+		// restart) then it will be hard for Gtrcn to figure out the oldest block
 		// has been indexed. So here for the user-experience wise, it's non-optimal
-		// that user can't change limit during the fast sync. If changed, Geth
+		// that user can't change limit during the fast sync. If changed, Gtrcn
 		// will just blindly use the original one.
 		limit := pm.blockchain.TxLookupLimit()
 		if stored := rawdb.ReadFastTxLookupLimit(pm.chaindb); stored == nil {

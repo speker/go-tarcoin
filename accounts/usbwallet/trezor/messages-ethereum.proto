@@ -1,9 +1,9 @@
 // This file originates from the SatoshiLabs Trezor `common` repository at:
-//   https://github.com/trezor/trezor-common/blob/master/protob/messages-ethereum.proto
+//   https://github.com/trezor/trezor-common/blob/master/protob/messages-tarcoin.proto
 // dated 28.05.2019, commit 893fd219d4a01bcffa0cd9cfa631856371ec5aa9.
 
 syntax = "proto2";
-package hw.trezor.messages.ethereum;
+package hw.trezor.messages.tarcoin;
 
 // Sugar for easier handling in Java
 option java_package = "com.satoshilabs.trezor.lib.protobuf";
@@ -33,7 +33,7 @@ message EthereumPublicKey {
 }
 
 /**
- * Request: Ask device for Ethereum address corresponding to address_n path
+ * Request: Ask device for TarCoin address corresponding to address_n path
  * @start
  * @next EthereumAddress
  * @next Failure
@@ -44,12 +44,12 @@ message EthereumGetAddress {
 }
 
 /**
- * Response: Contains an Ethereum address derived from device private seed
+ * Response: Contains an TarCoin address derived from device private seed
  * @end
  */
 message EthereumAddress {
-    optional bytes  addressBin = 1;    // Ethereum address as 20 bytes (legacy firmwares)
-    optional string addressHex = 2;    // Ethereum address as hex string (newer firmwares)
+    optional bytes  addressBin = 1;    // TarCoin address as 20 bytes (legacy firmwares)
+    optional string addressHex = 2;    // TarCoin address as hex string (newer firmwares)
 }
 
 /**

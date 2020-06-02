@@ -1,18 +1,18 @@
-// Copyright 2019 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2019 The go-tarcoin Authors
+// This file is part of the go-tarcoin library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-tarcoin library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-tarcoin library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-tarcoin library. If not, see <http://www.gnu.org/licenses/>.
 
 package backends
 
@@ -52,8 +52,8 @@ func TestSimulatedBackend(t *testing.T) {
 	if isPending {
 		t.Fatal("transaction should not be pending")
 	}
-	if err != ethereum.NotFound {
-		t.Fatalf("err should be `ethereum.NotFound` but received %v", err)
+	if err != tarcoin.NotFound {
+		t.Fatalf("err should be `tarcoin.NotFound` but received %v", err)
 	}
 
 	// generate a transaction and confirm you can retrieve it
@@ -382,11 +382,11 @@ func TestSimulatedBackend_EstimateGas(t *testing.T) {
 
 	var cases = []struct {
 		name        string
-		message     ethereum.CallMsg
+		message     tarcoin.CallMsg
 		expect      uint64
 		expectError error
 	}{
-		{"plain transfer(valid)", ethereum.CallMsg{
+		{"plain transfer(valid)", tarcoin.CallMsg{
 			From:     addr,
 			To:       &addr,
 			Gas:      0,
@@ -395,7 +395,7 @@ func TestSimulatedBackend_EstimateGas(t *testing.T) {
 			Data:     nil,
 		}, params.TxGas, nil},
 
-		{"plain transfer(invalid)", ethereum.CallMsg{
+		{"plain transfer(invalid)", tarcoin.CallMsg{
 			From:     addr,
 			To:       &contractAddr,
 			Gas:      0,
@@ -404,7 +404,7 @@ func TestSimulatedBackend_EstimateGas(t *testing.T) {
 			Data:     nil,
 		}, 0, errors.New("always failing transaction (execution reverted)")},
 
-		{"Revert", ethereum.CallMsg{
+		{"Revert", tarcoin.CallMsg{
 			From:     addr,
 			To:       &contractAddr,
 			Gas:      0,
@@ -413,7 +413,7 @@ func TestSimulatedBackend_EstimateGas(t *testing.T) {
 			Data:     common.Hex2Bytes("d8b98391"),
 		}, 0, errors.New("always failing transaction (execution reverted) (revert reason)")},
 
-		{"PureRevert", ethereum.CallMsg{
+		{"PureRevert", tarcoin.CallMsg{
 			From:     addr,
 			To:       &contractAddr,
 			Gas:      0,
@@ -422,7 +422,7 @@ func TestSimulatedBackend_EstimateGas(t *testing.T) {
 			Data:     common.Hex2Bytes("aa8b1d30"),
 		}, 0, errors.New("always failing transaction (execution reverted)")},
 
-		{"OOG", ethereum.CallMsg{
+		{"OOG", tarcoin.CallMsg{
 			From:     addr,
 			To:       &contractAddr,
 			Gas:      100000,
@@ -431,7 +431,7 @@ func TestSimulatedBackend_EstimateGas(t *testing.T) {
 			Data:     common.Hex2Bytes("50f6fe34"),
 		}, 0, errors.New("gas required exceeds allowance (100000)")},
 
-		{"Assert", ethereum.CallMsg{
+		{"Assert", tarcoin.CallMsg{
 			From:     addr,
 			To:       &contractAddr,
 			Gas:      100000,
@@ -440,7 +440,7 @@ func TestSimulatedBackend_EstimateGas(t *testing.T) {
 			Data:     common.Hex2Bytes("b9b046f9"),
 		}, 0, errors.New("always failing transaction (invalid opcode: opcode 0xfe not defined)")},
 
-		{"Valid", ethereum.CallMsg{
+		{"Valid", tarcoin.CallMsg{
 			From:     addr,
 			To:       &contractAddr,
 			Gas:      100000,
@@ -476,11 +476,11 @@ func TestSimulatedBackend_EstimateGasWithPrice(t *testing.T) {
 	receipant := common.HexToAddress("deadbeef")
 	var cases = []struct {
 		name        string
-		message     ethereum.CallMsg
+		message     tarcoin.CallMsg
 		expect      uint64
 		expectError error
 	}{
-		{"EstimateWithoutPrice", ethereum.CallMsg{
+		{"EstimateWithoutPrice", tarcoin.CallMsg{
 			From:     addr,
 			To:       &receipant,
 			Gas:      0,
@@ -489,7 +489,7 @@ func TestSimulatedBackend_EstimateGasWithPrice(t *testing.T) {
 			Data:     nil,
 		}, 21000, nil},
 
-		{"EstimateWithPrice", ethereum.CallMsg{
+		{"EstimateWithPrice", tarcoin.CallMsg{
 			From:     addr,
 			To:       &receipant,
 			Gas:      0,
@@ -498,7 +498,7 @@ func TestSimulatedBackend_EstimateGasWithPrice(t *testing.T) {
 			Data:     nil,
 		}, 21000, nil},
 
-		{"EstimateWithVeryHighPrice", ethereum.CallMsg{
+		{"EstimateWithVeryHighPrice", tarcoin.CallMsg{
 			From:     addr,
 			To:       &receipant,
 			Gas:      0,
@@ -507,7 +507,7 @@ func TestSimulatedBackend_EstimateGasWithPrice(t *testing.T) {
 			Data:     nil,
 		}, 21000, nil},
 
-		{"EstimateWithSuperhighPrice", ethereum.CallMsg{
+		{"EstimateWithSuperhighPrice", tarcoin.CallMsg{
 			From:     addr,
 			To:       &receipant,
 			Gas:      0,
@@ -959,7 +959,7 @@ func TestSimulatedBackend_PendingAndCallContract(t *testing.T) {
 	}
 
 	// make sure you can call the contract in pending state
-	res, err := sim.PendingCallContract(bgCtx, ethereum.CallMsg{
+	res, err := sim.PendingCallContract(bgCtx, tarcoin.CallMsg{
 		From: testAddr,
 		To:   &addr,
 		Data: input,
@@ -979,7 +979,7 @@ func TestSimulatedBackend_PendingAndCallContract(t *testing.T) {
 	sim.Commit()
 
 	// make sure you can call the contract
-	res, err = sim.CallContract(bgCtx, ethereum.CallMsg{
+	res, err = sim.CallContract(bgCtx, tarcoin.CallMsg{
 		From: testAddr,
 		To:   &addr,
 		Data: input,

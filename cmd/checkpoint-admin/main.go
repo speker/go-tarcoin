@@ -1,18 +1,18 @@
-// Copyright 2019 The go-ethereum Authors
-// This file is part of go-ethereum.
+// Copyright 2019 The go-tarcoin Authors
+// This file is part of go-tarcoin.
 //
-// go-ethereum is free software: you can redistribute it and/or modify
+// go-tarcoin is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// go-ethereum is distributed in the hope that it will be useful,
+// go-tarcoin is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with go-ethereum. If not, see <http://www.gnu.org/licenses/>.
+// along with go-tarcoin. If not, see <http://www.gnu.org/licenses/>.
 
 // checkpoint-admin is a utility that can be used to query checkpoint information
 // and register stable checkpoints into an oracle contract.
@@ -37,7 +37,7 @@ var (
 var app *cli.App
 
 func init() {
-	app = utils.NewApp(gitCommit, gitDate, "ethereum checkpoint helper tool")
+	app = utils.NewApp(gitCommit, gitDate, "tarcoin checkpoint helper tool")
 	app.Commands = []cli.Command{
 		commandStatus,
 		commandDeploy,
@@ -72,7 +72,7 @@ var (
 	nodeURLFlag = cli.StringFlag{
 		Name:  "rpc",
 		Value: "http://localhost:8545",
-		Usage: "The rpc endpoint of a local or remote geth node",
+		Usage: "The rpc endpoint of a local or remote gtrcn node",
 	}
 	clefURLFlag = cli.StringFlag{
 		Name:  "clef",

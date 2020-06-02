@@ -1,25 +1,25 @@
-// Copyright 2019 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2019 The go-tarcoin Authors
+// This file is part of the go-tarcoin library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-tarcoin library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-tarcoin library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-tarcoin library. If not, see <http://www.gnu.org/licenses/>.
 
 package graphql
 
 const schema string = `
     # Bytes32 is a 32 byte binary string, represented as 0x-prefixed hexadecimal.
     scalar Bytes32
-    # Address is a 20 byte Ethereum address, represented as 0x-prefixed hexadecimal.
+    # Address is a 20 byte TarCoin address, represented as 0x-prefixed hexadecimal.
     scalar Address
     # Bytes is an arbitrary length binary string, represented as 0x-prefixed hexadecimal.
     # An empty byte string is represented as '0x'. Byte strings must have an even number of hexadecimal nybbles.
@@ -36,7 +36,7 @@ const schema string = `
         mutation: Mutation
     }
 
-    # Account is an Ethereum account at a particular block.
+    # Account is an TarCoin account at a particular block.
     type Account {
         # Address is the address owning the account.
         address: Address!
@@ -54,7 +54,7 @@ const schema string = `
         storage(slot: Bytes32!): Bytes32!
     }
 
-    # Log is an Ethereum event log.
+    # Log is an TarCoin event log.
     type Log {
         # Index is the index of this log in the block.
         index: Int!
@@ -69,7 +69,7 @@ const schema string = `
         transaction: Transaction!
     }
 
-    # Transaction is an Ethereum transaction.
+    # Transaction is an TarCoin transaction.
     type Transaction {
         # Hash is the hash of this transaction.
         hash: Bytes32!
@@ -140,7 +140,7 @@ const schema string = `
         topics: [[Bytes32!]!]
     }
 
-    # Block is an Ethereum block.
+    # Block is an TarCoin block.
     type Block {
         # Number is the number of this block, starting at 0 for the genesis block.
         number: Long!
@@ -202,7 +202,7 @@ const schema string = `
         transactionAt(index: Int!): Transaction
         # Logs returns a filtered set of logs from this block.
         logs(filter: BlockFilterCriteria!): [Log!]!
-        # Account fetches an Ethereum account at the current block's state.
+        # Account fetches an TarCoin account at the current block's state.
         account(address: Address!): Account!
         # Call executes a local call operation at the current block's state.
         call(data: CallData!): CallResult
@@ -285,7 +285,7 @@ const schema string = `
       transactionCount: Int!
       # Transactions is a list of transactions in the current pending state.
       transactions: [Transaction!]
-      # Account fetches an Ethereum account for the pending state.
+      # Account fetches an TarCoin account for the pending state.
       account(address: Address!): Account!
       # Call executes a local call operation for the pending state.
       call(data: CallData!): CallResult
@@ -295,7 +295,7 @@ const schema string = `
     }
 
     type Query {
-        # Block fetches an Ethereum block by number or by hash. If neither is
+        # Block fetches an TarCoin block by number or by hash. If neither is
         # supplied, the most recent known block is returned.
         block(number: Long, hash: Bytes32): Block
         # Blocks returns all the blocks between two numbers, inclusive. If

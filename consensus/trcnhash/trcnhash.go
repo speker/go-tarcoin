@@ -1,18 +1,18 @@
-// Copyright 2017 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2017 The go-tarcoin Authors
+// This file is part of the go-tarcoin library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-tarcoin library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-tarcoin library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-tarcoin library. If not, see <http://www.gnu.org/licenses/>.
 
 // Package trcnhash implements the trcnhash proof-of-work consensus engine.
 package trcnhash
@@ -481,7 +481,7 @@ func NewTester(notify []string, noverify bool) *Trcnhash {
 }
 
 // NewFaker creates a trcnhash consensus engine with a fake PoW scheme that accepts
-// all blocks' seal as valid, though they still have to conform to the Ethereum
+// all blocks' seal as valid, though they still have to conform to the TarCoin
 // consensus rules.
 func NewFaker() *Trcnhash {
 	return &Trcnhash{
@@ -494,7 +494,7 @@ func NewFaker() *Trcnhash {
 
 // NewFakeFailer creates a trcnhash consensus engine with a fake PoW scheme that
 // accepts all blocks as valid apart from the single one specified, though they
-// still have to conform to the Ethereum consensus rules.
+// still have to conform to the TarCoin consensus rules.
 func NewFakeFailer(fail uint64) *Trcnhash {
 	return &Trcnhash{
 		config: Config{
@@ -507,7 +507,7 @@ func NewFakeFailer(fail uint64) *Trcnhash {
 
 // NewFakeDelayer creates a trcnhash consensus engine with a fake PoW scheme that
 // accepts all blocks as valid, but delays verifications by some time, though
-// they still have to conform to the Ethereum consensus rules.
+// they still have to conform to the TarCoin consensus rules.
 func NewFakeDelayer(delay time.Duration) *Trcnhash {
 	return &Trcnhash{
 		config: Config{
