@@ -17,7 +17,7 @@
 package vm
 
 import (
-	"github.com/spker/go-tarcoin/params"
+	"github.com/speker/go-tarcoin/params"
 )
 
 func minSwapStack(n int) int {

@@ -26,8 +26,8 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/log"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/log"
 )
 
 // nodeDockerfile is the Dockerfile required to run an TarCoin node.

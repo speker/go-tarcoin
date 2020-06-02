@@ -19,7 +19,7 @@ package vm
 import (
 	"testing"
 
-	"github.com/spker/go-tarcoin/crypto"
+	"github.com/speker/go-tarcoin/crypto"
 )
 
 func TestJumpDestAnalysis(t *testing.T) {

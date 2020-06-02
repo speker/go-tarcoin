@@ -25,11 +25,11 @@ import (
 	"time"
 
 	"github.com/dop251/goja"
-	"github.com/spker/go-tarcoin/accounts/scwallet"
-	"github.com/spker/go-tarcoin/accounts/usbwallet"
-	"github.com/spker/go-tarcoin/common/hexutil"
-	"github.com/spker/go-tarcoin/internal/jsre"
-	"github.com/spker/go-tarcoin/rpc"
+	"github.com/speker/go-tarcoin/accounts/scwallet"
+	"github.com/speker/go-tarcoin/accounts/usbwallet"
+	"github.com/speker/go-tarcoin/common/hexutil"
+	"github.com/speker/go-tarcoin/internal/jsre"
+	"github.com/speker/go-tarcoin/rpc"
 )
 
 // bridge is a collection of JavaScript utility methods to bride the .js runtime

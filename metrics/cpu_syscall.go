@@ -21,7 +21,7 @@ package metrics
 import (
 	"syscall"
 
-	"github.com/spker/go-tarcoin/log"
+	"github.com/speker/go-tarcoin/log"
 )
 
 // getProcessCPUTime retrieves the process' CPU time since program startup.

@@ -17,7 +17,7 @@
 package rawdb
 
 import (
-	"github.com/spker/go-tarcoin/trcndb"
+	"github.com/speker/go-tarcoin/trcndb"
 )
 
 // table is a wrapper around a database that prefixes each key access with a pre-

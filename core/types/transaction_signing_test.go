@@ -20,9 +20,9 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/crypto"
-	"github.com/spker/go-tarcoin/rlp"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/crypto"
+	"github.com/speker/go-tarcoin/rlp"
 )
 
 func TestEIP155Signing(t *testing.T) {

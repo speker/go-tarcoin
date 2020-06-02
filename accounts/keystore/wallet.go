@@ -19,10 +19,10 @@ package keystore
 import (
 	"math/big"
 
-	tarcoin "github.com/spker/go-tarcoin"
-	"github.com/spker/go-tarcoin/accounts"
-	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/crypto"
+	tarcoin "github.com/speker/go-tarcoin"
+	"github.com/speker/go-tarcoin/accounts"
+	"github.com/speker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/crypto"
 )
 
 // keystoreWallet implements the accounts.Wallet interface for the original

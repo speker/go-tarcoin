@@ -25,9 +25,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/spker/go-tarcoin/common/mclock"
-	"github.com/spker/go-tarcoin/core/rawdb"
-	"github.com/spker/go-tarcoin/p2p/enode"
+	"github.com/speker/go-tarcoin/common/mclock"
+	"github.com/speker/go-tarcoin/core/rawdb"
+	"github.com/speker/go-tarcoin/p2p/enode"
 )
 
 func TestClientPoolL10C100Free(t *testing.T) {

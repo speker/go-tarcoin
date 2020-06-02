@@ -19,11 +19,11 @@ package downloader
 import (
 	"math/big"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/core"
-	"github.com/spker/go-tarcoin/core/rawdb"
-	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/trcndb"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/core"
+	"github.com/speker/go-tarcoin/core/rawdb"
+	"github.com/speker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/trcndb"
 )
 
 // FakePeer is a mock downloader peer that operates on a local database instance

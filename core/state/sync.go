@@ -19,10 +19,10 @@ package state
 import (
 	"bytes"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/trcndb"
-	"github.com/spker/go-tarcoin/rlp"
-	"github.com/spker/go-tarcoin/trie"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/trcndb"
+	"github.com/speker/go-tarcoin/rlp"
+	"github.com/speker/go-tarcoin/trie"
 )
 
 // NewStateSync create a new state trie download scheduler.

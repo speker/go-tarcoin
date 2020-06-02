@@ -19,8 +19,8 @@ package memorydb
 import (
 	"testing"
 
-	"github.com/spker/go-tarcoin/trcndb"
-	"github.com/spker/go-tarcoin/trcndb/dbtest"
+	"github.com/speker/go-tarcoin/trcndb"
+	"github.com/speker/go-tarcoin/trcndb/dbtest"
 )
 
 func TestMemoryDB(t *testing.T) {

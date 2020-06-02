@@ -21,8 +21,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/spker/go-tarcoin/common/mclock"
-	"github.com/spker/go-tarcoin/les/utils"
+	"github.com/speker/go-tarcoin/common/mclock"
+	"github.com/speker/go-tarcoin/les/utils"
 )
 
 // requestDistributor implements a mechanism that distributes requests to

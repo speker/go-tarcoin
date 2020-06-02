@@ -34,8 +34,8 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/spker/go-tarcoin/core"
-	"github.com/spker/go-tarcoin/rlp"
+	"github.com/speker/go-tarcoin/core"
+	"github.com/speker/go-tarcoin/rlp"
 )
 
 type allocItem struct{ Addr, Balance *big.Int }

@@ -19,8 +19,8 @@ package miner
 import (
 	"testing"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/core/types"
 )
 
 // noopChainRetriever is an implementation of headerRetriever that always

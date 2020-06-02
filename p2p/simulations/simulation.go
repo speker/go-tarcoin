@@ -20,7 +20,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/spker/go-tarcoin/p2p/enode"
+	"github.com/speker/go-tarcoin/p2p/enode"
 )
 
 // Simulation provides a framework for running actions in a simulated network

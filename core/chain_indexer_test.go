@@ -24,9 +24,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/core/rawdb"
-	"github.com/spker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/core/rawdb"
+	"github.com/speker/go-tarcoin/core/types"
 )
 
 // Runs multiple tests with randomized parameters.

@@ -31,7 +31,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/spker/go-tarcoin/params"
+	"github.com/speker/go-tarcoin/params"
 )
 
 // Command line flags to configure the interpreters.

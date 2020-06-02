@@ -27,7 +27,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/spker/go-tarcoin/params"
+	"github.com/speker/go-tarcoin/params"
 )
 
 const (

@@ -19,7 +19,7 @@ package gtrcn
 import (
 	"os"
 
-	"github.com/spker/go-tarcoin/log"
+	"github.com/speker/go-tarcoin/log"
 )
 
 // SetVerbosity sets the global verbosity level (between 0 and 6 - see logger/verbosity.go).

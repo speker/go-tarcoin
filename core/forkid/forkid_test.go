@@ -21,9 +21,9 @@ import (
 	"math"
 	"testing"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/params"
-	"github.com/spker/go-tarcoin/rlp"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/params"
+	"github.com/speker/go-tarcoin/rlp"
 )
 
 // TestCreation tests that different genesis and fork rule combinations result in

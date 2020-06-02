@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/spker/go-tarcoin/crypto"
+	"github.com/speker/go-tarcoin/crypto"
 )
 
 // FunctionType represents different types of functions a contract might have.

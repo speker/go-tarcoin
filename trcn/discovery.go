@@ -17,12 +17,12 @@
 package trcn
 
 import (
-	"github.com/spker/go-tarcoin/core"
-	"github.com/spker/go-tarcoin/core/forkid"
-	"github.com/spker/go-tarcoin/p2p"
-	"github.com/spker/go-tarcoin/p2p/dnsdisc"
-	"github.com/spker/go-tarcoin/p2p/enode"
-	"github.com/spker/go-tarcoin/rlp"
+	"github.com/speker/go-tarcoin/core"
+	"github.com/speker/go-tarcoin/core/forkid"
+	"github.com/speker/go-tarcoin/p2p"
+	"github.com/speker/go-tarcoin/p2p/dnsdisc"
+	"github.com/speker/go-tarcoin/p2p/enode"
+	"github.com/speker/go-tarcoin/rlp"
 )
 
 // ethEntry is the "trcn" ENR entry which advertises trcn protocol

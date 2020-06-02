@@ -19,7 +19,7 @@ package bloombits
 import (
 	"errors"
 
-	"github.com/spker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/core/types"
 )
 
 var (

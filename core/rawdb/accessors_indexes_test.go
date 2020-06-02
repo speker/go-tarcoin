@@ -20,10 +20,10 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/trcndb"
-	"github.com/spker/go-tarcoin/rlp"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/trcndb"
+	"github.com/speker/go-tarcoin/rlp"
 )
 
 // Tests that positional lookup metadata can be stored and retrieved.

@@ -20,10 +20,10 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/spker/go-tarcoin/consensus/trcnhash"
-	"github.com/spker/go-tarcoin/core/rawdb"
-	"github.com/spker/go-tarcoin/core/vm"
-	"github.com/spker/go-tarcoin/params"
+	"github.com/speker/go-tarcoin/consensus/trcnhash"
+	"github.com/speker/go-tarcoin/core/rawdb"
+	"github.com/speker/go-tarcoin/core/vm"
+	"github.com/speker/go-tarcoin/params"
 )
 
 // Tests that DAO-fork enabled clients can properly filter out fork-commencing

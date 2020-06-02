@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/spker/go-tarcoin/common/math"
+	"github.com/speker/go-tarcoin/common/math"
 )
 
 // Memory implements a simple memory model for the tarcoin virtual machine.

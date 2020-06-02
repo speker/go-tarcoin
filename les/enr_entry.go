@@ -17,7 +17,7 @@
 package les
 
 import (
-	"github.com/spker/go-tarcoin/rlp"
+	"github.com/speker/go-tarcoin/rlp"
 )
 
 // lesEntry is the "les" ENR entry. This is set for LES servers only.

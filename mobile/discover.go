@@ -22,7 +22,7 @@ package gtrcn
 import (
 	"errors"
 
-	"github.com/spker/go-tarcoin/p2p/discv5"
+	"github.com/speker/go-tarcoin/p2p/discv5"
 )
 
 // Enode represents a host on the network.

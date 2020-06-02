@@ -20,9 +20,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/common/prque"
-	"github.com/spker/go-tarcoin/trcndb"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/common/prque"
+	"github.com/speker/go-tarcoin/trcndb"
 )
 
 // ErrNotRequested is returned by the trie sync when it's requested to process a

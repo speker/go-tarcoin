@@ -24,8 +24,8 @@ import (
 	"testing"
 	"testing/quick"
 
-	"github.com/spker/go-tarcoin/p2p/enr"
-	"github.com/spker/go-tarcoin/rlp"
+	"github.com/speker/go-tarcoin/p2p/enr"
+	"github.com/speker/go-tarcoin/rlp"
 	"github.com/stretchr/testify/assert"
 )
 

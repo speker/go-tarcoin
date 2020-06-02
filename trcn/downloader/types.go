@@ -19,7 +19,7 @@ package downloader
 import (
 	"fmt"
 
-	"github.com/spker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/core/types"
 )
 
 // peerDropFn is a callback type for dropping a peer detected as malicious.

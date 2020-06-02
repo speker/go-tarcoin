@@ -26,9 +26,9 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/common/hexutil"
-	"github.com/spker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/common/hexutil"
+	"github.com/speker/go-tarcoin/core/types"
 )
 
 // prepare converts an trcnhash cache or dataset from a byte stream into the internal

@@ -25,9 +25,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/crypto"
-	whisper "github.com/spker/go-tarcoin/whisper/whisperv6"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/crypto"
+	whisper "github.com/speker/go-tarcoin/whisper/whisperv6"
 )
 
 const powRequirement = 0.00001

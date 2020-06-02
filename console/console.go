@@ -29,10 +29,10 @@ import (
 	"syscall"
 
 	"github.com/dop251/goja"
-	"github.com/spker/go-tarcoin/internal/jsre"
-	"github.com/spker/go-tarcoin/internal/jsre/deps"
-	"github.com/spker/go-tarcoin/internal/web3ext"
-	"github.com/spker/go-tarcoin/rpc"
+	"github.com/speker/go-tarcoin/internal/jsre"
+	"github.com/speker/go-tarcoin/internal/jsre/deps"
+	"github.com/speker/go-tarcoin/internal/web3ext"
+	"github.com/speker/go-tarcoin/rpc"
 	"github.com/mattn/go-colorable"
 	"github.com/peterh/liner"
 )

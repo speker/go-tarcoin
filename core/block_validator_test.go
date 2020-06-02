@@ -21,11 +21,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/spker/go-tarcoin/consensus/trcnhash"
-	"github.com/spker/go-tarcoin/core/rawdb"
-	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/core/vm"
-	"github.com/spker/go-tarcoin/params"
+	"github.com/speker/go-tarcoin/consensus/trcnhash"
+	"github.com/speker/go-tarcoin/core/rawdb"
+	"github.com/speker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/core/vm"
+	"github.com/speker/go-tarcoin/params"
 )
 
 // Tests that simple header verification works, for both good and bad blocks.

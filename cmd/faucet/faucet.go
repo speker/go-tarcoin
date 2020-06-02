@@ -41,23 +41,23 @@ import (
 	"sync"
 	"time"
 
-	"github.com/spker/go-tarcoin/accounts"
-	"github.com/spker/go-tarcoin/accounts/keystore"
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/core"
-	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/trcn"
-	"github.com/spker/go-tarcoin/trcn/downloader"
-	"github.com/spker/go-tarcoin/trcnclient"
-	"github.com/spker/go-tarcoin/trcnstats"
-	"github.com/spker/go-tarcoin/les"
-	"github.com/spker/go-tarcoin/log"
-	"github.com/spker/go-tarcoin/node"
-	"github.com/spker/go-tarcoin/p2p"
-	"github.com/spker/go-tarcoin/p2p/discv5"
-	"github.com/spker/go-tarcoin/p2p/enode"
+	"github.com/speker/go-tarcoin/accounts"
+	"github.com/speker/go-tarcoin/accounts/keystore"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/core"
+	"github.com/speker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/trcn"
+	"github.com/speker/go-tarcoin/trcn/downloader"
+	"github.com/speker/go-tarcoin/trcnclient"
+	"github.com/speker/go-tarcoin/trcnstats"
+	"github.com/speker/go-tarcoin/les"
+	"github.com/speker/go-tarcoin/log"
+	"github.com/speker/go-tarcoin/node"
+	"github.com/speker/go-tarcoin/p2p"
+	"github.com/speker/go-tarcoin/p2p/discv5"
+	"github.com/speker/go-tarcoin/p2p/enode"
 	"github.com/speker/go-tarcoin/p2p/nat"
-	"github.com/spker/go-tarcoin/params"
+	"github.com/speker/go-tarcoin/params"
 	"github.com/gorilla/websocket"
 )
 
@@ -470,7 +470,7 @@ func (f *faucet) apiHandler(w http.ResponseWriter, r *http.Request) {
 			username, avatar, address, err = authNoAuth(msg.URL)
 		default:
 			//lint:ignore ST1005 This error is to be displayed in the browser
-			err = errors.New("Something funky happened, please open an issue at https://github.com/spker/go-tarcoin/issues")
+			err = errors.New("Something funky happened, please open an issue at https://github.com/speker/go-tarcoin/issues")
 		}
 		if err != nil {
 			if err = sendError(conn, err); err != nil {

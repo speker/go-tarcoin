@@ -24,9 +24,9 @@ import (
 	"net"
 	"time"
 
-	"github.com/spker/go-tarcoin/common/math"
-	"github.com/spker/go-tarcoin/crypto"
-	"github.com/spker/go-tarcoin/p2p/enode"
+	"github.com/speker/go-tarcoin/common/math"
+	"github.com/speker/go-tarcoin/crypto"
+	"github.com/speker/go-tarcoin/p2p/enode"
 )
 
 // node represents a host on the network.

@@ -22,8 +22,8 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/core/types"
 )
 
 func TestChainIterator(t *testing.T) {

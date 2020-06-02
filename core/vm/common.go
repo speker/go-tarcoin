@@ -19,8 +19,8 @@ package vm
 import (
 	"math/big"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/common/math"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/common/math"
 )
 
 // calcMemSize64 calculates the required memory size, and returns

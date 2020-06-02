@@ -23,7 +23,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/spker/go-tarcoin/p2p/simulations/pipes"
+	"github.com/speker/go-tarcoin/p2p/simulations/pipes"
 )
 
 func TestTCPPipe(t *testing.T) {

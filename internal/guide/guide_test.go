@@ -30,8 +30,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/spker/go-tarcoin/accounts/keystore"
-	"github.com/spker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/accounts/keystore"
+	"github.com/speker/go-tarcoin/core/types"
 )
 
 // Tests that the account management snippets work correctly.

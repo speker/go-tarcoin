@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/spker/go-tarcoin/rpc"
+	"github.com/speker/go-tarcoin/rpc"
 	"github.com/stretchr/testify/assert"
 )
 

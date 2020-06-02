@@ -19,7 +19,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/spker/go-tarcoin/log"
+	"github.com/speker/go-tarcoin/log"
 )
 
 // ensureVirtualHost checks whether a reverse-proxy is running on the specified

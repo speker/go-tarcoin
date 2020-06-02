@@ -23,8 +23,8 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/log"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/log"
 	"github.com/mattn/go-colorable"
 )
 

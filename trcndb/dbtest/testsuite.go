@@ -22,7 +22,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/spker/go-tarcoin/trcndb"
+	"github.com/speker/go-tarcoin/trcndb"
 )
 
 // TestDatabaseSuite runs a suite of tests against a KeyValueStore database

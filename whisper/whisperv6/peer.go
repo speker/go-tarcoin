@@ -23,10 +23,10 @@ import (
 	"time"
 
 	mapset "github.com/deckarep/golang-set"
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/log"
-	"github.com/spker/go-tarcoin/p2p"
-	"github.com/spker/go-tarcoin/rlp"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/log"
+	"github.com/speker/go-tarcoin/p2p"
+	"github.com/speker/go-tarcoin/rlp"
 )
 
 // Peer represents a whisper protocol peer connection.

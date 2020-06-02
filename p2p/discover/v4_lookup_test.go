@@ -23,9 +23,9 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/spker/go-tarcoin/crypto"
-	"github.com/spker/go-tarcoin/p2p/enode"
-	"github.com/spker/go-tarcoin/p2p/enr"
+	"github.com/speker/go-tarcoin/crypto"
+	"github.com/speker/go-tarcoin/p2p/enode"
+	"github.com/speker/go-tarcoin/p2p/enr"
 )
 
 func TestUDPv4_Lookup(t *testing.T) {

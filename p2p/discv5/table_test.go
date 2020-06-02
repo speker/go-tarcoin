@@ -27,8 +27,8 @@ import (
 	"testing/quick"
 	"time"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/crypto"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/crypto"
 )
 
 func TestBucket_bumpNoDuplicates(t *testing.T) {

@@ -26,16 +26,16 @@ import (
 	"testing"
 	"time"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/consensus"
-	"github.com/spker/go-tarcoin/consensus/trcnhash"
-	"github.com/spker/go-tarcoin/core/rawdb"
-	"github.com/spker/go-tarcoin/core/state"
-	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/core/vm"
-	"github.com/spker/go-tarcoin/crypto"
-	"github.com/spker/go-tarcoin/trcndb"
-	"github.com/spker/go-tarcoin/params"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/consensus"
+	"github.com/speker/go-tarcoin/consensus/trcnhash"
+	"github.com/speker/go-tarcoin/core/rawdb"
+	"github.com/speker/go-tarcoin/core/state"
+	"github.com/speker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/core/vm"
+	"github.com/speker/go-tarcoin/crypto"
+	"github.com/speker/go-tarcoin/trcndb"
+	"github.com/speker/go-tarcoin/params"
 )
 
 // So we can deterministically seed different blockchains
@@ -1423,7 +1423,7 @@ func TestEIP161AccountRemoval(t *testing.T) {
 // tests that under weird reorg conditions the blockchain and its internal header-
 // chain return the same latest block/header.
 //
-// https://github.com/spker/go-tarcoin/pull/15941
+// https://github.com/speker/go-tarcoin/pull/15941
 func TestBlockchainHeaderchainReorgConsistency(t *testing.T) {
 	// Generate a canonical chain to act as the main dataset
 	engine := trcnhash.NewFaker()
@@ -1684,8 +1684,8 @@ func TestIncompleteAncientReceiptChainInsertion(t *testing.T) {
 // overtake the 'canon' chain until after it's passed canon by about 200 blocks.
 //
 // Details at:
-//  - https://github.com/spker/go-tarcoin/issues/18977
-//  - https://github.com/spker/go-tarcoin/pull/18988
+//  - https://github.com/speker/go-tarcoin/issues/18977
+//  - https://github.com/speker/go-tarcoin/pull/18988
 func TestLowDiffLongChain(t *testing.T) {
 	// Generate a canonical chain to act as the main dataset
 	engine := trcnhash.NewFaker()

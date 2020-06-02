@@ -17,7 +17,7 @@
 // Package bind generates TarCoin contract Go bindings.
 //
 // Detailed usage document and tutorial available on the go-tarcoin Wiki page:
-// https://github.com/spker/go-tarcoin/wiki/Native-DApps:-Go-bindings-to-TarCoin-contracts
+// https://github.com/speker/go-tarcoin/wiki/Native-DApps:-Go-bindings-to-TarCoin-contracts
 package bind
 
 import (
@@ -30,8 +30,8 @@ import (
 	"text/template"
 	"unicode"
 
-	"github.com/spker/go-tarcoin/accounts/abi"
-	"github.com/spker/go-tarcoin/log"
+	"github.com/speker/go-tarcoin/accounts/abi"
+	"github.com/speker/go-tarcoin/log"
 )
 
 // Lang is a target programming language selector to generate bindings for.

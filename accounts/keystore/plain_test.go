@@ -27,8 +27,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/crypto"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/crypto"
 )
 
 func tmpKeyStoreIface(t *testing.T, encrypted bool) (dir string, ks keyStore) {

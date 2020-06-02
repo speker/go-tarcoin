@@ -21,9 +21,9 @@ package gtrcn
 import (
 	"encoding/json"
 
-	"github.com/spker/go-tarcoin/core"
-	"github.com/spker/go-tarcoin/p2p/discv5"
-	"github.com/spker/go-tarcoin/params"
+	"github.com/speker/go-tarcoin/core"
+	"github.com/speker/go-tarcoin/p2p/discv5"
+	"github.com/speker/go-tarcoin/params"
 )
 
 // MainnetGenesis returns the JSON spec to use for the main TarCoin network. It

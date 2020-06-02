@@ -25,7 +25,7 @@ import (
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/spker/go-tarcoin/core"
+	"github.com/speker/go-tarcoin/core"
 )
 
 // Tests the go-tarcoin to Aleth chainspec conversion for the Stureby testnet.

@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/spker/go-tarcoin/metrics"
+	"github.com/speker/go-tarcoin/metrics"
 )
 
 // a regexp for extracting the unit from time.Duration.String

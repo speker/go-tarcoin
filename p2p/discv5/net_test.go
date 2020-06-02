@@ -21,8 +21,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/crypto"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/crypto"
 )
 
 func TestNetwork_Lookup(t *testing.T) {

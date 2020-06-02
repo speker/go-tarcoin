@@ -19,8 +19,8 @@ package les
 import (
 	"time"
 
-	"github.com/spker/go-tarcoin/common/bitutil"
-	"github.com/spker/go-tarcoin/light"
+	"github.com/speker/go-tarcoin/common/bitutil"
+	"github.com/speker/go-tarcoin/light"
 )
 
 const (

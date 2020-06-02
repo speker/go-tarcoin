@@ -21,8 +21,8 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/spker/go-tarcoin/common/mclock"
-	"github.com/spker/go-tarcoin/common/prque"
+	"github.com/speker/go-tarcoin/common/mclock"
+	"github.com/speker/go-tarcoin/common/prque"
 )
 
 // servingQueue allows running tasks in a limited number of threads and puts the

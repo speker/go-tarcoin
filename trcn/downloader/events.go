@@ -16,7 +16,7 @@
 
 package downloader
 
-import "github.com/spker/go-tarcoin/core/types"
+import "github.com/speker/go-tarcoin/core/types"
 
 type DoneEvent struct {
 	Latest *types.Header

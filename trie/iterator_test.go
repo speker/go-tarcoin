@@ -22,8 +22,8 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/trcndb/memorydb"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/trcndb/memorydb"
 )
 
 func TestIterator(t *testing.T) {

@@ -25,9 +25,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/common/hexutil"
-	"github.com/spker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/common/hexutil"
+	"github.com/speker/go-tarcoin/core/types"
 )
 
 // Tests that trcnhash works correctly in test mode.
@@ -55,7 +55,7 @@ func TestTestMode(t *testing.T) {
 }
 
 // This test checks that cache lru logic doesn't crash under load.
-// It reproduces https://github.com/spker/go-tarcoin/issues/14943
+// It reproduces https://github.com/speker/go-tarcoin/issues/14943
 func TestCacheFileEvict(t *testing.T) {
 	tmpdir, err := ioutil.TempDir("", "trcnhash-test")
 	if err != nil {

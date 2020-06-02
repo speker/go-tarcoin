@@ -21,8 +21,8 @@ package gtrcn
 import (
 	"math/big"
 
-	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/trcnclient"
+	"github.com/speker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/trcnclient"
 )
 
 // EthereumClient provides access to the TarCoin APIs.

@@ -25,7 +25,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/spker/go-tarcoin/log"
+	"github.com/speker/go-tarcoin/log"
 )
 
 // ethstatsDockerfile is the Dockerfile required to build an trcnstats backend

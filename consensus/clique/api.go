@@ -19,10 +19,10 @@ package clique
 import (
 	"fmt"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/consensus"
-	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/rpc"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/consensus"
+	"github.com/speker/go-tarcoin/core/types"
+	"github.com/speker/go-tarcoin/rpc"
 )
 
 // API is a user facing RPC API to allow controlling the signer and voting

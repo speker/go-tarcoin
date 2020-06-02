@@ -21,7 +21,7 @@ package gtrcn
 import (
 	"errors"
 
-	"github.com/spker/go-tarcoin/p2p"
+	"github.com/speker/go-tarcoin/p2p"
 )
 
 // NodeInfo represents pi short summary of the information known about the host.

@@ -28,7 +28,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/spker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/common"
 )
 
 // In this test, nodes try to randomly resolve each other.

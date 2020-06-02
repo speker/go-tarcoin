@@ -207,7 +207,7 @@ func TestAndroid(t *testing.T) {
 		}
 	}
 	// Generate the mobile bindings for Gtrcn and add the tester class
-	gobind := exec.Command("gomobile", "bind", "-javapkg", "org.tarcoin", "github.com/spker/go-tarcoin/mobile")
+	gobind := exec.Command("gomobile", "bind", "-javapkg", "org.tarcoin", "github.com/speker/go-tarcoin/mobile")
 	if output, err := gobind.CombinedOutput(); err != nil {
 		t.Logf("%s", output)
 		t.Fatalf("failed to run gomobile bind: %v", err)

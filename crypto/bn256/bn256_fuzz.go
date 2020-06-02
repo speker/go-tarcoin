@@ -10,8 +10,8 @@ import (
 	"bytes"
 	"math/big"
 
-	cloudflare "github.com/spker/go-tarcoin/crypto/bn256/cloudflare"
-	google "github.com/spker/go-tarcoin/crypto/bn256/google"
+	cloudflare "github.com/speker/go-tarcoin/crypto/bn256/cloudflare"
+	google "github.com/speker/go-tarcoin/crypto/bn256/google"
 )
 
 // FuzzAdd fuzzez bn256 addition between the Google and Cloudflare libraries.

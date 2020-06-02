@@ -19,9 +19,9 @@ package whisperv6
 import (
 	"bytes"
 
-	"github.com/spker/go-tarcoin/crypto"
-	"github.com/spker/go-tarcoin/rlp"
-	"github.com/spker/go-tarcoin/whisper/whisperv6"
+	"github.com/speker/go-tarcoin/crypto"
+	"github.com/speker/go-tarcoin/rlp"
+	"github.com/speker/go-tarcoin/whisper/whisperv6"
 )
 
 type MessageParams struct {

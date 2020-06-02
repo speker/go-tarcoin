@@ -17,8 +17,8 @@
 package runtime
 
 import (
-	"github.com/spker/go-tarcoin/core"
-	"github.com/spker/go-tarcoin/core/vm"
+	"github.com/speker/go-tarcoin/core"
+	"github.com/speker/go-tarcoin/core/vm"
 )
 
 func NewEnv(cfg *Config) *vm.EVM {

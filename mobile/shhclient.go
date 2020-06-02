@@ -19,8 +19,8 @@
 package gtrcn
 
 import (
-	"github.com/spker/go-tarcoin/whisper/shhclient"
-	whisper "github.com/spker/go-tarcoin/whisper/whisperv6"
+	"github.com/speker/go-tarcoin/whisper/shhclient"
+	whisper "github.com/speker/go-tarcoin/whisper/whisperv6"
 )
 
 // WhisperClient provides access to the TarCoin APIs.

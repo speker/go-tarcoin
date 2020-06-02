@@ -16,7 +16,7 @@
 
 package params
 
-import "github.com/spker/go-tarcoin/common"
+import "github.com/speker/go-tarcoin/common"
 
 // MainnetBootnodes are the enode URLs of the P2P bootstrap nodes running on
 // the main TarCoin network.

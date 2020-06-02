@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/spker/go-tarcoin/cmd/utils"
+	"github.com/speker/go-tarcoin/cmd/utils"
 	"gopkg.in/urfave/cli.v1"
 )
 

@@ -21,9 +21,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/spker/go-tarcoin/trcn/downloader"
-	"github.com/spker/go-tarcoin/p2p"
-	"github.com/spker/go-tarcoin/p2p/enode"
+	"github.com/speker/go-tarcoin/trcn/downloader"
+	"github.com/speker/go-tarcoin/p2p"
+	"github.com/speker/go-tarcoin/p2p/enode"
 )
 
 func TestFastSyncDisabling63(t *testing.T) { testFastSyncDisabling(t, 63) }

@@ -19,7 +19,7 @@ package snapshot
 import (
 	"bytes"
 
-	"github.com/spker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/common"
 )
 
 // hashes is a helper to implement sort.Interface.

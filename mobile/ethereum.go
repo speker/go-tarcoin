@@ -21,8 +21,8 @@ package gtrcn
 import (
 	"errors"
 
-	tarcoin "github.com/spker/go-tarcoin"
-	"github.com/spker/go-tarcoin/common"
+	tarcoin "github.com/speker/go-tarcoin"
+	"github.com/speker/go-tarcoin/common"
 )
 
 // Subscription represents an event subscription where events are

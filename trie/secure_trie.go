@@ -19,8 +19,8 @@ package trie
 import (
 	"fmt"
 
-	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/log"
+	"github.com/speker/go-tarcoin/common"
+	"github.com/speker/go-tarcoin/log"
 )
 
 // SecureTrie wraps a trie with key hashing. In a secure trie, all
