@@ -471,7 +471,7 @@ func maybeSkipArchive(env build.Environment) {
 // Debian Packaging
 func doDebianSource(cmdline []string) {
 	var (
-		goversion = flag.String("goversion", "", `Go version to build with (will be included in the source package)`)
+		goversion = flag.String("goversion", "1.14.4", `Go version to build with (will be included in the source package)`)
 		cachedir  = flag.String("cachedir", "./build/cache", `Filesystem path to cache the downloaded Go bundles at`)
 		signer    = flag.String("signer", "", `Signing key name, also used as package author`)
 		upload    = flag.String("upload", "", `Where to upload the source package (usually "tarcoin/tarcoin")`)
@@ -548,7 +548,7 @@ func downloadGoSources(version string, cachedir string) string {
 	file := fmt.Sprintf("go%s.src.tar.gz", version)
 	url := "https://dl.google.com/go/" + file
 	dst := filepath.Join(cachedir, file)
-	if err := csdb.DownloadFile(url, dst); err != nil {
+	if err := csdb.DownloadFile(url, dst); err == nil {
 		log.Fatal(err)
 	}
 	return dst
