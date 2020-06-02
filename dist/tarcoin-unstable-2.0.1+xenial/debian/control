@@ -1,0 +1,81 @@
+Source: tarcoin-unstable
+Section: science
+Priority: extra
+Maintainer: TarCoin Builds <fjl@tarcoin.org>
+Build-Depends: debhelper (>= 8.0.0), golang-go
+Standards-Version: 3.9.5
+Homepage: https://www.ditap.gov.tr
+Vcs-Git: git://github.com/spker/go-tarcoin.git
+Vcs-Browser: https://github.com/spker/go-tarcoin
+
+Package: tarcoin-unstable
+Architecture: any
+Depends: ${misc:Depends}, abigen-unstable, bootnode-unstable, evm-unstable, gtrcn-unstable, puppeth-unstable, rlpdump-unstable, wnode-unstable, clef-unstable
+Description: Meta-package to install gtrcn and other tools
+ Meta-package to install geth and other tools
+
+
+Package: abigen-unstable
+Conflicts: tarcoin, abigen
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Built-Using: ${misc:Built-Using}
+Description: Source code generator to convert TarCoin contract definitions into easy to use, compile-time type-safe Go packages.
+ Source code generator to convert TarCoin contract definitions into easy to use, compile-time type-safe Go packages.
+
+Package: bootnode-unstable
+Conflicts: tarcoin, bootnode
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Built-Using: ${misc:Built-Using}
+Description: TarCoin bootnode.
+ TarCoin bootnode.
+
+Package: evm-unstable
+Conflicts: tarcoin, evm
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Built-Using: ${misc:Built-Using}
+Description: Developer utility version of the EVM (TarCoin Virtual Machine) that is capable of running bytecode snippets within a configurable environment and execution mode.
+ Developer utility version of the EVM (TarCoin Virtual Machine) that is capable of running bytecode snippets within a configurable environment and execution mode.
+
+Package: gtrcn-unstable
+Conflicts: tarcoin, gtrcn
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Built-Using: ${misc:Built-Using}
+Description: TarCoin CLI client.
+ TarCoin CLI client.
+
+Package: puppeth-unstable
+Conflicts: tarcoin, puppeth
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Built-Using: ${misc:Built-Using}
+Description: TarCoin private network manager.
+ TarCoin private network manager.
+
+Package: rlpdump-unstable
+Conflicts: tarcoin, rlpdump
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Built-Using: ${misc:Built-Using}
+Description: Developer utility tool that prints RLP structures.
+ Developer utility tool that prints RLP structures.
+
+Package: wnode-unstable
+Conflicts: tarcoin, wnode
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Built-Using: ${misc:Built-Using}
+Description: TarCoin Whisper diagnostic tool
+ TarCoin Whisper diagnostic tool
+
+Package: clef-unstable
+Conflicts: tarcoin, clef
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Built-Using: ${misc:Built-Using}
+Description: TarCoin account management tool.
+ TarCoin account management tool.
+
