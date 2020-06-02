@@ -19,7 +19,6 @@ package light
 import (
 	"context"
 	"fmt"
-	"math/big"
 	"sync"
 	"time"
 
@@ -28,11 +27,11 @@ import (
 	"github.com/spker/go-tarcoin/core/rawdb"
 	"github.com/spker/go-tarcoin/core/state"
 	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/event"
 	"github.com/spker/go-tarcoin/log"
 	"github.com/spker/go-tarcoin/params"
 	"github.com/spker/go-tarcoin/rlp"
+	"github.com/spker/go-tarcoin/trcndb"
 )
 
 const (
@@ -312,8 +311,8 @@ func (pool *TxPool) setNewHead(head *types.Header) {
 	pool.relay.NewHead(pool.head, m, r)
 
 	// Update fork indicator by next pending block number
-	next := new(big.Int).Add(head.Number, big.NewInt(1))
-	pool.istanbul = pool.config.IsIstanbul(next)
+	//next := new(big.Int).Add(head.Number, big.NewInt(1))
+	//pool.istanbul = pool.config.IsIstanbul(next)
 }
 
 // Stop stops the light transaction pool
@@ -381,7 +380,8 @@ func (pool *TxPool) validateTx(ctx context.Context, tx *types.Transaction) error
 	}
 
 	// Should supply enough intrinsic gas
-	gas, err := core.IntrinsicGas(tx.Data(), tx.To() == nil, true, pool.istanbul)
+	//gas, err := core.IntrinsicGas(tx.Data(), tx.To() == nil, true, pool.istanbul)
+	gas, err := core.IntrinsicGas(tx.Data(), tx.To() == nil, true)
 	if err != nil {
 		return err
 	}

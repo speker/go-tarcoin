@@ -43,7 +43,7 @@ import (
 	"github.com/spker/go-tarcoin/console"
 	"github.com/spker/go-tarcoin/core/types"
 	"github.com/spker/go-tarcoin/crypto"
-	"github.com/spker/go-tarcoin/internal/ethapi"
+	"github.com/spker/go-tarcoin/internal/trcnapi"
 	"github.com/spker/go-tarcoin/log"
 	"github.com/spker/go-tarcoin/node"
 	"github.com/spker/go-tarcoin/params"
@@ -1071,7 +1071,7 @@ func GenDoc(ctx *cli.Context) {
 		rlpdata := common.FromHex("0xf85d640101948a8eafb1cf62bfbeb1741769dae1a9dd47996192018026a0716bd90515acb1e68e5ac5867aa11a1e65399c3349d479f5fb698554ebc6f293a04e8a4ebfff434e971e0ef12c5bf3a881b06fd04fc3f8b8a7291fb67a26a1d4ed")
 		var tx types.Transaction
 		rlp.DecodeBytes(rlpdata, &tx)
-		add("OnApproved - SignTransactionResult", desc, &ethapi.SignTransactionResult{Raw: rlpdata, Tx: &tx})
+		add("OnApproved - SignTransactionResult", desc, &trcnapi.SignTransactionResult{Raw: rlpdata, Tx: &tx})
 
 	}
 	{ // User input

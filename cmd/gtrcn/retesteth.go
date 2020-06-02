@@ -317,10 +317,10 @@ func (api *RetestethAPI) SetChainParams(ctx context.Context, chainParams ChainPa
 		eip150Block         *big.Int
 		eip155Block         *big.Int
 		eip158Block         *big.Int
-		byzantiumBlock      *big.Int
-		constantinopleBlock *big.Int
-		petersburgBlock     *big.Int
-		istanbulBlock       *big.Int
+		//byzantiumBlock      *big.Int
+		//constantinopleBlock *big.Int
+		//petersburgBlock     *big.Int
+		//istanbulBlock       *big.Int
 	)
 	if chainParams.Params.HomesteadForkBlock != nil {
 		homesteadBlock = big.NewInt(int64(*chainParams.Params.HomesteadForkBlock))
@@ -335,21 +335,21 @@ func (api *RetestethAPI) SetChainParams(ctx context.Context, chainParams ChainPa
 		eip158Block = big.NewInt(int64(*chainParams.Params.EIP158ForkBlock))
 		eip155Block = eip158Block
 	}
-	if chainParams.Params.ByzantiumForkBlock != nil {
-		byzantiumBlock = big.NewInt(int64(*chainParams.Params.ByzantiumForkBlock))
-	}
-	if chainParams.Params.ConstantinopleForkBlock != nil {
-		constantinopleBlock = big.NewInt(int64(*chainParams.Params.ConstantinopleForkBlock))
-	}
-	if chainParams.Params.ConstantinopleFixForkBlock != nil {
-		petersburgBlock = big.NewInt(int64(*chainParams.Params.ConstantinopleFixForkBlock))
-	}
-	if constantinopleBlock != nil && petersburgBlock == nil {
-		petersburgBlock = big.NewInt(100000000000)
-	}
-	if chainParams.Params.IstanbulBlock != nil {
-		istanbulBlock = big.NewInt(int64(*chainParams.Params.IstanbulBlock))
-	}
+	//if chainParams.Params.ByzantiumForkBlock != nil {
+	//	byzantiumBlock = big.NewInt(int64(*chainParams.Params.ByzantiumForkBlock))
+	//}
+	//if chainParams.Params.ConstantinopleForkBlock != nil {
+	//	constantinopleBlock = big.NewInt(int64(*chainParams.Params.ConstantinopleForkBlock))
+	//}
+	//if chainParams.Params.ConstantinopleFixForkBlock != nil {
+	//	petersburgBlock = big.NewInt(int64(*chainParams.Params.ConstantinopleFixForkBlock))
+	//}
+	//if constantinopleBlock != nil && petersburgBlock == nil {
+	//	petersburgBlock = big.NewInt(100000000000)
+	//}
+	//if chainParams.Params.IstanbulBlock != nil {
+	//	istanbulBlock = big.NewInt(int64(*chainParams.Params.IstanbulBlock))
+	//}
 
 	genesis := &core.Genesis{
 		Config: &params.ChainConfig{
@@ -360,10 +360,10 @@ func (api *RetestethAPI) SetChainParams(ctx context.Context, chainParams ChainPa
 			EIP150Block:         eip150Block,
 			EIP155Block:         eip155Block,
 			EIP158Block:         eip158Block,
-			ByzantiumBlock:      byzantiumBlock,
-			ConstantinopleBlock: constantinopleBlock,
-			PetersburgBlock:     petersburgBlock,
-			IstanbulBlock:       istanbulBlock,
+			//ByzantiumBlock:      byzantiumBlock,
+			//ConstantinopleBlock: constantinopleBlock,
+			//PetersburgBlock:     petersburgBlock,
+			//IstanbulBlock:       istanbulBlock,
 		},
 		Nonce:      uint64(chainParams.Genesis.Nonce),
 		Timestamp:  uint64(chainParams.Genesis.Timestamp),

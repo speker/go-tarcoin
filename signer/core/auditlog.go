@@ -21,7 +21,7 @@ import (
 
 	"github.com/spker/go-tarcoin/common"
 	"github.com/spker/go-tarcoin/common/hexutil"
-	"github.com/spker/go-tarcoin/internal/ethapi"
+	"github.com/spker/go-tarcoin/internal/trcnapi"
 	"github.com/spker/go-tarcoin/log"
 )
 
@@ -42,7 +42,7 @@ func (l *AuditLogger) New(ctx context.Context) (common.Address, error) {
 	return l.api.New(ctx)
 }
 
-func (l *AuditLogger) SignTransaction(ctx context.Context, args SendTxArgs, methodSelector *string) (*ethapi.SignTransactionResult, error) {
+func (l *AuditLogger) SignTransaction(ctx context.Context, args SendTxArgs, methodSelector *string) (*trcnapi.SignTransactionResult, error) {
 	sel := "<nil>"
 	if methodSelector != nil {
 		sel = *methodSelector

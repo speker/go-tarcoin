@@ -36,7 +36,7 @@ import (
 	"github.com/spker/go-tarcoin/core/types"
 	"github.com/spker/go-tarcoin/core/vm"
 	"github.com/spker/go-tarcoin/trcn/tracers"
-	"github.com/spker/go-tarcoin/internal/ethapi"
+	"github.com/spker/go-tarcoin/internal/trcnapi"
 	"github.com/spker/go-tarcoin/log"
 	"github.com/spker/go-tarcoin/rlp"
 	"github.com/spker/go-tarcoin/rpc"
@@ -765,11 +765,11 @@ func (api *PrivateDebugAPI) traceTx(ctx context.Context, message core.Message, v
 	// Depending on the tracer type, format and return the output
 	switch tracer := tracer.(type) {
 	case *vm.StructLogger:
-		return &ethapi.ExecutionResult{
+		return &trcnapi.ExecutionResult{
 			Gas:         result.UsedGas,
 			Failed:      result.Failed(),
 			ReturnValue: fmt.Sprintf("%x", result.Return()),
-			StructLogs:  ethapi.FormatLogs(tracer.StructLogs()),
+			StructLogs:  trcnapi.FormatLogs(tracer.StructLogs()),
 		}, nil
 
 	case *tracers.Tracer:

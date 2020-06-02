@@ -36,7 +36,7 @@ import (
 	"github.com/spker/go-tarcoin/trcn/filters"
 	"github.com/spker/go-tarcoin/trcn/gasprice"
 	"github.com/spker/go-tarcoin/event"
-	"github.com/spker/go-tarcoin/internal/ethapi"
+	"github.com/spker/go-tarcoin/internal/trcnapi"
 	"github.com/spker/go-tarcoin/les/checkpointoracle"
 	lpc "github.com/spker/go-tarcoin/les/lespay/client"
 	"github.com/spker/go-tarcoin/light"
@@ -69,7 +69,7 @@ type LightEthereum struct {
 	eventMux       *event.TypeMux
 	engine         consensus.Engine
 	accountManager *accounts.Manager
-	netRPCService  *ethapi.PublicNetAPI
+	netRPCService  *trcnapi.PublicNetAPI
 }
 
 func New(ctx *node.ServiceContext, config *trcn.Config) (*LightEthereum, error) {
@@ -204,7 +204,7 @@ func (s *LightDummyAPI) Mining() bool {
 // APIs returns the collection of RPC services the tarcoin package offers.
 // NOTE, some of these services probably need to be moved to somewhere else.
 func (s *LightEthereum) APIs() []rpc.API {
-	apis := ethapi.GetAPIs(s.ApiBackend)
+	apis := trcnapi.GetAPIs(s.ApiBackend)
 	apis = append(apis, s.engine.APIs(s.BlockChain().HeaderChain())...)
 	return append(apis, []rpc.API{
 		{
@@ -272,7 +272,7 @@ func (s *LightEthereum) Start(srvr *p2p.Server) error {
 	s.wg.Add(bloomServiceThreads)
 	s.startBloomHandlers(params.BloomBitsBlocksClient)
 
-	s.netRPCService = ethapi.NewPublicNetAPI(srvr, s.config.NetworkId)
+	s.netRPCService = trcnapi.NewPublicNetAPI(srvr, s.config.NetworkId)
 
 	// clients are searching for the first advertised protocol in the list
 	protocolVersion := AdvertiseProtocolVersions[0]

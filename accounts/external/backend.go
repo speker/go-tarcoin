@@ -27,7 +27,7 @@ import (
 	"github.com/spker/go-tarcoin/common/hexutil"
 	"github.com/spker/go-tarcoin/core/types"
 	"github.com/spker/go-tarcoin/event"
-	"github.com/spker/go-tarcoin/internal/ethapi"
+	"github.com/spker/go-tarcoin/internal/trcnapi"
 	"github.com/spker/go-tarcoin/log"
 	"github.com/spker/go-tarcoin/rpc"
 	"github.com/spker/go-tarcoin/signer/core"
@@ -192,7 +192,7 @@ func (api *ExternalSigner) SignText(account accounts.Account, text []byte) ([]by
 }
 
 func (api *ExternalSigner) SignTx(account accounts.Account, tx *types.Transaction, chainID *big.Int) (*types.Transaction, error) {
-	res := ethapi.SignTransactionResult{}
+	res := trcnapi.SignTransactionResult{}
 	data := hexutil.Bytes(tx.Data())
 	var to *common.MixedcaseAddress
 	if tx.To() != nil {

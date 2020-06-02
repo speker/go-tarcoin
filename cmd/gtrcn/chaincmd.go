@@ -157,10 +157,10 @@ The export-preimages command export hash preimages to an RLP encoded stream`,
 			utils.CacheFlag,
 			utils.SyncModeFlag,
 			utils.FakePoWFlag,
-			utils.RopstenFlag,
-			utils.RinkebyFlag,
+			//utils.RopstenFlag,
+			//utils.RinkebyFlag,
 			utils.TxLookupLimitFlag,
-			utils.GoerliFlag,
+			//utils.GoerliFlag,
 			utils.LegacyTestnetFlag,
 		},
 		Category: "BLOCKCHAIN COMMANDS",
@@ -207,9 +207,9 @@ Use "tarcoin dump 0" to dump the genesis block.`,
 			utils.DataDirFlag,
 			utils.AncientFlag,
 			utils.CacheFlag,
-			utils.RopstenFlag,
-			utils.RinkebyFlag,
-			utils.GoerliFlag,
+			//utils.RopstenFlag,
+			//utils.RinkebyFlag,
+			//utils.GoerliFlag,
 			utils.LegacyTestnetFlag,
 			utils.SyncModeFlag,
 		},
@@ -496,7 +496,7 @@ func removeDB(ctx *cli.Context) error {
 		log.Info("Full node state database missing", "path", path)
 	}
 	// Remove the full node ancient database
-	path = config.Eth.DatabaseFreezer
+	path = config.Trcn.DatabaseFreezer
 	switch {
 	case path == "":
 		path = filepath.Join(stack.ResolvePath("chaindata"), "ancient")

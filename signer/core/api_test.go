@@ -32,7 +32,7 @@ import (
 	"github.com/spker/go-tarcoin/common"
 	"github.com/spker/go-tarcoin/common/hexutil"
 	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/internal/ethapi"
+	"github.com/spker/go-tarcoin/internal/trcnapi"
 	"github.com/spker/go-tarcoin/rlp"
 	"github.com/spker/go-tarcoin/signer/core"
 	"github.com/spker/go-tarcoin/signer/fourbyte"
@@ -51,8 +51,8 @@ func (ui *headlessUi) OnInputRequired(info core.UserInputRequest) (core.UserInpu
 }
 
 func (ui *headlessUi) OnSignerStartup(info core.StartupInfo)        {}
-func (ui *headlessUi) RegisterUIServer(api *core.UIServerAPI)       {}
-func (ui *headlessUi) OnApprovedTx(tx ethapi.SignTransactionResult) {}
+func (ui *headlessUi) RegisterUIServer(api *core.UIServerAPI)        {}
+func (ui *headlessUi) OnApprovedTx(tx trcnapi.SignTransactionResult) {}
 
 func (ui *headlessUi) ApproveTx(request *core.SignTxRequest) (core.SignTxResponse, error) {
 
@@ -244,7 +244,7 @@ func mkTestTx(from common.MixedcaseAddress) core.SendTxArgs {
 func TestSignTx(t *testing.T) {
 	var (
 		list      []common.Address
-		res, res2 *ethapi.SignTransactionResult
+		res, res2 *trcnapi.SignTransactionResult
 		err       error
 	)
 

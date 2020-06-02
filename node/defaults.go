@@ -23,7 +23,7 @@ import (
 	"runtime"
 
 	"github.com/spker/go-tarcoin/p2p"
-	"github.com/spker/go-tarcoin/p2p/nat"
+	"github.com/speker/go-tarcoin/p2p/nat"
 	"github.com/spker/go-tarcoin/rpc"
 )
 

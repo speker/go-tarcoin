@@ -42,7 +42,7 @@ import (
 	"github.com/spker/go-tarcoin/trcn/gasprice"
 	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/event"
-	"github.com/spker/go-tarcoin/internal/ethapi"
+	"github.com/spker/go-tarcoin/internal/trcnapi"
 	"github.com/spker/go-tarcoin/log"
 	"github.com/spker/go-tarcoin/miner"
 	"github.com/spker/go-tarcoin/node"
@@ -92,7 +92,7 @@ type TarCoin struct {
 	trcnbase common.Address
 
 	networkID     uint64
-	netRPCService *ethapi.PublicNetAPI
+	netRPCService *trcnapi.PublicNetAPI
 
 	lock sync.RWMutex // Protects the variadic fields (e.g. gas price and trcnbase)
 }
@@ -287,7 +287,7 @@ func CreateConsensusEngine(ctx *node.ServiceContext, chainConfig *params.ChainCo
 // APIs return the collection of RPC services the tarcoin package offers.
 // NOTE, some of these services probably need to be moved to somewhere else.
 func (s *TarCoin) APIs() []rpc.API {
-	apis := ethapi.GetAPIs(s.APIBackend)
+	apis := trcnapi.GetAPIs(s.APIBackend)
 
 	// Append any APIs exposed explicitly by the les server
 	if s.lesServer != nil {
@@ -540,7 +540,7 @@ func (s *TarCoin) Start(srvr *p2p.Server) error {
 	s.startBloomHandlers(params.BloomBitsBlocks)
 
 	// Start the RPC service
-	s.netRPCService = ethapi.NewPublicNetAPI(srvr, s.NetVersion())
+	s.netRPCService = trcnapi.NewPublicNetAPI(srvr, s.NetVersion())
 
 	// Figure out a max peers count based on the server limits
 	maxPeers := srvr.MaxPeers

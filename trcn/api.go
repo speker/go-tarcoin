@@ -34,7 +34,7 @@ import (
 	"github.com/spker/go-tarcoin/core/rawdb"
 	"github.com/spker/go-tarcoin/core/state"
 	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/internal/ethapi"
+	"github.com/spker/go-tarcoin/internal/trcnapi"
 	"github.com/spker/go-tarcoin/rlp"
 	"github.com/spker/go-tarcoin/rpc"
 	"github.com/spker/go-tarcoin/trie"
@@ -344,7 +344,7 @@ func (api *PrivateDebugAPI) GetBadBlocks(ctx context.Context) ([]*BadBlockArgs, 
 		} else {
 			results[i].RLP = fmt.Sprintf("0x%x", rlpBytes)
 		}
-		if results[i].Block, err = ethapi.RPCMarshalBlock(block, true, true); err != nil {
+		if results[i].Block, err = trcnapi.RPCMarshalBlock(block, true, true); err != nil {
 			results[i].Block = map[string]interface{}{"error": err.Error()}
 		}
 	}

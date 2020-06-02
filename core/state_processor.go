@@ -102,11 +102,11 @@ func ApplyTransaction(config *params.ChainConfig, bc ChainContext, author *commo
 	}
 	// Update the state with pending changes
 	var root []byte
-	if config.IsByzantium(header.Number) {
-		statedb.Finalise(true)
-	} else {
+	//if config.IsByzantium(header.Number) {
+	//	statedb.Finalise(true)
+	//} else {
 		root = statedb.IntermediateRoot(config.IsEIP158(header.Number)).Bytes()
-	}
+	//}
 	*usedGas += result.UsedGas
 
 	// Create a new receipt for the transaction, storing the intermediate root and gas used by the tx

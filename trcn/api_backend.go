@@ -37,7 +37,7 @@ import (
 	"github.com/spker/go-tarcoin/rpc"
 )
 
-// EthAPIBackend implements ethapi.Backend for full nodes
+// EthAPIBackend implements trcnapi.Backend for full nodes
 type EthAPIBackend struct {
 	extRPCEnabled bool
 	trcn           *TarCoin

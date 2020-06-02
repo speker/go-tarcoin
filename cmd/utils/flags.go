@@ -57,7 +57,7 @@ import (
 	"github.com/spker/go-tarcoin/p2p"
 	"github.com/spker/go-tarcoin/p2p/discv5"
 	"github.com/spker/go-tarcoin/p2p/enode"
-	"github.com/spker/go-tarcoin/p2p/nat"
+	"github.com/speker/go-tarcoin/p2p/nat"
 	"github.com/spker/go-tarcoin/p2p/netutil"
 	"github.com/spker/go-tarcoin/params"
 	"github.com/spker/go-tarcoin/rpc"
@@ -165,18 +165,18 @@ var (
 		Usage: "Network identifier (integer, 1=Frontier, 3=Ropsten, 4=Rinkeby, 5=Görli)",
 		Value: trcn.DefaultConfig.NetworkId,
 	}
-	GoerliFlag = cli.BoolFlag{
-		Name:  "goerli",
-		Usage: "Görli network: pre-configured proof-of-authority test network",
-	}
-	RinkebyFlag = cli.BoolFlag{
-		Name:  "rinkeby",
-		Usage: "Rinkeby network: pre-configured proof-of-authority test network",
-	}
-	RopstenFlag = cli.BoolFlag{
-		Name:  "ropsten",
-		Usage: "Ropsten network: pre-configured proof-of-work test network",
-	}
+	//GoerliFlag = cli.BoolFlag{
+	//	Name:  "goerli",
+	//	Usage: "Görli network: pre-configured proof-of-authority test network",
+	//}
+	//RinkebyFlag = cli.BoolFlag{
+	//	Name:  "rinkeby",
+	//	Usage: "Rinkeby network: pre-configured proof-of-authority test network",
+	//}
+	//RopstenFlag = cli.BoolFlag{
+	//	Name:  "ropsten",
+	//	Usage: "Ropsten network: pre-configured proof-of-work test network",
+	//}
 	DeveloperFlag = cli.BoolFlag{
 		Name:  "dev",
 		Usage: "Ephemeral proof-of-authority network with a pre-funded developer account, mining enabled",
@@ -729,21 +729,21 @@ var (
 // then a subdirectory of the specified datadir will be used.
 func MakeDataDir(ctx *cli.Context) string {
 	if path := ctx.GlobalString(DataDirFlag.Name); path != "" {
-		if ctx.GlobalBool(LegacyTestnetFlag.Name) || ctx.GlobalBool(RopstenFlag.Name) {
-			// Maintain compatibility with older Gtrcn configurations storing the
-			// Ropsten database in `testnet` instead of `ropsten`.
-			legacyPath := filepath.Join(path, "testnet")
-			if _, err := os.Stat(legacyPath); !os.IsNotExist(err) {
-				return legacyPath
-			}
-			return filepath.Join(path, "ropsten")
-		}
-		if ctx.GlobalBool(RinkebyFlag.Name) {
-			return filepath.Join(path, "rinkeby")
-		}
-		if ctx.GlobalBool(GoerliFlag.Name) {
-			return filepath.Join(path, "goerli")
-		}
+		//if ctx.GlobalBool(LegacyTestnetFlag.Name) || ctx.GlobalBool(RopstenFlag.Name) {
+		//	// Maintain compatibility with older Gtrcn configurations storing the
+		//	// Ropsten database in `testnet` instead of `ropsten`.
+		//	legacyPath := filepath.Join(path, "testnet")
+		//	if _, err := os.Stat(legacyPath); !os.IsNotExist(err) {
+		//		return legacyPath
+		//	}
+		//	return filepath.Join(path, "ropsten")
+		//}
+		//if ctx.GlobalBool(RinkebyFlag.Name) {
+		//	return filepath.Join(path, "rinkeby")
+		//}
+		//if ctx.GlobalBool(GoerliFlag.Name) {
+		//	return filepath.Join(path, "goerli")
+		//}
 		return path
 	}
 	Fatalf("Cannot determine default data directory, please set manually (--datadir)")
@@ -794,12 +794,12 @@ func setBootstrapNodes(ctx *cli.Context, cfg *p2p.Config) {
 		} else {
 			urls = splitAndTrim(ctx.GlobalString(BootnodesFlag.Name))
 		}
-	case ctx.GlobalBool(LegacyTestnetFlag.Name) || ctx.GlobalBool(RopstenFlag.Name):
-		urls = params.RopstenBootnodes
-	case ctx.GlobalBool(RinkebyFlag.Name):
-		urls = params.RinkebyBootnodes
-	case ctx.GlobalBool(GoerliFlag.Name):
-		urls = params.GoerliBootnodes
+	//case ctx.GlobalBool(LegacyTestnetFlag.Name) || ctx.GlobalBool(RopstenFlag.Name):
+	//	urls = params.RopstenBootnodes
+	//case ctx.GlobalBool(RinkebyFlag.Name):
+	//	urls = params.RinkebyBootnodes
+	//case ctx.GlobalBool(GoerliFlag.Name):
+	//	urls = params.GoerliBootnodes
 	case cfg.BootstrapNodes != nil:
 		return // already set, don't apply defaults.
 	}
@@ -828,12 +828,12 @@ func setBootstrapNodesV5(ctx *cli.Context, cfg *p2p.Config) {
 		} else {
 			urls = splitAndTrim(ctx.GlobalString(BootnodesFlag.Name))
 		}
-	case ctx.GlobalBool(RopstenFlag.Name):
-		urls = params.RopstenBootnodes
-	case ctx.GlobalBool(RinkebyFlag.Name):
-		urls = params.RinkebyBootnodes
-	case ctx.GlobalBool(GoerliFlag.Name):
-		urls = params.GoerliBootnodes
+	//case ctx.GlobalBool(RopstenFlag.Name):
+	//	urls = params.RopstenBootnodes
+	//case ctx.GlobalBool(RinkebyFlag.Name):
+	//	urls = params.RinkebyBootnodes
+	//case ctx.GlobalBool(GoerliFlag.Name):
+	//	urls = params.GoerliBootnodes
 	case cfg.BootstrapNodesV5 != nil:
 		return // already set, don't apply defaults.
 	}
@@ -1250,20 +1250,20 @@ func setDataDir(ctx *cli.Context, cfg *node.Config) {
 		cfg.DataDir = ctx.GlobalString(DataDirFlag.Name)
 	case ctx.GlobalBool(DeveloperFlag.Name):
 		cfg.DataDir = "" // unless explicitly requested, use memory databases
-	case (ctx.GlobalBool(LegacyTestnetFlag.Name) || ctx.GlobalBool(RopstenFlag.Name)) && cfg.DataDir == node.DefaultDataDir():
+	//case (ctx.GlobalBool(LegacyTestnetFlag.Name) || ctx.GlobalBool(RopstenFlag.Name)) && cfg.DataDir == node.DefaultDataDir():
 		// Maintain compatibility with older Gtrcn configurations storing the
 		// Ropsten database in `testnet` instead of `ropsten`.
-		legacyPath := filepath.Join(node.DefaultDataDir(), "testnet")
-		if _, err := os.Stat(legacyPath); !os.IsNotExist(err) {
-			log.Warn("Using the deprecated `testnet` datadir. Future versions will store the Ropsten chain in `ropsten`.")
-			cfg.DataDir = legacyPath
-		} else {
-			cfg.DataDir = filepath.Join(node.DefaultDataDir(), "ropsten")
-		}
-	case ctx.GlobalBool(RinkebyFlag.Name) && cfg.DataDir == node.DefaultDataDir():
-		cfg.DataDir = filepath.Join(node.DefaultDataDir(), "rinkeby")
-	case ctx.GlobalBool(GoerliFlag.Name) && cfg.DataDir == node.DefaultDataDir():
-		cfg.DataDir = filepath.Join(node.DefaultDataDir(), "goerli")
+		//legacyPath := filepath.Join(node.DefaultDataDir(), "testnet")
+		//if _, err := os.Stat(legacyPath); !os.IsNotExist(err) {
+		//	log.Warn("Using the deprecated `testnet` datadir. Future versions will store the Ropsten chain in `ropsten`.")
+		//	cfg.DataDir = legacyPath
+		//} else {
+		//	cfg.DataDir = filepath.Join(node.DefaultDataDir(), "ropsten")
+		//}
+	//case ctx.GlobalBool(RinkebyFlag.Name) && cfg.DataDir == node.DefaultDataDir():
+	//	cfg.DataDir = filepath.Join(node.DefaultDataDir(), "rinkeby")
+	//case ctx.GlobalBool(GoerliFlag.Name) && cfg.DataDir == node.DefaultDataDir():
+	//	cfg.DataDir = filepath.Join(node.DefaultDataDir(), "goerli")
 	}
 }
 
@@ -1471,7 +1471,7 @@ func SetShhConfig(ctx *cli.Context, stack *node.Node, cfg *whisper.Config) {
 // SetEthConfig applies trcn-related command line flags to the config.
 func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *trcn.Config) {
 	// Avoid conflicting network flags
-	CheckExclusive(ctx, DeveloperFlag, LegacyTestnetFlag, RopstenFlag, RinkebyFlag, GoerliFlag)
+	//CheckExclusive(ctx, DeveloperFlag, LegacyTestnetFlag, RopstenFlag, RinkebyFlag, GoerliFlag)
 	CheckExclusive(ctx, LegacyLightServFlag, LightServeFlag, SyncModeFlag, "light")
 	CheckExclusive(ctx, DeveloperFlag, ExternalSignerFlag) // Can't use both ephemeral unlocked and external signer
 	CheckExclusive(ctx, GCModeFlag, "archive", TxLookupLimitFlag)
@@ -1558,24 +1558,24 @@ func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *trcn.Config) {
 
 	// Override any default configs for hard coded networks.
 	switch {
-	case ctx.GlobalBool(LegacyTestnetFlag.Name) || ctx.GlobalBool(RopstenFlag.Name):
-		if !ctx.GlobalIsSet(NetworkIdFlag.Name) {
-			cfg.NetworkId = 3
-		}
-		cfg.Genesis = core.DefaultRopstenGenesisBlock()
-		setDNSDiscoveryDefaults(cfg, params.KnownDNSNetworks[params.RopstenGenesisHash])
-	case ctx.GlobalBool(RinkebyFlag.Name):
-		if !ctx.GlobalIsSet(NetworkIdFlag.Name) {
-			cfg.NetworkId = 4
-		}
-		cfg.Genesis = core.DefaultRinkebyGenesisBlock()
-		setDNSDiscoveryDefaults(cfg, params.KnownDNSNetworks[params.RinkebyGenesisHash])
-	case ctx.GlobalBool(GoerliFlag.Name):
-		if !ctx.GlobalIsSet(NetworkIdFlag.Name) {
-			cfg.NetworkId = 5
-		}
-		cfg.Genesis = core.DefaultGoerliGenesisBlock()
-		setDNSDiscoveryDefaults(cfg, params.KnownDNSNetworks[params.GoerliGenesisHash])
+	//case ctx.GlobalBool(LegacyTestnetFlag.Name) || ctx.GlobalBool(RopstenFlag.Name):
+	//	if !ctx.GlobalIsSet(NetworkIdFlag.Name) {
+	//		cfg.NetworkId = 3
+	//	}
+	//	cfg.Genesis = core.DefaultRopstenGenesisBlock()
+	//	setDNSDiscoveryDefaults(cfg, params.KnownDNSNetworks[params.RopstenGenesisHash])
+	//case ctx.GlobalBool(RinkebyFlag.Name):
+	//	if !ctx.GlobalIsSet(NetworkIdFlag.Name) {
+	//		cfg.NetworkId = 4
+	//	}
+	//	cfg.Genesis = core.DefaultRinkebyGenesisBlock()
+	//	setDNSDiscoveryDefaults(cfg, params.KnownDNSNetworks[params.RinkebyGenesisHash])
+	//case ctx.GlobalBool(GoerliFlag.Name):
+	//	if !ctx.GlobalIsSet(NetworkIdFlag.Name) {
+	//		cfg.NetworkId = 5
+	//	}
+	//	cfg.Genesis = core.DefaultGoerliGenesisBlock()
+	//	setDNSDiscoveryDefaults(cfg, params.KnownDNSNetworks[params.GoerliGenesisHash])
 	case ctx.GlobalBool(DeveloperFlag.Name):
 		if !ctx.GlobalIsSet(NetworkIdFlag.Name) {
 			cfg.NetworkId = 1337
@@ -1745,12 +1745,12 @@ func MakeChainDatabase(ctx *cli.Context, stack *node.Node) trcndb.Database {
 func MakeGenesis(ctx *cli.Context) *core.Genesis {
 	var genesis *core.Genesis
 	switch {
-	case ctx.GlobalBool(LegacyTestnetFlag.Name) || ctx.GlobalBool(RopstenFlag.Name):
-		genesis = core.DefaultRopstenGenesisBlock()
-	case ctx.GlobalBool(RinkebyFlag.Name):
-		genesis = core.DefaultRinkebyGenesisBlock()
-	case ctx.GlobalBool(GoerliFlag.Name):
-		genesis = core.DefaultGoerliGenesisBlock()
+	//case ctx.GlobalBool(LegacyTestnetFlag.Name) || ctx.GlobalBool(RopstenFlag.Name):
+	//	genesis = core.DefaultRopstenGenesisBlock()
+	//case ctx.GlobalBool(RinkebyFlag.Name):
+	//	genesis = core.DefaultRinkebyGenesisBlock()
+	//case ctx.GlobalBool(GoerliFlag.Name):
+	//	genesis = core.DefaultGoerliGenesisBlock()
 	case ctx.GlobalBool(DeveloperFlag.Name):
 		Fatalf("Developer chains are ephemeral")
 	}

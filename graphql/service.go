@@ -21,7 +21,7 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/spker/go-tarcoin/internal/ethapi"
+	"github.com/spker/go-tarcoin/internal/trcnapi"
 	"github.com/spker/go-tarcoin/log"
 	"github.com/spker/go-tarcoin/node"
 	"github.com/spker/go-tarcoin/p2p"
@@ -36,13 +36,13 @@ type Service struct {
 	cors     []string         // Allowed CORS domains
 	vhosts   []string         // Recognised vhosts
 	timeouts rpc.HTTPTimeouts // Timeout settings for HTTP requests.
-	backend  ethapi.Backend   // The backend that queries will operate on.
+	backend  trcnapi.Backend  // The backend that queries will operate on.
 	handler  http.Handler     // The `http.Handler` used to answer queries.
 	listener net.Listener     // The listening socket.
 }
 
 // New constructs a new GraphQL service instance.
-func New(backend ethapi.Backend, endpoint string, cors, vhosts []string, timeouts rpc.HTTPTimeouts) (*Service, error) {
+func New(backend trcnapi.Backend, endpoint string, cors, vhosts []string, timeouts rpc.HTTPTimeouts) (*Service, error) {
 	return &Service{
 		endpoint: endpoint,
 		cors:     cors,
@@ -87,7 +87,7 @@ func (s *Service) Start(server *p2p.Server) error {
 
 // newHandler returns a new `http.Handler` that will answer GraphQL queries.
 // It additionally exports an interactive query browser on the / endpoint.
-func newHandler(backend ethapi.Backend) (http.Handler, error) {
+func newHandler(backend trcnapi.Backend) (http.Handler, error) {
 	q := Resolver{backend}
 
 	s, err := graphql.ParseSchema(schema, &q)
