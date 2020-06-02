@@ -6,13 +6,13 @@ Please see Releases. We recommend to use the most recent released version.
 
 ## Audit reports
 
-Audit reports are published in the `docs` folder: https://github.com/spker/go-tarcoin/tree/master/docs/audits 
+Audit reports are published in the `docs` folder: https://github.com/speker/go-tarcoin/tree/master/docs/audits 
 
 
 | Scope | Date | Report Link |
 | ------- | ------- | ----------- |
-| `gtrcn` | 20170425 | [pdf](https://github.com/spker/go-tarcoin/blob/master/docs/audits/2017-04-25_Geth-audit_Truesec.pdf) |
-| `clef` | 20180914 | [pdf](https://github.com/spker/go-tarcoin/blob/master/docs/audits/2018-09-14_Clef-audit_NCC.pdf) |
+| `gtrcn` | 20170425 | [pdf](https://github.com/speker/go-tarcoin/blob/master/docs/audits/2017-04-25_Geth-audit_Truesec.pdf) |
+| `clef` | 20180914 | [pdf](https://github.com/speker/go-tarcoin/blob/master/docs/audits/2018-09-14_Clef-audit_NCC.pdf) |
 
 
 

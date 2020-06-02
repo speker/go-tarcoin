@@ -2,12 +2,12 @@ Pod::Spec.new do |spec|
   spec.name         = 'Gtrcn'
   spec.version      = '{{.Version}}'
   spec.license      = { :type => 'GNU Lesser General Public License, Version 3.0' }
-  spec.homepage     = 'https://github.com/spker/go-tarcoin'
+  spec.homepage     = 'https://github.com/speker/go-tarcoin'
   spec.authors      = { {{range .Contributors}}
 		'{{.Name}}' => '{{.Email}}',{{end}}
 	}
   spec.summary      = 'iOS TarCoin Client'
-  spec.source       = { :git => 'https://github.com/spker/go-tarcoin.git', :commit => '{{.Commit}}' }
+  spec.source       = { :git => 'https://github.com/speker/go-tarcoin.git', :commit => '{{.Commit}}' }
 
 	spec.platform = :ios
   spec.ios.deployment_target  = '9.0'

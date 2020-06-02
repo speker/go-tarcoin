@@ -21,6 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="65d954bc-0885-4d77-bc94-fb8673101906" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SECURITY.md" beforeDir="false" afterPath="$PROJECT_DIR$/SECURITY.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/abi/abi.go" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/abi/abi.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/abi/abi_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/abi/abi_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/abi/bind/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/abi/bind/auth.go" afterDir="false" />
@@ -71,15 +74,21 @@
       <change beforePath="$PROJECT_DIR$/accounts/usbwallet/trezor.go" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/usbwallet/trezor.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/usbwallet/wallet.go" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/usbwallet/wallet.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/ci.go" beforeDir="false" afterPath="$PROJECT_DIR$/build/ci.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/deb/ethereum/deb.control" beforeDir="false" afterPath="$PROJECT_DIR$/build/deb/ethereum/deb.control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/mvn.pom" beforeDir="false" afterPath="$PROJECT_DIR$/build/mvn.pom" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/nsis.install.nsh" beforeDir="false" afterPath="$PROJECT_DIR$/build/nsis.install.nsh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/pod.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/build/pod.podspec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/update-license.go" beforeDir="false" afterPath="$PROJECT_DIR$/build/update-license.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/abidump/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/abidump/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/abigen/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/abigen/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/bootnode/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/bootnode/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/checkpoint-admin/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/checkpoint-admin/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/checkpoint-admin/common.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/checkpoint-admin/common.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/checkpoint-admin/exec.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/checkpoint-admin/exec.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/checkpoint-admin/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/checkpoint-admin/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/checkpoint-admin/status.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/checkpoint-admin/status.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/clef/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/clef/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/clef/tutorial.md" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/clef/tutorial.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/devp2p/crawl.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/devp2p/crawl.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/devp2p/discv4cmd.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/devp2p/discv4cmd.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/devp2p/discv5cmd.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/devp2p/discv5cmd.go" afterDir="false" />
@@ -141,7 +150,6 @@
       <change beforePath="$PROJECT_DIR$/cmd/trcnkey/inspect.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/trcnkey/inspect.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/trcnkey/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/trcnkey/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/trcnkey/message.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/trcnkey/message.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/trcnkey/message_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/trcnkey/message_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/trcnkey/run_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/trcnkey/run_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/trcnkey/utils.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/trcnkey/utils.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/utils/cmd.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/utils/cmd.go" afterDir="false" />
@@ -317,6 +325,8 @@
       <change beforePath="$PROJECT_DIR$/event/example_scope_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/event/example_scope_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event/example_subscription_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/event/example_subscription_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/event/subscription.go" beforeDir="false" afterPath="$PROJECT_DIR$/event/subscription.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fuzzbuzz.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/fuzzbuzz.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graphql/graphql.go" beforeDir="false" afterPath="$PROJECT_DIR$/graphql/graphql.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graphql/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/graphql/service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/interfaces.go" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces.go" afterDir="false" />
@@ -324,6 +334,7 @@
       <change beforePath="$PROJECT_DIR$/internal/debug/flags.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/debug/flags.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/debug/trace.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/debug/trace.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/guide/guide_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/guide/guide_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/jsre/deps/web3.js" beforeDir="false" afterPath="$PROJECT_DIR$/internal/jsre/deps/web3.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/jsre/jsre.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/jsre/jsre.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/testlog/testlog.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/testlog/testlog.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/trcnapi/addrlock.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/trcnapi/addrlock.go" afterDir="false" />
@@ -544,7 +555,6 @@
       <change beforePath="$PROJECT_DIR$/signer/core/stdioui.go" beforeDir="false" afterPath="$PROJECT_DIR$/signer/core/stdioui.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/signer/core/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/signer/core/types.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/signer/core/uiapi.go" beforeDir="false" afterPath="$PROJECT_DIR$/signer/core/uiapi.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signer/fourbyte/4byte.go" beforeDir="false" afterPath="$PROJECT_DIR$/signer/fourbyte/4byte.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/signer/fourbyte/abi.go" beforeDir="false" afterPath="$PROJECT_DIR$/signer/fourbyte/abi.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/signer/fourbyte/abi_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/signer/fourbyte/abi_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/signer/fourbyte/fourbyte_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/signer/fourbyte/fourbyte_test.go" afterDir="false" />
@@ -791,11 +801,11 @@
       <screen x="0" y="20" width="1920" height="1060" />
     </state>
     <state x="566" y="196" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.20.1920.1060/1920.0.1920.1080@0.20.1920.1060" timestamp="1591040849063" />
-    <state x="749" y="271" width="1173" height="570" key="find.popup" timestamp="1591098864893">
+    <state x="749" y="271" width="1173" height="570" key="find.popup" timestamp="1591099027222">
       <screen x="0" y="20" width="3840" height="1060" />
     </state>
     <state x="666" y="296" width="1007" height="570" key="find.popup/0.20.1920.1060/1920.0.1920.1080@0.20.1920.1060" timestamp="1591052935136" />
-    <state x="749" y="271" width="1173" height="570" key="find.popup/0.20.3840.1060/3840.0.1920.1080@0.20.3840.1060" timestamp="1591098864893" />
+    <state x="749" y="271" width="1173" height="570" key="find.popup/0.20.3840.1060/3840.0.1920.1080@0.20.3840.1060" timestamp="1591099027222" />
     <state x="769" y="399" key="git4idea.ui.GitTagDialog" timestamp="1591047963150">
       <screen x="0" y="20" width="1920" height="1060" />
     </state>
