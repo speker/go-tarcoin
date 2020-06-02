@@ -25,7 +25,7 @@ import (
 
 	"github.com/spker/go-tarcoin/common/mclock"
 	"github.com/spker/go-tarcoin/trcn"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/les/flowcontrol"
 	"github.com/spker/go-tarcoin/log"
 	"github.com/spker/go-tarcoin/metrics"
@@ -115,7 +115,7 @@ const (
 // changes in the cost factor can be applied immediately without always notifying
 // the clients about the changed cost tables.
 type costTracker struct {
-	db     ethdb.Database
+	db     trcndb.Database
 	stopCh chan chan struct{}
 
 	inSizeFactor  float64
@@ -137,7 +137,7 @@ type costTracker struct {
 
 // newCostTracker creates a cost tracker and loads the cost factor statistics from the database.
 // It also returns the minimum capacity that can be assigned to any peer.
-func newCostTracker(db ethdb.Database, config *trcn.Config) (*costTracker, uint64) {
+func newCostTracker(db trcndb.Database, config *trcn.Config) (*costTracker, uint64) {
 	utilTarget := float64(config.LightServ) * flowcontrol.FixedPointMultiplier / 100
 	ct := &costTracker{
 		db:         db,

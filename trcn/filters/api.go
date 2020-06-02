@@ -29,7 +29,7 @@ import (
 	"github.com/spker/go-tarcoin/common"
 	"github.com/spker/go-tarcoin/common/hexutil"
 	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/event"
 	"github.com/spker/go-tarcoin/rpc"
 )
@@ -55,7 +55,7 @@ type PublicFilterAPI struct {
 	backend   Backend
 	mux       *event.TypeMux
 	quit      chan struct{}
-	chainDb   ethdb.Database
+	chainDb   trcndb.Database
 	events    *EventSystem
 	filtersMu sync.Mutex
 	filters   map[rpc.ID]*filter

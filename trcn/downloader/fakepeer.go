@@ -23,7 +23,7 @@ import (
 	"github.com/spker/go-tarcoin/core"
 	"github.com/spker/go-tarcoin/core/rawdb"
 	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 )
 
 // FakePeer is a mock downloader peer that operates on a local database instance
@@ -31,13 +31,13 @@ import (
 // sync commands from an existing local database.
 type FakePeer struct {
 	id string
-	db ethdb.Database
+	db trcndb.Database
 	hc *core.HeaderChain
 	dl *Downloader
 }
 
 // NewFakePeer creates a new mock downloader peer with the given data sources.
-func NewFakePeer(id string, db ethdb.Database, hc *core.HeaderChain, dl *Downloader) *FakePeer {
+func NewFakePeer(id string, db trcndb.Database, hc *core.HeaderChain, dl *Downloader) *FakePeer {
 	return &FakePeer{id: id, db: db, hc: hc, dl: dl}
 }
 

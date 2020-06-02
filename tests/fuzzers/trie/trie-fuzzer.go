@@ -22,7 +22,7 @@ import (
 	"fmt"
 
 	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/ethdb/memorydb"
+	"github.com/spker/go-tarcoin/trcndb/memorydb"
 	"github.com/spker/go-tarcoin/trie"
 )
 

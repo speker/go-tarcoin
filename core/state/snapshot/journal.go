@@ -27,7 +27,7 @@ import (
 	"github.com/VictoriaMetrics/fastcache"
 	"github.com/spker/go-tarcoin/common"
 	"github.com/spker/go-tarcoin/core/rawdb"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/log"
 	"github.com/spker/go-tarcoin/rlp"
 	"github.com/spker/go-tarcoin/trie"
@@ -62,7 +62,7 @@ type journalStorage struct {
 }
 
 // loadSnapshot loads a pre-existing state snapshot backed by a key-value store.
-func loadSnapshot(diskdb ethdb.KeyValueStore, triedb *trie.Database, cache int, root common.Hash) (snapshot, error) {
+func loadSnapshot(diskdb trcndb.KeyValueStore, triedb *trie.Database, cache int, root common.Hash) (snapshot, error) {
 	// Retrieve the block number and hash of the snapshot, failing if no snapshot
 	// is present in the database (or crashed mid-update).
 	baseRoot := rawdb.ReadSnapshotRoot(diskdb)

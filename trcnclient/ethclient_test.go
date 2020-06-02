@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-package ethclient
+package trcnclient
 
 import (
 	"context"
@@ -27,7 +27,7 @@ import (
 
 	"github.com/spker/go-tarcoin"
 	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/consensus/ethash"
+	"github.com/spker/go-tarcoin/consensus/trcnhash"
 	"github.com/spker/go-tarcoin/core"
 	"github.com/spker/go-tarcoin/core/rawdb"
 	"github.com/spker/go-tarcoin/core/types"
@@ -177,7 +177,7 @@ func newTestBackend(t *testing.T) (*node.Node, []*types.Block) {
 	n, err := node.New(&node.Config{})
 	n.Register(func(ctx *node.ServiceContext) (node.Service, error) {
 		config := &trcn.Config{Genesis: genesis}
-		config.Ethash.PowMode = ethash.ModeFake
+		config.Trcnhash.PowMode = trcnhash.ModeFake
 		ethservice, err = trcn.New(ctx, config)
 		return ethservice, err
 	})
@@ -194,7 +194,7 @@ func newTestBackend(t *testing.T) (*node.Node, []*types.Block) {
 
 func generateTestChain() (*core.Genesis, []*types.Block) {
 	db := rawdb.NewMemoryDatabase()
-	config := params.AllEthashProtocolChanges
+	config := params.AllTrcnhashProtocolChanges
 	genesis := &core.Genesis{
 		Config:    config,
 		Alloc:     core.GenesisAlloc{testAddr: {Balance: testBalance}},
@@ -206,7 +206,7 @@ func generateTestChain() (*core.Genesis, []*types.Block) {
 		g.SetExtra([]byte("test"))
 	}
 	gblock := genesis.ToBlock(db)
-	engine := ethash.NewFaker()
+	engine := trcnhash.NewFaker()
 	blocks, _ := core.GenerateChain(config, gblock, engine, db, 1, generate)
 	blocks = append([]*types.Block{gblock}, blocks...)
 	return genesis, blocks
@@ -331,7 +331,7 @@ func TestChainID(t *testing.T) {
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}
-	if id == nil || id.Cmp(params.AllEthashProtocolChanges.ChainID) != 0 {
+	if id == nil || id.Cmp(params.AllTrcnhashProtocolChanges.ChainID) != 0 {
 		t.Fatalf("ChainID returned wrong number: %+v", id)
 	}
 }

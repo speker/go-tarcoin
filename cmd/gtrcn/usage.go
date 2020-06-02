@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with go-ethereum. If not, see <http://www.gnu.org/licenses/>.
 
-// Contains the geth command usage template and generator.
+// Contains the gtrcn command usage template and generator.
 
 package main
 
@@ -107,14 +107,14 @@ var AppHelpFlagGroups = []flagGroup{
 	{
 		Name: "ETHASH",
 		Flags: []cli.Flag{
-			utils.EthashCacheDirFlag,
-			utils.EthashCachesInMemoryFlag,
-			utils.EthashCachesOnDiskFlag,
-			utils.EthashCachesLockMmapFlag,
-			utils.EthashDatasetDirFlag,
-			utils.EthashDatasetsInMemoryFlag,
-			utils.EthashDatasetsOnDiskFlag,
-			utils.EthashDatasetsLockMmapFlag,
+			utils.TrcnhashCacheDirFlag,
+			utils.TrcnhashCachesInMemoryFlag,
+			utils.TrcnhashCachesOnDiskFlag,
+			utils.TrcnhashCachesLockMmapFlag,
+			utils.TrcnhashDatasetDirFlag,
+			utils.TrcnhashDatasetsInMemoryFlag,
+			utils.TrcnhashDatasetsOnDiskFlag,
+			utils.TrcnhashDatasetsLockMmapFlag,
 		},
 	},
 	{
@@ -207,7 +207,7 @@ var AppHelpFlagGroups = []flagGroup{
 			utils.MinerGasPriceFlag,
 			utils.MinerGasTargetFlag,
 			utils.MinerGasLimitFlag,
-			utils.MinerEtherbaseFlag,
+			utils.MinerTrcnbaseFlag,
 			utils.MinerExtraDataFlag,
 			utils.MinerRecommitIntervalFlag,
 			utils.MinerNoVerfiyFlag,

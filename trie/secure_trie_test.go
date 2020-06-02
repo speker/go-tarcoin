@@ -24,7 +24,7 @@ import (
 
 	"github.com/spker/go-tarcoin/common"
 	"github.com/spker/go-tarcoin/crypto"
-	"github.com/spker/go-tarcoin/ethdb/memorydb"
+	"github.com/spker/go-tarcoin/trcndb/memorydb"
 )
 
 func newEmptySecure() *SecureTrie {

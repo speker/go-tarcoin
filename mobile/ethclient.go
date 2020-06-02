@@ -22,17 +22,17 @@ import (
 	"math/big"
 
 	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/ethclient"
+	"github.com/spker/go-tarcoin/trcnclient"
 )
 
 // EthereumClient provides access to the Ethereum APIs.
 type EthereumClient struct {
-	client *ethclient.Client
+	client *trcnclient.Client
 }
 
 // NewEthereumClient connects a client to the given URL.
 func NewEthereumClient(rawurl string) (client *EthereumClient, _ error) {
-	rawClient, err := ethclient.Dial(rawurl)
+	rawClient, err := trcnclient.Dial(rawurl)
 	return &EthereumClient{rawClient}, err
 }
 

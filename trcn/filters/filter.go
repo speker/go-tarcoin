@@ -25,13 +25,13 @@ import (
 	"github.com/spker/go-tarcoin/core"
 	"github.com/spker/go-tarcoin/core/bloombits"
 	"github.com/spker/go-tarcoin/core/types"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/event"
 	"github.com/spker/go-tarcoin/rpc"
 )
 
 type Backend interface {
-	ChainDb() ethdb.Database
+	ChainDb() trcndb.Database
 	HeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*types.Header, error)
 	HeaderByHash(ctx context.Context, blockHash common.Hash) (*types.Header, error)
 	GetReceipts(ctx context.Context, blockHash common.Hash) (types.Receipts, error)
@@ -51,7 +51,7 @@ type Backend interface {
 type Filter struct {
 	backend Backend
 
-	db        ethdb.Database
+	db        trcndb.Database
 	addresses []common.Address
 	topics    [][]common.Hash
 

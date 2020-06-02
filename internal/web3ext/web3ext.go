@@ -22,7 +22,7 @@ var Modules = map[string]string{
 	"admin":      AdminJs,
 	"chequebook": ChequebookJs,
 	"clique":     CliqueJs,
-	"ethash":     EthashJs,
+	"trcnhash":     TrcnhashJs,
 	"debug":      DebugJs,
 	"trcn":        EthJs,
 	"miner":      MinerJs,
@@ -118,28 +118,28 @@ web3._extend({
 });
 `
 
-const EthashJs = `
+const TrcnhashJs = `
 web3._extend({
-	property: 'ethash',
+	property: 'trcnhash',
 	methods: [
 		new web3._extend.Method({
 			name: 'getWork',
-			call: 'ethash_getWork',
+			call: 'trcnhash_getWork',
 			params: 0
 		}),
 		new web3._extend.Method({
 			name: 'getHashrate',
-			call: 'ethash_getHashrate',
+			call: 'trcnhash_getHashrate',
 			params: 0
 		}),
 		new web3._extend.Method({
 			name: 'submitWork',
-			call: 'ethash_submitWork',
+			call: 'trcnhash_submitWork',
 			params: 3,
 		}),
 		new web3._extend.Method({
 			name: 'submitHashRate',
-			call: 'ethash_submitHashRate',
+			call: 'trcnhash_submitHashRate',
 			params: 2,
 		}),
 	]
@@ -577,8 +577,8 @@ web3._extend({
 			call: 'miner_stop'
 		}),
 		new web3._extend.Method({
-			name: 'setEtherbase',
-			call: 'miner_setEtherbase',
+			name: 'setTrcnbase',
+			call: 'miner_setTrcnbase',
 			params: 1,
 			inputFormatter: [web3._extend.formatters.inputAddressFormatter]
 		}),

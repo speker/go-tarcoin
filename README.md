@@ -118,7 +118,7 @@ $ geth --rinkeby console
 ### Full node on the Ropsten test network
 
 In addition to Görli and Rinkeby, Geth also supports the ancient Ropsten testnet. The 
-Ropsten test network is based on the Ethash proof-of-work consensus algorithm. As such,
+Ropsten test network is based on the Trcnhash proof-of-work consensus algorithm. As such,
 it has certain extra overhead and is more susceptible to reorganization attacks due to the
 network's low difficulty/security. 
 
@@ -314,11 +314,11 @@ ones either). To start a `geth` instance for mining, run it with all your usual 
 by:
 
 ```shell
-$ geth <usual-flags> --mine --miner.threads=1 --etherbase=0x0000000000000000000000000000000000000000
+$ geth <usual-flags> --mine --miner.threads=1 --trcnbase=0x0000000000000000000000000000000000000000
 ```
 
 Which will start mining blocks and transactions on a single CPU thread, crediting all
-proceedings to the account specified by `--etherbase`. You can further tune the mining
+proceedings to the account specified by `--trcnbase`. You can further tune the mining
 by changing the default gas limit blocks converge to (`--targetgaslimit`) and the price
 transactions are accepted at (`--gasprice`).
 

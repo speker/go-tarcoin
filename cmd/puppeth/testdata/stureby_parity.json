@@ -2,7 +2,7 @@
   "name": "stureby",
   "dataDir": "stureby",
   "engine": {
-    "Ethash": {
+    "Trcnhash": {
       "params": {
         "minimumDifficulty": "0x20000",
         "difficultyBoundDivisor": "0x800",

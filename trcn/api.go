@@ -51,14 +51,14 @@ func NewPublicEthereumAPI(e *Ethereum) *PublicEthereumAPI {
 	return &PublicEthereumAPI{e}
 }
 
-// Etherbase is the address that mining rewards will be send to
-func (api *PublicEthereumAPI) Etherbase() (common.Address, error) {
-	return api.e.Etherbase()
+// Trcnbase is the address that mining rewards will be send to
+func (api *PublicEthereumAPI) Trcnbase() (common.Address, error) {
+	return api.e.Trcnbase()
 }
 
-// Coinbase is the address that mining rewards will be send to (alias for Etherbase)
+// Coinbase is the address that mining rewards will be send to (alias for Trcnbase)
 func (api *PublicEthereumAPI) Coinbase() (common.Address, error) {
-	return api.Etherbase()
+	return api.Trcnbase()
 }
 
 // Hashrate returns the POW hashrate
@@ -138,9 +138,9 @@ func (api *PrivateMinerAPI) SetGasPrice(gasPrice hexutil.Big) bool {
 	return true
 }
 
-// SetEtherbase sets the etherbase of the miner
-func (api *PrivateMinerAPI) SetEtherbase(etherbase common.Address) bool {
-	api.e.SetEtherbase(etherbase)
+// SetTrcnbase sets the trcnbase of the miner
+func (api *PrivateMinerAPI) SetTrcnbase(trcnbase common.Address) bool {
+	api.e.SetTrcnbase(trcnbase)
 	return true
 }
 

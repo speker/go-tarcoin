@@ -31,7 +31,7 @@ import (
 	"github.com/spker/go-tarcoin/common/hexutil"
 	"github.com/spker/go-tarcoin/consensus"
 	"github.com/spker/go-tarcoin/consensus/clique"
-	"github.com/spker/go-tarcoin/consensus/ethash"
+	"github.com/spker/go-tarcoin/consensus/trcnhash"
 	"github.com/spker/go-tarcoin/core"
 	"github.com/spker/go-tarcoin/core/bloombits"
 	"github.com/spker/go-tarcoin/core/rawdb"
@@ -40,7 +40,7 @@ import (
 	"github.com/spker/go-tarcoin/trcn/downloader"
 	"github.com/spker/go-tarcoin/trcn/filters"
 	"github.com/spker/go-tarcoin/trcn/gasprice"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/event"
 	"github.com/spker/go-tarcoin/internal/ethapi"
 	"github.com/spker/go-tarcoin/log"
@@ -75,7 +75,7 @@ type Ethereum struct {
 	dialCandiates   enode.Iterator
 
 	// DB interfaces
-	chainDb ethdb.Database // Block chain database
+	chainDb trcndb.Database // Block chain database
 
 	eventMux       *event.TypeMux
 	engine         consensus.Engine
@@ -89,12 +89,12 @@ type Ethereum struct {
 
 	miner     *miner.Miner
 	gasPrice  *big.Int
-	etherbase common.Address
+	trcnbase common.Address
 
 	networkID     uint64
 	netRPCService *ethapi.PublicNetAPI
 
-	lock sync.RWMutex // Protects the variadic fields (e.g. gas price and etherbase)
+	lock sync.RWMutex // Protects the variadic fields (e.g. gas price and trcnbase)
 }
 
 func (s *Ethereum) AddLesServer(ls LesServer) {
@@ -151,11 +151,11 @@ func New(ctx *node.ServiceContext, config *Config) (*Ethereum, error) {
 		chainDb:           chainDb,
 		eventMux:          ctx.EventMux,
 		accountManager:    ctx.AccountManager,
-		engine:            CreateConsensusEngine(ctx, chainConfig, &config.Ethash, config.Miner.Notify, config.Miner.Noverify, chainDb),
+		engine:            CreateConsensusEngine(ctx, chainConfig, &config.Trcnhash, config.Miner.Notify, config.Miner.Noverify, chainDb),
 		closeBloomHandler: make(chan struct{}),
 		networkID:         config.NetworkId,
 		gasPrice:          config.Miner.GasPrice,
-		etherbase:         config.Miner.Etherbase,
+		trcnbase:         config.Miner.Trcnbase,
 		bloomRequests:     make(chan chan *bloombits.Retrieval),
 		bloomIndexer:      NewBloomIndexer(chainDb, params.BloomBitsBlocks, params.BloomConfirms),
 	}
@@ -252,24 +252,24 @@ func makeExtraData(extra []byte) []byte {
 }
 
 // CreateConsensusEngine creates the required type of consensus engine instance for an Ethereum service
-func CreateConsensusEngine(ctx *node.ServiceContext, chainConfig *params.ChainConfig, config *ethash.Config, notify []string, noverify bool, db ethdb.Database) consensus.Engine {
+func CreateConsensusEngine(ctx *node.ServiceContext, chainConfig *params.ChainConfig, config *trcnhash.Config, notify []string, noverify bool, db trcndb.Database) consensus.Engine {
 	// If proof-of-authority is requested, set it up
 	if chainConfig.Clique != nil {
 		return clique.New(chainConfig.Clique, db)
 	}
 	// Otherwise assume proof-of-work
 	switch config.PowMode {
-	case ethash.ModeFake:
-		log.Warn("Ethash used in fake mode")
-		return ethash.NewFaker()
-	case ethash.ModeTest:
-		log.Warn("Ethash used in test mode")
-		return ethash.NewTester(nil, noverify)
-	case ethash.ModeShared:
-		log.Warn("Ethash used in shared mode")
-		return ethash.NewShared()
+	case trcnhash.ModeFake:
+		log.Warn("Trcnhash used in fake mode")
+		return trcnhash.NewFaker()
+	case trcnhash.ModeTest:
+		log.Warn("Trcnhash used in test mode")
+		return trcnhash.NewTester(nil, noverify)
+	case trcnhash.ModeShared:
+		log.Warn("Trcnhash used in shared mode")
+		return trcnhash.NewShared()
 	default:
-		engine := ethash.New(ethash.Config{
+		engine := trcnhash.New(trcnhash.Config{
 			CacheDir:         ctx.ResolvePath(config.CacheDir),
 			CachesInMem:      config.CachesInMem,
 			CachesOnDisk:     config.CachesOnDisk,
@@ -354,33 +354,33 @@ func (s *Ethereum) ResetWithGenesisBlock(gb *types.Block) {
 	s.blockchain.ResetWithGenesisBlock(gb)
 }
 
-func (s *Ethereum) Etherbase() (eb common.Address, err error) {
+func (s *Ethereum) Trcnbase() (eb common.Address, err error) {
 	s.lock.RLock()
-	etherbase := s.etherbase
+	trcnbase := s.trcnbase
 	s.lock.RUnlock()
 
-	if etherbase != (common.Address{}) {
-		return etherbase, nil
+	if trcnbase != (common.Address{}) {
+		return trcnbase, nil
 	}
 	if wallets := s.AccountManager().Wallets(); len(wallets) > 0 {
 		if accounts := wallets[0].Accounts(); len(accounts) > 0 {
-			etherbase := accounts[0].Address
+			trcnbase := accounts[0].Address
 
 			s.lock.Lock()
-			s.etherbase = etherbase
+			s.trcnbase = trcnbase
 			s.lock.Unlock()
 
-			log.Info("Etherbase automatically configured", "address", etherbase)
-			return etherbase, nil
+			log.Info("Trcnbase automatically configured", "address", trcnbase)
+			return trcnbase, nil
 		}
 	}
-	return common.Address{}, fmt.Errorf("etherbase must be explicitly specified")
+	return common.Address{}, fmt.Errorf("trcnbase must be explicitly specified")
 }
 
 // isLocalBlock checks whether the specified block is mined
 // by local miner accounts.
 //
-// We regard two types of accounts as local miner account: etherbase
+// We regard two types of accounts as local miner account: trcnbase
 // and accounts specified via `txpool.locals` flag.
 func (s *Ethereum) isLocalBlock(block *types.Block) bool {
 	author, err := s.engine.Author(block.Header())
@@ -388,11 +388,11 @@ func (s *Ethereum) isLocalBlock(block *types.Block) bool {
 		log.Warn("Failed to retrieve block author", "number", block.NumberU64(), "hash", block.Hash(), "err", err)
 		return false
 	}
-	// Check whether the given address is etherbase.
+	// Check whether the given address is trcnbase.
 	s.lock.RLock()
-	etherbase := s.etherbase
+	trcnbase := s.trcnbase
 	s.lock.RUnlock()
-	if author == etherbase {
+	if author == trcnbase {
 		return true
 	}
 	// Check whether the given address is specified by `txpool.local`
@@ -431,13 +431,13 @@ func (s *Ethereum) shouldPreserve(block *types.Block) bool {
 	return s.isLocalBlock(block)
 }
 
-// SetEtherbase sets the mining reward address.
-func (s *Ethereum) SetEtherbase(etherbase common.Address) {
+// SetTrcnbase sets the mining reward address.
+func (s *Ethereum) SetTrcnbase(trcnbase common.Address) {
 	s.lock.Lock()
-	s.etherbase = etherbase
+	s.trcnbase = trcnbase
 	s.lock.Unlock()
 
-	s.miner.SetEtherbase(etherbase)
+	s.miner.SetTrcnbase(trcnbase)
 }
 
 // StartMining starts the miner with the given number of CPU threads. If mining
@@ -464,15 +464,15 @@ func (s *Ethereum) StartMining(threads int) error {
 		s.txPool.SetGasPrice(price)
 
 		// Configure the local mining address
-		eb, err := s.Etherbase()
+		eb, err := s.Trcnbase()
 		if err != nil {
-			log.Error("Cannot start mining without etherbase", "err", err)
-			return fmt.Errorf("etherbase missing: %v", err)
+			log.Error("Cannot start mining without trcnbase", "err", err)
+			return fmt.Errorf("trcnbase missing: %v", err)
 		}
 		if clique, ok := s.engine.(*clique.Clique); ok {
 			wallet, err := s.accountManager.Find(accounts.Account{Address: eb})
 			if wallet == nil || err != nil {
-				log.Error("Etherbase account unavailable locally", "err", err)
+				log.Error("Trcnbase account unavailable locally", "err", err)
 				return fmt.Errorf("signer missing: %v", err)
 			}
 			clique.Authorize(eb, wallet.SignData)
@@ -507,9 +507,9 @@ func (s *Ethereum) AccountManager() *accounts.Manager  { return s.accountManager
 func (s *Ethereum) BlockChain() *core.BlockChain       { return s.blockchain }
 func (s *Ethereum) TxPool() *core.TxPool               { return s.txPool }
 func (s *Ethereum) EventMux() *event.TypeMux           { return s.eventMux }
-func (s *Ethereum) Engine() consensus.Engine           { return s.engine }
-func (s *Ethereum) ChainDb() ethdb.Database            { return s.chainDb }
-func (s *Ethereum) IsListening() bool                  { return true } // Always listening
+func (s *Ethereum) Engine() consensus.Engine { return s.engine }
+func (s *Ethereum) ChainDb() trcndb.Database { return s.chainDb }
+func (s *Ethereum) IsListening() bool        { return true } // Always listening
 func (s *Ethereum) EthVersion() int                    { return int(ProtocolVersions[0]) }
 func (s *Ethereum) NetVersion() uint64                 { return s.networkID }
 func (s *Ethereum) Downloader() *downloader.Downloader { return s.protocolManager.downloader }

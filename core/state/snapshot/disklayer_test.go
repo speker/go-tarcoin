@@ -25,9 +25,9 @@ import (
 	"github.com/VictoriaMetrics/fastcache"
 	"github.com/spker/go-tarcoin/common"
 	"github.com/spker/go-tarcoin/core/rawdb"
-	"github.com/spker/go-tarcoin/ethdb"
-	"github.com/spker/go-tarcoin/ethdb/leveldb"
-	"github.com/spker/go-tarcoin/ethdb/memorydb"
+	"github.com/spker/go-tarcoin/trcndb"
+	"github.com/spker/go-tarcoin/trcndb/leveldb"
+	"github.com/spker/go-tarcoin/trcndb/memorydb"
 )
 
 // reverse reverses the contents of a byte slice. It's used to update random accs
@@ -442,7 +442,7 @@ func TestDiskMidAccountPartialMerge(t *testing.T) {
 // TestDiskSeek tests that seek-operations work on the disk layer
 func TestDiskSeek(t *testing.T) {
 	// Create some accounts in the disk layer
-	var db ethdb.Database
+	var db trcndb.Database
 
 	if dir, err := ioutil.TempDir("", "disklayer-test"); err != nil {
 		t.Fatal(err)

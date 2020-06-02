@@ -23,7 +23,7 @@ import (
 	"testing"
 
 	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/ethdb/memorydb"
+	"github.com/spker/go-tarcoin/trcndb/memorydb"
 )
 
 func TestIterator(t *testing.T) {

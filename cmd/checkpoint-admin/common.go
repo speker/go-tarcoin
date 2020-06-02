@@ -25,15 +25,15 @@ import (
 	"github.com/spker/go-tarcoin/cmd/utils"
 	"github.com/spker/go-tarcoin/common"
 	"github.com/spker/go-tarcoin/contracts/checkpointoracle"
-	"github.com/spker/go-tarcoin/ethclient"
+	"github.com/spker/go-tarcoin/trcnclient"
 	"github.com/spker/go-tarcoin/params"
 	"github.com/spker/go-tarcoin/rpc"
 	"gopkg.in/urfave/cli.v1"
 )
 
 // newClient creates a client with specified remote URL.
-func newClient(ctx *cli.Context) *ethclient.Client {
-	client, err := ethclient.Dial(ctx.GlobalString(nodeURLFlag.Name))
+func newClient(ctx *cli.Context) *trcnclient.Client {
+	client, err := trcnclient.Dial(ctx.GlobalString(nodeURLFlag.Name))
 	if err != nil {
 		utils.Fatalf("Failed to connect to Ethereum node: %v", err)
 	}
@@ -103,7 +103,7 @@ func newContract(client *rpc.Client) (common.Address, *checkpointoracle.Checkpoi
 	if addr == (common.Address{}) {
 		utils.Fatalf("No specified registrar contract address")
 	}
-	contract, err := checkpointoracle.NewCheckpointOracle(addr, ethclient.NewClient(client))
+	contract, err := checkpointoracle.NewCheckpointOracle(addr, trcnclient.NewClient(client))
 	if err != nil {
 		utils.Fatalf("Failed to setup registrar contract %s: %v", addr, err)
 	}

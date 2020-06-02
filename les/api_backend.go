@@ -31,7 +31,7 @@ import (
 	"github.com/spker/go-tarcoin/core/vm"
 	"github.com/spker/go-tarcoin/trcn/downloader"
 	"github.com/spker/go-tarcoin/trcn/gasprice"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/event"
 	"github.com/spker/go-tarcoin/light"
 	"github.com/spker/go-tarcoin/params"
@@ -246,7 +246,7 @@ func (b *LesApiBackend) SuggestPrice(ctx context.Context) (*big.Int, error) {
 	return b.gpo.SuggestPrice(ctx)
 }
 
-func (b *LesApiBackend) ChainDb() ethdb.Database {
+func (b *LesApiBackend) ChainDb() trcndb.Database {
 	return b.eth.chainDb
 }
 

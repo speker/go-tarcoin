@@ -29,7 +29,7 @@ import (
 
 	"github.com/spker/go-tarcoin/common/mclock"
 	"github.com/spker/go-tarcoin/crypto"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/les/utils"
 	"github.com/spker/go-tarcoin/log"
 	"github.com/spker/go-tarcoin/p2p"
@@ -113,7 +113,7 @@ type registerReq struct {
 // known light server nodes. It received discovered nodes, stores statistics about
 // known nodes and takes care of always having enough good quality servers connected.
 type serverPool struct {
-	db     ethdb.Database
+	db     trcndb.Database
 	dbKey  []byte
 	server *p2p.Server
 	connWg sync.WaitGroup
@@ -142,7 +142,7 @@ type serverPool struct {
 }
 
 // newServerPool creates a new serverPool instance
-func newServerPool(db ethdb.Database, ulcServers []string) *serverPool {
+func newServerPool(db trcndb.Database, ulcServers []string) *serverPool {
 	pool := &serverPool{
 		db:           db,
 		entries:      make(map[enode.ID]*poolEntry),

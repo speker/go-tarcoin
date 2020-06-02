@@ -28,7 +28,7 @@ import (
 	"github.com/spker/go-tarcoin/common"
 	"github.com/spker/go-tarcoin/common/mclock"
 	"github.com/spker/go-tarcoin/common/prque"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/log"
 	"github.com/spker/go-tarcoin/p2p/enode"
 	"github.com/spker/go-tarcoin/rlp"
@@ -159,7 +159,7 @@ type priceFactors struct {
 }
 
 // newClientPool creates a new client pool
-func newClientPool(db ethdb.Database, freeClientCap uint64, clock mclock.Clock, removePeer func(enode.ID)) *clientPool {
+func newClientPool(db trcndb.Database, freeClientCap uint64, clock mclock.Clock, removePeer func(enode.ID)) *clientPool {
 	ndb := newNodeDB(db, clock)
 	pool := &clientPool{
 		ndb:            ndb,
@@ -660,7 +660,7 @@ var (
 )
 
 type nodeDB struct {
-	db              ethdb.Database
+	db              trcndb.Database
 	pcache          *lru.Cache
 	ncache          *lru.Cache
 	auxbuf          []byte                                // 37-byte auxiliary buffer for key encoding
@@ -671,7 +671,7 @@ type nodeDB struct {
 	cleanupHook     func() // Test hook used for testing
 }
 
-func newNodeDB(db ethdb.Database, clock mclock.Clock) *nodeDB {
+func newNodeDB(db trcndb.Database, clock mclock.Clock) *nodeDB {
 	pcache, _ := lru.New(posBalanceCacheLimit)
 	ncache, _ := lru.New(negBalanceCacheLimit)
 	ndb := &nodeDB{

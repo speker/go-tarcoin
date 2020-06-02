@@ -41,7 +41,7 @@ var DeprecatedFlags = []cli.Flag{
 	LegacyMinerThreadsFlag,
 	LegacyMinerGasTargetFlag,
 	LegacyMinerGasPriceFlag,
-	LegacyMinerEtherbaseFlag,
+	LegacyMinerTrcnbaseFlag,
 	LegacyMinerExtraDataFlag,
 }
 
@@ -62,9 +62,9 @@ var (
 		Usage: "Minimum gas price for mining a transaction (deprecated, use --miner.gasprice)",
 		Value: trcn.DefaultConfig.Miner.GasPrice,
 	}
-	LegacyMinerEtherbaseFlag = cli.StringFlag{
-		Name:  "etherbase",
-		Usage: "Public address for block mining rewards (default = first account, deprecated, use --miner.etherbase)",
+	LegacyMinerTrcnbaseFlag = cli.StringFlag{
+		Name:  "trcnbase",
+		Usage: "Public address for block mining rewards (default = first account, deprecated, use --miner.trcnbase)",
 		Value: "0",
 	}
 	LegacyMinerExtraDataFlag = cli.StringFlag{

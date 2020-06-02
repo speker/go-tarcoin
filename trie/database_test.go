@@ -20,7 +20,7 @@ import (
 	"testing"
 
 	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/ethdb/memorydb"
+	"github.com/spker/go-tarcoin/trcndb/memorydb"
 )
 
 // Tests that the trie database returns a missing trie node error if attempting

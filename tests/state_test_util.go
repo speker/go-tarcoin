@@ -35,7 +35,7 @@ import (
 	"github.com/spker/go-tarcoin/core/types"
 	"github.com/spker/go-tarcoin/core/vm"
 	"github.com/spker/go-tarcoin/crypto"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/params"
 	"github.com/spker/go-tarcoin/rlp"
 	"golang.org/x/crypto/sha3"
@@ -206,7 +206,7 @@ func (t *StateTest) gasLimit(subtest StateSubtest) uint64 {
 	return t.json.Tx.GasLimit[t.json.Post[subtest.Fork][subtest.Index].Indexes.Gas]
 }
 
-func MakePreState(db ethdb.Database, accounts core.GenesisAlloc, snapshotter bool) (*snapshot.Tree, *state.StateDB) {
+func MakePreState(db trcndb.Database, accounts core.GenesisAlloc, snapshotter bool) (*snapshot.Tree, *state.StateDB) {
 	sdb := state.NewDatabase(db)
 	statedb, _ := state.New(common.Hash{}, sdb, nil)
 	for addr, a := range accounts {

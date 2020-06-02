@@ -26,7 +26,7 @@ import (
 
 	"github.com/VictoriaMetrics/fastcache"
 	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/log"
 	"github.com/spker/go-tarcoin/metrics"
 	"github.com/spker/go-tarcoin/rlp"
@@ -74,7 +74,7 @@ const secureKeyLength = secureKeyPrefixLength + 32
 // behind this split design is to provide read access to RPC handlers and sync
 // servers even while the trie is executing expensive garbage collection.
 type Database struct {
-	diskdb ethdb.KeyValueStore // Persistent storage for matured trie nodes
+	diskdb trcndb.KeyValueStore // Persistent storage for matured trie nodes
 
 	cleans  *fastcache.Cache            // GC friendly memory cache of clean node RLPs
 	dirties map[common.Hash]*cachedNode // Data and references relationships of dirty nodes
@@ -277,14 +277,14 @@ func expandNode(hash hashNode, n node) node {
 // NewDatabase creates a new trie database to store ephemeral trie content before
 // its written out to disk or garbage collected. No read cache is created, so all
 // data retrievals will hit the underlying disk database.
-func NewDatabase(diskdb ethdb.KeyValueStore) *Database {
+func NewDatabase(diskdb trcndb.KeyValueStore) *Database {
 	return NewDatabaseWithCache(diskdb, 0)
 }
 
 // NewDatabaseWithCache creates a new trie database to store ephemeral trie content
 // before its written out to disk or garbage collected. It also acts as a read cache
 // for nodes loaded from disk.
-func NewDatabaseWithCache(diskdb ethdb.KeyValueStore, cache int) *Database {
+func NewDatabaseWithCache(diskdb trcndb.KeyValueStore, cache int) *Database {
 	var cleans *fastcache.Cache
 	if cache > 0 {
 		cleans = fastcache.New(cache * 1024 * 1024)
@@ -300,7 +300,7 @@ func NewDatabaseWithCache(diskdb ethdb.KeyValueStore, cache int) *Database {
 }
 
 // DiskDB retrieves the persistent storage backing the trie database.
-func (db *Database) DiskDB() ethdb.KeyValueReader {
+func (db *Database) DiskDB() trcndb.KeyValueReader {
 	return db.diskdb
 }
 
@@ -613,7 +613,7 @@ func (db *Database) Cap(limit common.StorageSize) error {
 				log.Error("Failed to commit preimage from trie database", "err", err)
 				return err
 			}
-			if batch.ValueSize() > ethdb.IdealBatchSize {
+			if batch.ValueSize() > trcndb.IdealBatchSize {
 				if err := batch.Write(); err != nil {
 					return err
 				}
@@ -630,7 +630,7 @@ func (db *Database) Cap(limit common.StorageSize) error {
 			return err
 		}
 		// If we exceeded the ideal batch size, commit and reset
-		if batch.ValueSize() >= ethdb.IdealBatchSize {
+		if batch.ValueSize() >= trcndb.IdealBatchSize {
 			if err := batch.Write(); err != nil {
 				log.Error("Failed to write flush list to disk", "err", err)
 				return err
@@ -713,7 +713,7 @@ func (db *Database) Commit(node common.Hash, report bool) error {
 			return err
 		}
 		// If the batch is too large, flush to disk
-		if batch.ValueSize() > ethdb.IdealBatchSize {
+		if batch.ValueSize() > trcndb.IdealBatchSize {
 			if err := batch.Write(); err != nil {
 				return err
 			}
@@ -770,7 +770,7 @@ func (db *Database) Commit(node common.Hash, report bool) error {
 }
 
 // commit is the private locked version of Commit.
-func (db *Database) commit(hash common.Hash, batch ethdb.Batch, uncacher *cleaner) error {
+func (db *Database) commit(hash common.Hash, batch trcndb.Batch, uncacher *cleaner) error {
 	// If the node does not exist, it's a previously committed node
 	node, ok := db.dirties[hash]
 	if !ok {
@@ -789,7 +789,7 @@ func (db *Database) commit(hash common.Hash, batch ethdb.Batch, uncacher *cleane
 		return err
 	}
 	// If we've reached an optimal batch size, commit and start over
-	if batch.ValueSize() >= ethdb.IdealBatchSize {
+	if batch.ValueSize() >= trcndb.IdealBatchSize {
 		if err := batch.Write(); err != nil {
 			return err
 		}

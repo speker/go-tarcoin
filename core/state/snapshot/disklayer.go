@@ -23,16 +23,16 @@ import (
 	"github.com/VictoriaMetrics/fastcache"
 	"github.com/spker/go-tarcoin/common"
 	"github.com/spker/go-tarcoin/core/rawdb"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/rlp"
 	"github.com/spker/go-tarcoin/trie"
 )
 
 // diskLayer is a low level persistent snapshot built on top of a key-value store.
 type diskLayer struct {
-	diskdb ethdb.KeyValueStore // Key-value store containing the base snapshot
-	triedb *trie.Database      // Trie node cache for reconstuction purposes
-	cache  *fastcache.Cache    // Cache to avoid hitting the disk for direct access
+	diskdb trcndb.KeyValueStore // Key-value store containing the base snapshot
+	triedb *trie.Database       // Trie node cache for reconstuction purposes
+	cache  *fastcache.Cache     // Cache to avoid hitting the disk for direct access
 
 	root  common.Hash // Root hash of the base snapshot
 	stale bool        // Signals that the layer became stale (state progressed)

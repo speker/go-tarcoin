@@ -19,13 +19,13 @@ package memorydb
 import (
 	"testing"
 
-	"github.com/spker/go-tarcoin/ethdb"
-	"github.com/spker/go-tarcoin/ethdb/dbtest"
+	"github.com/spker/go-tarcoin/trcndb"
+	"github.com/spker/go-tarcoin/trcndb/dbtest"
 )
 
 func TestMemoryDB(t *testing.T) {
 	t.Run("DatabaseSuite", func(t *testing.T) {
-		dbtest.TestDatabaseSuite(t, func() ethdb.KeyValueStore {
+		dbtest.TestDatabaseSuite(t, func() trcndb.KeyValueStore {
 			return New()
 		})
 	})

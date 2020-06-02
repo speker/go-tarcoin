@@ -30,7 +30,7 @@ import (
 
 	"github.com/spker/go-tarcoin/common"
 	"github.com/spker/go-tarcoin/common/hexutil"
-	"github.com/spker/go-tarcoin/consensus/ethash"
+	"github.com/spker/go-tarcoin/consensus/trcnhash"
 	"github.com/spker/go-tarcoin/trcn"
 	"github.com/spker/go-tarcoin/trcn/downloader"
 	"github.com/spker/go-tarcoin/les/flowcontrol"
@@ -495,7 +495,7 @@ func testSim(t *testing.T, serverCount, clientCount int, serverDir, clientDir []
 func newLesClientService(ctx *adapters.ServiceContext) (node.Service, error) {
 	config := trcn.DefaultConfig
 	config.SyncMode = downloader.LightSync
-	config.Ethash.PowMode = ethash.ModeFake
+	config.Trcnhash.PowMode = trcnhash.ModeFake
 	return New(ctx.NodeContext, &config)
 }
 

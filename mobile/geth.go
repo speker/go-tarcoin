@@ -27,8 +27,8 @@ import (
 	"github.com/spker/go-tarcoin/core"
 	"github.com/spker/go-tarcoin/trcn"
 	"github.com/spker/go-tarcoin/trcn/downloader"
-	"github.com/spker/go-tarcoin/ethclient"
-	"github.com/spker/go-tarcoin/ethstats"
+	"github.com/spker/go-tarcoin/trcnclient"
+	"github.com/spker/go-tarcoin/trcnstats"
 	"github.com/spker/go-tarcoin/internal/debug"
 	"github.com/spker/go-tarcoin/les"
 	"github.com/spker/go-tarcoin/node"
@@ -186,7 +186,7 @@ func NewNode(datadir string, config *NodeConfig) (stack *Node, _ error) {
 				var lesServ *les.LightEthereum
 				ctx.Service(&lesServ)
 
-				return ethstats.New(config.EthereumNetStats, nil, lesServ)
+				return trcnstats.New(config.EthereumNetStats, nil, lesServ)
 			}); err != nil {
 				return nil, fmt.Errorf("netstats init: %v", err)
 			}
@@ -226,7 +226,7 @@ func (n *Node) GetEthereumClient() (client *EthereumClient, _ error) {
 	if err != nil {
 		return nil, err
 	}
-	return &EthereumClient{ethclient.NewClient(rpc)}, nil
+	return &EthereumClient{trcnclient.NewClient(rpc)}, nil
 }
 
 // GetNodeInfo gathers and returns a collection of metadata known about the host.

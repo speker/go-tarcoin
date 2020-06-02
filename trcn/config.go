@@ -25,7 +25,7 @@ import (
 	"time"
 
 	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/consensus/ethash"
+	"github.com/spker/go-tarcoin/consensus/trcnhash"
 	"github.com/spker/go-tarcoin/core"
 	"github.com/spker/go-tarcoin/trcn/downloader"
 	"github.com/spker/go-tarcoin/trcn/gasprice"
@@ -36,8 +36,8 @@ import (
 // DefaultConfig contains default settings for use on the Ethereum main net.
 var DefaultConfig = Config{
 	SyncMode: downloader.FastSync,
-	Ethash: ethash.Config{
-		CacheDir:         "ethash",
+	Trcnhash: trcnhash.Config{
+		CacheDir:         "trcnhash",
 		CachesInMem:      2,
 		CachesOnDisk:     3,
 		CachesLockMmap:   false,
@@ -74,16 +74,16 @@ func init() {
 		}
 	}
 	if runtime.GOOS == "darwin" {
-		DefaultConfig.Ethash.DatasetDir = filepath.Join(home, "Library", "Ethash")
+		DefaultConfig.Trcnhash.DatasetDir = filepath.Join(home, "Library", "Trcnhash")
 	} else if runtime.GOOS == "windows" {
 		localappdata := os.Getenv("LOCALAPPDATA")
 		if localappdata != "" {
-			DefaultConfig.Ethash.DatasetDir = filepath.Join(localappdata, "Ethash")
+			DefaultConfig.Trcnhash.DatasetDir = filepath.Join(localappdata, "Trcnhash")
 		} else {
-			DefaultConfig.Ethash.DatasetDir = filepath.Join(home, "AppData", "Local", "Ethash")
+			DefaultConfig.Trcnhash.DatasetDir = filepath.Join(home, "AppData", "Local", "Trcnhash")
 		}
 	} else {
-		DefaultConfig.Ethash.DatasetDir = filepath.Join(home, ".trcnhash")
+		DefaultConfig.Trcnhash.DatasetDir = filepath.Join(home, ".trcnhash")
 	}
 }
 
@@ -135,8 +135,8 @@ type Config struct {
 	// Mining options
 	Miner miner.Config
 
-	// Ethash options
-	Ethash ethash.Config
+	// Trcnhash options
+	Trcnhash trcnhash.Config
 
 	// Transaction pool options
 	TxPool core.TxPoolConfig

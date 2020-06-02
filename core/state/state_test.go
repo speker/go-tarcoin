@@ -24,13 +24,13 @@ import (
 	"github.com/spker/go-tarcoin/common"
 	"github.com/spker/go-tarcoin/core/rawdb"
 	"github.com/spker/go-tarcoin/crypto"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 )
 
 var toAddr = common.BytesToAddress
 
 type stateTest struct {
-	db    ethdb.Database
+	db    trcndb.Database
 	state *StateDB
 }
 

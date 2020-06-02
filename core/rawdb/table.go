@@ -17,18 +17,18 @@
 package rawdb
 
 import (
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 )
 
 // table is a wrapper around a database that prefixes each key access with a pre-
 // configured string.
 type table struct {
-	db     ethdb.Database
+	db     trcndb.Database
 	prefix string
 }
 
 // NewTable returns a database object that prefixes all keys with a given string.
-func NewTable(db ethdb.Database, prefix string) ethdb.Database {
+func NewTable(db trcndb.Database, prefix string) trcndb.Database {
 	return &table{
 		db:     db,
 		prefix: prefix,
@@ -106,7 +106,7 @@ func (t *table) Delete(key []byte) error {
 // NewIterator creates a binary-alphabetical iterator over a subset
 // of database content with a particular key prefix, starting at a particular
 // initial key (or after, if it does not exist).
-func (t *table) NewIterator(prefix []byte, start []byte) ethdb.Iterator {
+func (t *table) NewIterator(prefix []byte, start []byte) trcndb.Iterator {
 	innerPrefix := append([]byte(t.prefix), prefix...)
 	iter := t.db.NewIterator(innerPrefix, start)
 	return &tableIterator{
@@ -155,14 +155,14 @@ func (t *table) Compact(start []byte, limit []byte) error {
 // NewBatch creates a write-only database that buffers changes to its host db
 // until a final write is called, each operation prefixing all keys with the
 // pre-configured string.
-func (t *table) NewBatch() ethdb.Batch {
+func (t *table) NewBatch() trcndb.Batch {
 	return &tableBatch{t.db.NewBatch(), t.prefix}
 }
 
 // tableBatch is a wrapper around a database batch that prefixes each key access
 // with a pre-configured string.
 type tableBatch struct {
-	batch  ethdb.Batch
+	batch  trcndb.Batch
 	prefix string
 }
 
@@ -194,7 +194,7 @@ func (b *tableBatch) Reset() {
 // tableReplayer is a wrapper around a batch replayer which truncates
 // the added prefix.
 type tableReplayer struct {
-	w      ethdb.KeyValueWriter
+	w      trcndb.KeyValueWriter
 	prefix string
 }
 
@@ -211,14 +211,14 @@ func (r *tableReplayer) Delete(key []byte) error {
 }
 
 // Replay replays the batch contents.
-func (b *tableBatch) Replay(w ethdb.KeyValueWriter) error {
+func (b *tableBatch) Replay(w trcndb.KeyValueWriter) error {
 	return b.batch.Replay(&tableReplayer{w: w, prefix: b.prefix})
 }
 
 // tableIterator is a wrapper around a database iterator that prefixes each key access
 // with a pre-configured string.
 type tableIterator struct {
-	iter   ethdb.Iterator
+	iter   trcndb.Iterator
 	prefix string
 }
 

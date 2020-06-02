@@ -31,7 +31,7 @@ import (
 	"github.com/spker/go-tarcoin/common/hexutil"
 	"github.com/spker/go-tarcoin/common/math"
 	"github.com/spker/go-tarcoin/consensus"
-	"github.com/spker/go-tarcoin/consensus/ethash"
+	"github.com/spker/go-tarcoin/consensus/trcnhash"
 	"github.com/spker/go-tarcoin/consensus/misc"
 	"github.com/spker/go-tarcoin/core"
 	"github.com/spker/go-tarcoin/core/rawdb"
@@ -39,7 +39,7 @@ import (
 	"github.com/spker/go-tarcoin/core/types"
 	"github.com/spker/go-tarcoin/core/vm"
 	"github.com/spker/go-tarcoin/crypto"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/log"
 	"github.com/spker/go-tarcoin/node"
 	"github.com/spker/go-tarcoin/params"
@@ -59,11 +59,11 @@ var (
 	retestethCommand = cli.Command{
 		Action:      utils.MigrateFlags(retesteth),
 		Name:        "retesteth",
-		Usage:       "Launches geth in retesteth mode",
+		Usage:       "Launches gtrcn in retesteth mode",
 		ArgsUsage:   "",
 		Flags:       []cli.Flag{rpcPortFlag},
 		Category:    "MISCELLANEOUS COMMANDS",
-		Description: `Launches geth in retesteth mode (no database, no network, only retesteth RPC interface)`,
+		Description: `Launches gtrcn in retesteth mode (no database, no network, only retesteth RPC interface)`,
 	}
 )
 
@@ -103,7 +103,7 @@ type RetestWeb3API interface {
 }
 
 type RetestethAPI struct {
-	ethDb         ethdb.Database
+	ethDb         trcndb.Database
 	db            state.Database
 	chainConfig   *params.ChainConfig
 	author        common.Address
@@ -384,10 +384,10 @@ func (api *RetestethAPI) SetChainParams(ctx context.Context, chainParams ChainPa
 	var inner consensus.Engine
 	switch chainParams.SealEngine {
 	case "NoProof", "NoReward":
-		inner = ethash.NewFaker()
-	case "Ethash":
-		inner = ethash.New(ethash.Config{
-			CacheDir:         "ethash",
+		inner = trcnhash.NewFaker()
+	case "Trcnhash":
+		inner = trcnhash.New(trcnhash.Config{
+			CacheDir:         "trcnhash",
 			CachesInMem:      2,
 			CachesOnDisk:     3,
 			CachesLockMmap:   false,

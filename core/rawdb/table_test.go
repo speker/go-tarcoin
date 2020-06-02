@@ -20,7 +20,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 )
 
 func TestTableDatabase(t *testing.T)            { testTableDatabase(t, "prefix") }
@@ -98,7 +98,7 @@ func testTableDatabase(t *testing.T, prefix string) {
 		}
 	}
 
-	check := func(iter ethdb.Iterator, expCount, index int) {
+	check := func(iter trcndb.Iterator, expCount, index int) {
 		count := 0
 		for iter.Next() {
 			key, value := iter.Key(), iter.Value()

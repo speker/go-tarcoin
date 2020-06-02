@@ -31,8 +31,8 @@ import (
 	"github.com/davecgh/go-spew/spew"
 	"github.com/spker/go-tarcoin/common"
 	"github.com/spker/go-tarcoin/crypto"
-	"github.com/spker/go-tarcoin/ethdb/leveldb"
-	"github.com/spker/go-tarcoin/ethdb/memorydb"
+	"github.com/spker/go-tarcoin/trcndb/leveldb"
+	"github.com/spker/go-tarcoin/trcndb/memorydb"
 	"github.com/spker/go-tarcoin/rlp"
 )
 

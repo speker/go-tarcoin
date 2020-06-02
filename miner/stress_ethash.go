@@ -16,7 +16,7 @@
 
 // +build none
 
-// This file contains a miner stress test based on the Ethash consensus engine.
+// This file contains a miner stress test based on the Trcnhash consensus engine.
 package main
 
 import (
@@ -31,7 +31,7 @@ import (
 	"github.com/spker/go-tarcoin/accounts/keystore"
 	"github.com/spker/go-tarcoin/common"
 	"github.com/spker/go-tarcoin/common/fdlimit"
-	"github.com/spker/go-tarcoin/consensus/ethash"
+	"github.com/spker/go-tarcoin/consensus/trcnhash"
 	"github.com/spker/go-tarcoin/core"
 	"github.com/spker/go-tarcoin/core/types"
 	"github.com/spker/go-tarcoin/crypto"
@@ -54,10 +54,10 @@ func main() {
 	for i := 0; i < len(faucets); i++ {
 		faucets[i], _ = crypto.GenerateKey()
 	}
-	// Pre-generate the ethash mining DAG so we don't race
-	ethash.MakeDataset(1, filepath.Join(os.Getenv("HOME"), ".trcnhash"))
+	// Pre-generate the trcnhash mining DAG so we don't race
+	trcnhash.MakeDataset(1, filepath.Join(os.Getenv("HOME"), ".trcnhash"))
 
-	// Create an Ethash network based off of the Ropsten config
+	// Create an Trcnhash network based off of the Ropsten config
 	genesis := makeGenesis(faucets)
 
 	var (
@@ -130,7 +130,7 @@ func main() {
 	}
 }
 
-// makeGenesis creates a custom Ethash genesis block based on some pre-defined
+// makeGenesis creates a custom Trcnhash genesis block based on some pre-defined
 // faucet accounts.
 func makeGenesis(faucets []*ecdsa.PrivateKey) *core.Genesis {
 	genesis := core.DefaultRopstenGenesisBlock()
@@ -179,7 +179,7 @@ func makeMiner(genesis *core.Genesis) (*node.Node, error) {
 			DatabaseHandles: 256,
 			TxPool:          core.DefaultTxPoolConfig,
 			GPO:             trcn.DefaultConfig.GPO,
-			Ethash:          trcn.DefaultConfig.Ethash,
+			Trcnhash:          trcn.DefaultConfig.Trcnhash,
 			Miner: miner.Config{
 				GasFloor: genesis.GasLimit * 9 / 10,
 				GasCeil:  genesis.GasLimit * 11 / 10,

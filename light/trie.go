@@ -25,7 +25,7 @@ import (
 	"github.com/spker/go-tarcoin/core/state"
 	"github.com/spker/go-tarcoin/core/types"
 	"github.com/spker/go-tarcoin/crypto"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/trie"
 )
 
@@ -141,7 +141,7 @@ func (t *odrTrie) GetKey(sha []byte) []byte {
 	return nil
 }
 
-func (t *odrTrie) Prove(key []byte, fromLevel uint, proofDb ethdb.KeyValueWriter) error {
+func (t *odrTrie) Prove(key []byte, fromLevel uint, proofDb trcndb.KeyValueWriter) error {
 	return errors.New("not implemented, needs client/server interface split")
 }
 

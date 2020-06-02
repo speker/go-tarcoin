@@ -32,7 +32,7 @@ func (w *wizard) deployExplorer() {
 		return
 	}
 	if w.conf.ethstats == "" {
-		log.Error("No ethstats server configured")
+		log.Error("No trcnstats server configured")
 		return
 	}
 	// Select the server to interact with
@@ -61,7 +61,7 @@ func (w *wizard) deployExplorer() {
 	fmt.Printf("Which port should the explorer listen on? (default = %d)\n", infos.port)
 	infos.port = w.readDefaultInt(infos.port)
 
-	// Figure which virtual-host to deploy ethstats on
+	// Figure which virtual-host to deploy trcnstats on
 	if infos.host, err = w.ensureVirtualHost(client, infos.port, infos.host); err != nil {
 		log.Error("Failed to decide on explorer host", "err", err)
 		return

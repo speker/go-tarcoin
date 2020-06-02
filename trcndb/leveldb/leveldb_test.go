@@ -19,15 +19,15 @@ package leveldb
 import (
 	"testing"
 
-	"github.com/spker/go-tarcoin/ethdb"
-	"github.com/spker/go-tarcoin/ethdb/dbtest"
+	"github.com/spker/go-tarcoin/trcndb"
+	"github.com/spker/go-tarcoin/trcndb/dbtest"
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/storage"
 )
 
 func TestLevelDB(t *testing.T) {
 	t.Run("DatabaseSuite", func(t *testing.T) {
-		dbtest.TestDatabaseSuite(t, func() ethdb.KeyValueStore {
+		dbtest.TestDatabaseSuite(t, func() trcndb.KeyValueStore {
 			db, err := leveldb.Open(storage.NewMemStorage(), nil)
 			if err != nil {
 				t.Fatal(err)

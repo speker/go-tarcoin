@@ -27,7 +27,7 @@ import (
 	"time"
 
 	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/consensus/ethash"
+	"github.com/spker/go-tarcoin/consensus/trcnhash"
 	"github.com/spker/go-tarcoin/core"
 	"github.com/spker/go-tarcoin/trcn"
 	"github.com/spker/go-tarcoin/internal/jsre"
@@ -99,10 +99,10 @@ func newTester(t *testing.T, confOverride func(*trcn.Config)) *tester {
 	ethConf := &trcn.Config{
 		Genesis: core.DeveloperGenesisBlock(15, common.Address{}),
 		Miner: miner.Config{
-			Etherbase: common.HexToAddress(testAddress),
+			Trcnbase: common.HexToAddress(testAddress),
 		},
-		Ethash: ethash.Config{
-			PowMode: ethash.ModeTest,
+		Trcnhash: trcnhash.Config{
+			PowMode: trcnhash.ModeTest,
 		},
 	}
 	if confOverride != nil {

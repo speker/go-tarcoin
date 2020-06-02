@@ -26,7 +26,7 @@ import (
 	"time"
 
 	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/ethdb"
+	"github.com/spker/go-tarcoin/trcndb"
 	"github.com/spker/go-tarcoin/log"
 	"github.com/spker/go-tarcoin/metrics"
 	"github.com/spker/go-tarcoin/params"
@@ -254,7 +254,7 @@ func (f *freezer) Sync() error {
 //
 // This functionality is deliberately broken off from block importing to avoid
 // incurring additional data shuffling delays on block propagation.
-func (f *freezer) freeze(db ethdb.KeyValueStore) {
+func (f *freezer) freeze(db trcndb.KeyValueStore) {
 	nfdb := &nofreezedb{KeyValueStore: db}
 
 	backoff := false

@@ -38,15 +38,15 @@ import (
 	"github.com/spker/go-tarcoin/common/fdlimit"
 	"github.com/spker/go-tarcoin/consensus"
 	"github.com/spker/go-tarcoin/consensus/clique"
-	"github.com/spker/go-tarcoin/consensus/ethash"
+	"github.com/spker/go-tarcoin/consensus/trcnhash"
 	"github.com/spker/go-tarcoin/core"
 	"github.com/spker/go-tarcoin/core/vm"
 	"github.com/spker/go-tarcoin/crypto"
 	"github.com/spker/go-tarcoin/trcn"
 	"github.com/spker/go-tarcoin/trcn/downloader"
 	"github.com/spker/go-tarcoin/trcn/gasprice"
-	"github.com/spker/go-tarcoin/ethdb"
-	"github.com/spker/go-tarcoin/ethstats"
+	"github.com/spker/go-tarcoin/trcndb"
+	"github.com/spker/go-tarcoin/trcnstats"
 	"github.com/spker/go-tarcoin/graphql"
 	"github.com/spker/go-tarcoin/les"
 	"github.com/spker/go-tarcoin/log"
@@ -277,43 +277,43 @@ var (
 		Name:  "ulc.onlyannounce",
 		Usage: "Ultra light server sends announcements only",
 	}
-	// Ethash settings
-	EthashCacheDirFlag = DirectoryFlag{
-		Name:  "ethash.cachedir",
-		Usage: "Directory to store the ethash verification caches (default = inside the datadir)",
+	// Trcnhash settings
+	TrcnhashCacheDirFlag = DirectoryFlag{
+		Name:  "trcnhash.cachedir",
+		Usage: "Directory to store the trcnhash verification caches (default = inside the datadir)",
 	}
-	EthashCachesInMemoryFlag = cli.IntFlag{
-		Name:  "ethash.cachesinmem",
-		Usage: "Number of recent ethash caches to keep in memory (16MB each)",
-		Value: trcn.DefaultConfig.Ethash.CachesInMem,
+	TrcnhashCachesInMemoryFlag = cli.IntFlag{
+		Name:  "trcnhash.cachesinmem",
+		Usage: "Number of recent trcnhash caches to keep in memory (16MB each)",
+		Value: trcn.DefaultConfig.Trcnhash.CachesInMem,
 	}
-	EthashCachesOnDiskFlag = cli.IntFlag{
-		Name:  "ethash.cachesondisk",
-		Usage: "Number of recent ethash caches to keep on disk (16MB each)",
-		Value: trcn.DefaultConfig.Ethash.CachesOnDisk,
+	TrcnhashCachesOnDiskFlag = cli.IntFlag{
+		Name:  "trcnhash.cachesondisk",
+		Usage: "Number of recent trcnhash caches to keep on disk (16MB each)",
+		Value: trcn.DefaultConfig.Trcnhash.CachesOnDisk,
 	}
-	EthashCachesLockMmapFlag = cli.BoolFlag{
-		Name:  "ethash.cacheslockmmap",
-		Usage: "Lock memory maps of recent ethash caches",
+	TrcnhashCachesLockMmapFlag = cli.BoolFlag{
+		Name:  "trcnhash.cacheslockmmap",
+		Usage: "Lock memory maps of recent trcnhash caches",
 	}
-	EthashDatasetDirFlag = DirectoryFlag{
-		Name:  "ethash.dagdir",
-		Usage: "Directory to store the ethash mining DAGs",
-		Value: DirectoryString(trcn.DefaultConfig.Ethash.DatasetDir),
+	TrcnhashDatasetDirFlag = DirectoryFlag{
+		Name:  "trcnhash.dagdir",
+		Usage: "Directory to store the trcnhash mining DAGs",
+		Value: DirectoryString(trcn.DefaultConfig.Trcnhash.DatasetDir),
 	}
-	EthashDatasetsInMemoryFlag = cli.IntFlag{
-		Name:  "ethash.dagsinmem",
-		Usage: "Number of recent ethash mining DAGs to keep in memory (1+GB each)",
-		Value: trcn.DefaultConfig.Ethash.DatasetsInMem,
+	TrcnhashDatasetsInMemoryFlag = cli.IntFlag{
+		Name:  "trcnhash.dagsinmem",
+		Usage: "Number of recent trcnhash mining DAGs to keep in memory (1+GB each)",
+		Value: trcn.DefaultConfig.Trcnhash.DatasetsInMem,
 	}
-	EthashDatasetsOnDiskFlag = cli.IntFlag{
-		Name:  "ethash.dagsondisk",
-		Usage: "Number of recent ethash mining DAGs to keep on disk (1+GB each)",
-		Value: trcn.DefaultConfig.Ethash.DatasetsOnDisk,
+	TrcnhashDatasetsOnDiskFlag = cli.IntFlag{
+		Name:  "trcnhash.dagsondisk",
+		Usage: "Number of recent trcnhash mining DAGs to keep on disk (1+GB each)",
+		Value: trcn.DefaultConfig.Trcnhash.DatasetsOnDisk,
 	}
-	EthashDatasetsLockMmapFlag = cli.BoolFlag{
-		Name:  "ethash.dagslockmmap",
-		Usage: "Lock memory maps for recent ethash mining DAGs",
+	TrcnhashDatasetsLockMmapFlag = cli.BoolFlag{
+		Name:  "trcnhash.dagslockmmap",
+		Usage: "Lock memory maps for recent trcnhash mining DAGs",
 	}
 	// Transaction pool settings
 	TxPoolLocalsFlag = cli.StringFlag{
@@ -428,8 +428,8 @@ var (
 		Usage: "Minimum gas price for mining a transaction",
 		Value: trcn.DefaultConfig.Miner.GasPrice,
 	}
-	MinerEtherbaseFlag = cli.StringFlag{
-		Name:  "miner.etherbase",
+	MinerTrcnbaseFlag = cli.StringFlag{
+		Name:  "miner.trcnbase",
 		Usage: "Public address for block mining rewards (default = first account)",
 		Value: "0",
 	}
@@ -476,8 +476,8 @@ var (
 	}
 	// Logging and debug settings
 	EthStatsURLFlag = cli.StringFlag{
-		Name:  "ethstats",
-		Usage: "Reporting URL of a ethstats service (nodename:secret@host:port)",
+		Name:  "trcnstats",
+		Usage: "Reporting URL of a trcnstats service (nodename:secret@host:port)",
 	}
 	FakePoWFlag = cli.BoolFlag{
 		Name:  "fakepow",
@@ -1075,29 +1075,29 @@ func MakeAddress(ks *keystore.KeyStore, account string) (accounts.Account, error
 	return accs[index], nil
 }
 
-// setEtherbase retrieves the etherbase either from the directly specified
+// setTrcnbase retrieves the trcnbase either from the directly specified
 // command line flags or from the keystore if CLI indexed.
-func setEtherbase(ctx *cli.Context, ks *keystore.KeyStore, cfg *trcn.Config) {
-	// Extract the current etherbase, new flag overriding legacy one
-	var etherbase string
-	if ctx.GlobalIsSet(LegacyMinerEtherbaseFlag.Name) {
-		etherbase = ctx.GlobalString(LegacyMinerEtherbaseFlag.Name)
-		log.Warn("The flag --etherbase is deprecated and will be removed in the future, please use --miner.etherbase")
+func setTrcnbase(ctx *cli.Context, ks *keystore.KeyStore, cfg *trcn.Config) {
+	// Extract the current trcnbase, new flag overriding legacy one
+	var trcnbase string
+	if ctx.GlobalIsSet(LegacyMinerTrcnbaseFlag.Name) {
+		trcnbase = ctx.GlobalString(LegacyMinerTrcnbaseFlag.Name)
+		log.Warn("The flag --trcnbase is deprecated and will be removed in the future, please use --miner.trcnbase")
 
 	}
-	if ctx.GlobalIsSet(MinerEtherbaseFlag.Name) {
-		etherbase = ctx.GlobalString(MinerEtherbaseFlag.Name)
+	if ctx.GlobalIsSet(MinerTrcnbaseFlag.Name) {
+		trcnbase = ctx.GlobalString(MinerTrcnbaseFlag.Name)
 	}
-	// Convert the etherbase into an address and configure it
-	if etherbase != "" {
+	// Convert the trcnbase into an address and configure it
+	if trcnbase != "" {
 		if ks != nil {
-			account, err := MakeAddress(ks, etherbase)
+			account, err := MakeAddress(ks, trcnbase)
 			if err != nil {
-				Fatalf("Invalid miner etherbase: %v", err)
+				Fatalf("Invalid miner trcnbase: %v", err)
 			}
-			cfg.Miner.Etherbase = account.Address
+			cfg.Miner.Trcnbase = account.Address
 		} else {
-			Fatalf("No etherbase configured")
+			Fatalf("No trcnbase configured")
 		}
 	}
 }
@@ -1328,30 +1328,30 @@ func setTxPool(ctx *cli.Context, cfg *core.TxPoolConfig) {
 	}
 }
 
-func setEthash(ctx *cli.Context, cfg *trcn.Config) {
-	if ctx.GlobalIsSet(EthashCacheDirFlag.Name) {
-		cfg.Ethash.CacheDir = ctx.GlobalString(EthashCacheDirFlag.Name)
+func setTrcnhash(ctx *cli.Context, cfg *trcn.Config) {
+	if ctx.GlobalIsSet(TrcnhashCacheDirFlag.Name) {
+		cfg.Trcnhash.CacheDir = ctx.GlobalString(TrcnhashCacheDirFlag.Name)
 	}
-	if ctx.GlobalIsSet(EthashDatasetDirFlag.Name) {
-		cfg.Ethash.DatasetDir = ctx.GlobalString(EthashDatasetDirFlag.Name)
+	if ctx.GlobalIsSet(TrcnhashDatasetDirFlag.Name) {
+		cfg.Trcnhash.DatasetDir = ctx.GlobalString(TrcnhashDatasetDirFlag.Name)
 	}
-	if ctx.GlobalIsSet(EthashCachesInMemoryFlag.Name) {
-		cfg.Ethash.CachesInMem = ctx.GlobalInt(EthashCachesInMemoryFlag.Name)
+	if ctx.GlobalIsSet(TrcnhashCachesInMemoryFlag.Name) {
+		cfg.Trcnhash.CachesInMem = ctx.GlobalInt(TrcnhashCachesInMemoryFlag.Name)
 	}
-	if ctx.GlobalIsSet(EthashCachesOnDiskFlag.Name) {
-		cfg.Ethash.CachesOnDisk = ctx.GlobalInt(EthashCachesOnDiskFlag.Name)
+	if ctx.GlobalIsSet(TrcnhashCachesOnDiskFlag.Name) {
+		cfg.Trcnhash.CachesOnDisk = ctx.GlobalInt(TrcnhashCachesOnDiskFlag.Name)
 	}
-	if ctx.GlobalIsSet(EthashCachesLockMmapFlag.Name) {
-		cfg.Ethash.CachesLockMmap = ctx.GlobalBool(EthashCachesLockMmapFlag.Name)
+	if ctx.GlobalIsSet(TrcnhashCachesLockMmapFlag.Name) {
+		cfg.Trcnhash.CachesLockMmap = ctx.GlobalBool(TrcnhashCachesLockMmapFlag.Name)
 	}
-	if ctx.GlobalIsSet(EthashDatasetsInMemoryFlag.Name) {
-		cfg.Ethash.DatasetsInMem = ctx.GlobalInt(EthashDatasetsInMemoryFlag.Name)
+	if ctx.GlobalIsSet(TrcnhashDatasetsInMemoryFlag.Name) {
+		cfg.Trcnhash.DatasetsInMem = ctx.GlobalInt(TrcnhashDatasetsInMemoryFlag.Name)
 	}
-	if ctx.GlobalIsSet(EthashDatasetsOnDiskFlag.Name) {
-		cfg.Ethash.DatasetsOnDisk = ctx.GlobalInt(EthashDatasetsOnDiskFlag.Name)
+	if ctx.GlobalIsSet(TrcnhashDatasetsOnDiskFlag.Name) {
+		cfg.Trcnhash.DatasetsOnDisk = ctx.GlobalInt(TrcnhashDatasetsOnDiskFlag.Name)
 	}
-	if ctx.GlobalIsSet(EthashDatasetsLockMmapFlag.Name) {
-		cfg.Ethash.DatasetsLockMmap = ctx.GlobalBool(EthashDatasetsLockMmapFlag.Name)
+	if ctx.GlobalIsSet(TrcnhashDatasetsLockMmapFlag.Name) {
+		cfg.Trcnhash.DatasetsLockMmap = ctx.GlobalBool(TrcnhashDatasetsLockMmapFlag.Name)
 	}
 }
 
@@ -1483,10 +1483,10 @@ func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *trcn.Config) {
 	if keystores := stack.AccountManager().Backends(keystore.KeyStoreType); len(keystores) > 0 {
 		ks = keystores[0].(*keystore.KeyStore)
 	}
-	setEtherbase(ctx, ks, cfg)
+	setTrcnbase(ctx, ks, cfg)
 	setGPO(ctx, &cfg.GPO)
 	setTxPool(ctx, &cfg.TxPool)
-	setEthash(ctx, cfg)
+	setTrcnhash(ctx, cfg)
 	setMiner(ctx, &cfg.Miner)
 	setWhitelist(ctx, cfg)
 	setLes(ctx, cfg)
@@ -1660,8 +1660,8 @@ func RegisterEthStatsService(stack *node.Node, url string) {
 		var lesServ *les.LightEthereum
 		ctx.Service(&lesServ)
 
-		// Let ethstats use whichever is not nil
-		return ethstats.New(url, ethServ, lesServ)
+		// Let trcnstats use whichever is not nil
+		return trcnstats.New(url, ethServ, lesServ)
 	}); err != nil {
 		Fatalf("Failed to register the Ethereum Stats service: %v", err)
 	}
@@ -1726,7 +1726,7 @@ func SplitTagsFlag(tagsFlag string) map[string]string {
 }
 
 // MakeChainDatabase open an LevelDB using the flags passed to the client and will hard crash if it fails.
-func MakeChainDatabase(ctx *cli.Context, stack *node.Node) ethdb.Database {
+func MakeChainDatabase(ctx *cli.Context, stack *node.Node) trcndb.Database {
 	var (
 		cache   = ctx.GlobalInt(CacheFlag.Name) * ctx.GlobalInt(CacheDatabaseFlag.Name) / 100
 		handles = makeDatabaseHandles()
@@ -1758,7 +1758,7 @@ func MakeGenesis(ctx *cli.Context) *core.Genesis {
 }
 
 // MakeChain creates a chain manager from set command line flags.
-func MakeChain(ctx *cli.Context, stack *node.Node, readOnly bool) (chain *core.BlockChain, chainDb ethdb.Database) {
+func MakeChain(ctx *cli.Context, stack *node.Node, readOnly bool) (chain *core.BlockChain, chainDb trcndb.Database) {
 	var err error
 	chainDb = MakeChainDatabase(ctx, stack)
 	config, _, err := core.SetupGenesisBlock(chainDb, MakeGenesis(ctx))
@@ -1769,17 +1769,17 @@ func MakeChain(ctx *cli.Context, stack *node.Node, readOnly bool) (chain *core.B
 	if config.Clique != nil {
 		engine = clique.New(config.Clique, chainDb)
 	} else {
-		engine = ethash.NewFaker()
+		engine = trcnhash.NewFaker()
 		if !ctx.GlobalBool(FakePoWFlag.Name) {
-			engine = ethash.New(ethash.Config{
-				CacheDir:         stack.ResolvePath(trcn.DefaultConfig.Ethash.CacheDir),
-				CachesInMem:      trcn.DefaultConfig.Ethash.CachesInMem,
-				CachesOnDisk:     trcn.DefaultConfig.Ethash.CachesOnDisk,
-				CachesLockMmap:   trcn.DefaultConfig.Ethash.CachesLockMmap,
-				DatasetDir:       stack.ResolvePath(trcn.DefaultConfig.Ethash.DatasetDir),
-				DatasetsInMem:    trcn.DefaultConfig.Ethash.DatasetsInMem,
-				DatasetsOnDisk:   trcn.DefaultConfig.Ethash.DatasetsOnDisk,
-				DatasetsLockMmap: trcn.DefaultConfig.Ethash.DatasetsLockMmap,
+			engine = trcnhash.New(trcnhash.Config{
+				CacheDir:         stack.ResolvePath(trcn.DefaultConfig.Trcnhash.CacheDir),
+				CachesInMem:      trcn.DefaultConfig.Trcnhash.CachesInMem,
+				CachesOnDisk:     trcn.DefaultConfig.Trcnhash.CachesOnDisk,
+				CachesLockMmap:   trcn.DefaultConfig.Trcnhash.CachesLockMmap,
+				DatasetDir:       stack.ResolvePath(trcn.DefaultConfig.Trcnhash.DatasetDir),
+				DatasetsInMem:    trcn.DefaultConfig.Trcnhash.DatasetsInMem,
+				DatasetsOnDisk:   trcn.DefaultConfig.Trcnhash.DatasetsOnDisk,
+				DatasetsLockMmap: trcn.DefaultConfig.Trcnhash.DatasetsLockMmap,
 			}, nil, false)
 		}
 	}

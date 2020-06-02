@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-package ethash
+package trcnhash
 
 import (
 	"bytes"
@@ -31,8 +31,8 @@ import (
 	"github.com/spker/go-tarcoin/core/types"
 )
 
-// prepare converts an ethash cache or dataset from a byte stream into the internal
-// int representation. All ethash methods work with ints to avoid constant byte to
+// prepare converts an trcnhash cache or dataset from a byte stream into the internal
+// int representation. All trcnhash methods work with ints to avoid constant byte to
 // int conversions as well as to handle both little and big endian systems.
 func prepare(dest []uint32, src []byte) {
 	for i := 0; i < len(dest); i++ {
@@ -729,9 +729,9 @@ func TestConcurrentDiskCacheGeneration(t *testing.T) {
 
 		go func(idx int) {
 			defer pend.Done()
-			ethash := New(Config{cachedir, 0, 1, false, "", 0, 0, false, ModeNormal, nil}, nil, false)
-			defer ethash.Close()
-			if err := ethash.VerifySeal(nil, block.Header()); err != nil {
+			trcnhash := New(Config{cachedir, 0, 1, false, "", 0, 0, false, ModeNormal, nil}, nil, false)
+			defer trcnhash.Close()
+			if err := trcnhash.VerifySeal(nil, block.Header()); err != nil {
 				t.Errorf("proc %d: block verification failed: %v", idx, err)
 			}
 		}(i)
@@ -790,7 +790,7 @@ func BenchmarkHashimotoFullSmall(b *testing.B) {
 
 func benchmarkHashimotoFullMmap(b *testing.B, name string, lock bool) {
 	b.Run(name, func(b *testing.B) {
-		tmpdir, err := ioutil.TempDir("", "ethash-test")
+		tmpdir, err := ioutil.TempDir("", "trcnhash-test")
 		if err != nil {
 			b.Fatal(err)
 		}

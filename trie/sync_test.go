@@ -21,7 +21,7 @@ import (
 	"testing"
 
 	"github.com/spker/go-tarcoin/common"
-	"github.com/spker/go-tarcoin/ethdb/memorydb"
+	"github.com/spker/go-tarcoin/trcndb/memorydb"
 )
 
 // makeTestTrie create a sample test trie to test node-wise reconstruction.
