@@ -92,7 +92,7 @@ func GetAPIs(apiBackend Backend) []rpc.API {
 		{
 			Namespace: "trcn",
 			Version:   "1.0",
-			Service:   NewPublicEthereumAPI(apiBackend),
+			Service:   NewPublicTarCoinAPI(apiBackend),
 			Public:    true,
 		}, {
 			Namespace: "trcn",

@@ -164,7 +164,7 @@ func TestForkIDSplit(t *testing.T) {
 			EIP150Block:    big.NewInt(2),
 			EIP155Block:    big.NewInt(2),
 			EIP158Block:    big.NewInt(2),
-			ByzantiumBlock: big.NewInt(3),
+			//ByzantiumBlock: big.NewInt(3),
 		}
 		dbNoFork  = rawdb.NewMemoryDatabase()
 		dbProFork = rawdb.NewMemoryDatabase()

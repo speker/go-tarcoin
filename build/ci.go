@@ -121,7 +121,7 @@ var (
 
 	// A debian package is created for all executables listed here.
 
-	debEthereum = debPackage{
+	debTarCoin = debPackage{
 		Name:        "tarcoin",
 		Version:     params.Version,
 		Executables: debExecutables,
@@ -129,7 +129,7 @@ var (
 
 	// Debian meta packages to build and push to Ubuntu PPA
 	debPackages = []debPackage{
-		debEthereum,
+		debTarCoin,
 	}
 
 	// Distros for which packages are created.

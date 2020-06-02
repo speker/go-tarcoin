@@ -101,22 +101,22 @@ func gasSStore(evm *EVM, contract *Contract, stack *Stack, mem *Memory, memorySi
 	// The legacy gas metering only takes into consideration the current state
 	// Legacy rules should be applied if we are in Petersburg (removal of EIP-1283)
 	// OR Constantinople is not active
-	if evm.chainRules.IsPetersburg || !evm.chainRules.IsConstantinople {
-		// This checks for 3 scenario's and calculates gas accordingly:
-		//
-		// 1. From a zero-value address to a non-zero value         (NEW VALUE)
-		// 2. From a non-zero value address to a zero-value address (DELETE)
-		// 3. From a non-zero to a non-zero                         (CHANGE)
-		switch {
-		case current == (common.Hash{}) && y.Sign() != 0: // 0 => non 0
-			return params.SstoreSetGas, nil
-		case current != (common.Hash{}) && y.Sign() == 0: // non 0 => 0
-			evm.StateDB.AddRefund(params.SstoreRefundGas)
-			return params.SstoreClearGas, nil
-		default: // non 0 => non 0 (or 0 => 0)
-			return params.SstoreResetGas, nil
-		}
-	}
+	//if evm.chainRules.IsPetersburg || !evm.chainRules.IsConstantinople {
+	//	// This checks for 3 scenario's and calculates gas accordingly:
+	//	//
+	//	// 1. From a zero-value address to a non-zero value         (NEW VALUE)
+	//	// 2. From a non-zero value address to a zero-value address (DELETE)
+	//	// 3. From a non-zero to a non-zero                         (CHANGE)
+	//	switch {
+	//	case current == (common.Hash{}) && y.Sign() != 0: // 0 => non 0
+	//		return params.SstoreSetGas, nil
+	//	case current != (common.Hash{}) && y.Sign() == 0: // non 0 => 0
+	//		evm.StateDB.AddRefund(params.SstoreRefundGas)
+	//		return params.SstoreClearGas, nil
+	//	default: // non 0 => non 0 (or 0 => 0)
+	//		return params.SstoreResetGas, nil
+	//	}
+	//}
 	// The new gas metering is based on net gas costs (EIP-1283):
 	//
 	// 1. If current value equals new value (this is a no-op), 200 gas is deducted.

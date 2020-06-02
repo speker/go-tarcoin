@@ -115,7 +115,7 @@ func (s *TarCoin) SetContractBackend(backend bind.ContractBackend) {
 func New(ctx *node.ServiceContext, config *Config) (*TarCoin, error) {
 	// Ensure configuration values are compatible and sane
 	if config.SyncMode == downloader.LightSync {
-		return nil, errors.New("can't run trcn.TarCoin in light sync mode, use les.LightEthereum")
+		return nil, errors.New("can't run trcn.TarCoin in light sync mode, use les.LightTarCoin")
 	}
 	if !config.SyncMode.IsValid() {
 		return nil, fmt.Errorf("invalid sync mode %d", config.SyncMode)
@@ -306,7 +306,7 @@ func (s *TarCoin) APIs() []rpc.API {
 		{
 			Namespace: "trcn",
 			Version:   "1.0",
-			Service:   NewPublicEthereumAPI(s),
+			Service:   NewPublicTarCoinAPI(s),
 			Public:    true,
 		}, {
 			Namespace: "trcn",

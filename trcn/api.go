@@ -40,34 +40,34 @@ import (
 	"github.com/speker/go-tarcoin/trie"
 )
 
-// PublicEthereumAPI provides an API to access TarCoin full node-related
+// PublicTarCoinAPI provides an API to access TarCoin full node-related
 // information.
-type PublicEthereumAPI struct {
+type PublicTarCoinAPI struct {
 	e *TarCoin
 }
 
-// NewPublicEthereumAPI creates a new TarCoin protocol API for full nodes.
-func NewPublicEthereumAPI(e *TarCoin) *PublicEthereumAPI {
-	return &PublicEthereumAPI{e}
+// NewPublicTarCoinAPI creates a new TarCoin protocol API for full nodes.
+func NewPublicTarCoinAPI(e *TarCoin) *PublicTarCoinAPI {
+	return &PublicTarCoinAPI{e}
 }
 
 // Trcnbase is the address that mining rewards will be send to
-func (api *PublicEthereumAPI) Trcnbase() (common.Address, error) {
+func (api *PublicTarCoinAPI) Trcnbase() (common.Address, error) {
 	return api.e.Trcnbase()
 }
 
 // Coinbase is the address that mining rewards will be send to (alias for Trcnbase)
-func (api *PublicEthereumAPI) Coinbase() (common.Address, error) {
+func (api *PublicTarCoinAPI) Coinbase() (common.Address, error) {
 	return api.Trcnbase()
 }
 
 // Hashrate returns the POW hashrate
-func (api *PublicEthereumAPI) Hashrate() hexutil.Uint64 {
+func (api *PublicTarCoinAPI) Hashrate() hexutil.Uint64 {
 	return hexutil.Uint64(api.e.Miner().HashRate())
 }
 
 // ChainId is the EIP-155 replay-protection chain id for the current tarcoin chain config.
-func (api *PublicEthereumAPI) ChainId() hexutil.Uint64 {
+func (api *PublicTarCoinAPI) ChainId() hexutil.Uint64 {
 	chainID := new(big.Int)
 	if config := api.e.blockchain.Config(); config.IsEIP155(api.e.blockchain.CurrentBlock().Number()) {
 		chainID = config.ChainID

@@ -191,7 +191,7 @@ func newWorker(config *Config, chainConfig *params.ChainConfig, engine consensus
 		config:             config,
 		chainConfig:        chainConfig,
 		engine:             engine,
-		trcn:                trcn,
+		trcn:               trcn,
 		mux:                mux,
 		chain:              trcn.BlockChain(),
 		isLocalBlock:       isLocalBlock,

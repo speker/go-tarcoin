@@ -48,10 +48,10 @@ func (w *wizard) makeGenesis() {
 			EIP150Block:         big.NewInt(0),
 			EIP155Block:         big.NewInt(0),
 			EIP158Block:         big.NewInt(0),
-			ByzantiumBlock:      big.NewInt(0),
-			ConstantinopleBlock: big.NewInt(0),
-			PetersburgBlock:     big.NewInt(0),
-			IstanbulBlock:       big.NewInt(0),
+			//ByzantiumBlock:      big.NewInt(0),
+			//ConstantinopleBlock: big.NewInt(0),
+			//PetersburgBlock:     big.NewInt(0),
+			//IstanbulBlock:       big.NewInt(0),
 		},
 	}
 	// Figure out which consensus engine to choose
@@ -273,7 +273,7 @@ func (w *wizard) manageGenesis() {
 		} else {
 			saveGenesis(folder, w.network, "parity", spec)
 		}
-		// Export the genesis spec used by Harmony (formerly EthereumJ)
+		// Export the genesis spec used by Harmony (formerly TarCoinJ)
 		saveGenesis(folder, w.network, "harmony", w.conf.Genesis)
 
 	case "3":

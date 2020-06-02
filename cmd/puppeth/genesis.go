@@ -123,18 +123,18 @@ func newAlethGenesisSpec(network string, genesis *core.Genesis) (*alethGenesisSp
 	if num := genesis.Config.EIP158Block; num != nil {
 		spec.Params.EIP158ForkBlock = (*hexutil.Big)(num)
 	}
-	if num := genesis.Config.ByzantiumBlock; num != nil {
-		spec.Params.ByzantiumForkBlock = (*hexutil.Big)(num)
-	}
-	if num := genesis.Config.ConstantinopleBlock; num != nil {
-		spec.Params.ConstantinopleForkBlock = (*hexutil.Big)(num)
-	}
-	if num := genesis.Config.PetersburgBlock; num != nil {
-		spec.Params.ConstantinopleFixForkBlock = (*hexutil.Big)(num)
-	}
-	if num := genesis.Config.IstanbulBlock; num != nil {
-		spec.Params.IstanbulForkBlock = (*hexutil.Big)(num)
-	}
+	//if num := genesis.Config.ByzantiumBlock; num != nil {
+	//	spec.Params.ByzantiumForkBlock = (*hexutil.Big)(num)
+	//}
+	//if num := genesis.Config.ConstantinopleBlock; num != nil {
+	//	spec.Params.ConstantinopleForkBlock = (*hexutil.Big)(num)
+	//}
+	//if num := genesis.Config.PetersburgBlock; num != nil {
+	//	spec.Params.ConstantinopleFixForkBlock = (*hexutil.Big)(num)
+	//}
+	//if num := genesis.Config.IstanbulBlock; num != nil {
+	//	spec.Params.IstanbulForkBlock = (*hexutil.Big)(num)
+	//}
 	spec.Params.NetworkID = (hexutil.Uint64)(genesis.Config.ChainID.Uint64())
 	spec.Params.ChainID = (hexutil.Uint64)(genesis.Config.ChainID.Uint64())
 	spec.Params.MaximumExtraDataSize = (hexutil.Uint64)(params.MaximumExtraDataSize)
@@ -167,35 +167,35 @@ func newAlethGenesisSpec(network string, genesis *core.Genesis) (*alethGenesisSp
 		Linear: &alethGenesisSpecLinearPricing{Base: 600, Word: 120}})
 	spec.setPrecompile(4, &alethGenesisSpecBuiltin{Name: "identity",
 		Linear: &alethGenesisSpecLinearPricing{Base: 15, Word: 3}})
-	if genesis.Config.ByzantiumBlock != nil {
-		spec.setPrecompile(5, &alethGenesisSpecBuiltin{Name: "modexp",
-			StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock)})
-		spec.setPrecompile(6, &alethGenesisSpecBuiltin{Name: "alt_bn128_G1_add",
-			StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
-			Linear:        &alethGenesisSpecLinearPricing{Base: 500}})
-		spec.setPrecompile(7, &alethGenesisSpecBuiltin{Name: "alt_bn128_G1_mul",
-			StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
-			Linear:        &alethGenesisSpecLinearPricing{Base: 40000}})
-		spec.setPrecompile(8, &alethGenesisSpecBuiltin{Name: "alt_bn128_pairing_product",
-			StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock)})
-	}
-	if genesis.Config.IstanbulBlock != nil {
-		if genesis.Config.ByzantiumBlock == nil {
-			return nil, errors.New("invalid genesis, istanbul fork is enabled while byzantium is not")
-		}
-		spec.setPrecompile(6, &alethGenesisSpecBuiltin{
-			Name:          "alt_bn128_G1_add",
-			StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
-		}) // Aleth hardcoded the gas policy
-		spec.setPrecompile(7, &alethGenesisSpecBuiltin{
-			Name:          "alt_bn128_G1_mul",
-			StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
-		}) // Aleth hardcoded the gas policy
-		spec.setPrecompile(9, &alethGenesisSpecBuiltin{
-			Name:          "blake2_compression",
-			StartingBlock: (*hexutil.Big)(genesis.Config.IstanbulBlock),
-		})
-	}
+	//if genesis.Config.ByzantiumBlock != nil {
+	//	spec.setPrecompile(5, &alethGenesisSpecBuiltin{Name: "modexp",
+	//		StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock)})
+	//	spec.setPrecompile(6, &alethGenesisSpecBuiltin{Name: "alt_bn128_G1_add",
+	//		StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
+	//		Linear:        &alethGenesisSpecLinearPricing{Base: 500}})
+	//	spec.setPrecompile(7, &alethGenesisSpecBuiltin{Name: "alt_bn128_G1_mul",
+	//		StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
+	//		Linear:        &alethGenesisSpecLinearPricing{Base: 40000}})
+	//	spec.setPrecompile(8, &alethGenesisSpecBuiltin{Name: "alt_bn128_pairing_product",
+	//		StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock)})
+	//}
+	//if genesis.Config.IstanbulBlock != nil {
+	//	if genesis.Config.ByzantiumBlock == nil {
+	//		return nil, errors.New("invalid genesis, istanbul fork is enabled while byzantium is not")
+	//	}
+	//	spec.setPrecompile(6, &alethGenesisSpecBuiltin{
+	//		Name:          "alt_bn128_G1_add",
+	//		StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
+	//	}) // Aleth hardcoded the gas policy
+	//	spec.setPrecompile(7, &alethGenesisSpecBuiltin{
+	//		Name:          "alt_bn128_G1_mul",
+	//		StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
+	//	}) // Aleth hardcoded the gas policy
+	//	spec.setPrecompile(9, &alethGenesisSpecBuiltin{
+	//		Name:          "blake2_compression",
+	//		StartingBlock: (*hexutil.Big)(genesis.Config.IstanbulBlock),
+	//	})
+	//}
 	return spec, nil
 }
 
@@ -397,21 +397,21 @@ func newParityChainSpec(network string, genesis *core.Genesis, bootnodes []strin
 	spec.Params.EIP161dTransition = hexutil.Uint64(genesis.Config.EIP158Block.Uint64())
 
 	// Byzantium
-	if num := genesis.Config.ByzantiumBlock; num != nil {
-		spec.setByzantium(num)
-	}
+	//if num := genesis.Config.ByzantiumBlock; num != nil {
+	//	spec.setByzantium(num)
+	//}
 	// Constantinople
-	if num := genesis.Config.ConstantinopleBlock; num != nil {
-		spec.setConstantinople(num)
-	}
+	//if num := genesis.Config.ConstantinopleBlock; num != nil {
+	//	spec.setConstantinople(num)
+	//}
 	// ConstantinopleFix (remove eip-1283)
-	if num := genesis.Config.PetersburgBlock; num != nil {
-		spec.setConstantinopleFix(num)
-	}
+	//if num := genesis.Config.PetersburgBlock; num != nil {
+	//	spec.setConstantinopleFix(num)
+	//}
 	// Istanbul
-	if num := genesis.Config.IstanbulBlock; num != nil {
-		spec.setIstanbul(num)
-	}
+	//if num := genesis.Config.IstanbulBlock; num != nil {
+	//	spec.setIstanbul(num)
+	//}
 	spec.Params.MaximumExtraDataSize = (hexutil.Uint64)(params.MaximumExtraDataSize)
 	spec.Params.MinGasLimit = (hexutil.Uint64)(params.MinGasLimit)
 	spec.Params.GasLimitBoundDivisor = (math2.HexOrDecimal64)(params.GasLimitBoundDivisor)
@@ -454,96 +454,96 @@ func newParityChainSpec(network string, genesis *core.Genesis, bootnodes []strin
 	spec.setPrecompile(4, &parityChainSpecBuiltin{
 		Name: "identity", Pricing: &parityChainSpecPricing{Linear: &parityChainSpecLinearPricing{Base: 15, Word: 3}},
 	})
-	if genesis.Config.ByzantiumBlock != nil {
-		spec.setPrecompile(5, &parityChainSpecBuiltin{
-			Name:       "modexp",
-			ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
-			Pricing: &parityChainSpecPricing{
-				ModExp: &parityChainSpecModExpPricing{Divisor: 20},
-			},
-		})
-		spec.setPrecompile(6, &parityChainSpecBuiltin{
-			Name:       "alt_bn128_add",
-			ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
-			Pricing: &parityChainSpecPricing{
-				Linear: &parityChainSpecLinearPricing{Base: 500, Word: 0},
-			},
-		})
-		spec.setPrecompile(7, &parityChainSpecBuiltin{
-			Name:       "alt_bn128_mul",
-			ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
-			Pricing: &parityChainSpecPricing{
-				Linear: &parityChainSpecLinearPricing{Base: 40000, Word: 0},
-			},
-		})
-		spec.setPrecompile(8, &parityChainSpecBuiltin{
-			Name:       "alt_bn128_pairing",
-			ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
-			Pricing: &parityChainSpecPricing{
-				AltBnPairing: &parityChainSepcAltBnPairingPricing{Base: 100000, Pair: 80000},
-			},
-		})
-	}
-	if genesis.Config.IstanbulBlock != nil {
-		if genesis.Config.ByzantiumBlock == nil {
-			return nil, errors.New("invalid genesis, istanbul fork is enabled while byzantium is not")
-		}
-		spec.setPrecompile(6, &parityChainSpecBuiltin{
-			Name:       "alt_bn128_add",
-			ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
-			Pricing: map[*hexutil.Big]*parityChainSpecVersionedPricing{
-				(*hexutil.Big)(big.NewInt(0)): {
-					Price: &parityChainSpecAlternativePrice{
-						AltBnConstOperationPrice: &parityChainSpecAltBnConstOperationPricing{Price: 500},
-					},
-				},
-				(*hexutil.Big)(genesis.Config.IstanbulBlock): {
-					Price: &parityChainSpecAlternativePrice{
-						AltBnConstOperationPrice: &parityChainSpecAltBnConstOperationPricing{Price: 150},
-					},
-				},
-			},
-		})
-		spec.setPrecompile(7, &parityChainSpecBuiltin{
-			Name:       "alt_bn128_mul",
-			ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
-			Pricing: map[*hexutil.Big]*parityChainSpecVersionedPricing{
-				(*hexutil.Big)(big.NewInt(0)): {
-					Price: &parityChainSpecAlternativePrice{
-						AltBnConstOperationPrice: &parityChainSpecAltBnConstOperationPricing{Price: 40000},
-					},
-				},
-				(*hexutil.Big)(genesis.Config.IstanbulBlock): {
-					Price: &parityChainSpecAlternativePrice{
-						AltBnConstOperationPrice: &parityChainSpecAltBnConstOperationPricing{Price: 6000},
-					},
-				},
-			},
-		})
-		spec.setPrecompile(8, &parityChainSpecBuiltin{
-			Name:       "alt_bn128_pairing",
-			ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
-			Pricing: map[*hexutil.Big]*parityChainSpecVersionedPricing{
-				(*hexutil.Big)(big.NewInt(0)): {
-					Price: &parityChainSpecAlternativePrice{
-						AltBnPairingPrice: &parityChainSepcAltBnPairingPricing{Base: 100000, Pair: 80000},
-					},
-				},
-				(*hexutil.Big)(genesis.Config.IstanbulBlock): {
-					Price: &parityChainSpecAlternativePrice{
-						AltBnPairingPrice: &parityChainSepcAltBnPairingPricing{Base: 45000, Pair: 34000},
-					},
-				},
-			},
-		})
-		spec.setPrecompile(9, &parityChainSpecBuiltin{
-			Name:       "blake2_f",
-			ActivateAt: (*hexutil.Big)(genesis.Config.IstanbulBlock),
-			Pricing: &parityChainSpecPricing{
-				Blake2F: &parityChainSpecBlakePricing{GasPerRound: 1},
-			},
-		})
-	}
+	//if genesis.Config.ByzantiumBlock != nil {
+	//	spec.setPrecompile(5, &parityChainSpecBuiltin{
+	//		Name:       "modexp",
+	//		ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
+	//		Pricing: &parityChainSpecPricing{
+	//			ModExp: &parityChainSpecModExpPricing{Divisor: 20},
+	//		},
+	//	})
+	//	spec.setPrecompile(6, &parityChainSpecBuiltin{
+	//		Name:       "alt_bn128_add",
+	//		ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
+	//		Pricing: &parityChainSpecPricing{
+	//			Linear: &parityChainSpecLinearPricing{Base: 500, Word: 0},
+	//		},
+	//	})
+	//	spec.setPrecompile(7, &parityChainSpecBuiltin{
+	//		Name:       "alt_bn128_mul",
+	//		ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
+	//		Pricing: &parityChainSpecPricing{
+	//			Linear: &parityChainSpecLinearPricing{Base: 40000, Word: 0},
+	//		},
+	//	})
+	//	spec.setPrecompile(8, &parityChainSpecBuiltin{
+	//		Name:       "alt_bn128_pairing",
+	//		ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
+	//		Pricing: &parityChainSpecPricing{
+	//			AltBnPairing: &parityChainSepcAltBnPairingPricing{Base: 100000, Pair: 80000},
+	//		},
+	//	})
+	//}
+	//if genesis.Config.IstanbulBlock != nil {
+	//	if genesis.Config.ByzantiumBlock == nil {
+	//		return nil, errors.New("invalid genesis, istanbul fork is enabled while byzantium is not")
+	//	}
+	//	spec.setPrecompile(6, &parityChainSpecBuiltin{
+	//		Name:       "alt_bn128_add",
+	//		ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
+	//		Pricing: map[*hexutil.Big]*parityChainSpecVersionedPricing{
+	//			(*hexutil.Big)(big.NewInt(0)): {
+	//				Price: &parityChainSpecAlternativePrice{
+	//					AltBnConstOperationPrice: &parityChainSpecAltBnConstOperationPricing{Price: 500},
+	//				},
+	//			},
+	//			(*hexutil.Big)(genesis.Config.IstanbulBlock): {
+	//				Price: &parityChainSpecAlternativePrice{
+	//					AltBnConstOperationPrice: &parityChainSpecAltBnConstOperationPricing{Price: 150},
+	//				},
+	//			},
+	//		},
+	//	})
+	//	spec.setPrecompile(7, &parityChainSpecBuiltin{
+	//		Name:       "alt_bn128_mul",
+	//		ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
+	//		Pricing: map[*hexutil.Big]*parityChainSpecVersionedPricing{
+	//			(*hexutil.Big)(big.NewInt(0)): {
+	//				Price: &parityChainSpecAlternativePrice{
+	//					AltBnConstOperationPrice: &parityChainSpecAltBnConstOperationPricing{Price: 40000},
+	//				},
+	//			},
+	//			(*hexutil.Big)(genesis.Config.IstanbulBlock): {
+	//				Price: &parityChainSpecAlternativePrice{
+	//					AltBnConstOperationPrice: &parityChainSpecAltBnConstOperationPricing{Price: 6000},
+	//				},
+	//			},
+	//		},
+	//	})
+	//	spec.setPrecompile(8, &parityChainSpecBuiltin{
+	//		Name:       "alt_bn128_pairing",
+	//		ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
+	//		Pricing: map[*hexutil.Big]*parityChainSpecVersionedPricing{
+	//			(*hexutil.Big)(big.NewInt(0)): {
+	//				Price: &parityChainSpecAlternativePrice{
+	//					AltBnPairingPrice: &parityChainSepcAltBnPairingPricing{Base: 100000, Pair: 80000},
+	//				},
+	//			},
+	//			(*hexutil.Big)(genesis.Config.IstanbulBlock): {
+	//				Price: &parityChainSpecAlternativePrice{
+	//					AltBnPairingPrice: &parityChainSepcAltBnPairingPricing{Base: 45000, Pair: 34000},
+	//				},
+	//			},
+	//		},
+	//	})
+	//	spec.setPrecompile(9, &parityChainSpecBuiltin{
+	//		Name:       "blake2_f",
+	//		ActivateAt: (*hexutil.Big)(genesis.Config.IstanbulBlock),
+	//		Pricing: &parityChainSpecPricing{
+	//			Blake2F: &parityChainSpecBlakePricing{GasPerRound: 1},
+	//		},
+	//	})
+	//}
 	return spec, nil
 }
 
@@ -558,26 +558,26 @@ func (spec *parityChainSpec) setPrecompile(address byte, data *parityChainSpecBu
 	spec.Accounts[a].Builtin = data
 }
 
-func (spec *parityChainSpec) setByzantium(num *big.Int) {
-	spec.Engine.Trcnhash.Params.BlockReward[hexutil.EncodeBig(num)] = hexutil.EncodeBig(trcnhash.ByzantiumBlockReward)
-	spec.Engine.Trcnhash.Params.DifficultyBombDelays[hexutil.EncodeBig(num)] = hexutil.EncodeUint64(3000000)
-	n := hexutil.Uint64(num.Uint64())
-	spec.Engine.Trcnhash.Params.EIP100bTransition = n
-	spec.Params.EIP140Transition = n
-	spec.Params.EIP211Transition = n
-	spec.Params.EIP214Transition = n
-	spec.Params.EIP658Transition = n
-}
+//func (spec *parityChainSpec) setByzantium(num *big.Int) {
+//	spec.Engine.Trcnhash.Params.BlockReward[hexutil.EncodeBig(num)] = hexutil.EncodeBig(trcnhash.ByzantiumBlockReward)
+//	spec.Engine.Trcnhash.Params.DifficultyBombDelays[hexutil.EncodeBig(num)] = hexutil.EncodeUint64(3000000)
+//	n := hexutil.Uint64(num.Uint64())
+//	spec.Engine.Trcnhash.Params.EIP100bTransition = n
+//	spec.Params.EIP140Transition = n
+//	spec.Params.EIP211Transition = n
+//	spec.Params.EIP214Transition = n
+//	spec.Params.EIP658Transition = n
+//}
 
-func (spec *parityChainSpec) setConstantinople(num *big.Int) {
-	spec.Engine.Trcnhash.Params.BlockReward[hexutil.EncodeBig(num)] = hexutil.EncodeBig(trcnhash.ConstantinopleBlockReward)
-	spec.Engine.Trcnhash.Params.DifficultyBombDelays[hexutil.EncodeBig(num)] = hexutil.EncodeUint64(2000000)
-	n := hexutil.Uint64(num.Uint64())
-	spec.Params.EIP145Transition = n
-	spec.Params.EIP1014Transition = n
-	spec.Params.EIP1052Transition = n
-	spec.Params.EIP1283Transition = n
-}
+//func (spec *parityChainSpec) setConstantinople(num *big.Int) {
+//	spec.Engine.Trcnhash.Params.BlockReward[hexutil.EncodeBig(num)] = hexutil.EncodeBig(trcnhash.ConstantinopleBlockReward)
+//	spec.Engine.Trcnhash.Params.DifficultyBombDelays[hexutil.EncodeBig(num)] = hexutil.EncodeUint64(2000000)
+//	n := hexutil.Uint64(num.Uint64())
+//	spec.Params.EIP145Transition = n
+//	spec.Params.EIP1014Transition = n
+//	spec.Params.EIP1052Transition = n
+//	spec.Params.EIP1283Transition = n
+//}
 
 func (spec *parityChainSpec) setConstantinopleFix(num *big.Int) {
 	spec.Params.EIP1283DisableTransition = hexutil.Uint64(num.Uint64())
@@ -590,9 +590,9 @@ func (spec *parityChainSpec) setIstanbul(num *big.Int) {
 	spec.Params.EIP1283ReenableTransition = hexutil.Uint64(num.Uint64())
 }
 
-// pyEthereumGenesisSpec represents the genesis specification format used by the
+// pyTarCoinGenesisSpec represents the genesis specification format used by the
 // Python TarCoin implementation.
-type pyEthereumGenesisSpec struct {
+type pyTarCoinGenesisSpec struct {
 	Nonce      types.BlockNonce  `json:"nonce"`
 	Timestamp  hexutil.Uint64    `json:"timestamp"`
 	ExtraData  hexutil.Bytes     `json:"extraData"`
@@ -604,14 +604,14 @@ type pyEthereumGenesisSpec struct {
 	ParentHash common.Hash       `json:"parentHash"`
 }
 
-// newPyEthereumGenesisSpec converts a go-tarcoin genesis block into a Parity specific
+// newPyTarCoinGenesisSpec converts a go-tarcoin genesis block into a Parity specific
 // chain specification format.
-func newPyEthereumGenesisSpec(network string, genesis *core.Genesis) (*pyEthereumGenesisSpec, error) {
+func newPyTarCoinGenesisSpec(network string, genesis *core.Genesis) (*pyTarCoinGenesisSpec, error) {
 	// Only trcnhash is currently supported between go-tarcoin and pyethereum
 	if genesis.Config.Trcnhash == nil {
 		return nil, errors.New("unsupported consensus engine")
 	}
-	spec := &pyEthereumGenesisSpec{
+	spec := &pyTarCoinGenesisSpec{
 		Nonce:      types.EncodeNonce(genesis.Nonce),
 		Timestamp:  (hexutil.Uint64)(genesis.Timestamp),
 		ExtraData:  genesis.ExtraData,

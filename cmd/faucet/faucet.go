@@ -248,7 +248,7 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 	// Assemble the trcnstats monitoring and reporting service'
 	if stats != "" {
 		if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-			var serv *les.LightEthereum
+			var serv *les.LightTarCoin
 			ctx.Service(&serv)
 			return trcnstats.New(stats, nil, serv)
 		}); err != nil {

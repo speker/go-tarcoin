@@ -40,7 +40,7 @@ import (
 
 type LesApiBackend struct {
 	extRPCEnabled bool
-	trcn           *LightEthereum
+	trcn           *LightTarCoin
 	gpo           *gasprice.Oracle
 }
 

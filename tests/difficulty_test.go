@@ -55,27 +55,27 @@ func TestDifficulty(t *testing.T) {
 	dt.skipLoad("difficultyMorden\\.json")
 	dt.skipLoad("difficultyOlimpic\\.json")
 
-	dt.config("Ropsten", *params.RopstenChainConfig)
-	dt.config("Morden", *params.RopstenChainConfig)
+	//dt.config("Ropsten", *params.RopstenChainConfig)
+	//dt.config("Morden", *params.RopstenChainConfig)
 	dt.config("Frontier", params.ChainConfig{})
 
 	dt.config("Homestead", params.ChainConfig{
 		HomesteadBlock: big.NewInt(0),
 	})
 
-	dt.config("Byzantium", params.ChainConfig{
-		ByzantiumBlock: big.NewInt(0),
-	})
+	//dt.config("Byzantium", params.ChainConfig{
+	//	ByzantiumBlock: big.NewInt(0),
+	//})
 
-	dt.config("Frontier", *params.RopstenChainConfig)
+	//dt.config("Frontier", *params.RopstenChainConfig)
 	dt.config("MainNetwork", mainnetChainConfig)
 	dt.config("CustomMainNetwork", mainnetChainConfig)
-	dt.config("Constantinople", params.ChainConfig{
-		ConstantinopleBlock: big.NewInt(0),
-	})
-	dt.config("EIP2384", params.ChainConfig{
-		MuirGlacierBlock: big.NewInt(0),
-	})
+	//dt.config("Constantinople", params.ChainConfig{
+	//	ConstantinopleBlock: big.NewInt(0),
+	//})
+	//dt.config("EIP2384", params.ChainConfig{
+	//	MuirGlacierBlock: big.NewInt(0),
+	//})
 	dt.config("difficulty.json", mainnetChainConfig)
 
 	dt.walk(t, difficultyTestDir, func(t *testing.T, name string, test *DifficultyTest) {

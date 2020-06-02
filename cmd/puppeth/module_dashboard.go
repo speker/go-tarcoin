@@ -266,9 +266,9 @@ bootnodes.append(new Enode("{{.}}"));{{end}}
 
 NodeConfig config = new NodeConfig();
 config.setBootstrapNodes(bootnodes);
-config.setEthereumNetworkID({{.NetworkID}});
-config.setEthereumGenesis(genesis);{{if .Ethstats}}
-config.setEthereumNetStats("{{.Ethstats}}");{{end}}
+config.setTarCoinNetworkID({{.NetworkID}});
+config.setTarCoinGenesis(genesis);{{if .Ethstats}}
+config.setTarCoinNetStats("{{.Ethstats}}");{{end}}
 
 Node node = new Node(getFilesDir() + "/.{{.Network}}", config);
 node.start();
@@ -299,9 +299,9 @@ bootnodes?.append(GethNewEnode("{{.}}", &error)){{end}}
 
 let config = GethNewNodeConfig()
 config?.setBootstrapNodes(bootnodes)
-config?.setEthereumNetworkID({{.NetworkID}})
-config?.setEthereumGenesis(genesis){{if .Ethstats}}
-config?.setEthereumNetStats("{{.Ethstats}}"){{end}}
+config?.setTarCoinNetworkID({{.NetworkID}})
+config?.setTarCoinGenesis(genesis){{if .Ethstats}}
+config?.setTarCoinNetStats("{{.Ethstats}}"){{end}}
 
 let datadir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
 let node = GethNewNode(datadir + "/.{{.Network}}", config, &error);
@@ -351,7 +351,7 @@ try! node?.start();
 										<div class="clearfix"></div>
 									</div>
 									<div class="x_content">
-										<p>TarCoin Harmony is a web user-interface based graphical TarCoin client built on top of the EthereumJ Java implementation of the TarCoin protocol. The client currently is a full node with state download based synchronization.</p>
+										<p>TarCoin Harmony is a web user-interface based graphical TarCoin client built on top of the TarCoinJ Java implementation of the TarCoin protocol. The client currently is a full node with state download based synchronization.</p>
 										<br/>
 										<p>To run an TarCoin Harmony node, download <a href="/{{.HarmonyGenesis}}"><code>{{.HarmonyGenesis}}</code></a> and start the node with:
 											<pre>./gradlew runCustom -DgenesisFile={{.HarmonyGenesis}} -Dpeer.networkId={{.NetworkID}} -Ddatabase.dir=$HOME/.harmony/{{.Network}} {{.HarmonyBootnodes}} </pre>
@@ -658,7 +658,7 @@ func deployDashboard(client *sshClient, network string, conf *config, config *da
 		paritySpecJSON, _ := json.Marshal(paritySpec)
 		files[filepath.Join(workdir, network+"-parity.json")] = paritySpecJSON
 
-		pyethSpec, err := newPyEthereumGenesisSpec(network, conf.Genesis)
+		pyethSpec, err := newPyTarCoinGenesisSpec(network, conf.Genesis)
 		if err != nil {
 			return nil, err
 		}

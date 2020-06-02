@@ -199,7 +199,7 @@ func newTestClientHandler(backend *backends.SimulatedBackend, odr *LesOdr, index
 		}
 		oracle = checkpointoracle.New(checkpointConfig, getLocal)
 	}
-	client := &LightEthereum{
+	client := &LightTarCoin{
 		lesCommons: lesCommons{
 			genesis:     genesis.Hash(),
 			config:      &trcn.Config{LightPeers: 100, NetworkId: NetworkId},

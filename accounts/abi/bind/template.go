@@ -574,7 +574,7 @@ import java.util.*;
 	public final static String BYTECODE = "0x{{.InputBin}}";
 
 	// deploy deploys a new TarCoin contract, binding an instance of {{.Type}} to it.
-	public static {{.Type}} deploy(TransactOpts auth, EthereumClient client{{range .Constructor.Inputs}}, {{bindtype .Type $structs}} {{.Name}}{{end}}) throws Exception {
+	public static {{.Type}} deploy(TransactOpts auth, TarCoinClient client{{range .Constructor.Inputs}}, {{bindtype .Type $structs}} {{.Name}}{{end}}) throws Exception {
 		Interfaces args = Gtrcn.newInterfaces({{(len .Constructor.Inputs)}});
 		String bytecode = BYTECODE;
 		{{if .Libraries}}
@@ -608,7 +608,7 @@ import java.util.*;
 	private final BoundContract Contract;
 
 	// Creates a new instance of {{.Type}}, bound to a specific deployed contract.
-	public {{.Type}}(Address address, EthereumClient client) throws Exception {
+	public {{.Type}}(Address address, TarCoinClient client) throws Exception {
 		this(Gtrcn.bindContract(address, ABI, client));
 	}
 

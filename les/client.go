@@ -48,7 +48,7 @@ import (
 	"github.com/speker/go-tarcoin/rpc"
 )
 
-type LightEthereum struct {
+type LightTarCoin struct {
 	lesCommons
 
 	peers        *serverPeerSet
@@ -72,7 +72,7 @@ type LightEthereum struct {
 	netRPCService  *trcnapi.PublicNetAPI
 }
 
-func New(ctx *node.ServiceContext, config *trcn.Config) (*LightEthereum, error) {
+func New(ctx *node.ServiceContext, config *trcn.Config) (*LightTarCoin, error) {
 	chainDb, err := ctx.OpenDatabase("lightchaindata", config.DatabaseCache, config.DatabaseHandles, "trcn/db/chaindata/")
 	if err != nil {
 		return nil, err
@@ -88,7 +88,7 @@ func New(ctx *node.ServiceContext, config *trcn.Config) (*LightEthereum, error) 
 	log.Info("Initialised chain configuration", "config", chainConfig)
 
 	peers := newServerPeerSet()
-	leth := &LightEthereum{
+	leth := &LightTarCoin{
 		lesCommons: lesCommons{
 			genesis:     genesisHash,
 			config:      config,
@@ -203,7 +203,7 @@ func (s *LightDummyAPI) Mining() bool {
 
 // APIs returns the collection of RPC services the tarcoin package offers.
 // NOTE, some of these services probably need to be moved to somewhere else.
-func (s *LightEthereum) APIs() []rpc.API {
+func (s *LightTarCoin) APIs() []rpc.API {
 	apis := trcnapi.GetAPIs(s.ApiBackend)
 	apis = append(apis, s.engine.APIs(s.BlockChain().HeaderChain())...)
 	return append(apis, []rpc.API{
@@ -241,20 +241,20 @@ func (s *LightEthereum) APIs() []rpc.API {
 	}...)
 }
 
-func (s *LightEthereum) ResetWithGenesisBlock(gb *types.Block) {
+func (s *LightTarCoin) ResetWithGenesisBlock(gb *types.Block) {
 	s.blockchain.ResetWithGenesisBlock(gb)
 }
 
-func (s *LightEthereum) BlockChain() *light.LightChain      { return s.blockchain }
-func (s *LightEthereum) TxPool() *light.TxPool              { return s.txPool }
-func (s *LightEthereum) Engine() consensus.Engine           { return s.engine }
-func (s *LightEthereum) LesVersion() int                    { return int(ClientProtocolVersions[0]) }
-func (s *LightEthereum) Downloader() *downloader.Downloader { return s.handler.downloader }
-func (s *LightEthereum) EventMux() *event.TypeMux           { return s.eventMux }
+func (s *LightTarCoin) BlockChain() *light.LightChain      { return s.blockchain }
+func (s *LightTarCoin) TxPool() *light.TxPool              { return s.txPool }
+func (s *LightTarCoin) Engine() consensus.Engine           { return s.engine }
+func (s *LightTarCoin) LesVersion() int                    { return int(ClientProtocolVersions[0]) }
+func (s *LightTarCoin) Downloader() *downloader.Downloader { return s.handler.downloader }
+func (s *LightTarCoin) EventMux() *event.TypeMux           { return s.eventMux }
 
 // Protocols implements node.Service, returning all the currently configured
 // network protocols to start.
-func (s *LightEthereum) Protocols() []p2p.Protocol {
+func (s *LightTarCoin) Protocols() []p2p.Protocol {
 	return s.makeProtocols(ClientProtocolVersions, s.handler.runPeer, func(id enode.ID) interface{} {
 		if p := s.peers.peer(peerIdToString(id)); p != nil {
 			return p.Info()
@@ -265,7 +265,7 @@ func (s *LightEthereum) Protocols() []p2p.Protocol {
 
 // Start implements node.Service, starting all internal goroutines needed by the
 // light tarcoin protocol implementation.
-func (s *LightEthereum) Start(srvr *p2p.Server) error {
+func (s *LightTarCoin) Start(srvr *p2p.Server) error {
 	log.Warn("Light client mode is an experimental feature")
 
 	// Start bloom request workers.
@@ -282,7 +282,7 @@ func (s *LightEthereum) Start(srvr *p2p.Server) error {
 
 // Stop implements node.Service, terminating all internal goroutines used by the
 // TarCoin protocol.
-func (s *LightEthereum) Stop() error {
+func (s *LightTarCoin) Stop() error {
 	close(s.closeCh)
 	s.peers.close()
 	s.reqDist.close()
@@ -304,7 +304,7 @@ func (s *LightEthereum) Stop() error {
 }
 
 // SetClient sets the rpc client and binds the registrar contract.
-func (s *LightEthereum) SetContractBackend(backend bind.ContractBackend) {
+func (s *LightTarCoin) SetContractBackend(backend bind.ContractBackend) {
 	if s.oracle == nil {
 		return
 	}

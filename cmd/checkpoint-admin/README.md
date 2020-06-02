@@ -92,7 +92,7 @@ Currently, only the TarCoin mainnet and the default supported test networks (rop
 * Edit the configuration file and add the following information
 
 ```toml
-[Eth.CheckpointOracle]
+[Trcn.CheckpointOracle]
 Address = CHECKPOINT_ORACLE_ADDRESS
 Signers = [TRUSTED_SIGNER_1, ..., TRUSTED_SIGNER_N]
 Threshold = THRESHOLD

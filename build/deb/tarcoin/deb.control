@@ -4,14 +4,14 @@ Priority: extra
 Maintainer: {{.Author}}
 Build-Depends: debhelper (>= 8.0.0), {{.GoBootPackage}}
 Standards-Version: 3.9.5
-Homepage: https://ethereum.org
+Homepage: https://www.ditap.gov.tr
 Vcs-Git: git://github.com/spker/go-tarcoin.git
 Vcs-Browser: https://github.com/spker/go-tarcoin
 
 Package: {{.Name}}
 Architecture: any
 Depends: ${misc:Depends}, {{.ExeList}}
-Description: Meta-package to install geth and other tools
+Description: Meta-package to install gtrcn and other tools
  Meta-package to install geth and other tools
 
 {{range .Executables}}

@@ -54,9 +54,9 @@ var (
 	homesteadInstructionSet        = newHomesteadInstructionSet()
 	tangerineWhistleInstructionSet = newTangerineWhistleInstructionSet()
 	spuriousDragonInstructionSet   = newSpuriousDragonInstructionSet()
-	byzantiumInstructionSet        = newByzantiumInstructionSet()
-	constantinopleInstructionSet   = newConstantinopleInstructionSet()
-	istanbulInstructionSet         = newIstanbulInstructionSet()
+	//byzantiumInstructionSet        = newByzantiumInstructionSet()
+	//constantinopleInstructionSet   = newConstantinopleInstructionSet()
+	//istanbulInstructionSet         = newIstanbulInstructionSet()
 )
 
 // JumpTable contains the EVM opcodes supported at a given fork.
@@ -64,104 +64,104 @@ type JumpTable [256]operation
 
 // newIstanbulInstructionSet returns the frontier, homestead
 // byzantium, contantinople and petersburg instructions.
-func newIstanbulInstructionSet() JumpTable {
-	instructionSet := newConstantinopleInstructionSet()
-
-	enable1344(&instructionSet) // ChainID opcode - https://eips.tarcoin.org/EIPS/eip-1344
-	enable1884(&instructionSet) // Reprice reader opcodes - https://eips.tarcoin.org/EIPS/eip-1884
-	enable2200(&instructionSet) // Net metered SSTORE - https://eips.tarcoin.org/EIPS/eip-2200
-
-	return instructionSet
-}
+//func newIstanbulInstructionSet() JumpTable {
+//	instructionSet := newConstantinopleInstructionSet()
+//
+//	enable1344(&instructionSet) // ChainID opcode - https://eips.tarcoin.org/EIPS/eip-1344
+//	enable1884(&instructionSet) // Reprice reader opcodes - https://eips.tarcoin.org/EIPS/eip-1884
+//	enable2200(&instructionSet) // Net metered SSTORE - https://eips.tarcoin.org/EIPS/eip-2200
+//
+//	return instructionSet
+//}
 
 // newConstantinopleInstructionSet returns the frontier, homestead
 // byzantium and contantinople instructions.
-func newConstantinopleInstructionSet() JumpTable {
-	instructionSet := newByzantiumInstructionSet()
-	instructionSet[SHL] = operation{
-		execute:     opSHL,
-		constantGas: GasFastestStep,
-		minStack:    minStack(2, 1),
-		maxStack:    maxStack(2, 1),
-		valid:       true,
-	}
-	instructionSet[SHR] = operation{
-		execute:     opSHR,
-		constantGas: GasFastestStep,
-		minStack:    minStack(2, 1),
-		maxStack:    maxStack(2, 1),
-		valid:       true,
-	}
-	instructionSet[SAR] = operation{
-		execute:     opSAR,
-		constantGas: GasFastestStep,
-		minStack:    minStack(2, 1),
-		maxStack:    maxStack(2, 1),
-		valid:       true,
-	}
-	instructionSet[EXTCODEHASH] = operation{
-		execute:     opExtCodeHash,
-		constantGas: params.ExtcodeHashGasConstantinople,
-		minStack:    minStack(1, 1),
-		maxStack:    maxStack(1, 1),
-		valid:       true,
-	}
-	instructionSet[CREATE2] = operation{
-		execute:     opCreate2,
-		constantGas: params.Create2Gas,
-		dynamicGas:  gasCreate2,
-		minStack:    minStack(4, 1),
-		maxStack:    maxStack(4, 1),
-		memorySize:  memoryCreate2,
-		valid:       true,
-		writes:      true,
-		returns:     true,
-	}
-	return instructionSet
-}
+//func newConstantinopleInstructionSet() JumpTable {
+//	instructionSet := newByzantiumInstructionSet()
+//	instructionSet[SHL] = operation{
+//		execute:     opSHL,
+//		constantGas: GasFastestStep,
+//		minStack:    minStack(2, 1),
+//		maxStack:    maxStack(2, 1),
+//		valid:       true,
+//	}
+//	instructionSet[SHR] = operation{
+//		execute:     opSHR,
+//		constantGas: GasFastestStep,
+//		minStack:    minStack(2, 1),
+//		maxStack:    maxStack(2, 1),
+//		valid:       true,
+//	}
+//	instructionSet[SAR] = operation{
+//		execute:     opSAR,
+//		constantGas: GasFastestStep,
+//		minStack:    minStack(2, 1),
+//		maxStack:    maxStack(2, 1),
+//		valid:       true,
+//	}
+//	instructionSet[EXTCODEHASH] = operation{
+//		execute:     opExtCodeHash,
+//		constantGas: params.ExtcodeHashGasConstantinople,
+//		minStack:    minStack(1, 1),
+//		maxStack:    maxStack(1, 1),
+//		valid:       true,
+//	}
+//	instructionSet[CREATE2] = operation{
+//		execute:     opCreate2,
+//		constantGas: params.Create2Gas,
+//		dynamicGas:  gasCreate2,
+//		minStack:    minStack(4, 1),
+//		maxStack:    maxStack(4, 1),
+//		memorySize:  memoryCreate2,
+//		valid:       true,
+//		writes:      true,
+//		returns:     true,
+//	}
+//	return instructionSet
+//}
 
 // newByzantiumInstructionSet returns the frontier, homestead and
 // byzantium instructions.
-func newByzantiumInstructionSet() JumpTable {
-	instructionSet := newSpuriousDragonInstructionSet()
-	instructionSet[STATICCALL] = operation{
-		execute:     opStaticCall,
-		constantGas: params.CallGasEIP150,
-		dynamicGas:  gasStaticCall,
-		minStack:    minStack(6, 1),
-		maxStack:    maxStack(6, 1),
-		memorySize:  memoryStaticCall,
-		valid:       true,
-		returns:     true,
-	}
-	instructionSet[RETURNDATASIZE] = operation{
-		execute:     opReturnDataSize,
-		constantGas: GasQuickStep,
-		minStack:    minStack(0, 1),
-		maxStack:    maxStack(0, 1),
-		valid:       true,
-	}
-	instructionSet[RETURNDATACOPY] = operation{
-		execute:     opReturnDataCopy,
-		constantGas: GasFastestStep,
-		dynamicGas:  gasReturnDataCopy,
-		minStack:    minStack(3, 0),
-		maxStack:    maxStack(3, 0),
-		memorySize:  memoryReturnDataCopy,
-		valid:       true,
-	}
-	instructionSet[REVERT] = operation{
-		execute:    opRevert,
-		dynamicGas: gasRevert,
-		minStack:   minStack(2, 0),
-		maxStack:   maxStack(2, 0),
-		memorySize: memoryRevert,
-		valid:      true,
-		reverts:    true,
-		returns:    true,
-	}
-	return instructionSet
-}
+//func newByzantiumInstructionSet() JumpTable {
+//	instructionSet := newSpuriousDragonInstructionSet()
+//	instructionSet[STATICCALL] = operation{
+//		execute:     opStaticCall,
+//		constantGas: params.CallGasEIP150,
+//		dynamicGas:  gasStaticCall,
+//		minStack:    minStack(6, 1),
+//		maxStack:    maxStack(6, 1),
+//		memorySize:  memoryStaticCall,
+//		valid:       true,
+//		returns:     true,
+//	}
+//	instructionSet[RETURNDATASIZE] = operation{
+//		execute:     opReturnDataSize,
+//		constantGas: GasQuickStep,
+//		minStack:    minStack(0, 1),
+//		maxStack:    maxStack(0, 1),
+//		valid:       true,
+//	}
+//	instructionSet[RETURNDATACOPY] = operation{
+//		execute:     opReturnDataCopy,
+//		constantGas: GasFastestStep,
+//		dynamicGas:  gasReturnDataCopy,
+//		minStack:    minStack(3, 0),
+//		maxStack:    maxStack(3, 0),
+//		memorySize:  memoryReturnDataCopy,
+//		valid:       true,
+//	}
+//	instructionSet[REVERT] = operation{
+//		execute:    opRevert,
+//		dynamicGas: gasRevert,
+//		minStack:   minStack(2, 0),
+//		maxStack:   maxStack(2, 0),
+//		memorySize: memoryRevert,
+//		valid:      true,
+//		reverts:    true,
+//		returns:    true,
+//	}
+//	return instructionSet
+//}
 
 // EIP 158 a.k.a Spurious Dragon
 func newSpuriousDragonInstructionSet() JumpTable {

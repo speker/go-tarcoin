@@ -50,26 +50,26 @@ type NodeConfig struct {
 	// set to zero, then only the configured static and trusted peers can connect.
 	MaxPeers int
 
-	// EthereumEnabled specifies whether the node should run the TarCoin protocol.
-	EthereumEnabled bool
+	// TarCoinEnabled specifies whether the node should run the TarCoin protocol.
+	TarCoinEnabled bool
 
-	// EthereumNetworkID is the network identifier used by the TarCoin protocol to
+	// TarCoinNetworkID is the network identifier used by the TarCoin protocol to
 	// decide if remote peers should be accepted or not.
-	EthereumNetworkID int64 // uint64 in truth, but Java can't handle that...
+	TarCoinNetworkID int64 // uint64 in truth, but Java can't handle that...
 
-	// EthereumGenesis is the genesis JSON to use to seed the blockchain with. An
+	// TarCoinGenesis is the genesis JSON to use to seed the blockchain with. An
 	// empty genesis state is equivalent to using the mainnet's state.
-	EthereumGenesis string
+	TarCoinGenesis string
 
-	// EthereumDatabaseCache is the system memory in MB to allocate for database caching.
+	// TarCoinDatabaseCache is the system memory in MB to allocate for database caching.
 	// A minimum of 16MB is always reserved.
-	EthereumDatabaseCache int
+	TarCoinDatabaseCache int
 
-	// EthereumNetStats is a netstats connection string to use to report various
+	// TarCoinNetStats is a netstats connection string to use to report various
 	// chain, transaction and node stats to a monitoring server.
 	//
 	// It has the form "nodename:secret@host:port"
-	EthereumNetStats string
+	TarCoinNetStats string
 
 	// WhisperEnabled specifies whether the node should run the Whisper protocol.
 	WhisperEnabled bool
@@ -83,9 +83,9 @@ type NodeConfig struct {
 var defaultNodeConfig = &NodeConfig{
 	BootstrapNodes:        FoundationBootnodes(),
 	MaxPeers:              25,
-	EthereumEnabled:       true,
-	EthereumNetworkID:     1,
-	EthereumDatabaseCache: 16,
+	TarCoinEnabled:       true,
+	TarCoinNetworkID:     1,
+	TarCoinDatabaseCache: 16,
 }
 
 // NewNodeConfig creates a new node option set, initialized to the default values.
@@ -140,53 +140,53 @@ func NewNode(datadir string, config *NodeConfig) (stack *Node, _ error) {
 	debug.Memsize.Add("node", rawStack)
 
 	var genesis *core.Genesis
-	if config.EthereumGenesis != "" {
+	if config.TarCoinGenesis != "" {
 		// Parse the user supplied genesis spec if not mainnet
 		genesis = new(core.Genesis)
-		if err := json.Unmarshal([]byte(config.EthereumGenesis), genesis); err != nil {
+		if err := json.Unmarshal([]byte(config.TarCoinGenesis), genesis); err != nil {
 			return nil, fmt.Errorf("invalid genesis spec: %v", err)
 		}
 		// If we have the Ropsten testnet, hard code the chain configs too
-		if config.EthereumGenesis == RopstenGenesis() {
-			genesis.Config = params.RopstenChainConfig
-			if config.EthereumNetworkID == 1 {
-				config.EthereumNetworkID = 3
-			}
-		}
+		//if config.TarCoinGenesis == RopstenGenesis() {
+		//	genesis.Config = params.RopstenChainConfig
+		//	if config.TarCoinNetworkID == 1 {
+		//		config.TarCoinNetworkID = 3
+		//	}
+		//}
 		// If we have the Rinkeby testnet, hard code the chain configs too
-		if config.EthereumGenesis == RinkebyGenesis() {
-			genesis.Config = params.RinkebyChainConfig
-			if config.EthereumNetworkID == 1 {
-				config.EthereumNetworkID = 4
-			}
-		}
+		//if config.TarCoinGenesis == RinkebyGenesis() {
+		//	genesis.Config = params.RinkebyChainConfig
+		//	if config.TarCoinNetworkID == 1 {
+		//		config.TarCoinNetworkID = 4
+		//	}
+		//}
 		// If we have the Goerli testnet, hard code the chain configs too
-		if config.EthereumGenesis == GoerliGenesis() {
-			genesis.Config = params.GoerliChainConfig
-			if config.EthereumNetworkID == 1 {
-				config.EthereumNetworkID = 5
-			}
-		}
+		//if config.TarCoinGenesis == GoerliGenesis() {
+		//	genesis.Config = params.GoerliChainConfig
+		//	if config.TarCoinNetworkID == 1 {
+		//		config.TarCoinNetworkID = 5
+		//	}
+		//}
 	}
 	// Register the TarCoin protocol if requested
-	if config.EthereumEnabled {
+	if config.TarCoinEnabled {
 		ethConf := trcn.DefaultConfig
 		ethConf.Genesis = genesis
 		ethConf.SyncMode = downloader.LightSync
-		ethConf.NetworkId = uint64(config.EthereumNetworkID)
-		ethConf.DatabaseCache = config.EthereumDatabaseCache
+		ethConf.NetworkId = uint64(config.TarCoinNetworkID)
+		ethConf.DatabaseCache = config.TarCoinDatabaseCache
 		if err := rawStack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
 			return les.New(ctx, &ethConf)
 		}); err != nil {
 			return nil, fmt.Errorf("tarcoin init: %v", err)
 		}
 		// If netstats reporting is requested, do it
-		if config.EthereumNetStats != "" {
+		if config.TarCoinNetStats != "" {
 			if err := rawStack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-				var lesServ *les.LightEthereum
+				var lesServ *les.LightTarCoin
 				ctx.Service(&lesServ)
 
-				return trcnstats.New(config.EthereumNetStats, nil, lesServ)
+				return trcnstats.New(config.TarCoinNetStats, nil, lesServ)
 			}); err != nil {
 				return nil, fmt.Errorf("netstats init: %v", err)
 			}
@@ -220,13 +220,13 @@ func (n *Node) Stop() error {
 	return n.node.Stop()
 }
 
-// GetEthereumClient retrieves a client to access the TarCoin subsystem.
-func (n *Node) GetEthereumClient() (client *EthereumClient, _ error) {
+// GetTarCoinClient retrieves a client to access the TarCoin subsystem.
+func (n *Node) GetTarCoinClient() (client *TarCoinClient, _ error) {
 	rpc, err := n.node.Attach()
 	if err != nil {
 		return nil, err
 	}
-	return &EthereumClient{trcnclient.NewClient(rpc)}, nil
+	return &TarCoinClient{trcnclient.NewClient(rpc)}, nil
 }
 
 // GetNodeInfo gathers and returns a collection of metadata known about the host.

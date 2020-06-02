@@ -71,7 +71,7 @@ type blockChain interface {
 type Service struct {
 	server *p2p.Server        // Peer-to-peer server to retrieve networking infos
 	trcn    *trcn.TarCoin     // Full TarCoin service if monitoring a full node
-	les    *les.LightEthereum // Light TarCoin service if monitoring a light node
+	les    *les.LightTarCoin // Light TarCoin service if monitoring a light node
 	engine consensus.Engine   // Consensus engine to retrieve variadic block fields
 
 	node string // Name of the node to display on the monitoring page
@@ -83,7 +83,7 @@ type Service struct {
 }
 
 // New returns a monitoring service ready for stats reporting.
-func New(url string, ethServ *trcn.TarCoin, lesServ *les.LightEthereum) (*Service, error) {
+func New(url string, ethServ *trcn.TarCoin, lesServ *les.LightTarCoin) (*Service, error) {
 	// Parse the netstats connection url
 	re := regexp.MustCompile("([^:@]*)(:([^@]*))?@(.+)")
 	parts := re.FindStringSubmatch(url)

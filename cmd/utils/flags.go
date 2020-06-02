@@ -162,7 +162,7 @@ var (
 	}
 	NetworkIdFlag = cli.Uint64Flag{
 		Name:  "networkid",
-		Usage: "Network identifier (integer, 1=Frontier, 3=Ropsten, 4=Rinkeby, 5=Görli)",
+		Usage: "Network identifier (integer, 1=Frontier)",
 		Value: trcn.DefaultConfig.NetworkId,
 	}
 	//GoerliFlag = cli.BoolFlag{
@@ -1657,7 +1657,7 @@ func RegisterEthStatsService(stack *node.Node, url string) {
 		var ethServ *trcn.TarCoin
 		ctx.Service(&ethServ)
 
-		var lesServ *les.LightEthereum
+		var lesServ *les.LightTarCoin
 		ctx.Service(&lesServ)
 
 		// Let trcnstats use whichever is not nil
@@ -1676,7 +1676,7 @@ func RegisterGraphQLService(stack *node.Node, endpoint string, cors, vhosts []st
 			return graphql.New(ethServ.APIBackend, endpoint, cors, vhosts, timeouts)
 		}
 		// Try to construct the GraphQL service backed by a light node
-		var lesServ *les.LightEthereum
+		var lesServ *les.LightTarCoin
 		if err := ctx.Service(&lesServ); err == nil {
 			return graphql.New(lesServ.ApiBackend, endpoint, cors, vhosts, timeouts)
 		}

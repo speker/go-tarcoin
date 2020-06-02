@@ -39,14 +39,14 @@ type clientHandler struct {
 	checkpoint *params.TrustedCheckpoint
 	fetcher    *lightFetcher
 	downloader *downloader.Downloader
-	backend    *LightEthereum
+	backend    *LightTarCoin
 
 	closeCh  chan struct{}
 	wg       sync.WaitGroup // WaitGroup used to track all connected peers.
 	syncDone func()         // Test hooks when syncing is done.
 }
 
-func newClientHandler(ulcServers []string, ulcFraction int, checkpoint *params.TrustedCheckpoint, backend *LightEthereum) *clientHandler {
+func newClientHandler(ulcServers []string, ulcFraction int, checkpoint *params.TrustedCheckpoint, backend *LightTarCoin) *clientHandler {
 	handler := &clientHandler{
 		checkpoint: checkpoint,
 		backend:    backend,

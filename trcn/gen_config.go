@@ -9,10 +9,10 @@ import (
 	"github.com/speker/go-tarcoin/common"
 	"github.com/speker/go-tarcoin/consensus/trcnhash"
 	"github.com/speker/go-tarcoin/core"
-	"github.com/speker/go-tarcoin/trcn/downloader"
-	"github.com/speker/go-tarcoin/trcn/gasprice"
 	"github.com/speker/go-tarcoin/miner"
 	"github.com/speker/go-tarcoin/params"
+	"github.com/speker/go-tarcoin/trcn/downloader"
+	"github.com/speker/go-tarcoin/trcn/gasprice"
 )
 
 // MarshalTOML marshals as TOML.
@@ -40,8 +40,9 @@ func (c Config) MarshalTOML() (interface{}, error) {
 		TrieCleanCache          int
 		TrieDirtyCache          int
 		TrieTimeout             time.Duration
+		SnapshotCache           int
 		Miner                   miner.Config
-		Trcnhash                  trcnhash.Config
+		Trcnhash                trcnhash.Config
 		TxPool                  core.TxPoolConfig
 		GPO                     gasprice.Config
 		EnablePreimageRecording bool
@@ -51,8 +52,6 @@ func (c Config) MarshalTOML() (interface{}, error) {
 		RPCGasCap               *big.Int                       `toml:",omitempty"`
 		Checkpoint              *params.TrustedCheckpoint      `toml:",omitempty"`
 		CheckpointOracle        *params.CheckpointOracleConfig `toml:",omitempty"`
-		OverrideIstanbul        *big.Int                       `toml:",omitempty"`
-		OverrideMuirGlacier     *big.Int                       `toml:",omitempty"`
 	}
 	var enc Config
 	enc.Genesis = c.Genesis
@@ -77,6 +76,7 @@ func (c Config) MarshalTOML() (interface{}, error) {
 	enc.TrieCleanCache = c.TrieCleanCache
 	enc.TrieDirtyCache = c.TrieDirtyCache
 	enc.TrieTimeout = c.TrieTimeout
+	enc.SnapshotCache = c.SnapshotCache
 	enc.Miner = c.Miner
 	enc.Trcnhash = c.Trcnhash
 	enc.TxPool = c.TxPool
@@ -116,8 +116,9 @@ func (c *Config) UnmarshalTOML(unmarshal func(interface{}) error) error {
 		TrieCleanCache          *int
 		TrieDirtyCache          *int
 		TrieTimeout             *time.Duration
+		SnapshotCache           *int
 		Miner                   *miner.Config
-		Trcnhash                  *trcnhash.Config
+		Trcnhash                *trcnhash.Config
 		TxPool                  *core.TxPoolConfig
 		GPO                     *gasprice.Config
 		EnablePreimageRecording *bool
@@ -127,8 +128,6 @@ func (c *Config) UnmarshalTOML(unmarshal func(interface{}) error) error {
 		RPCGasCap               *big.Int                       `toml:",omitempty"`
 		Checkpoint              *params.TrustedCheckpoint      `toml:",omitempty"`
 		CheckpointOracle        *params.CheckpointOracleConfig `toml:",omitempty"`
-		OverrideIstanbul        *big.Int                       `toml:",omitempty"`
-		OverrideMuirGlacier     *big.Int                       `toml:",omitempty"`
 	}
 	var dec Config
 	if err := unmarshal(&dec); err != nil {
@@ -199,6 +198,9 @@ func (c *Config) UnmarshalTOML(unmarshal func(interface{}) error) error {
 	}
 	if dec.TrieTimeout != nil {
 		c.TrieTimeout = *dec.TrieTimeout
+	}
+	if dec.SnapshotCache != nil {
+		c.SnapshotCache = *dec.SnapshotCache
 	}
 	if dec.Miner != nil {
 		c.Miner = *dec.Miner
