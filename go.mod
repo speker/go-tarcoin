@@ -78,7 +78,7 @@ require (
 	golang.org/x/text v0.3.2
 	golang.org/x/time v0.0.0-20200416051211-89c76fbcd5d1
 	golang.org/x/tools v0.0.0-20200601175630-2caf76543d99 // indirect
-	google.golang.org/protobuf v1.24.0 // indirect
+	google.golang.org/protobuf v1.24.0
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce
 	gopkg.in/olebedev/go-duktape.v3 v3.0.0-20200316214253-d7b0ff38cac9

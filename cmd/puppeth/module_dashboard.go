@@ -208,7 +208,7 @@ var dashboardContent = `
 											<pre>gtrcn --datadir=$HOME/.{{.Network}} init {{.GethGenesis}}</pre>
 										</p>
 										<p>With your local chain initialized, you can start the TarCoin Wallet:
-											<pre>ethereumwallet --rpc $HOME/.{{.Network}}/gtrcn.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Ethstats}} --node-trcnstats='{{.Ethstats}}'{{end}} --node-bootnodes={{.BootnodesFlat}}</pre>
+											<pre>tarcoinwallet --rpc $HOME/.{{.Network}}/gtrcn.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Ethstats}} --node-trcnstats='{{.Ethstats}}'{{end}} --node-bootnodes={{.BootnodesFlat}}</pre>
 										<p>
 										<br/>
 										<p>You can download the TarCoin Wallet from <a href="https://github.com/tarcoin/mist/releases" target="about:blank">https://github.com/tarcoin/mist/releases</a>.</p>
