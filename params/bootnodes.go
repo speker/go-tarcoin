@@ -22,9 +22,9 @@ import "github.com/speker/go-tarcoin/common"
 // the main TarCoin network.
 var MainnetBootnodes = []string{
 	// TarCoin Foundation Go Bootnodes
-	"enode://37a420219b5c65578461bbb34720579f7a3f7790bfe088131410d5fb64cf1b088ec91abf87dc6e5a9fa90b63b57a9be30f630640ab24fbd4c36716e26817ab6b@3.120.168.27:30303",
-	"enode://9f1bf1045e83ac93571524aadaa2e8c6f066eea48c34012dfc26fb5c65fa1f7390a976432bccb5a1e72346989c60268a3f8c990c396684e310369c9661fcde72@34.199.55.152:30303",
-	"enode://5e7daaf5fa32f0ee5ff96b2885abd8cada62d94c6b30546ed8f16447184050c8b0d899488f3126bb353dacd4bb1b6e48ac508565e5168c8ba9def3ac8d00940e@52.49.43.207:30303",
+	"enode://358c0a1eb10b3ce55815659b9fe0ba7333d062d77d52a7e246520d81fca162ba2218bade5dceb9173239ac9cca9bd0583e95d98ab3152cf32cad52f6ac99a39b@3.120.168.27:30303",
+	"enode://460310fc1b50d0352bdfe62aa2edbb64dd69d10e6c670b406fee76fdc32d7bfdcb5f21067db471b0f45e624c5e778c745f8d215dc8e69681a7f6eac3f6a1ae7c@34.199.55.152:30303",
+	"enode://0c3baee508f39f0fbef3dab7b45769a67111c5e095878151f5a903b23954d1ea00d7972924cf1c4bf75aa5c2936dfee8c5ba32eee5d755ed607d9a48c228bc45@52.49.43.207:30303",
 	// bootnode-aws-ap-southeast-1-001
 	//"enode://22a8232c3abc76a16ae9d6c3b164f98775fe226f0917b0ca871128a74a8e9630b458460865bab457221f1d448dd9791d24c4e5d88786180ac185df813a68d4de@3.209.45.79:30303",     // bootnode-aws-us-east-1-001
 	//"enode://ca6de62fce278f96aea6ec5a2daadb877e51651247cb96ee310a318def462913b653963c155a0ef6c7d50048bba6e6cea881130857413d9f50a621546b590758@34.255.23.113:30303",   // bootnode-aws-eu-west-1-001
@@ -71,7 +71,7 @@ const dnsPrefix = "enrtree://AKA3AM6LPBYEUDMVNU3BSVQJ5AD45Y7YPOHJLEF6W26QOE4VTUD
 // These DNS names provide bootstrap connectivity for public testnets and the mainnet.
 // See https://github.com/tarcoin/discv4-dns-lists for more information.
 var KnownDNSNetworks = map[common.Hash]string{
-	MainnetGenesisHash: dnsPrefix + "all.mainnet.ethdisco.net",
+	MainnetGenesisHash: dnsPrefix + "aall.mainnet.ethdisco.net",
 	//RopstenGenesisHash: dnsPrefix + "all.ropsten.ethdisco.net",
 	//RinkebyGenesisHash: dnsPrefix + "all.rinkeby.ethdisco.net",
 	//GoerliGenesisHash:  dnsPrefix + "all.goerli.ethdisco.net",
