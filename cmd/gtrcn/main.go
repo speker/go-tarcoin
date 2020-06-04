@@ -211,7 +211,7 @@ func init() {
 	// Initialize the CLI app and start Gtrcn
 	app.Action = gtrcn
 	app.HideVersion = true // we have a command to print the version
-	app.Copyright = "Copyright 2013-2020 The go-tarcoin Authors"
+	app.Copyright = "Copyright 2019-2020 The go-tarcoin Authors"
 	app.Commands = []cli.Command{
 		// See chaincmd.go:
 		initCommand,
