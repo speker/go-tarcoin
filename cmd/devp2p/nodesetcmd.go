@@ -93,7 +93,7 @@ type nodeFilterC struct {
 var filterFlags = map[string]nodeFilterC{
 	"-ip":          {1, ipFilter},
 	"-min-age":     {1, minAgeFilter},
-	"-trcn-network": {1, ethFilter},
+	"-trcn-network": {1, trcnFilter},
 	"-les-server":  {0, lesFilter},
 }
 
@@ -154,7 +154,7 @@ func minAgeFilter(args []string) (nodeFilter, error) {
 	return f, nil
 }
 
-func ethFilter(args []string) (nodeFilter, error) {
+func trcnFilter(args []string) (nodeFilter, error) {
 	var filter forkid.Filter
 	switch args[0] {
 	case "mainnet":

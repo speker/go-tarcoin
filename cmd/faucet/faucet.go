@@ -27,6 +27,7 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"github.com/speker/go-tarcoin/trcn"
 	"html/template"
 	"io/ioutil"
 	"math"
@@ -41,15 +42,12 @@ import (
 	"sync"
 	"time"
 
+	"github.com/gorilla/websocket"
 	"github.com/speker/go-tarcoin/accounts"
 	"github.com/speker/go-tarcoin/accounts/keystore"
 	"github.com/speker/go-tarcoin/common"
 	"github.com/speker/go-tarcoin/core"
 	"github.com/speker/go-tarcoin/core/types"
-	"github.com/speker/go-tarcoin/trcn"
-	"github.com/speker/go-tarcoin/trcn/downloader"
-	"github.com/speker/go-tarcoin/trcnclient"
-	"github.com/speker/go-tarcoin/trcnstats"
 	"github.com/speker/go-tarcoin/les"
 	"github.com/speker/go-tarcoin/log"
 	"github.com/speker/go-tarcoin/node"
@@ -58,7 +56,9 @@ import (
 	"github.com/speker/go-tarcoin/p2p/enode"
 	"github.com/speker/go-tarcoin/p2p/nat"
 	"github.com/speker/go-tarcoin/params"
-	"github.com/gorilla/websocket"
+	"github.com/speker/go-tarcoin/trcn/downloader"
+	"github.com/speker/go-tarcoin/trcnclient"
+	"github.com/speker/go-tarcoin/trcnstats"
 )
 
 var (
@@ -85,7 +85,7 @@ var (
 )
 
 var (
-	ether = new(big.Int).Exp(big.NewInt(10), big.NewInt(18), nil)
+	ditap = new(big.Int).Exp(big.NewInt(10), big.NewInt(18), nil)
 )
 
 var (
@@ -364,7 +364,7 @@ func (f *faucet) apiHandler(w http.ResponseWriter, r *http.Request) {
 	reqs := f.reqs
 	f.lock.RUnlock()
 	if err = send(conn, map[string]interface{}{
-		"funds":    new(big.Int).Div(balance, ether),
+		"funds":    new(big.Int).Div(balance, ditap),
 		"funded":   nonce,
 		"peers":    f.stack.Server().PeerCount(),
 		"requests": reqs,
@@ -489,7 +489,7 @@ func (f *faucet) apiHandler(w http.ResponseWriter, r *http.Request) {
 		)
 		if timeout = f.timeouts[username]; time.Now().After(timeout) {
 			// User wasn't funded recently, create the funding transaction
-			amount := new(big.Int).Mul(big.NewInt(int64(*payoutFlag)), ether)
+			amount := new(big.Int).Mul(big.NewInt(int64(*payoutFlag)), ditap)
 			amount = new(big.Int).Mul(amount, new(big.Int).Exp(big.NewInt(5), big.NewInt(int64(msg.Tier)), nil))
 			amount = new(big.Int).Div(amount, new(big.Int).Exp(big.NewInt(2), big.NewInt(int64(msg.Tier)), nil))
 
@@ -616,7 +616,7 @@ func (f *faucet) loop() {
 			f.lock.RLock()
 			log.Info("Updated faucet state", "number", head.Number, "hash", head.Hash(), "age", common.PrettyAge(timestamp), "balance", f.balance, "nonce", f.nonce, "price", f.price)
 
-			balance := new(big.Int).Div(f.balance, ether)
+			balance := new(big.Int).Div(f.balance, ditap)
 			peers := f.stack.Server().PeerCount()
 
 			for _, conn := range f.conns {

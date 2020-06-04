@@ -21,8 +21,28 @@
   <component name="ChangeListManager">
     <list default="true" id="65d954bc-0885-4d77-bc94-fb8673101906" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/abi/method.go" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/abi/method.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/keystore/presale.go" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/keystore/presale.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/devp2p/nodesetcmd.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/devp2p/nodesetcmd.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/faucet/faucet.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/faucet/faucet.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/gtrcn/accountcmd.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/gtrcn/accountcmd.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/puppeth/module_dashboard.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/puppeth/module_dashboard.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/bench_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/bench_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/blockchain_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/blockchain_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/chain_makers_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/chain_makers_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vm/evm.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/vm/evm.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/les/test_helper.go" beforeDir="false" afterPath="$PROJECT_DIR$/les/test_helper.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/light/odr_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/light/odr_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/params/bootnodes.go" beforeDir="false" afterPath="$PROJECT_DIR$/params/bootnodes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/params/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/params/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/params/denomination.go" beforeDir="false" afterPath="$PROJECT_DIR$/params/denomination.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/signer/fourbyte/validation.go" beforeDir="false" afterPath="$PROJECT_DIR$/signer/fourbyte/validation.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/signer/rules/rules_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/signer/rules/rules_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trcn/handler_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/trcn/handler_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trie/iterator_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/trie/iterator_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trie/secure_trie_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/trie/secure_trie_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trie/trie_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/trie/trie_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +89,7 @@
       <recent name="$PROJECT_DIR$/internal/jsre/deps" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.nodedb_test.go">
+  <component name="RunManager" selected="Go Test.dns_route53_test.go">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="go-tarcoin" />
       <working_directory value="$PROJECT_DIR$" />
@@ -90,6 +110,14 @@
       <go_parameters value="-i" />
       <framework value="gotest" />
       <kind value="DIRECTORY" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dns_route53_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-tarcoin" />
+      <working_directory value="$PROJECT_DIR$/cmd/devp2p" />
+      <framework value="gotest" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/cmd/devp2p/dns_route53_test.go" />
       <method v="2" />
     </configuration>
     <configuration name="nodedb_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -116,21 +144,13 @@
       <filePath value="$PROJECT_DIR$/p2p/discover/table_test.go" />
       <method v="2" />
     </configuration>
-    <configuration name="tree_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="go-tarcoin" />
-      <working_directory value="$PROJECT_DIR$/p2p/dnsdisc" />
-      <framework value="gotest" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/p2p/dnsdisc/tree_test.go" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.dns_route53_test.go" />
         <item itemvalue="Go Test.nodedb_test.go" />
         <item itemvalue="Go Test.table_test.go" />
         <item itemvalue="Go Build.go build peerpool.go" />
         <item itemvalue="Go Test.sync_test.go" />
-        <item itemvalue="Go Test.tree_test.go" />
       </list>
     </recent_temporary>
   </component>
@@ -208,16 +228,16 @@
       <screen x="0" y="20" width="1920" height="1060" />
     </state>
     <state width="1874" height="346" key="GridCell.Tab.1.right/0.20.1920.1060@0.20.1920.1060" timestamp="1591124954645" />
-    <state x="1132" y="196" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591201064031">
-      <screen x="0" y="20" width="3840" height="1060" />
+    <state x="566" y="196" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591235919186">
+      <screen x="0" y="20" width="1920" height="1060" />
     </state>
-    <state x="566" y="196" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.20.1920.1060/1920.0.1920.1080@0.20.1920.1060" timestamp="1591040849063" />
+    <state x="566" y="196" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.20.1920.1060/1920.0.1920.1080@0.20.1920.1060" timestamp="1591235919186" />
     <state x="566" y="196" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.20.1920.1060@0.20.1920.1060" timestamp="1591129511150" />
     <state x="1132" y="196" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.20.3840.1060/3840.0.1920.1080@0.20.3840.1060" timestamp="1591201064031" />
-    <state x="667" y="160" width="1173" height="570" key="find.popup" timestamp="1591200492171">
-      <screen x="0" y="20" width="3840" height="1060" />
+    <state x="666" y="296" width="1007" height="570" key="find.popup" timestamp="1591236746890">
+      <screen x="0" y="20" width="1920" height="1060" />
     </state>
-    <state x="666" y="296" width="1007" height="570" key="find.popup/0.20.1920.1060/1920.0.1920.1080@0.20.1920.1060" timestamp="1591052935136" />
+    <state x="666" y="296" width="1007" height="570" key="find.popup/0.20.1920.1060/1920.0.1920.1080@0.20.1920.1060" timestamp="1591236746890" />
     <state x="334" y="160" width="614" height="606" key="find.popup/0.20.1920.1060@0.20.1920.1060" timestamp="1591135980570" />
     <state x="667" y="160" width="1173" height="570" key="find.popup/0.20.3840.1060/3840.0.1920.1080@0.20.3840.1060" timestamp="1591200492171" />
     <state x="769" y="399" key="git4idea.ui.GitTagDialog" timestamp="1591047963150">

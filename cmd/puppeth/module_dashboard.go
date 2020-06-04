@@ -357,7 +357,7 @@ try! node?.start();
 											<pre>./gradlew runCustom -DgenesisFile={{.HarmonyGenesis}} -Dpeer.networkId={{.NetworkID}} -Ddatabase.dir=$HOME/.harmony/{{.Network}} {{.HarmonyBootnodes}} </pre>
 										</p>
 										<br/>
-										<p>You can find TarCoin Harmony at <a href="https://github.com/ether-camp/tarcoin-harmony/" target="about:blank">https://github.com/ether-camp/tarcoin-harmony/</a>.</p>
+										<p>You can find TarCoin Harmony at <a href="https://github.com/ditap-camp/tarcoin-harmony/" target="about:blank">https://github.com/ditap-camp/tarcoin-harmony/</a>.</p>
 									</div>
 								</div>
 							</div>
