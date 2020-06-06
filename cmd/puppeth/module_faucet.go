@@ -39,7 +39,7 @@ ADD genesis.json /genesis.json
 ADD account.json /account.json
 ADD account.pass /account.pass
 
-EXPOSE 8080 30909 30909/udp
+EXPOSE 8080 30303 30303/udp
 
 ENTRYPOINT [ \
 	"faucet", "--genesis", "/genesis.json", "--network", "{{.NetworkID}}", "--bootnodes", "{{.Bootnodes}}", "--trcnstats", "{{.Ethstats}}", "--ethport", "{{.EthPort}}",     \
