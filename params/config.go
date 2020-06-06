@@ -1,18 +1,18 @@
-// Copyright 2016 The go-tarcoin Authors
-// This file is part of the go-tarcoin library.
+// Copyright 2016 The go-ethereum Authors
+// This file is part of the go-ethereum library.
 //
-// The go-tarcoin library is free software: you can redistribute it and/or modify
+// The go-ethereum library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-tarcoin library is distributed in the hope that it will be useful,
+// The go-ethereum library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-tarcoin library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
 package params
 
@@ -27,10 +27,11 @@ import (
 
 // Genesis hashes to enforce below configs on.
 var (
-	MainnetGenesisHash = common.HexToHash("0x8da729462fd39d1347da127b8cfa6b6054da38661be78748546de4ed3b3e3e9f")
+	MainnetGenesisHash = common.HexToHash("0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3")
 	//RopstenGenesisHash = common.HexToHash("0x41941023680923e0fe4d74a34bdac8141f2540e3ae90623718e47d66d1ca4a2d")
 	//RinkebyGenesisHash = common.HexToHash("0x6341fd3daf94b748c72ced5a5b26028f2474f5f00d824504e4fa37a75767e177")
 	//GoerliGenesisHash  = common.HexToHash("0xbf7e331f7f7c1dd2e05159666b3bf8bc7a8a3a9eb1d518969eab529dd9b88c1a")
+	//YoloV1GenesisHash  = common.HexToHash("0xc3fd235071f24f93865b0850bd2a2119b30f7224d18a0e34c7bbf549ad7e3d36")
 )
 
 // TrustedCheckpoints associates each known checkpoint with the genesis hash of
@@ -55,13 +56,13 @@ var (
 	// MainnetChainConfig is the chain parameters to run a node on the main network.
 	MainnetChainConfig = &ChainConfig{
 		ChainID:             big.NewInt(1),
-		HomesteadBlock:      big.NewInt(0),
-		DAOForkBlock:        big.NewInt(0),
+		HomesteadBlock:      big.NewInt(1150000),
+		DAOForkBlock:        big.NewInt(1920000),
 		DAOForkSupport:      true,
-		EIP150Block:         big.NewInt(0),
-		//EIP150Hash:          common.HexToHash("0x2086799aeebeae135c246c65021c82b4e15a2c451340993aacfd2751886514f0"),
-		EIP155Block:         big.NewInt(0),
-		EIP158Block:         big.NewInt(0),
+		EIP150Block:         big.NewInt(2463000),
+		EIP150Hash:          common.HexToHash("0x2086799aeebeae135c246c65021c82b4e15a2c451340993aacfd2751886514f0"),
+		EIP155Block:         big.NewInt(2675000),
+		EIP158Block:         big.NewInt(2675000),
 		//ByzantiumBlock:      big.NewInt(4370000),
 		//ConstantinopleBlock: big.NewInt(7280000),
 		//PetersburgBlock:     big.NewInt(7280000),
@@ -144,6 +145,7 @@ var (
 	//	ConstantinopleBlock: big.NewInt(3660663),
 	//	PetersburgBlock:     big.NewInt(4321234),
 	//	IstanbulBlock:       big.NewInt(5435345),
+	//	MuirGlacierBlock:    nil,
 	//	Clique: &CliqueConfig{
 	//		Period: 15,
 	//		Epoch:  30000,
@@ -183,6 +185,7 @@ var (
 	//	ConstantinopleBlock: big.NewInt(0),
 	//	PetersburgBlock:     big.NewInt(0),
 	//	IstanbulBlock:       big.NewInt(1561651),
+	//	MuirGlacierBlock:    nil,
 	//	Clique: &CliqueConfig{
 	//		Period: 15,
 	//		Epoch:  30000,
@@ -196,8 +199,8 @@ var (
 	//	CHTRoot:      common.HexToHash("0xeb03081cf34cefe8dd1a44865c236b689883518d27af953123b0c922f93f5e13"),
 	//	BloomRoot:    common.HexToHash("0x0463836aebf8b7b2d736b082d4e1ee91698750a3f7c1558a9b6fb9acc035ba15"),
 	//}
-	//
-	//// GoerliCheckpointOracle contains a set of configs for the Goerli test network oracle.
+
+	// GoerliCheckpointOracle contains a set of configs for the Goerli test network oracle.
 	//GoerliCheckpointOracle = &CheckpointOracleConfig{
 	//	Address: common.HexToAddress("0x18CA0E045F0D772a851BC7e48357Bcaab0a0795D"),
 	//	Signers: []common.Address{
@@ -210,24 +213,42 @@ var (
 	//	Threshold: 2,
 	//}
 
+	// YoloV1ChainConfig contains the chain parameters to run a node on the YOLOv1 test network.
+	//YoloV1ChainConfig = &ChainConfig{
+	//	ChainID:             big.NewInt(133519467574833),
+	//	HomesteadBlock:      big.NewInt(0),
+	//	DAOForkBlock:        nil,
+	//	DAOForkSupport:      true,
+	//	EIP150Block:         big.NewInt(0),
+	//	EIP155Block:         big.NewInt(0),
+	//	EIP158Block:         big.NewInt(0),
+	//	ByzantiumBlock:      big.NewInt(0),
+	//	ConstantinopleBlock: big.NewInt(0),
+	//	PetersburgBlock:     big.NewInt(0),
+	//	IstanbulBlock:       big.NewInt(0),
+	//	MuirGlacierBlock:    nil,
+	//	YoloV1Block:         big.NewInt(0),
+	//	Clique: &CliqueConfig{
+	//		Period: 15,
+	//		Epoch:  30000,
+	//	},
+	//}
+
 	// AllTrcnhashProtocolChanges contains every protocol change (EIPs) introduced
-	// and accepted by the TarCoin core developers into the Trcnhash consensus.
+	// and accepted by the Ethereum core developers into the Trcnhash consensus.
 	//
 	// This configuration is intentionally not using keyed fields to force anyone
 	// adding flags to the config to also have to set these fields.
-	//AllTrcnhashProtocolChanges = &ChainConfig{big.NewInt(1337), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), nil, nil, new(TrcnhashConfig), nil}
-	AllTrcnhashProtocolChanges = &ChainConfig{big.NewInt(1337), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), nil, nil, new(TrcnhashConfig), nil}
+	AllTrcnhashProtocolChanges = &ChainConfig{big.NewInt(1337), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), nil, new(TrcnhashConfig), nil}
 
 	// AllCliqueProtocolChanges contains every protocol change (EIPs) introduced
-	// and accepted by the TarCoin core developers into the Clique consensus.
+	// and accepted by the Ethereum core developers into the Clique consensus.
 	//
 	// This configuration is intentionally not using keyed fields to force anyone
 	// adding flags to the config to also have to set these fields.
-	//AllCliqueProtocolChanges = &ChainConfig{big.NewInt(1337), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), nil, nil, nil, &CliqueConfig{Period: 0, Epoch: 30000}}
-	AllCliqueProtocolChanges = &ChainConfig{big.NewInt(1337), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), nil, nil, nil, &CliqueConfig{Period: 0, Epoch: 30000}}
+	AllCliqueProtocolChanges = &ChainConfig{big.NewInt(1337), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0),  nil, nil, &CliqueConfig{Period: 0, Epoch: 30000}}
 
-	//TestChainConfig = &ChainConfig{big.NewInt(1), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), big.NewInt(0), nil, nil, new(TrcnhashConfig), nil}
-	TestChainConfig = &ChainConfig{big.NewInt(1), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), nil, nil, new(TrcnhashConfig), nil}
+	TestChainConfig = &ChainConfig{big.NewInt(1), big.NewInt(0), nil, false, big.NewInt(0), common.Hash{}, big.NewInt(0), nil, new(TrcnhashConfig), nil}
 	TestRules       = TestChainConfig.Rules(new(big.Int))
 )
 
@@ -286,7 +307,7 @@ type ChainConfig struct {
 	DAOForkBlock   *big.Int `json:"daoForkBlock,omitempty"`   // TheDAO hard-fork switch block (nil = no fork)
 	DAOForkSupport bool     `json:"daoForkSupport,omitempty"` // Whether the nodes supports or opposes the DAO hard-fork
 
-	// EIP150 implements the Gas price changes (https://github.com/tarcoin/EIPs/issues/150)
+	// EIP150 implements the Gas price changes (https://github.com/ethereum/EIPs/issues/150)
 	EIP150Block *big.Int    `json:"eip150Block,omitempty"` // EIP150 HF block (nil = no fork)
 	EIP150Hash  common.Hash `json:"eip150Hash,omitempty"`  // EIP150 HF hash (needed for header only clients as only gas pricing changed)
 
@@ -298,7 +319,9 @@ type ChainConfig struct {
 	//PetersburgBlock     *big.Int `json:"petersburgBlock,omitempty"`     // Petersburg switch block (nil = same as Constantinople)
 	//IstanbulBlock       *big.Int `json:"istanbulBlock,omitempty"`       // Istanbul switch block (nil = no fork, 0 = already on istanbul)
 	//MuirGlacierBlock    *big.Int `json:"muirGlacierBlock,omitempty"`    // Eip-2384 (bomb delay) switch block (nil = no fork, 0 = already activated)
-	EWASMBlock          *big.Int `json:"ewasmBlock,omitempty"`          // EWASM switch block (nil = no fork, 0 = already activated)
+	//
+	//YoloV1Block *big.Int `json:"yoloV1Block,omitempty"` // YOLO v1: https://github.com/ethereum/EIPs/pull/2657 (Ephemeral testnet)
+	//EWASMBlock  *big.Int `json:"ewasmBlock,omitempty"`  // EWASM switch block (nil = no fork, 0 = already activated)
 
 	// Various consensus engines
 	Trcnhash *TrcnhashConfig `json:"trcnhash,omitempty"`
@@ -335,8 +358,7 @@ func (c *ChainConfig) String() string {
 	default:
 		engine = "unknown"
 	}
-	//return fmt.Sprintf("{ChainID: %v Homestead: %v DAO: %v DAOSupport: %v EIP150: %v EIP155: %v EIP158: %v Byzantium: %v Constantinople: %v Petersburg: %v Istanbul: %v, Muir Glacier: %v, Engine: %v}",
-	return fmt.Sprintf("{ChainID: %v Homestead: %v DAO: %v DAOSupport: %v EIP150: %v EIP155: %v EIP158: %v, Engine: %v}",
+	return fmt.Sprintf("{ChainID: %v Homestead: %v DAO: %v DAOSupport: %v EIP150: %v EIP155: %v EIP158: %v , Engine: %v}",
 		c.ChainID,
 		c.HomesteadBlock,
 		c.DAOForkBlock,
@@ -349,9 +371,9 @@ func (c *ChainConfig) String() string {
 		//c.PetersburgBlock,
 		//c.IstanbulBlock,
 		//c.MuirGlacierBlock,
+		//c.YoloV1Block,
 		engine,
 	)
-
 }
 
 // IsHomestead returns whether num is either equal to the homestead block or greater.
@@ -406,10 +428,15 @@ func (c *ChainConfig) IsEIP158(num *big.Int) bool {
 //	return isForked(c.IstanbulBlock, num)
 //}
 
+// IsYoloV1 returns whether num is either equal to the YoloV1 fork block or greater.
+//func (c *ChainConfig) IsYoloV1(num *big.Int) bool {
+//	return isForked(c.YoloV1Block, num)
+//}
+
 // IsEWASM returns whether num represents a block number after the EWASM fork
-func (c *ChainConfig) IsEWASM(num *big.Int) bool {
-	return isForked(c.EWASMBlock, num)
-}
+//func (c *ChainConfig) IsEWASM(num *big.Int) bool {
+//	return isForked(c.EWASMBlock, num)
+//}
 
 // CheckCompatible checks whether scheduled fork transitions have been imported
 // with a mismatching chain configuration.
@@ -429,24 +456,27 @@ func (c *ChainConfig) CheckCompatible(newcfg *ChainConfig, height uint64) *Confi
 	return lasterr
 }
 
-// CheckConfigForkOrder checks that we don't "skip" any forks, gtrcn isn't pluggable enough
+// CheckConfigForkOrder checks that we don't "skip" any forks, geth isn't pluggable enough
 // to guarantee that forks can be implemented in a different order than on official networks
 func (c *ChainConfig) CheckConfigForkOrder() error {
 	type fork struct {
-		name  string
-		block *big.Int
+		name     string
+		block    *big.Int
+		optional bool // if true, the fork may be nil and next fork is still allowed
 	}
 	var lastFork fork
 	for _, cur := range []fork{
-		{"homesteadBlock", c.HomesteadBlock},
-		{"eip150Block", c.EIP150Block},
-		{"eip155Block", c.EIP155Block},
-		{"eip158Block", c.EIP158Block},
-		//{"byzantiumBlock", c.ByzantiumBlock},
-		//{"constantinopleBlock", c.ConstantinopleBlock},
-		//{"petersburgBlock", c.PetersburgBlock},
-		//{"istanbulBlock", c.IstanbulBlock},
-		//{"muirGlacierBlock", c.MuirGlacierBlock},
+		{name: "homesteadBlock", block: c.HomesteadBlock},
+		{name: "daoForkBlock", block: c.DAOForkBlock, optional: true},
+		{name: "eip150Block", block: c.EIP150Block},
+		{name: "eip155Block", block: c.EIP155Block},
+		{name: "eip158Block", block: c.EIP158Block},
+		//{name: "byzantiumBlock", block: c.ByzantiumBlock},
+		//{name: "constantinopleBlock", block: c.ConstantinopleBlock},
+		//{name: "petersburgBlock", block: c.PetersburgBlock},
+		//{name: "istanbulBlock", block: c.IstanbulBlock},
+		//{name: "muirGlacierBlock", block: c.MuirGlacierBlock, optional: true},
+		//{name: "yoloV1Block", block: c.YoloV1Block},
 	} {
 		if lastFork.name != "" {
 			// Next one must be higher number
@@ -461,7 +491,10 @@ func (c *ChainConfig) CheckConfigForkOrder() error {
 				}
 			}
 		}
-		lastFork = cur
+		// If it was optional and not set, then ignore it
+		if !cur.optional || cur.block != nil {
+			lastFork = cur
+		}
 	}
 	return nil
 }
@@ -503,9 +536,12 @@ func (c *ChainConfig) checkCompatible(newcfg *ChainConfig, head *big.Int) *Confi
 	//if isForkIncompatible(c.MuirGlacierBlock, newcfg.MuirGlacierBlock, head) {
 	//	return newCompatError("Muir Glacier fork block", c.MuirGlacierBlock, newcfg.MuirGlacierBlock)
 	//}
-	if isForkIncompatible(c.EWASMBlock, newcfg.EWASMBlock, head) {
-		return newCompatError("ewasm fork block", c.EWASMBlock, newcfg.EWASMBlock)
-	}
+	//if isForkIncompatible(c.YoloV1Block, newcfg.YoloV1Block, head) {
+	//	return newCompatError("YOLOv1 fork block", c.YoloV1Block, newcfg.YoloV1Block)
+	//}
+	//if isForkIncompatible(c.EWASMBlock, newcfg.EWASMBlock, head) {
+	//	return newCompatError("ewasm fork block", c.EWASMBlock, newcfg.EWASMBlock)
+	//}
 	return nil
 }
 
@@ -572,7 +608,8 @@ func (err *ConfigCompatError) Error() string {
 type Rules struct {
 	ChainID                                                 *big.Int
 	IsHomestead, IsEIP150, IsEIP155, IsEIP158               bool
-	//IsByzantium, IsConstantinople, IsPetersburg, IsIstanbul bool
+	IsByzantium, IsConstantinople, IsPetersburg, IsIstanbul bool
+	IsYoloV1                                                bool
 }
 
 // Rules ensures c's ChainID is not nil.
@@ -591,5 +628,6 @@ func (c *ChainConfig) Rules(num *big.Int) Rules {
 		//IsConstantinople: c.IsConstantinople(num),
 		//IsPetersburg:     c.IsPetersburg(num),
 		//IsIstanbul:       c.IsIstanbul(num),
+		//IsYoloV1:         c.IsYoloV1(num),
 	}
 }
