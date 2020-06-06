@@ -111,7 +111,7 @@ func newTester(t *testing.T, confOverride func(*trcn.Config)) *tester {
 	if err = stack.Register(func(ctx *node.ServiceContext) (node.Service, error) { return trcn.New(ctx, ethConf) }); err != nil {
 		t.Fatalf("failed to register TarCoin protocol: %v", err)
 	}
-	// Start the node and assemble the JavaScript console around it
+	// Start the node and assemble the Console around it
 	if err = stack.Start(); err != nil {
 		t.Fatalf("failed to start test stack: %v", err)
 	}
@@ -131,7 +131,7 @@ func newTester(t *testing.T, confOverride func(*trcn.Config)) *tester {
 		Preload:  []string{"preload.js"},
 	})
 	if err != nil {
-		t.Fatalf("failed to create JavaScript console: %v", err)
+		t.Fatalf("failed to create Console: %v", err)
 	}
 	// Create the final tester and return
 	var tarcoin *trcn.TarCoin

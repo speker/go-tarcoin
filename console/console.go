@@ -50,7 +50,7 @@ const HistoryFile = "history"
 const DefaultPrompt = "> "
 
 // Config is the collection of configurations to fine tune the behavior of the
-// JavaScript console.
+// Console.
 type Config struct {
 	DataDir  string       // Data directory to store the console history at
 	DocRoot  string       // Filesystem path from where to load JavaScript files from
@@ -62,7 +62,7 @@ type Config struct {
 }
 
 // Console is a JavaScript interpreted runtime environment. It is a fully fledged
-// JavaScript console attached to a running node via an external or in-process RPC
+// Console attached to a running node via an external or in-process RPC
 // client.
 type Console struct {
 	client   *rpc.Client  // RPC client to execute TarCoin requests through
@@ -297,7 +297,7 @@ func (c *Console) AutoCompleteInput(line string, pos int) (string, []string, str
 // Welcome show summary of current Gtrcn instance and some metadata about the
 // console's available modules.
 func (c *Console) Welcome() {
-	message := "Welcome to the Gtrcn JavaScript console!\n\n"
+	message := "Welcome to the Gtrcn Console!\n\n"
 
 	// Print some generic Gtrcn metadata
 	if res, err := c.jsre.Run(`

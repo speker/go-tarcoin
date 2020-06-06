@@ -58,7 +58,7 @@ func TestConsoleWelcome(t *testing.T) {
 
 	// Verify the actual welcome message to the required template
 	gtrcn.Expect(`
-Welcome to the Gtrcn JavaScript console!
+Welcome to the Gtrcn Console!
 
 instance: Gtrcn/v{{gethver}}/{{goos}}-{{goarch}}/{{gover}}
 coinbase: {{.Trcnbase}}
@@ -153,7 +153,7 @@ func testAttachWelcome(t *testing.T, gtrcn *testgeth, endpoint, apis string) {
 
 	// Verify the actual welcome message to the required template
 	attach.Expect(`
-Welcome to the Gtrcn JavaScript console!
+Welcome to the Gtrcn Console!
 
 instance: Gtrcn/v{{gethver}}/{{goos}}-{{goarch}}/{{gover}}
 coinbase: {{trcnbase}}

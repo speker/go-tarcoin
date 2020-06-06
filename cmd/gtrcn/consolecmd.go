@@ -72,7 +72,7 @@ JavaScript API. See https://github.com/speker/go-tarcoin/wiki/JavaScript-Console
 	}
 )
 
-// localConsole starts a new gtrcn node, attaching a JavaScript console to it at the
+// localConsole starts a new gtrcn node, attaching a Console to it at the
 // same time.
 func localConsole(ctx *cli.Context) error {
 	// Create and start the node based on the CLI flags
@@ -81,7 +81,7 @@ func localConsole(ctx *cli.Context) error {
 	startNode(ctx, node)
 	defer node.Close()
 
-	// Attach to the newly started node and start the JavaScript console
+	// Attach to the newly started node and start the Console
 	client, err := node.Attach()
 	if err != nil {
 		utils.Fatalf("Failed to attach to the inproc gtrcn: %v", err)
@@ -95,7 +95,7 @@ func localConsole(ctx *cli.Context) error {
 
 	console, err := console.New(config)
 	if err != nil {
-		utils.Fatalf("Failed to start the JavaScript console: %v", err)
+		utils.Fatalf("Failed to start the Console: %v", err)
 	}
 	defer console.Stop(false)
 
@@ -114,7 +114,7 @@ func localConsole(ctx *cli.Context) error {
 // remoteConsole will connect to a remote gtrcn instance, attaching a JavaScript
 // console to it.
 func remoteConsole(ctx *cli.Context) error {
-	// Attach to a remotely running gtrcn instance and start the JavaScript console
+	// Attach to a remotely running gtrcn instance and start the Console
 	endpoint := ctx.Args().First()
 	if endpoint == "" {
 		path := node.DefaultDataDir()
@@ -152,7 +152,7 @@ func remoteConsole(ctx *cli.Context) error {
 
 	console, err := console.New(config)
 	if err != nil {
-		utils.Fatalf("Failed to start the JavaScript console: %v", err)
+		utils.Fatalf("Failed to start the Console: %v", err)
 	}
 	defer console.Stop(false)
 
@@ -191,7 +191,7 @@ func ephemeralConsole(ctx *cli.Context) error {
 	startNode(ctx, node)
 	defer node.Close()
 
-	// Attach to the newly started node and start the JavaScript console
+	// Attach to the newly started node and start the Console
 	client, err := node.Attach()
 	if err != nil {
 		utils.Fatalf("Failed to attach to the inproc gtrcn: %v", err)
@@ -205,7 +205,7 @@ func ephemeralConsole(ctx *cli.Context) error {
 
 	console, err := console.New(config)
 	if err != nil {
-		utils.Fatalf("Failed to start the JavaScript console: %v", err)
+		utils.Fatalf("Failed to start the Console: %v", err)
 	}
 	defer console.Stop(false)
 
