@@ -280,7 +280,7 @@ func (s *simulation) launchNode(log bool) *Network {
 	s.nodectr++
 	binary.BigEndian.PutUint32(ip, num)
 	ip[0] = 10
-	addr := &net.UDPAddr{IP: ip, Port: 60909}
+	addr := &net.UDPAddr{IP: ip, Port: 30909}
 
 	transport := &simTransport{joinTime: time.Now(), sender: id, senderAddr: addr, sim: s, priv: key}
 	net, err := newNetwork(transport, key.PublicKey, "<no database>", nil)
@@ -341,8 +341,8 @@ func (st *simTransport) sendPing(remote *Node, remoteAddr *net.UDPAddr, topics [
 		ev:         pingPacket,
 		data: &ping{
 			Version:    4,
-			From:       rpcEndpoint{IP: st.senderAddr.IP, UDP: uint16(st.senderAddr.Port), TCP: 60909},
-			To:         rpcEndpoint{IP: remoteAddr.IP, UDP: uint16(remoteAddr.Port), TCP: 60909},
+			From:       rpcEndpoint{IP: st.senderAddr.IP, UDP: uint16(st.senderAddr.Port), TCP: 30909},
+			To:         rpcEndpoint{IP: remoteAddr.IP, UDP: uint16(remoteAddr.Port), TCP: 30909},
 			Expiration: uint64(time.Now().Unix() + int64(expiration)),
 			Topics:     topics,
 		},
