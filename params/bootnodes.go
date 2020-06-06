@@ -22,7 +22,7 @@ import "github.com/speker/go-tarcoin/common"
 // the main TarCoin network.
 var MainnetBootnodes = []string{
 	// TarCoin Foundation Go Bootnodes
-	"enode://00ddbe00ec7098b57ad31b8091a6416b589bbec058cb930b3b5cffdd8e10c9cca0832f30126254a0a06c8ed57659d48f5d5f22bee58b6d22b229660ccb7b0810@3.120.168.27:20202",
+	"enode://117d9d20a7052615a6919a414f601de3bf5df37546ab7f582a72d76603b39f63a11f8103cad420036cc339c00c315e3736ddba2112e1edc58d964c39905f3e2c@3.120.168.27:30303",
 	//"enode://460310fc1b50d0352bdfe62aa2edbb64dd69d10e6c670b406fee76fdc32d7bfdcb5f21067db471b0f45e624c5e778c745f8d215dc8e69681a7f6eac3f6a1ae7c@34.199.55.152:30303",
 	//"enode://0c3baee508f39f0fbef3dab7b45769a67111c5e095878151f5a903b23954d1ea00d7972924cf1c4bf75aa5c2936dfee8c5ba32eee5d755ed607d9a48c228bc45@52.49.43.207:30303",
 	// bootnode-aws-ap-southeast-1-001

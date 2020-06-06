@@ -11,7 +11,7 @@ require (
 	github.com/VictoriaMetrics/fastcache v1.5.7
 	github.com/allegro/bigcache v1.2.1 // indirect
 	github.com/aristanetworks/goarista v0.0.0-20200602234848-db8a79a18e4a
-	github.com/aws/aws-sdk-go v1.31.10
+	github.com/aws/aws-sdk-go v1.31.12
 	github.com/btcsuite/btcd v0.20.1-beta
 	github.com/cespare/cp v1.1.1
 	github.com/cloudflare/cloudflare-go v0.11.7
@@ -70,7 +70,7 @@ require (
 	github.com/syndtr/goleveldb v1.0.1-0.20190923125748-758128399b1d
 	github.com/tyler-smith/go-bip39 v1.0.2
 	github.com/wsddn/go-ecdh v0.0.0-20161211032359-48726bab9208
-	golang.org/x/crypto v0.0.0-20200602180216-279210d13fed
+	golang.org/x/crypto v0.0.0-20200604202706-70a84ac30bf9
 	golang.org/x/mod v0.3.0 // indirect
 	golang.org/x/net v0.0.0-20200602114024-627f9648deb9 // indirect
 	golang.org/x/sync v0.0.0-20200317015054-43a5402ce75a
