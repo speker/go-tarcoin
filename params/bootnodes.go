@@ -66,7 +66,7 @@ var MainnetBootnodes = []string{
 //	"enode://a61215641fb8714a373c80edbfa0ea8878243193f57c96eeb44d0bc019ef295abd4e044fd619bfc4c59731a73fb79afe84e9ab6da0c743ceb479cbb6d263fa91@3.11.147.67:30303",
 //}
 
-const dnsPrefix = "enrtree://AIV4LVQKJ45WMJOTOOKVLEVYNC32SEPH7KPKOW4G7JC3W4U26UAIU@"
+const dnsPrefix = "enrtree://AO5KKLRZX3W2IG4CA3QXXSO4YPGI3GXOHVMMFBXERGFXEJ45CA6PQ@"
 
 // These DNS names provide bootstrap connectivity for public testnets and the mainnet.
 // See https://github.com/tarcoin/discv4-dns-lists for more information.
